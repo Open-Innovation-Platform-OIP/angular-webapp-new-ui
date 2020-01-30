@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <!-- <div
+    class="sidebar"
+    data-color="white"
+    *ngIf="isMobileMenu()"
+    data-background-color="black"
+    data-image="./assets/img/sidebar-1.jpg"
+  >
+    <app-sidebar-cmp></app-sidebar-cmp>
+    <div
+      class="sidebar-background"
+      style="background-image: url(assets/img/sidebar-1.jpg)"
+    ></div>
+  </div> -->
+
+  <app-navbar-cmp></app-navbar-cmp>
+  <!-- <app-header></app-header> -->
+
+  <div class="main-panel">
+    <router-outlet></router-outlet>
+    <app-footer-cmp></app-footer-cmp>
+  </div>
+
+  <!-- <app-fixedplugin *ngIf="showButton()"></app-fixedplugin> -->
+</div>

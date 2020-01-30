@@ -1,0 +1,122 @@
+.full-screen {
+  height: 91.5vh;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+}
+
+.login h2 {
+  font-weight: 600;
+  font-size: 3.5rem;
+}
+
+.login-description {
+  font-weight: 600;
+  font-size: var(--font-14);
+}
+
+.social-login {
+  display: flex;
+}
+
+.linkedin-button,
+.google-button {
+  text-align: center;
+  cursor: pointer;
+  padding: 6px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  font-size: 2rem;
+  color: var(--primary);
+  background-color: #eeeeee;
+  flex-grow: 1;
+}
+
+.google-button {
+  margin-left: 1%;
+}
+
+.linkedin-button {
+  margin-right: 1%;
+}
+
+.email-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-input label,
+.password-input label {
+  color: #000;
+  font-weight: 500;
+  font-size: var(--font-16);
+  margin-bottom: 1rem;
+}
+
+.email-input input,
+.password-input input {
+  border: 1px solid #afafaf;
+  border-radius: var(--border-radius-4);
+  background-color: #eee;
+  width: 100%;
+  font-size: var(--font-14);
+  padding: 1rem;
+}
+
+.password-show > div > span {
+  font-weight: 500;
+  color: var(--primary);
+  font-size: var(--font-12);
+}
+
+.password-show > div > i {
+  color: var(--primary);
+  font-size: var(--font-12);
+}
+
+.password-input-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.password-show {
+  cursor: pointer;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: black;
+}
+
+.keep-me-logged-in label {
+  color: #000;
+  letter-spacing: 0.35px;
+}
+
+.keep-me-logged-in input[type="checkbox"] {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.login-button {
+  padding: 6px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  font-size: var(--font-16);
+  font-weight: 700;
+  color: #eee;
+  background-color: var(--primary);
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
+.forgot-password > a {
+  text-decoration: underline;
+  font-size: var(--font-14);
+  font-weight: 400;
+  color: #000;
+  margin-top: 3rem;
+}

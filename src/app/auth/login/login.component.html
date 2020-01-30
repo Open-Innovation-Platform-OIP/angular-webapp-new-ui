@@ -1,0 +1,192 @@
+<!-- <div class="wrapper wrapper-full-page">
+  <div
+    class="page-header login-page header-filter"
+    filter-color="black"
+    style="background-image: url('./assets/img/login.jpg'); background-size: cover; background-position: top center;"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
+          <form class="form" autocomplete="off">
+            <div class="card card-login card-hidden">
+              <div class="card-header card-header-warning text-center">
+                <h1
+                  #mainHeading
+                  id="heading"
+                  style="font-size: 1.5rem;"
+                  class="card-title"
+                  tabindex="0"
+                >
+                  Log in
+                </h1>
+                <div class="social-line">
+                  <a
+                    href="https://sa-auth-dev.dev.jaagalabs.com/auth/linkedin"
+                    class="btn btn-just-icon btn-link btn-white"
+                    aria-label="social login linkedin"
+                  >
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a
+                    href="https://sa-auth-dev.dev.jaagalabs.com/auth/google"
+                    aria-label="social login google"
+                    class="btn btn-just-icon btn-link btn-white"
+                  >
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="card-body ">
+                <span class="bmd-form-group"> </span>
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons" aria-hidden="true">email</i>
+                      </span>
+                    </div>
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      [(ngModel)]="loginDetails.email"
+                      placeholder="Email"
+                      autofocus
+                      aria-required="true"
+                    />
+                  </div>
+                </span>
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons" aria-hidden="true"
+                          >lock_outline</i
+                        >
+                      </span>
+                    </div>
+                    <input
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      [(ngModel)]="loginDetails.password"
+                      placeholder="Password"
+                      aria-required="true"
+                    />
+                  </div>
+                </span>
+              </div>
+              <div class="card-footer">
+                <div class="price">
+                  <button
+                    (click)="login()"
+                    mat-raised-button
+                    class="btn btn-warning"
+                  >
+                    Log In
+                  </button>
+                  <img
+                    *ngIf="loading"
+                    class="pl-2"
+                    src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                  />
+                </div>
+                <div class="stats">
+                  <a
+                    href="javascript:void(0);"
+                    style="cursor:pointer"
+                    (click)="forgotPassword()"
+                    >Forgot Password</a
+                  >
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row justify-content-center align-items-center full-screen">
+    <div class="col-lg-4 col-md-3"></div>
+    <div class="col-lg-4 col-md-6">
+      <div class="login">
+        <h2 class="login-heading" role="heading" aria-level="1" #mainHeading>
+          Login
+        </h2>
+        <p class="login-description mt-2">
+          Need a Social Alpha account? Create an account
+        </p>
+
+        <div class="social-login mt-4">
+          <a
+            class="linkedin-button"
+            href="https://sa-auth-dev.dev.jaagalabs.com/auth/linkedin"
+          >
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+
+          <a
+            class="google-button"
+            href="https://sa-auth-dev.dev.jaagalabs.com/auth/google"
+          >
+            <i class="fa fa-google" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="email-input mt-4">
+          <label for="email">Email</label>
+          <input type="text" [(ngModel)]="loginDetails.email" />
+        </div>
+
+        <div class="password-input mt-4">
+          <div class="password-input-labels">
+            <label for="password">Password</label>
+            <div class="password-show" (click)="clickHideUnhide()">
+              <div *ngIf="!showPassword">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                <span> &nbsp;Show</span>
+              </div>
+              <div *ngIf="showPassword">
+                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                <span> &nbsp;Hide</span>
+              </div>
+            </div>
+          </div>
+
+          <input
+            type="password"
+            [(ngModel)]="loginDetails.password"
+            #password
+          />
+        </div>
+
+        <!-- <div class="keep-me-logged-in keep-me-logged-in-container mt-3">
+          <input
+            type="checkbox"
+            name="keep_me_logged_in"
+            id="keep_me_logged_in"
+          />
+
+          <label for="keep_me_logged_in"> Keep me logged in</label>
+        </div> -->
+
+        <button
+          class="btn btn-block bg-primary text-capitalize font-weight-bold mt-5 login-button"
+          (click)="login()"
+        >
+          Log in
+        </button>
+
+        <div class="forgot-password mt-5">
+          <a href="javascript:void(0);" (click)="forgotPassword()"
+            >Forgot your password?</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-3"></div>
+  </div>
+</div>
