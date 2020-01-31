@@ -16,7 +16,7 @@ import { RouterModule } from '@angular/router';
 // import { ViewCollaboratorsComponent } from './view-collaborators/view-collaborators.component';
 // import { AddValidationComponent } from './add-validation/add-validation.component';
 // import { ValidateCardComponent } from './validate-card/validate-card.component';
-// import { ProfileCardComponent } from './profile-card/profile-card.component';
+import { ProfileCardComponent } from './profile-card/profile-card.component';
 // import { EnrichmentCardComponent } from './enrichment-card/enrichment-card.component';
 // import { DetailedValidateViewComponent } from './detailed-validate-view/detailed-validate-view.component';
 // import { AddCollaboratorComponent } from './add-collaborator/add-collaborator.component';
@@ -54,7 +54,7 @@ import { SolutionCardComponent } from './solution-card/solution-card.component';
         // ViewEnrichmentComponent,
         // ViewCollaboratorsComponent,
         // ValidateCardComponent,
-        // ProfileCardComponent,
+        ProfileCardComponent,
         // EnrichmentCardComponent,
         // DetailedValidateViewComponent,
         // AddCollaboratorComponent,
@@ -77,7 +77,7 @@ import { SolutionCardComponent } from './solution-card/solution-card.component';
         // ViewCollaboratorsComponent,
         // AddValidationComponent,
         // ValidateCardComponent,
-        // ProfileCardComponent,
+        ProfileCardComponent,
         // EnrichmentCardComponent,
         // DetailedValidateViewComponent,
         // AddCollaboratorComponent,

@@ -1,0 +1,12 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row" *ngIf="users | async as users">
+      <div class="col-md-3" *ngFor="let user of users.data.users">
+
+        <app-profile-card [userData]="user"></app-profile-card>
+
+      </div>
+    </div>
+  </div>
+</div>

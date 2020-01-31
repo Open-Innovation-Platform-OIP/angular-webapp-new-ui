@@ -1,0 +1,98 @@
+<!-- <button
+  class="btn btn-rose btn-lg btn-fab btn-round"
+  matTooltip="Add Solution"
+  [matTooltipPosition]="'left'"
+  [routerLink]="['/solutions/add']"
+  queryParamsHandling="merge"
+  *ngIf="auth.currentUserValue.id"
+  aria-label="add solution"
+>
+  <i class="material-icons" aria-hidden="true">add</i>
+</button> -->
+
+<div class="container">
+  <div class="row align-items-center my-4">
+    <div class="col-sm-12 col-md-7 col-lg-6">
+      <div class="d-flex align-items-center">
+        <img
+          src="../../../assets/svg/Solution Icon.svg"
+          alt=""
+          height="30px"
+          width="32px"
+        />
+        <h1
+          tabindex="-1"
+          class="solutions-worth-solving my-auto"
+          #solutionWorthSharing
+        >
+          Solutions Worth Sharing
+        </h1>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-5 col-lg-6">
+      <app-filter-dropdown [type]="'solutions'"> </app-filter-dropdown>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="col-sm-12 solution-listed-title">
+        <div class="d-flex align-items-center">
+          <img
+            src="../../../assets/svg/Problem Icon.svg"
+            alt=""
+            height="30px"
+            width="32px"
+          />
+          <h2>Solutions Listed ({{ solutions.length }})</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="row"
+    *ngIf="solutions.length"
+    role="region"
+    style="margin-top: 2rem;"
+    aria-label="Solution cards"
+  >
+    <div class="col-lg-6" *ngFor="let solution of solutions; let i = index">
+      <div class="card-grid">
+        <app-solution-card
+          [index]="i"
+          [solutionData]="solution"
+        ></app-solution-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <h1
+          tabindex="-1"
+          style="font-size: 1.5rem;"
+          class="card-title text-center my-4"
+          #solutionWorthSharing
+        >
+          Solutions worth Sharing
+        </h1>
+      </div>
+    </div>
+
+    <app-filter-dropdown [type]="'solutions'"> </app-filter-dropdown>
+
+    <div class="container">
+      <div class="row" role="region" aria-label="problem cards">
+        <div class="col-lg-6" *ngFor="let solution of solutions; let i = index">
+          <app-solution-card
+            [index]="i"
+            [solutionData]="solution"
+          ></app-solution-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

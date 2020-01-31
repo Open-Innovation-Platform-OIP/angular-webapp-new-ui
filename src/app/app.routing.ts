@@ -5,31 +5,35 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { AuthGuard } from './services/auth.guard';
 import { AdminGuard } from './services/admin.guard';
 
-export const AppRoutes: Routes = [
-    {
-        path: 'auth',
-        component: AuthLayoutComponent,
-        children: [
-            {
-                path: '',
-                loadChildren: './auth/auth.module#AuthModule',
-            },
-        ],
-    },
-    {
-        path: '',
-        component: AdminLayoutComponent,
-        children: [
-            {
-                path: 'landing-page',
-                loadChildren:
-                    './landing-page/landing-page.module#LandingPageModule',
-            },
-        ],
-    },
-];
+// const _R: Routes = [
+//     {
+//         path: 'auth',
+//         component: AuthLayoutComponent,
+//         children: [
+//             {
+//                 path: '',
+//                 loadChildren: './auth/auth.module#AuthModule',
+//             },
+//         ],
+//     },
+//     {
+//         path: '',
+//         component: AdminLayoutComponent,
+//         children: [
+//             {
+//                 path: 'landing-page',
+//                 loadChildren:
+//                     './landing-page/landing-page.module#LandingPageModule',
+//             },
+//             {
+//                 path: 'dashboard',
+//                 loadChildren: './dashboard/dashboard.module#DashboardModule',
+//             },
+//         ],
+//     },
+// ];
 
-const _R = [
+export const AppRoutes: Routes = [
     {
         path: '',
         redirectTo: 'dashboard',
@@ -63,16 +67,16 @@ const _R = [
                 loadChildren:
                     './discussions/discussions.module#DiscussionsModule',
             },
-            {
-                path: 'search',
-                loadChildren:
-                    './global-search-view/global-search-view.module#GlobalSearchViewModule',
-            },
-            {
-                path: 'admin',
-                loadChildren: './admin-view/admin-view.module#AdminViewModule',
-                canActivate: [AdminGuard],
-            },
+            // {
+            //     path: 'search',
+            //     loadChildren:
+            //         './global-search-view/global-search-view.module#GlobalSearchViewModule',
+            // },
+            // {
+            //     path: 'admin',
+            //     loadChildren: './admin-view/admin-view.module#AdminViewModule',
+            //     canActivate: [AdminGuard],
+            // },
             {
                 path: 'landing-page',
                 loadChildren:
@@ -82,11 +86,11 @@ const _R = [
                 path: 'solutions',
                 loadChildren: './solutions/solutions.module#SolutionsModule',
             },
-            {
-                path: 'enrichment',
-                loadChildren:
-                    './enrichment-form/enrichment-form.module#EnrichmentFormModule',
-            },
+            // {
+            //     path: 'enrichment',
+            //     loadChildren:
+            //         './enrichment-form/enrichment-form.module#EnrichmentFormModule',
+            // },
         ],
     },
     {

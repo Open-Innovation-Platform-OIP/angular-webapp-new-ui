@@ -1,0 +1,18 @@
+.actions {
+    cursor: pointer;
+}
+
+.mycontent-left {
+    border-right: 1px solid black;
+}
+
+.profile_photo {
+    height: 8.5em !important;
+    object-fit: cover;
+}
+
+.photo_div {
+    height: 8.5em;
+    width: 8.5em;
+    border-radius: 50%;
+}

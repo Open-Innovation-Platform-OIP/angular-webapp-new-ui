@@ -1,0 +1,112 @@
+<div class="main-content" style="margin-top: 10%;">
+  <div class="container-fluid">
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="card card-profile">
+          <div class="card-avatar photo_div">
+            <img class="img profile_photo" alt="profile photo" src="{{
+                userData.photo_url && userData.photo_url.fileEndpoint
+                  ? filesService.fileAccessUrl + userData.photo_url.fileEndpoint
+                  : './assets/img/default-avatar.png'
+              }}" />
+          </div>
+          <div class="card-body">
+            <h2 style="font-size: 1.2rem;" class="card-title">
+              {{ userData.name }}
+            </h2>
+            <div *ngIf="
+                (userData.problemsByUser && userData.problemsByUser.length) ||
+                (userData.user_collaborators &&
+                  userData.user_collaborators.length) ||
+                (userData.user_validations &&
+                  userData.user_validations.length) ||
+                (userData.enrichmentssBycreatedBy &&
+                  userData.enrichmentssBycreatedBy.length)
+              ">
+              <h6>Contributions</h6>
+              <p *ngIf="userData.problemsByUser.length">
+                Added {{ userData.problemsByUser.length }} problem(s)
+              </p>
+              <p *ngIf="userData.user_collaborators.length">
+                {{ userData.user_collaborators.length }} collaboration(s)
+              </p>
+              <p *ngIf="userData.user_validations.length">
+                {{ userData.user_validations.length }} validation(s)
+              </p>
+              <p *ngIf="userData.enrichmentssBycreatedBy.length">
+                {{ userData.enrichmentssBycreatedBy.length }}
+                enrichment(s)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card card-product">
+          <div class="card-header card-header-icon card-header-warning">
+            <div class="card-icon">
+              <i class="material-icons" aria-hidden="true">perm_identity</i>
+            </div>
+            <h1 class="card-title" style="text-align:left;font-size: 1.3rem;" tabindex="-1" #profileTitle>
+              {{ userData.id === userId ? 'My Profile' : 'Profile' }}
+
+            </h1>
+          </div>
+          <div class="card-body">
+
+            <div *ngIf="loggedInUsersProfile || !userData.email_private">
+              <strong role="heading" aria-level="3">E-mail</strong>
+              <p class="description">{{ userData.email }}</p>
+            </div>
+
+            <div *ngIf="loggedInUsersProfile && userData.phone_number && !userData.number_private">
+              <strong role="heading" aria-level="3">Phone Number</strong>
+              <p class="description" *ngIf="userData.id == auth.currentUserValue.id">
+                {{ userData.phone_number }}
+              </p>
+            </div>
+
+            <div *ngIf="organizationName && (loggedInUsersProfile || !userData.organization_private)">
+              <strong role="heading" aria-level="3">Organization</strong>
+              <p class="description">{{ organizationName }}</p>
+            </div>
+
+            <div *ngIf="personas&&personas.length && (loggedInUsersProfile || !userData.persona_private) ">
+              <strong role="heading" aria-level="3">Persona</strong>
+              <div>
+                <span *ngFor="let persona of personas" class="badge badge-warning" style="margin-right: 0.3em;">
+                  {{ persona.slice(3) }}
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-3"
+              *ngIf="userData&&userData.user_locations&&userData.user_locations.length && (loggedInUsersProfile || !userData.location_private)">
+              <strong role="heading" aria-level="3">Location</strong>
+              <p class="description">
+                {{ userData.user_locations[0].location.location_name }}
+              </p>
+            </div>
+
+            <div *ngIf="interests.length && (loggedInUsersProfile || !userData.interests_private)">
+              <strong role="heading" aria-level="3">Interests</strong>
+              <div>
+                <span class="badge badge-warning" *ngFor="let interest of interests" style="margin-right: 0.3em;">
+                  {{ interest }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div [routerLink]="'/users/' + userData.id + '/edit'" queryParamsHandling="merge"
+              *ngIf="userData.id == auth.currentUserValue.id">
+              <button mat-raised-button class="btn btn-info pull-right">
+                Edit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

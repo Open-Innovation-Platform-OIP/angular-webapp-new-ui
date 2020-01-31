@@ -1,0 +1,2187 @@
+<!-- <div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-md-8">
+        <div class="card card-product">
+          <div class="card-header card-header-rose fixed-top">
+            <h1
+              class="card-title"
+              style="font-size: 2rem;"
+              class="card-title"
+              tabindex="-1"
+              #solutionTitle
+            >
+              {{ solutionData.title }}
+            </h1>
+            <p class="card-category">
+              <b
+                >Created By :
+                {{
+                  auth.currentUserValue.id == solutionData.user_id
+                    ? "You"
+                    : solutionOwner
+                }}</b
+              >
+            </p>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="picture text-center">
+                  <img
+                    src="{{
+                      solutionData.featured_url &&
+                      checkUrlIsImg(
+                        filesService.fileAccessUrl + solutionData.featured_url
+                      )
+                        ? filesService.fileAccessUrl + solutionData.featured_url
+                        : './assets/img/image_placeholder.jpg'
+                    }}"
+                    [attr.alt]="[imageAlt]"
+                    class="rounded img-fluid"
+                  />
+                  <div>
+                    <button
+                      mat-raised-button
+                      *ngIf="
+                        solution_attachments && solution_attachments.length > 0
+                      "
+                      class="btn btn-raised btn-info btn-sm"
+                      data-toggle="modal"
+                      #viewMediaBtn
+                      (click)="openModal('#viewMoreImgModal')"
+                    >
+                      view media ({{ solution_attachments.length }})
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div *ngIf="solutionData.description">
+                  <strong aria-level="3" role="heading">Description</strong>
+                  <p class="description"  >
+                    {{ solutionData.description }}
+                  </p>
+                </div>
+
+                <div *ngIf="solutionData.organization">
+                  <strong aria-level="3" role="heading">Organization</strong>
+                  <p class="description">{{ solutionData.organization }}</p>
+                </div>
+
+                <div *ngIf="solutionData.technology">
+                  <strong aria-level="3" role="heading">Innovation</strong>
+                  <p class="description"  >
+                    {{ solutionData.technology }}
+                  </p>
+                </div>
+
+                <div *ngIf="solutionData.resources">
+                  <strong aria-level="3" role="heading"
+                    >Resources Needed</strong
+                  >
+                  <p class="description"  >
+                    {{ solutionData.resources }}
+                  </p>
+                </div>
+
+                <div *ngIf="solutionData.impact">
+                  <strong aria-level="3" role="heading">Impact</strong>
+                  <p class="description"  >
+                    {{ solutionData.impact }}
+                  </p>
+                </div>
+
+                <div *ngIf="solutionData.timeline">
+                  <strong aria-level="3" role="heading">Timeline</strong>
+                  <p class="description"  >
+                    {{ solutionData.timeline }}
+                  </p>
+                </div>
+
+                <div *ngIf="solutionData.pilots">
+                  <strong aria-level="3" role="heading">Pilots</strong>
+                  <p class="description"  >
+                    {{ solutionData.pilots }}
+                  </p>
+                </div>
+
+                <div *ngIf="solutionData.website_url">
+                  <strong aria-level="3" role="heading">Website</strong>
+                  <p class="description"  >
+                    {{ solutionData.website_url }}
+                  </p>
+                </div>
+
+                <div *ngIf="solutionData.deployment">
+                  <strong aria-level="3" role="heading">Deployments</strong>
+                  <p class="description"  >
+                    {{ solutionData.deployment }}
+                  </p>
+                </div>
+
+                <div *ngIf="tags.length">
+                  <strong aria-level="3" role="heading">Sectors</strong>
+                  <div role="group">
+                    <button
+                      *ngFor="let tag of tags"
+                      (click)="sectorSelected(tag)"
+                      [disabled]="
+                        filterService.is_domain_filter_mode &&
+                        !tagsService.allTags[tag.name]
+                      "
+                      class="badge badge-rose actions"
+                      style="margin-right: 0.3em;border: none;"
+                    >
+                      {{ tag.name }}
+                    </button>
+                  </div>
+                </div>
+
+                <br />
+
+                <div>
+                  <strong aria-level="3" role="heading">Budget</strong>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="description"  >
+                        {{ solutionData.budget_title }} (Rs.{{
+                          solutionData.min_budget
+                        }}
+                        - Rs.{{ solutionData.max_budget }})
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="solutionLocations.length">
+                  <strong aria-level="3" role="heading">Location(s)</strong>
+
+                  <div
+                    *ngFor="let location of solutionLocations"
+                    (click)="locationSelected(location)"
+                    class="actions"
+                    style="margin-right: 0.3em; "
+                  >
+                    {{ location.location_name }}
+                  </div>
+                </div>
+                <br />
+
+                <div *ngIf="ownerData.length">
+                  <strong aria-level="3" role="heading">Solver Team</strong>
+
+                  <div>
+                    <a
+                      [routerLink]="'/profiles/' + owner.id"
+                      href="javascript:void(0);"
+                      queryParamsHandling="merge"
+                      *ngFor="let owner of ownerData"
+                      style="margin-right: 0.3em;"
+                      >{{ owner.name }}</a
+                    >
+                  </div>
+                </div>
+                <br />
+
+               
+                <br />
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <a
+                href="javascript:void(0);"
+                (click)="toggleVoteSolution()"
+                role="button"
+                [attr.aria-pressed]="voters.has(userId)"
+                [attr.aria-label]="['likes', voters.size]"
+              >
+                <i
+                  class="material-icons"
+                  [ngStyle]="{
+                    color: voters.has(userId) ? '#1E90FF' : 'black'
+                  }"
+                  aria-hidden="true"
+                >
+                  thumb_up
+                </i>
+                <span>{{ voters.size }}</span>
+              </a>
+
+              <a
+                href="javascript:void(0);"
+                (click)="toggleWatchSolution()"
+                role="button"
+                [attr.aria-pressed]="watchers.has(userId)"
+                [attr.aria-label]="['Watch', watchers.size]"
+              >
+                <i
+                  class="material-icons actions col-md-3"
+                  [ngStyle]="{
+                    color: watchers.has(userId) ? '#1E90FF' : 'black'
+                  }"
+                  aria-hidden="true"
+                >
+                  visibility
+                </i>
+                <span> {{ watchers.size }}</span>
+              </a>
+            </div>
+
+            <div class="dropdown">
+              <button
+                *ngIf="userId === solutionData.user_id || owners.has(userId)"
+                [routerLink]="'/solutions/' + solutionData.id + '/edit'"
+                queryParamsHandling="merge"
+                class="btn btn-sm btn-rose"
+                aria-label="Edit Solution"
+              >
+                <i class="material-icons actions" aria-hidden="true">
+                  create
+                </i>
+              </button>
+
+              <button
+                class="btn btn-sm btn-rose ml-2"
+                data-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="share"
+                #shareBtn
+              >
+                <i class="material-icons actions" aria-hidden="true">
+                  share
+                </i>
+              </button>
+
+              <ul class="dropdown-menu">
+                <li *ngIf="channels.linkedin">
+                  <a (click)="linkedInShare()">LinkedIn</a>
+                </li>
+                <li *ngIf="channels.facebook">
+                  <a (click)="fbShare()">Facebook</a>
+                </li>
+                <li *ngIf="channels.twitter">
+                  <a (click)="twitterShare()">Twitter</a>
+                </li>
+                <li *ngIf="channels.email">
+                  <a (click)="mailShare()">Email</a>
+                </li>
+                <li *ngIf="channels.sms"><a (click)="smsShare()">SMS</a></li>
+              </ul>
+
+              <button
+                *ngIf="userId === solutionData.user_id || owners.has(userId)"
+                (click)="openInviteModal()"
+                class="btn btn-sm btn-rose ml-2"
+                aria-label="invite people"
+                aria-haspopup="true"
+              >
+                <i class="material-icons actions" aria-hidden="true">
+                  person_add
+                </i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="row justify-content-center">
+          <button
+            mat-raised-button
+            class="btn btn-rose btn-round"
+            data-toggle="modal"
+            data-target="#validatorModal"
+            matTooltip="Click to validate solution"
+            [matTooltipPosition]="'below'"
+            (click)="addNewValidation()"
+            [disabled]="
+              disableValidateButton ||
+              userId == solutionData.user_id ||
+              !auth.currentUserValue.id ||
+              !sectorMatched ||
+              !userPersonas.is_expert
+            "
+            *ngIf="auth.currentUserValue.id"
+          >
+            Validate
+          </button>
+        </div>
+        
+
+        <ngu-carousel
+          #ValidCarousel
+          [inputs]="carouselTileConfig"
+          [dataSource]="carouselTileItemsValid$ | async"
+          *ngIf="validation[0]"
+          role="region"
+          aria-label="validation cards"
+        >
+          <ngu-tile
+            *nguCarouselDef="let validation; let i = index; let ani = animate"
+            data-toggle="modal"
+            data-target="#validModal"
+          >
+            <app-validate-card
+              *ngIf="!validation.is_deleted"
+              [validationData]="validation"
+              (clicked)="handleValidationCardClicked($event, i)"
+            >
+            </app-validate-card>
+          </ngu-tile>
+
+          <a
+            mat-button
+            NguCarouselPrev
+            class="btn btn-white btn-just-icon btn-round leftRs"
+            *ngIf="validation[0] && validation.length > 2"
+            aria-label="scroll left"
+          >
+            <i class="material-icons" aria-hidden="true">
+              keyboard_arrow_left
+            </i>
+          </a>
+          <a
+            mat-button
+            NguCarouselNext
+            class="btn btn-white btn-just-icon btn-round rightRs"
+            *ngIf="validation[0] && validation.length > 2"
+            aria-label="scroll right"
+          >
+            <i class="material-icons" aria-hidden="true">
+              keyboard_arrow_right
+            </i>
+          </a>
+        </ngu-carousel>
+
+        <div class="row justify-content-center" *ngIf="!validation[0]">
+          <p>No validations yet.</p>
+        </div>
+
+        
+
+        <hr />
+
+        
+
+        <div
+          class="modal fade editModal"
+          id="EditCollaborateModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-notice modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">
+                  Edit collaboration
+                </h5>
+                <button
+                  mat-button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-hidden="true"
+                >
+                  <i class="material-icons">close</i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <app-add-collaborator
+                  *ngIf="collaboratorDataToEdit"
+                  [collaborator]="collaboratorDataToEdit"
+                  (submitted)="onCollaborationSubmit($event)"
+                >
+                </app-add-collaborator>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="row justify-content-center">
+          <button
+            mat-raised-button
+            *ngIf="auth.currentUserValue.id"
+            class="btn btn-rose btn-round"
+            data-toggle="modal"
+            data-target="#collaboratorModal"
+            matTooltip="Click to collaborate"
+            [disabled]="
+              disableCollaborateButton ||
+              userId == solutionData.user_id ||
+              !auth.currentUserValue.id
+            "
+            [matTooltipPosition]="'below'"
+          >
+            Collaborate
+          </button>
+          <p *ngIf="!auth.currentUserValue.id">
+            Login to collaborate on this solution
+          </p>
+        </div>
+        
+
+        <ngu-carousel
+          #CollabCarousel
+          [inputs]="carouselTileConfig"
+          [dataSource]="carouselTileItemCollab$ | async"
+          *ngIf="collaborators[0]"
+          role="region"
+          aria-label="collaborators"
+        >
+          <ngu-tile
+            *nguCarouselDef="let collaborator; let i = index; let ani = animate"
+          >
+            <app-collaborator-card
+              *ngIf="collaborator"
+              [collaboratorData]="collaborator"
+              (editClicked)="handleCollaborationEditMode($event)"
+              (deleteClicked)="deleteCollaboration($event)"
+            >
+            </app-collaborator-card>
+          </ngu-tile>
+
+          <a
+            mat-button
+            NguCarouselPrev
+            class="btn btn-white btn-just-icon btn-round leftRs"
+            *ngIf="collaborators[0] && collaborators.length > 2"
+            aria-label="scroll left"
+          >
+            <i class="material-icons" aria-hidden="true">
+              keyboard_arrow_left
+            </i>
+          </a>
+
+          <a
+            mat-button
+            NguCarouselNext
+            class="btn btn-white btn-just-icon btn-round rightRs"
+            *ngIf="collaborators[0] && collaborators.length > 2"
+            aria-label="scroll right"
+          >
+            <i class="material-icons" aria-hidden="true">
+              keyboard_arrow_right
+            </i>
+          </a>
+        </ngu-carousel>
+
+        <div class="row justify-content-center">
+          <p *ngIf="!collaborators[0]">No collaborators yet.</p>
+        </div>
+
+        <hr />
+
+        
+        <div
+          class="modal fade"
+          id="collaboratorModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-notice modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">
+                  How do I collaborate
+                </h5>
+                <button
+                  mat-button
+                  type="button"
+                  class="close"
+                  aria-hidden="true"
+                  (click)="dismiss()"
+                >
+                  <i class="material-icons">close</i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <app-add-collaborator
+                  (submitted)="onCollaborationSubmit($event)"
+                  (intentValue)="checkIntent($event)"
+                >
+                </app-add-collaborator>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="col-md-4" role="region" aria-label="discussion">
+        <div class="card">
+          <div class="card-header card-header-icon card-header-rose">
+            <div class="card-icon">
+              <i class="material-icons" aria-hidden="true">forum</i>
+            </div>
+            <h2 style="font-size: 1.2rem;" class="card-title">Discussions</h2>
+          </div>
+
+          <div class="card-body" *ngIf="!auth.currentUserValue.id">
+            <p>Login to join discussion for this solution</p>
+          </div>
+
+          <div class="card-body" *ngIf="auth.currentUserValue.id">
+            <button
+              mat-raised-button
+              class="btn btn-rose btn-sm"
+              (click)="showPopularDiscussions('latest')"
+              *ngIf="objectValues(comments).length"
+            >
+              Latest
+            </button>
+            <button
+              mat-raised-button
+              class="btn btn-rose btn-sm"
+              *ngIf="objectValues(comments).length"
+              (click)="showPopularDiscussions('popular')"
+            >
+              Popular
+            </button>
+
+            <div id="accordion">
+              <div class="card-collapse">
+                <div class="card-header" id="headingOne">
+                  <div class="mb-0">
+                    <a
+                      data-toggle="collapse"
+                      href="#newComment"
+                      *ngIf="auth.currentUserValue.id"
+                      aria-expanded=" true"
+                      aria-controls="newComment"
+                      class="collapsed"
+                    >
+                      Join Discussion
+                      <i class="material-icons" aria-hidden="true"
+                        >keyboard_arrow_down</i
+                      >
+                    </a>
+                  </div>
+                </div>
+                <div
+                  id="newComment"
+                  class="collapse show"
+                  aria-labelledby="headingOne"
+                  data-target="#newComment"
+                >
+                  <app-submit-comment
+                    [users]="objectValues(usersService.allUsers)"
+                    [actionText]="'Comment'"
+                    (submit)="onCommentSubmit($event)"
+                    [pageType]="'solution'"
+                  ></app-submit-comment>
+                </div>
+              </div>
+
+              <div *ngIf="!popular">
+                <app-display-comment
+                  [users]="objectValues(usersService.allUsers)"
+                  [comment]="comment"
+                  [focusContext]="lastContext"
+                  [replies]="replies[comment.id]"
+                  [pageType]="'solution'"
+                  (reply)="onCommentSubmit($event, comment.id)"
+                  (commentToDelete)="deleteComment($event)"
+                  (shareCommentId)="shareComment($event)"
+                  (fileClicked)="displayModal($event)"
+                  *ngFor="let comment of sortComments(objectValues(comments))"
+                >
+                </app-display-comment>
+              </div>
+
+              
+
+              <div *ngIf="popular">
+                <app-display-comment
+                  [users]="objectValues(usersService.allUsers)"
+                  [comment]="popularDiscussion"
+                  [focusContext]="lastContext"
+                  [replies]="replies[popularDiscussion.id]"
+                  [pageType]="'solution'"
+                  (reply)="onCommentSubmit($event, popularDiscussion.id)"
+                  (fileClicked)="displayModal($event)"
+                  *ngFor="let popularDiscussion of popularDiscussions"
+                >
+                </app-display-comment>
+              </div>
+
+              
+            </div>
+            <hr *ngIf="objectValues(comments).length" aria-hidden="true" />
+            <a
+              class="viewMoreComments"
+              href="javascript:void(0);"
+              role="button"
+              *ngIf="
+                objectValues(comments).length > 5 &&
+                numOfComments < objectValues(comments).length
+              "
+              (click)="showMoreComments()"
+            >
+              View more comments
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- discuss image and video modal starts -->
+
+<div
+  class="modal fade"
+  id="enlargeView"
+  style="display: none;"
+  aria-label="Discussion"
+  role="dialog"
+  aria-hidden="true"
+  cdkTrapFocus
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="close"
+          (click)="closeModal($event, 'discussion')"
+          #discussionModalCloseBtn
+        >
+          <i class="material-icons" aria-hidden="true">close</i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-display-modal *ngIf="modalSrc" [source]="modalSrc">
+        </app-display-modal>
+      </div>
+      <div
+        class="modal-footer justify-content-center"
+        *ngIf="sources && sources['attachmentObj'].length > 1"
+      >
+        <button
+          mat-raised-button
+          type="button"
+          [disabled]="sources['index'] < 1"
+          (click)="toggleFileSrc(false)"
+          class="btn btn-info btn-round"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <div class="col-3"></div>
+        <button
+          mat-raised-button
+          type="button"
+          [disabled]="sources['index'] == sources['attachmentObj'].length - 1"
+          class="btn btn-info btn-round"
+          (click)="toggleFileSrc(true)"
+          id="discussionModalNextBtn"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ----------------------------- solution attachments modal start----------------------------- -->
+<div
+  class="modal fade"
+  id="viewMoreImgModal"
+  aria-label="Solution Attachments"
+  role="dialog"
+  aria-hidden="true"
+  cdkTrapFocus
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="close"
+          #attachmentsModalCloseBtn
+          (click)="closeModal($event, 'view-more')"
+        >
+          <i class="material-icons" aria-hidden="true">close</i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-display-modal
+          *ngIf="solution_attachments_src"
+          [source]="solution_attachments[solution_attachments_index]"
+        >
+        </app-display-modal>
+      </div>
+      <div
+        class="modal-footer justify-content-center"
+        *ngIf="this.solution_attachments.length > 1"
+      >
+        <button
+          mat-raised-button
+          type="button"
+          [disabled]="solution_attachments_index < 1"
+          (click)="toggleSolutionAttachmentsIndex(false)"
+          class="btn btn-link btn-round btn-twitter"
+          aria-label="previous"
+        >
+          <i class="material-icons" style="zoom:2;" aria-hidden="true">
+            keyboard_arrow_left
+          </i>
+        </button>
+        <div class="col-3 text-center">
+          <strong>{{ solution_attachments_index + 1 }}</strong>
+        </div>
+        <button
+          mat-raised-button
+          type="button"
+          [disabled]="
+            solution_attachments_index === solution_attachments.length - 1
+          "
+          class="btn btn-link btn-round btn-twitter"
+          (click)="toggleSolutionAttachmentsIndex(true)"
+          aria-label="next"
+        >
+          <i class="material-icons" style="zoom:2;" aria-hidden="true">
+            keyboard_arrow_right
+          </i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ----------------------------- solution attachments modal ends----------------------------- -->
+
+<!--View Validation Modal-->
+
+<!-- <div
+  class="modal fade"
+  id="validModal"
+  aria-label="view Validation "
+  role="dialog"
+  aria-hidden="true"
+  cdkTrapFocus
+>
+  <div class="modal-dialog modal-notice">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title h1-font" #validationDetails tabindex="-1">
+          Validation Details
+        </h1>
+        <button
+          mat-button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-hidden="true"
+          (click)="closeViewValidationModal()"
+        >
+          <i class="material-icons">close</i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-detailed-validate-view
+          [validationData]="validationDataToView"
+          (deleteClicked)="deleteValidation($event)"
+          (editClicked)="handleValidationEditMode($event)"
+        >
+        </app-detailed-validate-view>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!--View Validation Modal-->
+
+<!--Edit Validation Modal-->
+<!-- <div
+  class="modal fade editModal"
+  id="EditValidationModal"
+  aria-label="Edit Validation "
+  role="dialog"
+  aria-hidden="true"
+  cdkTrapFocus
+>
+  <div class="modal-dialog modal-notice">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title h1-font" #editValidationDetails tabindex="-1">
+          Edit Validation
+        </h1>
+
+        <button
+          mat-button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-hidden="true"
+          (click)="closeEditValidationModal()"
+        >
+          <i class="material-icons">close</i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-add-validation
+          *ngIf="validationDataToEdit"
+          [validationData]="validationDataToEdit"
+          (submitted)="onValidationSubmit($event)"
+        ></app-add-validation>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!--Edit Validation Modal-->
+
+<!--Validate Modal-->
+<!-- <div
+  class="modal fade"
+  id="validatorModal"
+  aria-label="Add Validation"
+  role="dialog"
+  aria-hidden="true"
+  cdkTrapFocus
+>
+  <div class="modal-dialog modal-notice">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title h1-font" #addValidationDetails tabindex="-1">
+          Validate Solution
+        </h1>
+        <button
+          mat-button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="close"
+        >
+          <i class="material-icons" aria-hidden="true">close</i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-add-validation
+          (submitted)="onValidationSubmit($event)"
+        ></app-add-validation>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!--Validate Modal-->
+
+<!-- ------------------------------------  New UI (Ammar) ----------------------------------------- -->
+<div class="container  my-5">
+  <div class="row m-0 p20 rounded" style="background-color: white;">
+    <div class="col p-0">
+      <div class="img-wrapper">
+        <img
+          src="{{
+            solutionData.featured_url &&
+            checkUrlIsImg(
+              filesService.fileAccessUrl + solutionData.featured_url
+            )
+              ? filesService.fileAccessUrl + solutionData.featured_url
+              : './assets/img/image_placeholder.jpg'
+          }}"
+          [attr.alt]="[imageAlt]"
+          class="rounded  fixed-image-height"
+          height="10rem"
+          width="auto"
+        />
+
+        <button
+          *ngIf="solution_attachments.length > 0"
+          class="align-icon"
+          data-toggle="modal"
+          #showModalBtn
+          (click)="openModal('#viewMoreImgModal')"
+        >
+          +{{ solution_attachments.length }}
+        </button>
+      </div>
+    </div>
+    <div class="col-8 d-none d-md-block" style="padding-left: 20px;">
+      <div class="row">
+        <div class="col-4">
+          <div class="solution">
+            <span class="green-bullet"></span>
+            <span>Solution</span>
+          </div>
+          <!-- <span class="badge  badge-color rounded mb-2">
+            <span class="oval" aria-hidden="true"></span>
+            Solution
+          </span> -->
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-end pr-0">
+              <button mat-button color="primary" style="font-weight: bold;">
+                See Problem(s)
+              </button>
+
+              <button
+                mat-mini-fab
+                class="shadow-none edit-validate"
+                *ngIf="userId === problemData.user_id || owners.has(userId)"
+                [routerLink]="'/solutions/' + solutionData.id + '/edit'"
+                queryParamsHandling="merge"
+                [disabled]="
+                  this.validation.length > 0 || this.collaborators.length > 0
+                "
+                aria-label="Add Problem"
+              >
+                <i class="far fa-pen"></i>
+              </button>
+
+              <div class="dropdown ml-2">
+                <button
+                  mat-mini-fab
+                  class="shadow-none"
+                  id="shareBtnDropdown"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                  aria-label="share"
+                >
+                  <i class="far fa-share-alt"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="shareBtnDropdown">
+                  <ng-container *ngIf="channels.linkedin">
+                    <a
+                      class="dropdown-item"
+                      href="javscript:void(0);"
+                      (click)="linkedInShare()"
+                      >LinkedIn</a
+                    >
+                  </ng-container>
+                  <ng-container *ngIf="channels.facebook">
+                    <a
+                      class="dropdown-item"
+                      href="javscript:void(0);"
+                      (click)="fbShare()"
+                      >Facebook</a
+                    >
+                  </ng-container>
+                  <ng-container *ngIf="channels.twitter">
+                    <a
+                      class="dropdown-item"
+                      href="javscript:void(0);"
+                      (click)="twitterShare()"
+                      >Twitter</a
+                    >
+                  </ng-container>
+                  <ng-container *ngIf="channels.email">
+                    <a
+                      class="dropdown-item"
+                      href="javscript:void(0);"
+                      (click)="mailShare()"
+                      >Email</a
+                    >
+                  </ng-container>
+                  <ng-container *ngIf="channels.sms">
+                    <a
+                      class="dropdown-item"
+                      href="javscript:void(0);"
+                      (click)="smsShare()"
+                      >SMS</a
+                    >
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col ">
+          <h2
+            style="font-size: 1.4rem;font-weight: bold;"
+            class="card-title text-truncate text-capitalize text-height "
+          >
+            {{ solutionData.title }}
+          </h2>
+        </div>
+      </div>
+      <div class="row row-margin">
+        <div class="col-auto pr-3">
+          <img
+            src="{{
+              solutionData.user?.photo_url &&
+              solutionData.user?.photo_url.fileEndpoint &&
+              checkUrlIsImg(
+                filesService.fileAccessUrl +
+                  solutionData.user?.photo_url.fileEndpoint
+              )
+                ? filesService.fileAccessUrl +
+                  solutionData.user.photo_url.fileEndpoint
+                : './assets/img/default-avatar.png'
+            }}"
+            alt="profile photo"
+            class="border image-border"
+            style="object-fit: cover;overflow: hidden !important;"
+          />
+        </div>
+        <div class="createdByWidth">
+          <div class="text-truncate">
+            Created by
+            {{
+              auth.currentUserValue.id == solutionData.user_id
+                ? 'You'
+                : solutionOwner
+            }}
+          </div>
+          <div class="text-truncate">
+            <span>
+              {{ solutionData.updated_at | date: short }}
+            </span>
+            <!-- <span class="dot" aria-hidden="true"></span>
+            <span>
+              {{
+                problemLocations.length
+                  ? problemLocations[0].location_name
+                  : ''
+              }}
+            </span> -->
+          </div>
+        </div>
+
+        <div
+          class="pr-0 d-none d-md-block d-lg-none col-md-4 d-md-flex justify-content-end align-items-center ipad-padding"
+        >
+          <div aria-label="Likes">
+            <a
+              href="javascript:void(0);"
+              (click)="toggleVoteSolution()"
+              role="button"
+              [attr.aria-pressed]="voters.has(userId)"
+              [attr.aria-label]="['likes', voters.size]"
+            >
+              <span class="icon-style">
+                <i
+                  class="material-icons"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    selected: voters.has(userId)
+                  }"
+                >
+                  thumb_up
+                </i>
+              </span>
+
+              <span class="font-weight-bold text-dark">
+                {{ voters.size }}
+              </span>
+            </a>
+          </div>
+
+          <div aria-label="Watched" class="ml-5">
+            <a
+              href="javascript:void(0);"
+              (click)="toggleWatchSolution()"
+              role="button"
+              [attr.aria-pressed]="watchers.has(userId)"
+              [attr.aria-label]="['Watch problem', watchers.size]"
+            >
+              <span class="icon-style">
+                <i
+                  class="material-icons"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    selected: watchers.has(userId)
+                  }"
+                >
+                  visibility
+                </i>
+              </span>
+
+              <span class="font-weight-bold text-dark">
+                {{ watchers.size }}
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row " style="margin-top: 15px;">
+        <div
+          class="col-auto d-flex justify-content-between align-items-center hide-bottom margin-buttons"
+        >
+          <div aria-label="Likes">
+            <a
+              href="javascript:void(0);"
+              (click)="toggleVoteSolution()"
+              role="button"
+              [attr.aria-pressed]="voters.has(userId)"
+              [attr.aria-label]="['likes', voters.size]"
+            >
+              <span class="icon-style">
+                <i
+                  class="material-icons"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    selected: voters.has(userId)
+                  }"
+                >
+                  thumb_up
+                </i>
+              </span>
+
+              <span class="font-weight-bold text-dark icon-size">
+                {{ voters.size }}
+              </span>
+            </a>
+          </div>
+
+          <div aria-label="Watched" class="ml-5">
+            <a
+              href="javascript:void(0);"
+              (click)="toggleWatchSolution()"
+              role="button"
+              [attr.aria-pressed]="watchers.has(userId)"
+              [attr.aria-label]="['Watch', watchers.size]"
+            >
+              <span class="icon-style">
+                <i
+                  class="material-icons"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    selected: watchers.has(userId)
+                  }"
+                >
+                  visibility
+                </i>
+              </span>
+
+              <span class="font-weight-bold text-dark icon-size">
+                {{ watchers.size }}
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class=" col-md-7    d-flex justify-content-lg-end flex-wrap pr-0 ">
+          <button
+            mat-stroked-button
+            color="primary"
+            class="mx-lg-2"
+            (click)="openValidateModal()"
+          >
+            <!-- [disabled]="
+              disableValidateButton ||
+              userId == solutionData.user_id ||
+              !auth.currentUserValue.id ||
+              !sectorMatched ||
+              !userPersonas.is_expert
+            " -->
+            Validate
+          </button>
+          <button
+            mat-stroked-button
+            color="primary"
+            class="ml-2"
+            (click)="openCollaborateModal()"
+          >
+            <!-- [disabled]="
+          disableCollaborateButton ||
+          userId == solutionData.user_id ||
+          !auth.currentUserValue.id
+        " -->
+            Collaborate
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row  d-md-none ">
+    <div
+      class="col mr-4 ml-4 rounded-bottom"
+      style="padding-left: 20px;"
+      style="background-color: white;padding-left: 20px;padding-right: 35px;"
+    >
+      <div class="row">
+        <div class="col-4">
+          <div class="solution">
+            <span class="green-bullet"></span>
+            <span>Solution</span>
+          </div>
+          <!-- <span class="badge  badge-color rounded mb-2 text-capitalize">
+            <span class="oval" aria-hidden="true"></span>
+            Solution
+          </span> -->
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-end pr-0">
+              <button
+                mat-button
+                color="primary"
+                style="
+              padding-right: 0px;
+              font-weight: bold;
+          "
+              >
+                See Problem(s)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col ">
+          <h2
+            style="font-size: 1.4rem;font-weight: bold;"
+            class="card-title text-truncate text-capitalize text-height "
+          >
+            {{ solutionData.title }}
+          </h2>
+        </div>
+      </div>
+      <div class="row row-margin">
+        <div class="col-auto pr-3">
+          <img
+            src="{{
+              solutionData.user?.photo_url &&
+              solutionData.user?.photo_url.fileEndpoint &&
+              checkUrlIsImg(
+                filesService.fileAccessUrl +
+                  solutionData.user?.photo_url.fileEndpoint
+              )
+                ? filesService.fileAccessUrl +
+                  solutionData.user.photo_url.fileEndpoint
+                : './assets/img/default-avatar.png'
+            }}"
+            alt="profile photo"
+            class="border image-border"
+            style="object-fit: cover;overflow: hidden !important;"
+          />
+        </div>
+        <div class="createdByWidth">
+          <div class="text-truncate">
+            Created by
+            {{
+              auth.currentUserValue.id == solutionData.user_id
+                ? 'You'
+                : solutionOwner
+            }}
+          </div>
+          <div class="text-truncate">
+            <span>
+              {{ solutionData.updated_at | date: short }}
+            </span>
+            <!-- <span class="dot" aria-hidden="true"></span>
+            <span>
+              {{
+                problemLocations.length
+                  ? problemLocations[0].location_name
+                  : ''
+              }}
+            </span> -->
+          </div>
+        </div>
+
+        <div
+          class="pr-0 d-none d-md-block d-lg-none col-md-4 d-md-flex justify-content-end align-items-center ipad-padding"
+        >
+          <div aria-label="Likes">
+            <a
+              href="javascript:void(0);"
+              (click)="toggleVoteSolution()"
+              role="button"
+              [attr.aria-pressed]="voters.has(userId)"
+              [attr.aria-label]="['likes', voters.size]"
+            >
+              <span class="icon-style">
+                <i
+                  class="material-icons"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    selected: voters.has(userId)
+                  }"
+                >
+                  thumb_up
+                </i>
+              </span>
+
+              <span class="font-weight-bold text-dark">
+                {{ voters.size }}
+              </span>
+            </a>
+          </div>
+
+          <div aria-label="Watched" class="ml-5">
+            <a
+              href="javascript:void(0);"
+              (click)="toggleWatchSolution()"
+              role="button"
+              [attr.aria-pressed]="watchers.has(userId)"
+              [attr.aria-label]="['Watch problem', watchers.size]"
+            >
+              <span class="icon-style">
+                <i
+                  class="material-icons"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    selected: watchers.has(userId)
+                  }"
+                >
+                  visibility
+                </i>
+              </span>
+
+              <span class="font-weight-bold text-dark">
+                {{ watchers.size }}
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 7px;">
+        <div
+          class="col-auto d-flex justify-content-between align-items-center  margin-buttons"
+        >
+          <div aria-label="Likes">
+            <a
+              href="javascript:void(0);"
+              (click)="toggleVoteSolution()"
+              role="button"
+              [attr.aria-pressed]="voters.has(userId)"
+              [attr.aria-label]="['likes', voters.size]"
+            >
+              <span class="icon-style">
+                <i
+                  class="material-icons"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    selected: voters.has(userId)
+                  }"
+                >
+                  thumb_up
+                </i>
+              </span>
+
+              <span class="font-weight-bold text-dark icon-size">
+                {{ voters.size }}
+              </span>
+            </a>
+          </div>
+
+          <div aria-label="Watched" class="ml-5">
+            <a
+              href="javascript:void(0);"
+              (click)="toggleWatchSolution()"
+              role="button"
+              [attr.aria-pressed]="watchers.has(userId)"
+              [attr.aria-label]="['Watch', watchers.size]"
+            >
+              <span class="icon-style">
+                <i
+                  class="material-icons"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    selected: watchers.has(userId)
+                  }"
+                >
+                  visibility
+                </i>
+              </span>
+
+              <span class="font-weight-bold text-dark icon-size">
+                {{ watchers.size }}
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col pl-3" style="margin-top: 23px;">
+          <div class="dropdown ml-2">
+            <button
+              mat-mini-fab
+              class="shadow-none"
+              id="shareBtnDropdown"
+              data-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="share"
+            >
+              <i class="far fa-share-alt"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="shareBtnDropdown">
+              <ng-container *ngIf="channels.linkedin">
+                <a
+                  class="dropdown-item"
+                  href="javscript:void(0);"
+                  (click)="linkedInShare()"
+                  >LinkedIn</a
+                >
+              </ng-container>
+              <ng-container *ngIf="channels.facebook">
+                <a
+                  class="dropdown-item"
+                  href="javscript:void(0);"
+                  (click)="fbShare()"
+                  >Facebook</a
+                >
+              </ng-container>
+              <ng-container *ngIf="channels.twitter">
+                <a
+                  class="dropdown-item"
+                  href="javscript:void(0);"
+                  (click)="twitterShare()"
+                  >Twitter</a
+                >
+              </ng-container>
+              <ng-container *ngIf="channels.email">
+                <a
+                  class="dropdown-item"
+                  href="javscript:void(0);"
+                  (click)="mailShare()"
+                  >Email</a
+                >
+              </ng-container>
+              <ng-container *ngIf="channels.sms">
+                <a
+                  class="dropdown-item"
+                  href="javscript:void(0);"
+                  (click)="smsShare()"
+                  >SMS</a
+                >
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row " style="margin-top: 20px; padding-bottom: 20px;">
+        <div
+          class="col-auto d-flex justify-content-between align-items-center hide-bottom margin-buttons"
+        >
+          <div aria-label="Likes">
+            <a
+              href="javascript:void(0);"
+              (click)="toggleVoteSolution()"
+              role="button"
+              [attr.aria-pressed]="voters.has(userId)"
+              [attr.aria-label]="['likes', voters.size]"
+            >
+              <span class="icon-style">
+                <i
+                  class="material-icons"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    selected: voters.has(userId)
+                  }"
+                >
+                  thumb_up
+                </i>
+              </span>
+
+              <span class="font-weight-bold text-dark icon-size">
+                {{ voters.size }}
+              </span>
+            </a>
+          </div>
+
+          <div aria-label="Watched" class="ml-5">
+            <a
+              href="javascript:void(0);"
+              (click)="toggleWatchSolution()"
+              role="button"
+              [attr.aria-pressed]="watchers.has(userId)"
+              [attr.aria-label]="['Watch', watchers.size]"
+            >
+              <span class="icon-style">
+                <i
+                  class="material-icons"
+                  aria-hidden="true"
+                  [ngClass]="{
+                    selected: watchers.has(userId)
+                  }"
+                >
+                  visibility
+                </i>
+              </span>
+
+              <span class="font-weight-bold text-dark icon-size">
+                {{ watchers.size }}
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class=" col-md-7    d-flex justify-content-lg-end flex-wrap pr-0 ">
+          <button
+            mat-stroked-button
+            color="primary"
+            class="mx-lg-2"
+            (click)="openValidateModal()"
+          >
+            <!-- [disabled]="
+              disableValidateButton ||
+              userId == solutionData.user_id ||
+              !auth.currentUserValue.id ||
+              !sectorMatched ||
+              !userPersonas.is_expert
+            " -->
+            Validate
+          </button>
+          <button
+            mat-stroked-button
+            color="primary"
+            class="ml-2"
+            (click)="openCollaborateModal()"
+          >
+            <!-- [disabled]="
+          disableCollaborateButton ||
+          userId == solutionData.user_id ||
+          !auth.currentUserValue.id
+        " -->
+            Collaborate
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-3">
+  <div class="row">
+    <div class="col-lg-7">
+      <div class="col-md-12 bg-white pl-0 pr-0">
+        <mat-tab-group
+          mat-align-tabs="left"
+          (selectedIndexChange)="selectedTab($event)"
+          selectedIndex="0"
+        >
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Overview
+            </ng-template>
+            <!-- <ng-container
+              *ngIf="!auth.currentUserValue.id; then preLogin"
+            ></ng-container> -->
+            <ng-container
+              *ngIf="
+                auth.currentUserValue.id && !objectValues(solutionData).length;
+                then notYetStart;
+                else overview
+              "
+            ></ng-container>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Validated ({{ validation.length }})
+            </ng-template>
+            <ng-container
+              *ngIf="!auth.currentUserValue.id; then preLogin"
+            ></ng-container>
+            <ng-container
+              *ngIf="
+                auth.currentUserValue.id && !objectValues(validation).length;
+                then notYetStart;
+                else validated
+              "
+            ></ng-container>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Collaborated ({{ collaborators.length }})
+            </ng-template>
+            <ng-container
+              *ngIf="!auth.currentUserValue.id; then preLogin"
+            ></ng-container>
+            <ng-container
+              *ngIf="
+                auth.currentUserValue.id && !objectValues(collaborators).length;
+                then notYetStart;
+                else collaborated
+              "
+            ></ng-container>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+
+    <div class="col-lg-5 margin-sm-t margin-md-t">
+      <div class="col-md-12 pl-0 pr-0 bg-white">
+        <div class="img-wrapper">
+          <div class="btn-group sort-btn">
+            <button
+              mat-button
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              class="dropdown-toggle text-capitalize"
+            >
+              sort: {{ currentSort }}
+            </button>
+            <div class="dropdown-menu">
+              <a
+                class="dropdown-item"
+                href="javascript:void(0);"
+                (click)="showPopularDiscussions('latest')"
+              >
+                Latest
+              </a>
+              <a
+                class="dropdown-item"
+                href="javascript:void(0);"
+                (click)="showPopularDiscussions('popular')"
+              >
+                Popular
+              </a>
+            </div>
+          </div>
+
+          <mat-tab-group
+            style="width: 100%;"
+            disableRipple="true"
+            selectedIndex="0"
+          >
+            <mat-tab>
+              <ng-template mat-tab-label>
+                Discussion
+              </ng-template>
+              <ng-container
+                *ngIf="!auth.currentUserValue.id; then discussionNotLogin"
+              ></ng-container>
+              <ng-container
+                *ngIf="
+                  auth.currentUserValue.id && !objectValues(comments).length;
+                  then noDiscussion;
+                  else discussion
+                "
+              ></ng-container>
+            </mat-tab>
+            <!-- <button mat-raised-button>Basic</button> -->
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #preLogin>
+  <div
+    class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
+  >
+    <ng-container [ngSwitch]="currentTab">
+      <ng-container *ngSwitchCase="1">
+        <div class="pre-login-icon">
+          <i class="fas fa-check"></i>
+        </div>
+        <br />
+        <div class="pre-login-text" *ngIf="!validation.length">
+          No validation yet.
+        </div>
+        <div class="pre-login-text">
+          <a href="javascript:void(0);">Login</a> to validate this solution.
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="2">
+        <div class="pre-login-icon">
+          <i class="fas fa-arrow-to-top"></i>
+        </div>
+        <br />
+        <div class="pre-login-text" *ngIf="!collaborators.length">
+          No collaborators yet.
+        </div>
+        <div class="pre-login-text">
+          <a href="javascript:void(0);">Login</a> to collaborate on this
+          solution. problem.
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #notYetStart>
+  <div
+    class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
+  >
+    <ng-container [ngSwitch]="currentTab">
+      <ng-container *ngSwitchCase="1">
+        <div class="pre-login-icon">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="pre-login-text">No validation yet.</div>
+      </ng-container>
+      <ng-container *ngSwitchCase="2">
+        <div class="pre-login-icon">
+          <i class="fas fa-arrow-to-top"></i>
+        </div>
+        <div class="pre-login-text">No collaborators yet.</div>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #discussionNotLogin>
+  <div
+    class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
+  >
+    <div class="pre-login-icon">
+      <i class="far fa-arrow-from-bottom"></i>
+    </div>
+    <br />
+    <div class="pre-login-text">
+      <a href="javascript:void(0);">Login</a> to join discussion for this
+      solution.
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noDiscussion>
+  
+  <div class="my-4 px-4" >
+    <app-editor
+      [user]="solutionData?.user"
+      [actionText]="'comment'"
+      (submit)="onCommentSubmit($event)"
+    ></app-editor>
+  </div>
+
+  <div
+    class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
+  >
+    <div>
+      <div class="pre-login-icon">
+        <i class="far fa-comment-alt"></i>
+      </div>
+      <br />
+      <div class="pre-login-text">
+        No discussion so far for this solution.
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #overview>
+  <div class="col">
+    <div
+      *ngIf="solutionData.description"
+      #descriptionText
+      class="description-rules"
+    >
+      <h3 class="heading">Description</h3>
+
+      <p class="description" id="problemDescription">
+        {{ solutionData.description }}
+      </p>
+      <button
+        mat-flat-button
+        class="showMore"
+        *ngIf="descriptionShowMoreBtn"
+        (click)="clickShowMore()"
+      >
+        {{ descriptionShowMoreBtnText }}
+      </button>
+    </div>
+  </div>
+
+  <hr />
+  <div class="col">
+    <div class="row">
+      <div class="col-sm-6">
+        <div>
+          <h3 class="heading">Organization</h3>
+          <p class="description">{{ solutionData.organization || 'None' }}</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <h3 class="heading">Budget</h3>
+        <p class="description">
+          {{ solutionData.budget_title }} ({{
+            solutionData.min_budget | currency: 'INR'
+          }}
+          - {{ solutionData.max_budget | currency: 'INR' }})
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="heading">Impact</h3>
+        <p class="description">
+          {{ solutionData.impact || 'None' }}
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <h3 class="heading">Deployments</h3>
+        <p class="description">
+          {{ solutionData.deployment || 'None' }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="heading">Innovation</h3>
+        <p class="description">
+          {{ solutionData.technology || 'None' }}
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <h3 class="heading">Resources Needed</h3>
+        <p class="description">
+          {{ solutionData.resources || 'None' }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="heading">Timeline</h3>
+        <p class="description">
+          {{ solutionData.timeline || 'None' }}
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <h3 class="heading">Pilots</h3>
+        <p class="description">
+          {{ solutionData.pilots || 'None' }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div>
+          <h3 class="heading">Location(s)</h3>
+
+          <ng-container *ngFor="let location of solutionLocations">
+            <a
+              href="javascript:void(0);"
+              class="description"
+              (click)="locationSelected(location)"
+            >
+              {{ location.location_name }}
+            </a>
+            <br />
+          </ng-container>
+          <p class="description" *ngIf="!solutionLocations.length">
+            None
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h3 class="heading">Website</h3>
+        <p class="description">
+          {{ solutionData.website_url || 'None' }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h3 class="heading">Sectors</h3>
+
+        <div class="tags">
+          <ng-container *ngFor="let tag of tags">
+            <button
+              class="tag actions text-capitalize"
+              [disabled]="
+                filterService.is_domain_filter_mode &&
+                !tagsService.allTags[tag.name]
+              "
+              (click)="sectorSelected(tag)"
+            >
+              {{ tag.name.toLowerCase() }}
+            </button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="col pb-3">
+    <h3 class="heading" id="solutionCards" *ngIf="problems.length">
+      This Solution is for the following problems
+    </h3>
+
+    <div class="row">
+      <ng-container *ngFor="let problem of problems; let i = index">
+        <div class="col-md-6 solutions-container mt-2">
+          <div class="solution">
+            <span class="green-bullet"></span>
+            <span>Solution</span>
+          </div>
+
+          <div class="solution-heading">
+            <h2>
+              {{
+                problem.title.length > 50
+                  ? problem.title.slice(0, 50) + '...'
+                  : problem.title
+              }}
+            </h2>
+          </div>
+
+          <div class="created-by">
+            <img
+              src="{{
+                problem.user.photo_url &&
+                problem.user.photo_url.fileEndpoint &&
+                checkUrlIsImg(
+                  filesService.fileAccessUrl +
+                    problem.user.photo_url.fileEndpoint
+                )
+                  ? filesService.fileAccessUrl +
+                    problem.user.photo_url.fileEndpoint
+                  : './assets/img/default-avatar.png'
+              }}"
+              alt="profile"
+              style="object-fit: cover;"
+            />
+            <span
+              >Created by
+              {{
+                auth.currentUserValue.id == problem.user_id
+                  ? 'You'
+                  : problem.user.name
+              }}</span
+            >
+          </div>
+          <hr />
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="col pb-3">
+    <h3 class="heading">Solver Team</h3>
+
+    <div class="row">
+      <ng-container *ngFor="let owner of ownerData">
+        <div class="col-sm-6 ">
+          <div class="d-flex align-items-center">
+            <img
+              src="{{
+                owner.photo_url &&
+                owner.photo_url.fileEndpoint &&
+                checkUrlIsImg(
+                  filesService.fileAccessUrl + owner.photo_url.fileEndpoint
+                )
+                  ? filesService.fileAccessUrl + owner.photo_url.fileEndpoint
+                  : './assets/img/default-avatar.png'
+              }}"
+              [attr.alt]="[imageAlt]"
+              class="solverTeamImg"
+              style="object-fit: cover;"
+            />
+            <a
+              [routerLink]="'/profiles/' + owner.id"
+              href="javascript:void(0);"
+              queryParamsHandling="merge"
+              class="owner-name"
+            >
+              <p>
+                {{ auth.currentUserValue.id == owner.id ? 'You' : owner.name }}
+              </p>
+            </a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #validated>
+  <div class="col pb-4">
+    <div class="row px-3 pt-3">
+      <ng-container *ngFor="let validate of validation; let i = index">
+        <div class="col-sm-12 validateCard" *ngIf="i < validationLimit">
+          <button
+            mat-mini-fab
+            class="float-right shadow-none edit-validate"
+            (click)="openValidateModal(validate)"
+            *ngIf="validate.user_id == auth.currentUserValue.id"
+          >
+            <i class="far fa-pen"></i>
+          </button>
+          <div class="agreedDisagreeDiv">
+            <i
+              class="far fa-check agree"
+              aria-hidden="true"
+              *ngIf="validate.agree"
+            ></i>
+
+            <i
+              class="far fa-times disagree"
+              aria-hidden="true"
+              *ngIf="!validate.agree"
+            ></i>
+
+            <strong>{{ validate.agree ? 'Agreed' : 'Disagreed' }}</strong>
+          </div>
+
+          <div class="validate-comment">
+            {{ validate.comment }}
+          </div>
+
+          <div class="d-flex justify-content-between validate-profile">
+            <div class="d-flex align-items-center">
+              <img
+                src="{{
+                  validate.user.photo_url &&
+                  validate.user.photo_url.fileEndpoint &&
+                  checkUrlIsImg(
+                    filesService.fileAccessUrl +
+                      validate.user.photo_url.fileEndpoint
+                  )
+                    ? filesService.fileAccessUrl +
+                      validate.user.photo_url.fileEndpoint
+                    : './assets/img/default-avatar.png'
+                }}"
+                [attr.alt]="[imageAlt]"
+                class="solverTeamImg "
+                style="object-fit: cover;"
+              />
+              <span class="validate-created-by">
+                Created by
+                {{
+                  auth.currentUserValue.id == validate.user_id
+                    ? 'You'
+                    : validate.user.name
+                }}
+              </span>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <i class="material-icons actions" aria-hidden="true">
+                attach_file
+              </i>
+              {{ validate.files.length }}
+              {{ validate.length > 1 ? 'Attachments' : 'Attachment' }}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="row btnCenter" *ngIf="validation.length > 5">
+      <button
+        mat-flat-button
+        class="showMore mt-2"
+        (click)="validationShowMore()"
+      >
+        {{ validationShowMoreText }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #collaborated>
+  <div class="col pb-4">
+    <div class="row px-3 pt-3">
+      <ng-container *ngFor="let collaborator of collaborators; let i = index">
+        <div
+          class="col-sm-12 collaborateCard"
+          style="word-wrap: break-word;"
+          *ngIf="i < collaboratorLimit"
+        >
+          <button
+            mat-mini-fab
+            class="float-right edit-validate"
+            (click)="openCollaborateModal(collaborator)"
+            *ngIf="collaborator.user_id == auth.currentUserValue.id"
+          >
+            <i class="far fa-pen"></i>
+          </button>
+          <div>
+            <strong class="text-capitalize roles">
+              Role: {{ getTagStrings(collaborator) }}
+            </strong>
+          </div>
+
+          <div class="collaborate-comment">
+            {{ collaborator.intent || 'None' }}
+          </div>
+
+          <div class="d-flex align-items-center comment-footer">
+            <img
+              src="{{
+                collaborator.user.photo_url &&
+                collaborator.user.photo_url.fileEndpoint &&
+                checkUrlIsImg(
+                  filesService.fileAccessUrl +
+                    collaborator.user.photo_url.fileEndpoint
+                )
+                  ? filesService.fileAccessUrl +
+                    collaborator.user.photo_url.fileEndpoint
+                  : './assets/img/default-avatar.png'
+              }}"
+              [attr.alt]="[imageAlt]"
+              class="solverTeamImg"
+              style="object-fit: cover;"
+            />
+            <span class="collaborate-created-by">
+              Created by
+              {{
+                auth.currentUserValue.id == collaborator.user_id
+                  ? 'You'
+                  : collaborator.user.name
+              }}
+            </span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="row btnCenter">
+      <button
+        mat-flat-button
+        class="showMore mt-2"
+        *ngIf="collaborators.length > 5"
+        (click)="clickCollaboratorShowMoreBtn()"
+      >
+        {{ collaboratorShowMoreText }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #discussion>
+  <div class="my-4 px-4" *ngIf="auth.currentUserValue.id">
+    <app-editor
+      [user]="solutionData?.user"
+      [actionText]="'comment'"
+      (submit)="onCommentSubmit($event)"
+    ></app-editor>
+  </div>
+
+  <div *ngIf="!popular" class="px-4 my-2">
+    <app-display-comment
+      [users]="objectValues(usersService.allUsers)"
+      [comment]="comment"
+      [focusContext]="lastContext"
+      [pageType]="'solution'"
+      [replies]="replies[comment?.id]"
+      (reply)="onCommentSubmit($event, comment.id)"
+      (fileClicked)="displayModal($event)"
+      *ngFor="let comment of sortComments(objectValues(comments))"
+    >
+    </app-display-comment>
+  </div>
+
+  <div *ngIf="popular" class="px-4 my-2">
+    <app-display-comment
+      [users]="objectValues(usersService.allUsers)"
+      [comment]="popularDiscussion"
+      [focusContext]="lastContext"
+      [pageType]="'solution'"
+      [replies]="replies[popularDiscussion?.id]"
+      (reply)="onCommentSubmit($event, popularDiscussion.id)"
+      (fileClicked)="displayModal($event)"
+      *ngFor="let popularDiscussion of popularDiscussions"
+    >
+    </app-display-comment>
+  </div>
+</ng-template>
+<!-- ------------------------------------  New UI ----------------------------------------- -->

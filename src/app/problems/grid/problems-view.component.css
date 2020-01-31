@@ -1,0 +1,58 @@
+.test {
+  margin-left: 100px;
+}
+
+.btn-fab {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 4;
+}
+
+.test {
+  margin-left: 3s00px;
+}
+
+.dropDown {
+  width: 20%;
+}
+
+.problems-worth-solving {
+  color: #2d2d2d;
+  font-size: 30px;
+  font-weight: 600;
+  height: 22px;
+  line-height: 22px;
+  margin-left: 10px;
+}
+
+.problem-listed-title {
+  height: 50px;
+  border-radius: 4px;
+  background-color: #717171;
+}
+.problem-listed-title > div {
+  height: 50px;
+}
+.problem-listed-title > div > h2 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  margin-left: 10px;
+  height: 20px;
+}
+
+.card-grid {
+  background-color: #ffffff;
+  border-radius: 0.4rem;
+  margin-top: 1.4rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .problems-worth-solving {
+    font-size: 18px;
+    height: 26px;
+    line-height: 26px;
+  }
+}
