@@ -16,6 +16,17 @@ export const AppRoutes: Routes = [
             },
         ],
     },
+    {
+        path: '',
+        component: AdminLayoutComponent,
+        children: [
+            {
+                path: 'landing-page',
+                loadChildren:
+                    './landing-page/landing-page.module#LandingPageModule',
+            },
+        ],
+    },
 ];
 
 const _R = [

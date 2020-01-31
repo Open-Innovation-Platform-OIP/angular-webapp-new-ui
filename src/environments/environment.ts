@@ -2,9 +2,21 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+const environment = {
+    production: false,
 };
+
+const domain = 'https://oip-dev.dev.jaagalabs.com';
+
+const fileUploadVariables = {
+    UploadUrlEndpoint:
+        'https://minio-microservice.dev.jaagalabs.com/create_presigned_url',
+    bucketName: 'test',
+    accessUrl: 'https://minio-storage.dev.jaagalabs.com',
+    deleteEndpoint: 'https://minio-microservice.dev.jaagalabs.com/delete_file',
+};
+
+export { environment, domain, fileUploadVariables };
 
 /*
  * For easier debugging in development mode, you can import the following file
