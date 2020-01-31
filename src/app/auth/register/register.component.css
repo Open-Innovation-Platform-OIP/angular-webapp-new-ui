@@ -1,0 +1,147 @@
+.register-main {
+  line-height: initial;
+}
+
+.left-section {
+  height: 91.5vh;
+  padding-top: 17rem;
+}
+
+.register-section {
+  padding-left: 4%;
+  padding-right: 15%;
+  display: flex;
+  flex-flow: column;
+  padding-top: 17rem;
+  width: 60%;
+}
+
+.register-section a {
+  color: #000;
+}
+
+.register-section p {
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+.left-heading {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 10%;
+}
+
+.first-description,
+.second-description {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin-top: 2rem;
+}
+
+.first-description .heading,
+.second-description .heading {
+  font-size: 3rem;
+  opacity: 0.75;
+}
+
+.first-description .body h3,
+.second-description .body h3 {
+  margin-top: 0px;
+  padding-top: 0px;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.first-description .body p,
+.second-description .body p {
+  font-size: 1.5rem;
+  margin-top: -5px;
+}
+
+.register-section h2 {
+  font-weight: 600;
+  font-size: 3rem;
+  color: #2d2d2d;
+}
+
+.register-section p {
+  font-size: 1.4rem;
+  color: #2d2d2d;
+}
+
+.full-name,
+.email,
+.password-input,
+.confirm-password {
+  display: flex;
+  flex-flow: column;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: 1px solid #afafaf;
+  border-radius: 4px;
+  padding: 8px;
+  padding-left: 10px;
+  background-color: #eee;
+  margin-top: -3px;
+  width: 100%;
+  font-size: 1.4rem;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #000;
+}
+
+.register-main label {
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.password-input-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.register-section .instructions {
+  font-size: 1rem;
+  margin-top: 2%;
+  color: #aaa9a9;
+  margin-bottom: 0;
+}
+
+.register-button {
+  cursor: pointer;
+  padding: 1rem;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background-color: var(--primary);
+}
+
+@media only screen and (max-width: 768px) {
+  .register-section {
+    padding-right: 7%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .left-section {
+    height: inherit;
+    padding: 2rem;
+  }
+
+  .register-section {
+    padding-top: 3rem;
+    padding-right: 2rem;
+    width: 100%;
+    border-top: 1px solid #b8b8b8;
+  }
+}

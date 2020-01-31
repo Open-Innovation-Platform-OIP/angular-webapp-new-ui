@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthRoutes } from './auth.routing';
 
-// import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './register/register.component';
 // import { LockComponent } from './lock/lock.component';
 import { LoginComponent } from './login/login.component';
-// import { ForgotPasswordComponent } from './forgot-password/forgotpassword.component';
-// import { VerifyEmailComponent } from './verify-email/verifyemail.component';
+import { ForgotPasswordComponent } from './forgot-password/forgotpassword.component';
+import { VerifyEmailComponent } from './verify-email/verifyemail.component';
 
 @NgModule({
     imports: [
@@ -19,6 +19,11 @@ import { LoginComponent } from './login/login.component';
         FormsModule,
         ReactiveFormsModule,
     ],
-    declarations: [LoginComponent],
+    declarations: [
+        LoginComponent,
+        RegisterComponent,
+        ForgotPasswordComponent,
+        VerifyEmailComponent,
+    ],
 })
 export class AuthModule {}

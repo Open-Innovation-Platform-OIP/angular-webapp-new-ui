@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
 
-// import { RegisterComponent } from './register/register.component';
-// import { LockComponent } from './lock/lock.component';
+import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-// import { ForgotPasswordComponent } from './forgot-password/forgotpassword.component';
-// import { VerifyEmailComponent } from './verify-email/verifyemail.component';
+import { ForgotPasswordComponent } from './forgot-password/forgotpassword.component';
+import { VerifyEmailComponent } from './verify-email/verifyemail.component';
 
 export const AuthRoutes: Routes = [
     {
@@ -14,22 +13,18 @@ export const AuthRoutes: Routes = [
                 path: 'login',
                 component: LoginComponent,
             },
-            // {
-            //     path: 'lock',
-            //     component: LockComponent
-            // },
-            // {
-            //     path: 'register',
-            //     component: RegisterComponent
-            // },
-            // {
-            //     path: 'forgot',
-            //     component: ForgotPasswordComponent
-            // },
-            // {
-            //     path: 'verify',
-            //     component: VerifyEmailComponent
-            // },
+            {
+                path: 'register',
+                component: RegisterComponent,
+            },
+            {
+                path: 'forgot',
+                component: ForgotPasswordComponent,
+            },
+            {
+                path: 'verify',
+                component: VerifyEmailComponent,
+            },
         ],
     },
 ];

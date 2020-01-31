@@ -1,0 +1,188 @@
+<!-- <div class="wrapper wrapper-full-page">
+  <div class="page-header register-page header-filter" filter-color="black"
+    style="background-image: url('./assets/img/register.jpg'); background-size: cover; background-position: top center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 ml-auto mr-auto">
+          <div class="card card-signup">
+            <h1 id="heading" style="font-size: 2.3rem;" tabindex="0" class="card-title text-center">Register</h1>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-5 ml-auto">
+                  <div class="info info-horizontal">
+                    <div class="icon icon-danger">
+                      <i class="material-icons">warning</i>
+                    </div>
+                    <div class="description">
+                      <h2 class="info-title" style="font-size: 1.125rem !important;">Add Problems</h2>
+                      <p class="description">
+                        Add problems that you want others to understand and solve.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="info info-horizontal">
+                    <div class="icon icon-info">
+                      <i class="material-icons">highlight</i>
+                    </div>
+                    <div class="description">
+                      <h2 class="info-title" style="font-size: 1.125rem;">Provide Solutions</h2>
+                      <p class="description">
+                        Solve problems that others have identified.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5 mr-auto">
+
+                  <form class="form" novalidate autocomplete="off" class="example-form" [formGroup]="registerForm"
+                    #register="ngForm" (ngSubmit)="onSubmit()">
+                    <mat-form-field class="my-1">
+                      <mat-icon matSuffix>face</mat-icon>
+                      <input matInput placeholder="Fullname" formControlName="name" required>
+
+                      <mat-error *ngIf="
+                          registerForm.get('name').hasError('required') && register.submitted">
+                        Fullname is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="my-1">
+                      <mat-icon matSuffix>mail</mat-icon>
+                      <input matInput type="email" placeholder="Email" formControlName="email" required>
+
+                      <mat-error *ngIf="registerForm.get('email').hasError('email') && register.submitted">
+                        Please enter a valid email address
+                      </mat-error>
+                      <mat-error *ngIf="
+                          registerForm.get('email').hasError('required') && register.submitted">
+                        Email is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="my-1">
+                      <mat-icon matSuffix>lock_outline</mat-icon>
+                      <input matInput type="password" placeholder="Password" formControlName="password" required>
+                      <mat-hint>minimum 6 chars, lower & upper case, numbers</mat-hint>
+                      <mat-error *ngIf="registerForm.get('password').hasError('pattern') && register.submitted">
+                        Should have minimum 6 chars, lower & upper case, numbers
+                      </mat-error>
+                      <mat-error *ngIf="registerForm.get('password').touched &&
+                          registerForm.get('password').hasError('required') && register.submitted">
+                        Password is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="my-1">
+                      <mat-icon matSuffix>lock_outline</mat-icon>
+                      <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword"
+                        required>
+                      <mat-hint>minimum 6 chars, lower & upper case, numbers</mat-hint>
+                      <mat-error *ngIf="registerForm.get('confirmPassword').hasError('mismatch') && register.submitted">
+                        Password mismatch
+                      </mat-error>
+                      <mat-error *ngIf="registerForm.get('confirmPassword').hasError('required') && register.submitted">
+                        Confirm password is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <div class="text-center my-3">
+                      <button mat-button class="btn btn-rose">Sign Up</button>
+                      <img *ngIf="loading" class="ml-2" alt=""
+                        src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                      <p>Existing User ?
+                        <a href="/auth/login">Log In</a>
+                      </p>
+                    </div>
+                  </form>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="container-fluid">
+  <div class="container register-main">
+    <div class="row">
+      <!-- What can you do section -->
+      <section class="col-lg-4 col-md-5 left-section">
+        <h2 class="left-heading">What can you do?</h2>
+        <div class="first-description">
+          <div class="heading">
+            <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="body">
+            <h3>Add Problem</h3>
+            <p>Add problems you want others to understand and solve.</p>
+          </div>
+        </div>
+        <div class="second-description">
+          <div class="heading">
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          </div>
+          <div class="body">
+            <h3>Provide Solution</h3>
+            <p>Solve problems that others have identified.</p>
+          </div>
+        </div>
+      </section>
+      <!-- Register section -->
+      <section class="col-lg-8 col-md-7 bg-grey register-section">
+        <form
+          class="form"
+          novalidate
+          [formGroup]="registerForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <h2>Register</h2>
+          <p>
+            Already have a Social Alpha account?
+            <a href="/auth/login">Log in</a>
+          </p>
+
+          <div class="full-name mt-5">
+            <label for="full_name">Full Name</label>
+            <input type="text" formControlName="name" required />
+          </div>
+
+          <div class="email mt-5">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" required />
+          </div>
+
+          <div class="password-input mt-5">
+            <div class="password-input-labels">
+              <label for="password">Password</label>
+              <div class="password-hide">
+                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                <span> &nbsp;Hide</span>
+              </div>
+            </div>
+
+            <input type="password" formControlName="password" required />
+            <p class="instructions">
+              Must be 6 or more characters with 1 special, 1 uppercase character
+            </p>
+          </div>
+
+          <div class="confirm-password mt-5">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" formControlName="confirmPassword" required />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-lg btn-block mt-5 bg-primary text-capitalize font-weight-bold register-button"
+          >
+            Register
+          </button>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
