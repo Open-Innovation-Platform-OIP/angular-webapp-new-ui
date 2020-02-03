@@ -16,7 +16,7 @@ import {
     PopStateEvent,
 } from '@angular/common';
 import 'rxjs/add/operator/filter';
-// import { NavbarComponent } from '../../shared/navbar/navbar.component';
+import { NavbarComponent } from '../../shared/navbar/navbar.component';
 // import PerfectScrollbar from 'perfect-scrollbar';
 
 declare const $: any;
