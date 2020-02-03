@@ -1,0 +1,16 @@
+.description {
+    max-lines: 2;
+    max-height: 3em;
+    overflow: hidden;
+}
+
+.downloadBtn:hover {
+    background-color: #e99b54;
+    color: white;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.validate-card {
+    height: 21em;
+}

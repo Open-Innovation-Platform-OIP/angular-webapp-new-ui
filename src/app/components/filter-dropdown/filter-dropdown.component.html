@@ -1,0 +1,65 @@
+<div class="filter-component">
+  <div class="filter-section">
+    <mat-form-field>
+      <mat-select
+        multiple
+        placeholder="All Sectors"
+        [(ngModel)]="selectedSectors"
+        role="listbox"
+      >
+        <mat-option
+          (click)="selectDropdown($event)"
+          *ngFor="let sector of objectValues(sectors)"
+          [value]="sector.name"
+          role="option"
+        >
+          {{ sector.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="filter-section">
+    <form>
+      <mat-form-field>
+        <input
+          type="text"
+          placeholder="All Locations"
+          aria-label="Enter location"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+          [(ngModel)]="selectedLocationName"
+        />
+        <mat-autocomplete
+          autoActiveFirstOption
+          #auto="matAutocomplete"
+          (optionSelected)="selectDropdown($event)"
+        >
+          <mat-option [value]="null">All</mat-option>
+          <mat-option *ngFor="let location of locations" [value]="location">
+            {{ location.Location.Address.Label }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="filter-section" *ngIf="objectValues(selectedLocation).length">
+    <mat-form-field class="dropDown">
+      <mat-select
+        (click)="selectDropdown($event)"
+        placeholder="Distance"
+        [(ngModel)]="range"
+      >
+        <mat-option
+          (click)="selectDropdown($event)"
+          *ngFor="let range of objectKeys(ranges)"
+          [value]="range"
+        >
+          {{ ranges[range] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

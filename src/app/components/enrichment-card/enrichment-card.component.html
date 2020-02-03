@@ -1,0 +1,59 @@
+<div
+  class="card card-product enrich-card"
+  (click)="cardClicked()"
+  *ngIf="enrichmentData.description"
+  style="cursor: pointer;"
+  role="group"
+  [attr.aria-label]="['enrichment', index + 1]"
+>
+  <a href="javascript:void(0);" (click)="cardClicked()">
+    <img
+      class="card-img-top"
+      style="object-fit:cover;"
+      src="{{
+        this.enrichmentData.featured_url &&
+        checkUrlIsImg(filesService.fileAccessUrl + enrichmentData.featured_url)
+          ? filesService.fileAccessUrl + this.enrichmentData.featured_url
+          : './assets/img/image_placeholder.jpg'
+      }}"
+      alt="enrichment card image"
+      width="150px"
+      height="140px"
+    />
+  </a>
+
+  <div class="card-body">
+    <div class="description">
+      <strong role="heading" aria-level="3">Description</strong>
+      <p *ngIf="enrichmentData.description" style="white-space: pre-wrap;">
+        {{ enrichmentData.description }}
+      </p>
+    </div>
+
+    <strong role="heading" aria-level="3">Location(s)</strong>
+    <div
+      *ngFor="
+        let location of enrichmentData.enrichment_locations;
+        let i = index
+      "
+    >
+      <p *ngIf="i < 1">{{ location.location.location_name }}</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="stats" [attr.aria-label]="['likes', voters.size]">
+      <i class="material-icons" aria-hidden="true">
+        thumb_up
+      </i>
+      {{ voters.size }}
+    </div>
+    <p>
+      Added by :
+      {{
+        auth.currentUserValue.id == enrichmentData.user_id
+          ? 'You'
+          : enrichmentData.user.name
+      }}
+    </p>
+  </div>
+</div>

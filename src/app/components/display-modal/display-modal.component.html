@@ -1,0 +1,51 @@
+<video
+  *ngIf="
+    (source && source.mimeType && source.mimeType.startsWith('video')) ||
+    checkUrlIsVideo(source.key || source.url)
+  "
+  id="modalVideo"
+  controls
+  disablePictureInPicture
+  controlsList="nodownload"
+  width="100%"
+  height="450"
+  src="{{ filesService.fileAccessUrl + source.fileEndpoint }}"
+></video>
+
+<img
+  *ngIf="
+    (source && source.mimeType && source.mimeType.startsWith('image')) ||
+    checkUrlIsImg(source.key || source.url)
+  "
+  src="{{ filesService.fileAccessUrl + source.fileEndpoint }}"
+  alt="{{ source.key }}"
+  class="fix_view"
+/>
+
+<div
+  *ngIf="
+    source &&
+    source.mimeType &&
+    !source.mimeType.startsWith('image') &&
+    !source.mimeType.startsWith('video')
+  "
+  class="doc_div d-flex flex-column"
+>
+  <div style="margin-top: 13rem;">
+    <h1 class="text-white" style="font-size: 2rem;">{{ source.key }}</h1>
+    <a href="{{ filesService.fileAccessUrl + source.fileEndpoint }}">
+      <button mat-raised-button class="btn btn-secondary btn-round btn-lg">
+        <i class="material-icons" aria-hidden="true">
+          arrow_downward
+        </i>
+        Download
+      </button>
+    </a>
+  </div>
+</div>
+
+<!-- for embedded videos -->
+<div
+  *ngIf="source && checkUrlIsEmbeded(source.url || source.key)"
+  [innerHtml]="iframe_html"
+></div>
