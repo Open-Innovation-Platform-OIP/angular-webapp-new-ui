@@ -661,8 +661,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <app-display-modal *ngIf="modalSrc" [source]="modalSrc">
-        </app-display-modal>
+        <!-- <app-display-modal *ngIf="modalSrc" [source]="modalSrc">
+        </app-display-modal> -->
       </div>
       <div
         class="modal-footer justify-content-center"
@@ -717,11 +717,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <app-display-modal
+        <!-- <app-display-modal
           *ngIf="solution_attachments_src"
           [source]="solution_attachments[solution_attachments_index]"
         >
-        </app-display-modal>
+        </app-display-modal> -->
       </div>
       <div
         class="modal-footer justify-content-center"
@@ -1552,13 +1552,13 @@
   <div class="row">
     <div class="col-lg-7">
       <div class="col-md-12 bg-white pl-0 pr-0">
-        <mat-tab-group
+        <div
           mat-align-tabs="left"
           (selectedIndexChange)="selectedTab($event)"
           selectedIndex="0"
         >
-          <mat-tab>
-            <ng-template mat-tab-label>
+          <div>
+            <ng-template  >
               Overview
             </ng-template>
             <!-- <ng-container
@@ -1571,10 +1571,10 @@
                 else overview
               "
             ></ng-container>
-          </mat-tab>
+          </div>
 
-          <mat-tab>
-            <ng-template mat-tab-label>
+          <div>
+            <ng-template  >
               Validated ({{ validation.length }})
             </ng-template>
             <ng-container
@@ -1587,9 +1587,9 @@
                 else validated
               "
             ></ng-container>
-          </mat-tab>
-          <mat-tab>
-            <ng-template mat-tab-label>
+          </div>
+          <div>
+            <ng-template  >
               Collaborated ({{ collaborators.length }})
             </ng-template>
             <ng-container
@@ -1602,8 +1602,8 @@
                 else collaborated
               "
             ></ng-container>
-          </mat-tab>
-        </mat-tab-group>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1638,13 +1638,13 @@
             </div>
           </div>
 
-          <mat-tab-group
+          <div
             style="width: 100%;"
             disableRipple="true"
             selectedIndex="0"
           >
-            <mat-tab>
-              <ng-template mat-tab-label>
+            <div>
+              <ng-template  >
                 Discussion
               </ng-template>
               <ng-container
@@ -1657,9 +1657,9 @@
                   else discussion
                 "
               ></ng-container>
-            </mat-tab>
+            </div>
             <!-- <button mat-raised-button>Basic</button> -->
-          </mat-tab-group>
+          </div>
         </div>
       </div>
     </div>

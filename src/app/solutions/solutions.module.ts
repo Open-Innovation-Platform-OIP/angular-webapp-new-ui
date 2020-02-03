@@ -18,7 +18,7 @@ import { ComponentsModule } from '../components/components.module';
 import { DiscussionsModule } from '../discussions/discussions.module';
 import { SolutionDetailComponent } from './detail/solution-detail.component';
 import { SolutionsViewComponent } from './grid/solutions-view.component';
-import { AddSolutionComponent } from './form/add-solution.component';
+// import { AddSolutionComponent } from './form/add-solution.component';
 // import { A11yModule } from '@angular/cdk/a11y';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { AddSolutionComponent } from './form/add-solution.component';
     declarations: [
         SolutionDetailComponent,
         SolutionsViewComponent,
-        AddSolutionComponent,
+        // AddSolutionComponent,
     ],
     providers: [
         // {

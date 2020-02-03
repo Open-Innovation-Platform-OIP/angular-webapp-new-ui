@@ -58,7 +58,7 @@ import { sharing } from '../../globalconfig';
 // import { FocusMonitor } from '@angular/cdk/a11y';
 // import { ValidateModalComponent } from 'src/app/modals/validate-modal/validate-modal.component';
 // import { CollaborateModalComponent } from 'src/app/modals/collaborate-modal/collaborate-modal.component';
-const Buffer = require('buffer/').Buffer;
+// const Buffer = require('buffer/').Buffer;
 
 const misc: any = {
     navbar_menu_visible: 0,
@@ -296,9 +296,8 @@ export class SolutionDetailComponent implements OnInit, AfterViewInit {
         // private ngxService: NgxUiLoaderService,
         // public dialog: MatDialog,
         private filterService: FilterService,
-        private tagsService: TagsService
-    ) // private focusMonitor: FocusMonitor
-    {
+        private tagsService: TagsService // private focusMonitor: FocusMonitor
+    ) {
         this.startInterval();
         this.pageUrl = domain + ngLocation.path();
         const subject = encodeURI('Can you help solve this problem?');
