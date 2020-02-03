@@ -1,12 +1,112 @@
 /* You can add global styles to this file, and also import other style files */
-
 /* inter UI font */
-@import url("https://rsms.me/inter/inter.css");
+@import url('https://rsms.me/inter/inter.css');
 * {
-  font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 @supports (font-variation-settings: normal) {
-  html {
-    font-family: "Inter var", sans-serif;
-  }
+    html {
+        font-family: 'Inter var', sans-serif;
+    }
+}
+
+@function get-colors($colorMap, $colorName) {
+    @return map-get($map: $colorMap, $key: $colorName);
+}
+
+$primary: (
+    color1: #cf7c10,
+    color2: #d1811a,
+    color3: #d98b26,
+    color4: #dc953a,
+);
+
+$secondary: (
+    color1: #2d2d2d,
+    color2: #717171,
+    color3: #b4b4b4,
+    color4: #e1e1e1,
+    color5: #f7f7f7,
+    color6: #ffffff,
+);
+
+$tertiary: (
+    color1: #f2342f,
+    color2: #fdecec,
+    color3: #00945a,
+    color4: #ebfaeb,
+);
+
+$primary1: get-colors($primary, 'color1');
+$primary2: get-colors($primary, 'color2');
+$primary3: get-colors($primary, 'color3');
+$primary4: get-colors($primary, 'color4');
+
+$secondary1: get-colors($secondary, 'color1');
+$secondary2: get-colors($secondary, 'color2');
+$secondary3: get-colors($secondary, 'color3');
+$secondary4: get-colors($secondary, 'color4');
+$secondary5: get-colors($secondary, 'color5');
+$secondary6: get-colors($secondary, 'color6');
+
+$tertiary1: get-colors($tertiary, 'color1');
+$tertiary2: get-colors($tertiary, 'color2');
+$tertiary3: get-colors($tertiary, 'color3');
+$tertiary4: get-colors($tertiary, 'color4');
+
+$font-size: 10px;
+$background-global: $secondary5;
+
+html {
+    font-size: $font-size;
+}
+
+body {
+    background-color: $background-global;
+}
+
+// assets imports
+@import './assets/scss/button';
+@import './assets/scss/card';
+
+h1 {
+    font-size: 4.6rem;
+    line-height: 5.4rem;
+    letter-spacing: -0.01rem;
+}
+
+h2 {
+    font-size: 3rem;
+    line-height: 3.8rem;
+    letter-spacing: -0.01rem;
+}
+
+h3 {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    letter-spacing: -0.01rem;
+}
+
+h4 {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    letter-spacing: -0.01rem;
+}
+
+h5 {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: -0.01rem;
+}
+
+h6 {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    letter-spacing: -0.01rem;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    letter-spacing: -0.01rem;
 }
