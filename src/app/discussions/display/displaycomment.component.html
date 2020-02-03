@@ -1,24 +1,26 @@
 <div class="border discussion-section radius-4">
-  <ng-container *ngTemplateOutlet="comments; context: { comment: comment }">
-  </ng-container>
-
-  <ng-container *ngFor="let reply of sortReplies(replies)">
-    <ng-container *ngTemplateOutlet="replyTemp; context: { comment: reply }">
+    <ng-container *ngTemplateOutlet="comments; context: { comment: comment }">
     </ng-container>
-  </ng-container>
 
-  <div class="pb-2" *ngIf="showReplyBox && replyingTo === comment.id">
-    <app-editor
-      [user]="comment.user"
-      [actionText]="'Reply'"
-      [id]="comment.id"
-      [cancelShown]="true"
-      (cancel)="showReplyBox = false"
-      (submit)="onCommentSubmit($event)"
-    ></app-editor>
-  </div>
+    <ng-container *ngFor="let reply of sortReplies(replies)">
+        <ng-container
+            *ngTemplateOutlet="replyTemp; context: { comment: reply }"
+        >
+        </ng-container>
+    </ng-container>
 
-  <ng-container *ngTemplateOutlet="footer"></ng-container>
+    <div class="pb-2" *ngIf="showReplyBox && replyingTo === comment.id">
+        <app-editor
+            [user]="comment.user"
+            [actionText]="'Reply'"
+            [id]="comment.id"
+            [cancelShown]="true"
+            (cancel)="showReplyBox = false"
+            (submit)="onCommentSubmit($event)"
+        ></app-editor>
+    </div>
+
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
 </div>
 
 <!-- <div class="card-collapse">
@@ -458,183 +460,205 @@
 </div> -->
 
 <ng-template #comments let-comment="comment" let-default>
-  <div class="d-flex justify-content-start  p-2 comment-section">
-    <div class="">
-      <img
-        src="{{
-          comment.user &&
-          comment.user.photo_url &&
-          comment.user.photo_url.fileEndpoint
-            ? filesService.fileAccessUrl + comment.user.photo_url.fileEndpoint
-            : './assets/img/default-avatar.png'
-        }}"
-        alt="profile photo"
-        class="rounded-circle"
-        style="object-fit: cover;overflow: hidden;"
-        width="40"
-        height="40"
-      />
-    </div>
-    <div class="ml-3 w-100">
-      <div style="line-height: 1.5rem;">
-        <span class="text-capitalize user-name">
-          {{ comment.user.name || 'Anonymous' }}
-        </span>
-        <br />
-        <span class="comment-date">
-          {{ comment.edited_at | date: 'longDate' }}
-        </span>
-      </div>
-      <div
-        style="color: #2d2d2d"
-        innerHTML="{{
-          comment.text.length > 135
-            ? comment.text.slice(0, charLenToShow)
-            : comment.text
-        }}"
-        class="mt-2"
-      ></div>
+    <div class="d-flex justify-content-start  p-2 comment-section">
+        <div class="">
+            <img
+                src="{{
+                    comment.user &&
+                    comment.user.photo_url &&
+                    comment.user.photo_url.fileEndpoint
+                        ? filesService.fileAccessUrl +
+                          comment.user.photo_url.fileEndpoint
+                        : './assets/img/default-avatar.png'
+                }}"
+                alt="profile photo"
+                class="rounded-circle"
+                style="object-fit: cover;overflow: hidden;"
+                width="40"
+                height="40"
+            />
+        </div>
+        <div class="ml-3 w-100">
+            <div style="line-height: 1.5rem;">
+                <span class="text-capitalize user-name">
+                    {{ comment.user.name || 'Anonymous' }}
+                </span>
+                <br />
+                <span class="comment-date">
+                    {{ comment.edited_at | date: 'longDate' }}
+                </span>
+            </div>
+            <div
+                style="color: #2d2d2d"
+                innerHTML="{{
+                    comment.text.length > 135
+                        ? comment.text.slice(0, charLenToShow)
+                        : comment.text
+                }}"
+                class="mt-2"
+            ></div>
 
-      <a
-        *ngIf="comment.text.length > 135"
-        href="javascript:void(0);"
-        class="read-more"
-        (click)="readMoreOrLess(charLenToShow, comment.text.length)"
-      >
-        {{ charLenToShow < comment.text.length ? 'Read More' : 'Read Less' }}
-      </a>
+            <a
+                *ngIf="comment.text.length > 135"
+                href="javascript:void(0);"
+                class="read-more"
+                (click)="readMoreOrLess(charLenToShow, comment.text.length)"
+            >
+                {{
+                    charLenToShow < comment.text.length
+                        ? 'Read More'
+                        : 'Read Less'
+                }}
+            </a>
+        </div>
     </div>
-  </div>
 </ng-template>
 
 <ng-template #replyTemp let-comment="comment">
-  <div class="d-flex justify-content-start  p-2 reply-section">
-    <div class="">
-      <img
-        src="{{
-          comment.user &&
-          comment.user.photo_url &&
-          comment.user.photo_url.fileEndpoint
-            ? filesService.fileAccessUrl + comment.user.photo_url.fileEndpoint
-            : './assets/img/default-avatar.png'
-        }}"
-        alt="profile photo"
-        class="rounded-circle"
-        style="object-fit: cover;overflow: hidden;"
-        width="40"
-        height="40"
-      />
-    </div>
-    <div class="ml-2 border pb-2 pl-3 pr-2 pt-2 mt-1 w-100 reply-body">
-      <div class="user-info">
-        <span class="text-capitalize replier-name">
-          {{ comment.user.name || 'Anonymous' }}
-        </span>
-        <span class="dot"></span>
-        <span class="reply-date">{{
-          comment.edited_at | date: 'longDate'
-        }}</span>
-      </div>
-      <div
-        style="color: #2d2d2d"
-        innerHTML="{{
-          comment.text.length > 135
-            ? comment.text.slice(0, replyLenToShow)
-            : comment.text
-        }}"
-        class="mt-2"
-      ></div>
+    <div class="d-flex justify-content-start  p-2 reply-section">
+        <div class="">
+            <img
+                src="{{
+                    comment.user &&
+                    comment.user.photo_url &&
+                    comment.user.photo_url.fileEndpoint
+                        ? filesService.fileAccessUrl +
+                          comment.user.photo_url.fileEndpoint
+                        : './assets/img/default-avatar.png'
+                }}"
+                alt="profile photo"
+                class="rounded-circle"
+                style="object-fit: cover;overflow: hidden;"
+                width="40"
+                height="40"
+            />
+        </div>
+        <div class="ml-2 border pb-2 pl-3 pr-2 pt-2 mt-1 w-100 reply-body">
+            <div class="user-info">
+                <span class="text-capitalize replier-name">
+                    {{ comment.user.name || 'Anonymous' }}
+                </span>
+                <span class="dot"></span>
+                <span class="reply-date">{{
+                    comment.edited_at | date: 'longDate'
+                }}</span>
+            </div>
+            <div
+                style="color: #2d2d2d"
+                innerHTML="{{
+                    comment.text.length > 135
+                        ? comment.text.slice(0, replyLenToShow)
+                        : comment.text
+                }}"
+                class="mt-2"
+            ></div>
 
-      <a
-        *ngIf="comment.text.length > 135"
-        href="javascript:void(0);"
-        class="read-more"
-        (click)="showMoreOrLessReply(replyLenToShow, comment.text.length)"
-      >
-        {{ replyLenToShow < comment.text.length ? 'Read More' : 'Read Less' }}
-      </a>
+            <a
+                *ngIf="comment.text.length > 135"
+                href="javascript:void(0);"
+                class="read-more"
+                (click)="
+                    showMoreOrLessReply(replyLenToShow, comment.text.length)
+                "
+            >
+                {{
+                    replyLenToShow < comment.text.length
+                        ? 'Read More'
+                        : 'Read Less'
+                }}
+            </a>
 
-      <button
-        mat-icon-button
-        *ngIf="auth.currentUserValue.id"
-        class="delete-btn"
-        (click)="idToDelete(comment)"
-      >
-        <i class="fa fa-trash-o" aria-hidden="true"></i>
-      </button>
+            <button
+                i-button
+                *ngIf="auth.currentUserValue.id"
+                class="delete-btn"
+                (click)="idToDelete(comment)"
+            >
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+        </div>
     </div>
-  </div>
 </ng-template>
 
 <ng-template #footer>
-  <div
-    class="border-top d-flex justify-content-between align-items-center py-2 pl-2"
-  >
-    <!-- <app-editor [user]="users" [actionText]="'reply'"></app-editor> -->
-    <div class="">
-      <button
-        class="reply-btn"
-        *ngIf="
-          !(showReplyBox && replyingTo === comment.id) &&
-          auth.currentUserValue.id
-        "
-        (click)="replyTo(comment.id)"
-      >
-        <i class="far fa-share"></i>
-        Reply
-      </button>
-    </div>
-    <div class="">
-      <button
-        mat-icon-button
-        class="icon-button"
-        *ngIf="auth.currentUserValue.id"
-        (click)="toggleVoteDiscussions()"
-        [attr.aria-pressed]="voters.has(userId)"
-        [ngStyle]="{ color: voters.has(userId) ? '#1E90FF' : '#717171' }"
-        [attr.aria-label]="['likes', voters.size]"
-        [matTooltip]="[voters.size, 'likes']"
-      >
-        <i class="far fa-thumbs-up" aria-hidden="true"></i>
-      </button>
-
-      <span class="dropdown">
-        <button
-          mat-icon-button
-          class="icon-button"
-          *ngIf="auth.currentUserValue.id"
-          id="discussion_share_btn"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <i class="far fa-share-alt" aria-hidden="true"></i>
-        </button>
-
-        <ul class="dropdown-menu" aria-labelledby="discussion_share_btn">
-          <li>
-            <a (click)="getCommentIdToShare(comment.id, 'linkedin')"
-              >LinkedIn</a
+    <div
+        class="border-top d-flex justify-content-between align-items-center py-2 pl-2"
+    >
+        <!-- <app-editor [user]="users" [actionText]="'reply'"></app-editor> -->
+        <div class="">
+            <button
+                class="reply-btn"
+                *ngIf="
+                    !(showReplyBox && replyingTo === comment.id) &&
+                    auth.currentUserValue.id
+                "
+                (click)="replyTo(comment.id)"
             >
-          </li>
-          <li>
-            <a (click)="getCommentIdToShare(comment.id, 'facebook')"
-              >Facebook</a
+                <i class="far fa-share"></i>
+                Reply
+            </button>
+        </div>
+        <div class="">
+            <button
+                class="icon-button"
+                *ngIf="auth.currentUserValue.id"
+                (click)="toggleVoteDiscussions()"
+                [attr.aria-pressed]="voters.has(userId)"
+                [ngStyle]="{
+                    color: voters.has(userId) ? '#1E90FF' : '#717171'
+                }"
+                [attr.aria-label]="['likes', voters.size]"
             >
-          </li>
-          <li>
-            <a (click)="getCommentIdToShare(comment.id, 'twitter')">Twitter</a>
-          </li>
-          <li>
-            <a (click)="getCommentIdToShare(comment.id, 'email')">Email</a>
-          </li>
-          <li><a (click)="getCommentIdToShare(comment.id, 'sms')">SMS</a></li>
-        </ul>
-      </span>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i>
+            </button>
 
-      <button mat-icon-button>
-        <mat-icon>more_vert</mat-icon>
-      </button>
+            <span class="dropdown">
+                <button
+                    class="icon-button"
+                    *ngIf="auth.currentUserValue.id"
+                    id="discussion_share_btn"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    <i class="far fa-share-alt" aria-hidden="true"></i>
+                </button>
+
+                <ul
+                    class="dropdown-menu"
+                    aria-labelledby="discussion_share_btn"
+                >
+                    <li>
+                        <a (click)="getCommentIdToShare(comment.id, 'linkedin')"
+                            >LinkedIn</a
+                        >
+                    </li>
+                    <li>
+                        <a (click)="getCommentIdToShare(comment.id, 'facebook')"
+                            >Facebook</a
+                        >
+                    </li>
+                    <li>
+                        <a (click)="getCommentIdToShare(comment.id, 'twitter')"
+                            >Twitter</a
+                        >
+                    </li>
+                    <li>
+                        <a (click)="getCommentIdToShare(comment.id, 'email')"
+                            >Email</a
+                        >
+                    </li>
+                    <li>
+                        <a (click)="getCommentIdToShare(comment.id, 'sms')"
+                            >SMS</a
+                        >
+                    </li>
+                </ul>
+            </span>
+
+            <button>
+                <i>more_vert</i>
+            </button>
+        </div>
     </div>
-  </div>
 </ng-template>

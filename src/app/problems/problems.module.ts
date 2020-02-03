@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { TagInputModule } from 'ngx-chips';
 // import { MaterialModule } from '../app.module';
 import { ProblemsRoutes } from './problems.routing';
-import { WizardComponent } from './form/wizard.component';
+// import { WizardComponent } from './form/wizard.component';
 
 // import {
 //   MatChipsModule,
@@ -36,7 +36,7 @@ import { DiscussionsModule } from '../discussions/discussions.module';
         // A11yModule
     ],
     declarations: [
-        WizardComponent,
+        // WizardComponent,
         ProblemDetailComponent,
         ProblemsViewComponent,
     ],

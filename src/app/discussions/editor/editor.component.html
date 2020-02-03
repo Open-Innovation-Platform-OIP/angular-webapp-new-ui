@@ -21,7 +21,7 @@
       placeholder="Add a comment..."
     ></div>
     <button
-      mat-icon-button
+      i-button
       color="primary"
       aria-label="Example icon-button with a heart icon"
       (click)="clickInputFile()"
@@ -44,8 +44,8 @@
         {{ attachment.name }}
       </span>
       <span>
-        <button mat-icon-button class="removeBtn" (click)="removeFile(i)">
-          <mat-icon>close</mat-icon>
+        <button i-button class="removeBtn" (click)="removeFile(i)">
+          <i>close</i>
         </button>
       </span>
     </div>

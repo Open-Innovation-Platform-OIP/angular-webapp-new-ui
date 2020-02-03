@@ -69,7 +69,7 @@ import { split } from 'apollo-link';
 // import { ValidateModalComponent } from 'src/app/modals/validate-modal/validate-modal.component';
 // import { CollaborateModalComponent } from 'src/app/modals/collaborate-modal/collaborate-modal.component';
 // import { EnrichmentModalComponent } from 'src/app/modals/enrichment-modal/enrichment-modal.component';
-const Buffer = require('buffer/').Buffer;
+// const Buffer = require('buffer/').Buffer;
 
 const misc: any = {
     navbar_menu_visible: 0,
@@ -1703,15 +1703,15 @@ export class ProblemDetailComponent
 
         const all_promise = await attachments.map(file => {
             return new Promise((resolve, reject) => {
-                if (typeof FileReader !== 'undefined') {
-                    const reader = new FileReader();
+                // if (typeof FileReader !== 'undefined') {
+                //     const reader = new FileReader();
 
-                    reader.onload = (e: any) => {
-                        const buffer = Buffer.from(e.target.result);
-                        resolve(this.filesService.fileUpload(file, file.type));
-                    };
-                    reader.readAsArrayBuffer(file);
-                }
+                //     reader.onload = (e: any) => {
+                //         const buffer = Buffer.from(e.target.result);
+                //         resolve(this.filesService.fileUpload(file, file.type));
+                //     };
+                //     reader.readAsArrayBuffer(file);
+                // }
             });
         });
 

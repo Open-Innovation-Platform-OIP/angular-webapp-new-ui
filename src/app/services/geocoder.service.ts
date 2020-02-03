@@ -4,7 +4,7 @@ import { take } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 
 import gql from 'graphql-tag';
-declare let H: any;
+declare var H: any;
 
 @Injectable({
     providedIn: 'root',

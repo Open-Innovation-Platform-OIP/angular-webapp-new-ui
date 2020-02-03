@@ -18,6 +18,8 @@ import { GeocoderService } from 'src/app/services/geocoder.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { FocusMonitor } from '@angular/cdk/a11y';
 
+declare var H: any;
+
 @Component({
     selector: 'app-problems-view',
     templateUrl: './problems-view.component.html',
@@ -55,15 +57,15 @@ export class ProblemsViewComponent implements OnInit, OnDestroy, AfterViewInit {
     ) {
         console.log('inside problem view component');
 
-        this.tagsService
-            .getTagsFromDB(this.filterService.domain_tags_query)
-            .then(result => {
-                return this.geoService.getLocationsFromDB();
-            })
-            .then(result => {
-                this.getProblems();
-            })
-            .catch(err => console.error(err, 'error'));
+        // this.tagsService
+        //     .getTagsFromDB(this.filterService.domain_tags_query)
+        //     .then(result => {
+        //         return this.geoService.getLocationsFromDB();
+        //     })
+        //     .then(result => {
+        //         this.getProblems();
+        //     })
+        //     .catch(err => console.error(err, 'error'));
     }
 
     ngOnInit() {

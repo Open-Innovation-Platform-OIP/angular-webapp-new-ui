@@ -36,7 +36,7 @@ import { AdminGuard } from './services/admin.guard';
 export const AppRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'problems',
         pathMatch: 'full',
         canActivate: [AuthGuard],
     },
@@ -105,7 +105,7 @@ export const AppRoutes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'dashboard',
+        redirectTo: 'problems',
         canActivate: [AuthGuard],
     },
 ];
