@@ -5,38 +5,10 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { AuthGuard } from './services/auth.guard';
 import { AdminGuard } from './services/admin.guard';
 
-// const _R: Routes = [
-//     {
-//         path: 'auth',
-//         component: AuthLayoutComponent,
-//         children: [
-//             {
-//                 path: '',
-//                 loadChildren: './auth/auth.module#AuthModule',
-//             },
-//         ],
-//     },
-//     {
-//         path: '',
-//         component: AdminLayoutComponent,
-//         children: [
-//             {
-//                 path: 'landing-page',
-//                 loadChildren:
-//                     './landing-page/landing-page.module#LandingPageModule',
-//             },
-//             {
-//                 path: 'dashboard',
-//                 loadChildren: './dashboard/dashboard.module#DashboardModule',
-//             },
-//         ],
-//     },
-// ];
-
 export const AppRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'problems',
+        redirectTo: 'dashboard',
         pathMatch: 'full',
         canActivate: [AuthGuard],
     },
@@ -105,7 +77,7 @@ export const AppRoutes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'problems',
+        redirectTo: 'dashboard',
         canActivate: [AuthGuard],
     },
 ];

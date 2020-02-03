@@ -52,12 +52,13 @@ export class UsersService {
 
     constructor(private apollo: Apollo, private auth: AuthService) {
         this.getOrgsFromDB();
-        this.getUsersFromDB();
+        // this.getUsersFromDB();
         this.getCurrentUser();
     }
 
     public getCurrentUser() {
-        if (this.auth.currentUserValue) {
+        if (this.auth.currentUserValue && this.auth.currentUserValue.token) {
+            // console.log('getting current user');
             this.apollo
                 .watchQuery<any>({
                     query: gql`
