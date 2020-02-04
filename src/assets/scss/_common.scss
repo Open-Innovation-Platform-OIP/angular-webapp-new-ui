@@ -1,0 +1,17 @@
+$font20: 2rem;
+$font18: 1.8rem;
+$font16: 1.6rem;
+$font14: 1.4rem;
+$font12: 1.2rem;
+$font10: 1rem;
+
+$spacing: -0.01rem;
+$weight500: 500;
+
+$round4: 0.4rem;
+
+@mixin pattern1 {
+  letter-spacing: $spacing;
+  font-size: $font14;
+  line-height: 2.2rem;
+}

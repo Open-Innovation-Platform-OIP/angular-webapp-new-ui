@@ -13,7 +13,7 @@ const misc: any = {
 @Component({
     selector: 'app-problem-card',
     templateUrl: './problem-card.component.html',
-    styleUrls: ['./problem-card.component.css'],
+    styleUrls: ['./problem-card.component.scss'],
 })
 export class ProblemCardComponent implements OnInit {
     @Input() problemData: any;
