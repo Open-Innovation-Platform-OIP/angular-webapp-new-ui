@@ -1,0 +1,366 @@
+@import '../../../styles.scss';
+@import '../../../assets/scss/common';
+@mixin list--span {
+    color: $secondary1;
+    font-size: $font18;
+    font-weight: $weight500;
+    letter-spacing: $spacing;
+    line-height: 2.6rem;
+    margin-left: 1rem;
+}
+
+.navbar-section {
+    min-height: 6rem;
+    background-color: $secondary6;
+    box-shadow: 0 0.2rem 0.4rem 0 rgba(135, 135, 135, 0.1);
+}
+
+.nav-left-list {
+    & > li {
+        display: inline-block !important;
+    }
+
+    & > li > a {
+        position: relative !important;
+        font-size: $font14;
+        line-height: 3.6rem;
+        text-transform: capitalize;
+        color: $secondary1;
+        letter-spacing: $spacing;
+        font-weight: $weight500;
+        padding: 0 1rem;
+        margin: 0 1rem;
+    }
+}
+
+.nav-right-list {
+    & > li > a {
+        font-size: $font14;
+        line-height: 3rem;
+        height: 4.2rem;
+    }
+}
+
+.notification-icon {
+    background: $primary3;
+    color: $secondary6;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    height: 1.442rem;
+    width: 1.442rem;
+    line-height: 1.442rem;
+    position: absolute;
+    top: 0.7rem;
+    border: 0.3rem solid $secondary6;
+    right: 0.5rem;
+}
+
+.profile-btn-li {
+    display: inline;
+
+    & > a {
+        color: $secondary1;
+    }
+}
+
+.dropdown-section {
+    @include pattern1();
+    @include dropdown-common();
+
+    & > a {
+        height: 3.2rem !important;
+    }
+
+    & > div > a {
+        height: 3.2rem !important;
+    }
+
+    & > a > span {
+        margin-left: 1rem;
+    }
+}
+
+.display-sm-md {
+    display: none;
+}
+
+// .display-lg {
+//   display: inline-block;
+// }
+
+.add-problem-li {
+    & > .add-problem-btn {
+        @include pattern1();
+        box-sizing: border-box;
+        height: 4.2rem;
+        border: 0.1rem solid $primary1;
+        border-radius: $round4;
+        color: $secondary6 !important;
+        background-color: $primary2;
+        font-weight: bold;
+        text-transform: none !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+
+// .btn-border::after {
+//   content: '';
+//   height: 4.2rem;
+//   top: 0;
+//   width: 0.1rem;
+//   border: 0.1rem solid var(--primary4);
+//   position: absolute;
+//   right: 3.35rem;
+// }
+
+// .btn-arrow {
+//   margin: 0 0.5rem 0 1.9rem;
+//   /* border-left: 0.1rem solid var(--primary4); */
+// }
+
+// .weight-bold {
+//   font-weight: bold !important;
+//   /* box-sizing: border-box; */
+// }
+
+// .dropdown-item {
+//   font-size: 1.4rem;
+//   line-height: 2.3rem;
+//   word-wrap: break-word !important;
+// }
+
+// .solution-btn,
+// .problem-btn {
+//   content: url('../../../assets/svg/solution_dark_icon.svg');
+// }
+// .dropdown-item:hover > .solution-btn {
+//   content: url('../../../assets/svg/Solution_light.svg');
+// }
+
+// .dropdown-item:hover > .problem-btn {
+//   content: url('../../../assets/svg/problem_dark_icon.svg');
+// }
+
+// .dropdown-menu {
+//   max-width: 45rem;
+// }
+
+.tab-focus::after {
+    content: '';
+    width: 100%;
+    border: 0.2rem solid $primary3;
+    border-radius: 0.4rem 0.4rem 0 0;
+    box-sizing: border-box;
+    display: block;
+    position: inherit;
+    bottom: -1.1rem;
+}
+
+// li {
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+// }
+
+// .message-icon {
+//   font-size: 2rem;
+//   font-weight: 600;
+// }
+// .search-icon {
+//   font-size: 2rem;
+//   color: var(--black1);
+//   font-weight: 500;
+// }
+
+.search-icon-li {
+    & > button {
+        background-color: transparent;
+        border: transparent;
+        min-width: fit-content;
+        line-height: 3.7rem;
+        box-sizing: border-box;
+    }
+
+    &:focus {
+        outline-width: 0 !important;
+    }
+}
+
+.message-icon-li {
+    & > button {
+        background-color: transparent;
+        border: transparent;
+        min-width: fit-content;
+        line-height: 3.7rem;
+        box-sizing: border-box;
+    }
+
+    &:focus {
+        outline-width: 0 !important;
+    }
+}
+
+.icon-btn {
+    min-width: fit-content;
+    line-height: 3.7rem;
+    box-sizing: border-box;
+}
+
+@media only screen and (min-width: 501px) and (max-width: 768px) {
+    //   /* For tablets: */
+    .tab-focus::after {
+        display: none;
+    }
+
+    .profile-btn-li {
+        & > a {
+            margin-left: 1rem;
+        }
+    }
+
+    //   ul.tab-bar > li > a {
+    //     font-size: 2rem;
+    //     line-height: 4rem;
+    //     padding: 0;
+    //   }
+
+    .nav-container {
+        padding: 1rem;
+    }
+
+    .add-problem-li {
+        & > .add-problem-btn {
+            width: 23rem;
+            margin-left: 1rem;
+        }
+    }
+
+    //   .btn-border::after {
+    //     left: 19.7rem;
+    //   }
+
+    .display-sm-md {
+        display: inline-block;
+    }
+
+    .nav-right-list {
+        margin-top: 2.1rem;
+
+        & > li {
+            min-height: 4rem;
+        }
+    }
+
+    .nav-left-list {
+        margin-top: 3.7rem;
+
+        & > li {
+            min-height: 4rem;
+        }
+    }
+
+    // .search-icon-li {
+    //     & > span {
+    //         display: flex;
+    //         color: red;
+    //     }
+    // }
+
+    .icon-btn-text {
+        // color: $secondary1;
+        // font-size: $font20;
+        // font-weight: $weight500;
+        // letter-spacing: $spacing;
+        // line-height: 4rem;
+    }
+
+    //   .display-lg {
+    //     display: none;
+    //   }
+}
+
+@media only screen and (max-width: 500px) {
+    //   .nav-height {
+    //     height: auto;
+    //   }
+
+    //   .only-mobile {
+    //     display: inline;
+    //   }
+    //   span.only-mobile {
+    //     padding-left: 1rem;
+    //   }
+
+    //   .display-lg {
+    //     display: none;
+    //   }
+
+    //   .notification-icon {
+    //     right: 9rem;
+    //   }
+
+    .tab-focus::after {
+        display: none;
+    }
+
+    .search-icon-li {
+        & > span {
+            margin-left: 1.4rem;
+        }
+    }
+
+    .notification-icon {
+        right: none;
+        left: 2rem;
+    }
+
+    .profile-btn-li {
+        & > a {
+            margin-left: 0.5rem;
+        }
+
+        & > a > span {
+            @include list--span();
+        }
+    }
+
+    .add-problem-li {
+        margin-top: 3rem;
+    }
+
+    .nav-right-list {
+        & > li {
+            display: flex !important;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        & > li > span {
+            @include list--span();
+        }
+    }
+
+    .nav-container {
+        padding: 1rem;
+    }
+
+    .display-sm-md {
+        display: inline-block;
+    }
+
+    .nav-left-list {
+        margin-top: 3.7rem;
+
+        & > li > a {
+            font-size: 1.8rem;
+            line-height: 4rem;
+            padding: 0;
+        }
+    }
+
+    .icon-text {
+        font-size: $font18;
+    }
+}

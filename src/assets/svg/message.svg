@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="17px" viewBox="0 0 25 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 61 (101010) - https://sketch.com -->
+    <title>41169215-0E03-436D-B9A0-9BB3779D47C4</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sprint-Component" transform="translate(-912.000000, -7970.000000)" fill="#2D2D2D" fill-rule="nonzero">
+            <g id="1440---Header" transform="translate(0.000000, 7948.000000)">
+                <g id="RHS" transform="translate(850.000000, 9.000000)">
+                    <g id="Message-/-Notification" transform="translate(62.000000, 10.000000)">
+                        <path d="M0,3.15789474 L0,20 L24.0601504,20 L24.0601504,3.15789474 L0,3.15789474 Z M19.7293233,5.56390977 L12.0300752,12.4210526 L4.33082707,5.56390977 L19.7293233,5.56390977 Z M2.40601504,17.593985 L2.40601504,7.0075188 L11.1879699,14.8270677 C11.4285714,15.0676692 11.7894737,15.1879699 12.0300752,15.1879699 C12.2706767,15.1879699 12.6315789,15.0676692 12.8721805,14.8270677 L21.6541353,7.0075188 L21.6541353,17.593985 L2.40601504,17.593985 Z" id="Message"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

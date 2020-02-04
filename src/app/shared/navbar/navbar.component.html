@@ -10,7 +10,7 @@
         </div>
       </a>
     </div>
-    <button mat-button class="navbar-toggler btn-no-ripple" type="button" (click)="sidebarToggle()">
+    <button   class="navbar-toggler btn-no-ripple" type="button" (click)="sidebarToggle()">
       <span class="sr-only">Toggle navigation</span>
       <span class="navbar-toggler-icon icon-bar"></span>
       <span class="navbar-toggler-icon icon-bar"></span>
@@ -241,479 +241,518 @@
   </div>
 </nav> -->
 
-<nav class="navbar navbar-expand-lg nav-props">
-  <div class="container container-dim ">
-    <a
-      class="navbar-brand p-md-0 pr-lg-3"
-      href="javascript:void();"
-      [routerLink]="['/dashboard']"
-      queryParamsHandling="merge"
-    >
-      <img
-        src="/assets/img/Logo.svg"
-        width="67"
-        height="34"
-        alt="social alpha logo"
-      />
-    </a>
-    <button
-      class="navbar-toggler py-2 border-0"
-      type="button"
-      data-toggle="collapse"
-      data-target="#socialAlphaNavbar"
-      aria-controls="socialAlphaNavbar"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span><img src="../../../assets/svg/Menu.svg" alt=""/></span>
-    </button>
-    <div class="collapse navbar-collapse" id="socialAlphaNavbar">
-      <ul class="navbar-nav mt-lg-0 tab-bar">
-        <li class="nav-item">
-          <a
-            class="nav-item nav-link"
-            routerLinkActive="weight-bold tab-focus"
+<nav class="navbar navbar-expand-lg navbar-section">
+    <div class="container nav-container">
+        <a
+            class="navbar-brand p-md-0 pr-lg-3"
             href="javascript:void();"
             [routerLink]="['/dashboard']"
             queryParamsHandling="merge"
-            *ngIf="auth.currentUserValue.id"
-          >
-            Dashboard
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-item nav-link "
-            routerLinkActive="active weight-bold tab-focus"
-            href="javascript:void();"
-            [routerLink]="['/problems']"
-            queryParamsHandling="merge"
-            >Problems</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-item nav-link "
-            routerLinkActive="active weight-bold tab-focus"
-            href="javascript:void();"
-            [routerLink]="['/solutions']"
-            queryParamsHandling="merge"
-            >Solutions</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-item nav-link "
-            routerLinkActive="active weight-bold tab-focus"
-            href="javascript:void();"
-            [routerLink]="['/admin']"
-            queryParamsHandling="merge"
-            *ngIf="auth.currentUserValue.is_admin"
-            >Admin</a
-          >
-        </li>
-      </ul>
-
-      <hr />
-      <ul class="navbar-nav mt-lg-0 right-side">
-        <li class="nav-item ml-lg-3">
-          <button mat-button (click)="openSearchComponent()" class="icon-btn">
+        >
             <img
-              src="../../../assets/svg/Search.svg"
-              alt=""
-              width="20"
-              height="20"
+                src="../../../assets/svg/logo.svg"
+                width="67"
+                height="34"
+                alt="social alpha logo"
             />
-          </button>
-          <span class="d-block d-lg-none icon-text">Search</span>
-        </li>
-
-        <li
-          class="nav-item dropdown ml-lg-3 mr-lg-4"
-          *ngIf="auth.currentUserValue.id"
-        >
-          <button
-            mat-button
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
+        </a>
+        <button
+            class="navbar-toggler py-2"
+            type="button"
+            data-toggle="collapse"
+            data-target="#socialAlphaNavbar"
+            aria-controls="socialAlphaNavbar"
             aria-expanded="false"
-            class="icon-btn"
-          >
-            <i
-              class="far fa-envelope"
-              style="font-size: 2.3rem; color: var(--black1);"
-            ></i>
-
-            <span
-              *ngIf="objectValues(notifications).length"
-              class="notification-icon"
-              >{{ objectValues(notifications).length }}</span
-            >
-          </button>
-          <span class="d-block d-lg-none icon-text">Messages</span>
-
-          <div
-            class="dropdown-menu dropdown-menu-right mt-3"
-            aria-labelledby="navbarDropdownMenuLink"
-            style="max-height: 50rem; overflow-y: auto;"
-          >
-            <div *ngFor="let notification of objectValues(notifications)">
-              <a
-                *ngIf="
-                  notification.problem &&
-                  !notification.solution_id &&
-                  !notification.enrichment_id &&
-                  !notification.collaborator &&
-                  !notification.discussion_id &&
-                  notification.user_id &&
-                  notification.tag_id &&
-                  !notification.is_update &&
-                  !notification.validated_by
-                "
-                class="dropdown-item"
-                name="{{ notification.id }}"
-                [routerLink]="'/problems/' + notification.problem_id"
-                queryParamsHandling="merge"
-                (click)="onRead($event)"
-              >
-                New problem "{{ notification.problem.title }}"
-                {{ (notification.is_update && 'updated') || 'added' }} in sector
-                "{{ notification.tag.name }}"
-              </a>
-
-              <a
-                *ngIf="
-                  notification.problem &&
-                  notification.is_update &&
-                  !notification.solution_id &&
-                  !notification.enrichment_id &&
-                  !notification.collaborator &&
-                  !notification.discussion_id &&
-                  notification.user_id &&
-                  !notification.tag_id &&
-                  !notification.validated_by
-                "
-                class="dropdown-item"
-                name="{{ notification.id }}"
-                [routerLink]="'/problems/' + notification.problem_id"
-                queryParamsHandling="merge"
-                (click)="onRead($event)"
-              >
-                Problem "{{ notification.problem.title }}" is updated
-              </a>
-
-              <a
-                *ngIf="notification.problem && notification.enrichment_id"
-                class="dropdown-item"
-                name="{{ notification.id }}"
-                (click)="onRead($event)"
-                [routerLink]="'/problems/' + notification.problem_id"
-                queryParamsHandling="merge"
-              >
-                Enrichment added for problem "{{ notification.problem.title }}"
-              </a>
-
-              <a
-                *ngIf="
-                  notification.problem &&
-                  notification.collaborator &&
-                  !notification.solution_id
-                "
-                class="dropdown-item"
-                name="{{ notification.id }}"
-                (click)="onRead($event)"
-                [routerLink]="'/problems/' + notification.problem_id"
-                queryParamsHandling="merge"
-              >
-                New collaboration on problem "{{ notification.problem.title }}"
-              </a>
-
-              <a
-                *ngIf="
-                  notification.problem &&
-                  notification.user_id &&
-                  notification.validated_by &&
-                  !notification.solution_id
-                "
-                class="dropdown-item"
-                name="{{ notification.id }}"
-                (click)="onRead($event)"
-                [routerLink]="'/problems/' + notification.problem_id"
-                queryParamsHandling="merge"
-              >
-                Problem "{{ notification.problem.title }}" is validated by an
-                expert
-              </a>
-
-              <a
-                *ngIf="notification.problem && notification.discussion_id"
-                class="dropdown-item"
-                name="{{ notification.id }}"
-                (click)="onRead($event)"
-                [routerLink]="'/problems/' + notification.problem_id"
-                queryParamsHandling="merge"
-              >
-                You were mentioned on discussion "{{
-                  notification.discussion.text
-                }}" on problem "{{ notification.problem.title }}"
-              </a>
-
-              <a
-                *ngIf="
-                  notification.solution_id &&
-                  !notification.is_update &&
-                  notification.problem_id &&
-                  !notification.collaborator &&
-                  !notification.validated_by
-                "
-                class="dropdown-item"
-                name="{{ notification.id }}"
-                (click)="onRead($event)"
-                [routerLink]="'/solutions/' + notification.solution_id"
-                queryParamsHandling="merge"
-              >
-                Solution added for problem "{{ notification.problem.title }}"
-              </a>
-
-              <a
-                *ngIf="
-                  notification.solution_id &&
-                  notification.is_update &&
-                  !notification.problem_id &&
-                  !notification.collaborator &&
-                  !notification.validated_by
-                "
-                class="dropdown-item"
-                name="{{ notification.id }}"
-                (click)="onRead($event)"
-                [routerLink]="'/solutions/' + notification.solution_id"
-                queryParamsHandling="merge"
-              >
-                Solution "{{ notification.solution.title }}" updated
-              </a>
-
-              <a
-                *ngIf="
-                  notification.solution_id &&
-                  !notification.is_update &&
-                  !notification.problem_id &&
-                  notification.collaborator &&
-                  !notification.validated_by
-                "
-                class="dropdown-item"
-                name="{{ notification.id }}"
-                (click)="onRead($event)"
-                [routerLink]="'/solutions/' + notification.solution_id"
-                queryParamsHandling="merge"
-              >
-                New collaboration on solution "{{
-                  notification.solution.title
-                }}"
-              </a>
-
-              <a
-                *ngIf="
-                  notification.solution_id &&
-                  !notification.is_update &&
-                  !notification.problem_id &&
-                  !notification.collaborator &&
-                  notification.validated_by
-                "
-                class="dropdown-item"
-                name="{{ notification.id }}"
-                (click)="onRead($event)"
-                [routerLink]="'/solutions/' + notification.solution_id"
-                queryParamsHandling="merge"
-              >
-                Expert validation on solution "{{
-                  notification.solution.title
-                }}"
-              </a>
-            </div>
-
-            <div
-              class="text-center"
-              *ngIf="
-                objectValues(notifications).length > 0;
-                else noNotification
-              "
-            >
-              <button
-                mat-raised-button
-                class="btn btn-success my-2"
-                style="font-size: 1.1rem;"
-                (click)="allRead()"
-                *ngIf="objectValues(notifications).length > 1"
-              >
-                Mark all as Read
-              </button>
-            </div>
-
-            <ng-template #noNotification>
-              <a
-                class="dropdown-item disabled"
-                aria-disabled="true"
-                href="javascript:void(0);"
-                >No New Notifications</a
-              >
-            </ng-template>
-          </div>
-        </li>
-
-        <li
-          class="nav-item dropdown"
-          *ngIf="auth.currentUserValue.id"
-          style="display: inline;"
+            aria-label="Toggle navigation"
         >
-          <a
-            class="nav-link profile-icon dropdown-toggle"
-            href="#"
-            id="profileDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <img
-              src="{{
-                usersService.currentUser.photo_url &&
-                usersService.currentUser.photo_url.fileEndpoint
-                  ? filesService.fileAccessUrl +
-                    usersService.currentUser.photo_url.fileEndpoint
-                  : './assets/img/default-avatar.png'
-              }}"
-              alt="profile photo"
-              height="30"
-              width="30"
-              style="border-radius: .4rem; object-fit:cover;"
-            />
+            <span><img src="../../../assets/svg/Menu.svg" alt=""/></span>
+        </button>
+        <div class="collapse navbar-collapse " id="socialAlphaNavbar">
+            <ul class="navbar-nav mt-lg-0 tab-bar nav-left-list">
+                <li class="nav-item">
+                    <a
+                        class="nav-item nav-link"
+                        routerLinkActive="weight-bold tab-focus"
+                        href="javascript:void();"
+                        [routerLink]="['/dashboard']"
+                        queryParamsHandling="merge"
+                        *ngIf="auth.currentUserValue.id"
+                    >
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-item nav-link "
+                        routerLinkActive="active weight-bold tab-focus"
+                        href="javascript:void();"
+                        [routerLink]="['/problems']"
+                        queryParamsHandling="merge"
+                        >Problems</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-item nav-link "
+                        routerLinkActive="active weight-bold tab-focus"
+                        href="javascript:void();"
+                        [routerLink]="['/solutions']"
+                        queryParamsHandling="merge"
+                        >Solutions</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-item nav-link "
+                        routerLinkActive="active weight-bold tab-focus"
+                        href="javascript:void();"
+                        [routerLink]="['/admin']"
+                        queryParamsHandling="merge"
+                        *ngIf="auth.currentUserValue.is_admin"
+                        >Admin</a
+                    >
+                </li>
+            </ul>
 
-            <span class="display-sm-md icon-text text-capitalize ml-3"
-              >Profile</span
-            >
-          </a>
-          <div class="dropdown-menu mt-3 dropdown-menu-right">
-            <a
-              class="dropdown-item text-capitalize"
-              href="javascript:void(0);"
-              disabled="true"
-              *ngIf="usersService.currentUser.name"
-            >
-              {{ usersService.currentUser.name }}
-            </a>
-            <a
-              class="dropdown-item text-capitalize"
-              href="javascript:void(0);"
-              disabled="true"
-              *ngIf="usersService.currentUser.organization"
-            >
-              {{ usersService.currentUser.organization }}
-            </a>
-            <div class="dropdown-divider display-md"></div>
-            <a
-              class="dropdown-item"
-              [routerLink]="'/users/' + auth.currentUserValue.id"
-              queryParamsHandling="merge"
-            >
-              My Profile
-            </a>
-            <a
-              href="javascript:void(0);"
-              class="dropdown-item d-none d-lg-block"
-              (click)="logout()"
-            >
-              <i
-                class="material-icons"
-                aria-hidden="true"
-                style="font-size: medium;"
-                >logout</i
-              >
-              <span style="padding-left: .25rem;">Log Out</span>
-            </a>
-          </div>
-        </li>
+            <hr />
+            <ul class="navbar-nav mt-lg-0 nav-right-list">
+                <li class="nav-item ml-lg-3 search-icon-li">
+                    <button (click)="openSearchComponent()">
+                        <img
+                            src="../../../assets/svg/Search.svg"
+                            alt=""
+                            width="20"
+                            height="20"
+                        />
+                    </button>
+                    <span class="d-block d-lg-none">Search</span>
+                </li>
 
-        <li class="nav-item d-block d-lg-none" *ngIf="auth.currentUserValue.id">
-          <button mat-button (click)="logout()" class="icon-btn">
-            <i class="material-icons" aria-hidden="true">logout</i>
-          </button>
+                <li
+                    class="nav-item dropdown ml-lg-3 mr-lg-4 message-icon-li"
+                    *ngIf="auth.currentUserValue.id"
+                >
+                    <button
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        class="icon-btn"
+                    >
+                        <img
+                            src="../../../assets/svg/message.svg"
+                            alt=""
+                            height="16.84"
+                            width="24.06"
+                        />
 
-          <span class="display-sm-md icon-text">Log Out</span>
-        </li>
+                        <span
+                            *ngIf="objectValues(notifications).length"
+                            class="notification-icon"
+                        ></span>
+                    </button>
+                    <span class="d-block d-lg-none  icon-btn-text"
+                        >Messages</span
+                    >
 
-        <li
-          class="nav-item dropdown ml-lg-5 d-none d-md-block"
-          *ngIf="auth.currentUserValue.id"
-        >
-          <a
-            class="nav-link dropdown-toggle add-problem-btn"
-            href="javascript:void(0);"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Add a Problem / Solution
-          </a>
-          <div class="dropdown-menu mt-3 dropdown-menu-right">
-            <a
-              class="dropdown-item"
-              href="javascript:void(0);"
-              [routerLink]="['/problems/add']"
-              queryParamsHandling="merge"
-            >
-              <img
-                src="../../../assets/svg/Problem Icon.svg"
-                alt=""
-                height="22"
-                class="problem-btn"
-                style="padding-right: .5rem;"
-                width="30"
-              />
-              Add a Problem
-            </a>
-            <a
-              class="dropdown-item"
-              href="javascript:void(0);"
-              [routerLink]="['/solutions/add']"
-              queryParamsHandling="merge"
-            >
-              <img
-                src="../../../assets/svg/Solution_light.svg"
-                alt=""
-                height="22"
-                class="solution-btn"
-                style="padding-right: .5rem;"
-                width="30"
-              />
-              Add a Solution
-            </a>
-          </div>
-        </li>
+                    <div
+                        class="dropdown-menu dropdown-menu-right mt-3 dropdown-section"
+                        aria-labelledby="navbarDropdownMenuLink"
+                        style="max-height: 50rem; overflow-y: auto;"
+                    >
+                        <div
+                            *ngFor="
+                                let notification of objectValues(notifications)
+                            "
+                        >
+                            <a
+                                *ngIf="
+                                    notification.problem &&
+                                    !notification.solution_id &&
+                                    !notification.enrichment_id &&
+                                    !notification.collaborator &&
+                                    !notification.discussion_id &&
+                                    notification.user_id &&
+                                    notification.tag_id &&
+                                    !notification.is_update &&
+                                    !notification.validated_by
+                                "
+                                class="dropdown-item"
+                                name="{{ notification.id }}"
+                                [routerLink]="
+                                    '/problems/' + notification.problem_id
+                                "
+                                queryParamsHandling="merge"
+                                (click)="onRead($event)"
+                            >
+                                New problem "{{ notification.problem.title }}"
+                                {{
+                                    (notification.is_update && 'updated') ||
+                                        'added'
+                                }}
+                                in sector "{{ notification.tag.name }}"
+                            </a>
 
-        <li class="nav-item" *ngIf="!auth.currentUserValue.id">
-          <button
-            mat-button
-            color="primary"
-            [routerLink]="['/auth/register']"
-            queryParamsHandling="merge"
-          >
-            Register
-          </button>
-        </li>
-        <li class="nav-item" *ngIf="!auth.currentUserValue.id">
-          <button
-            mat-button
-            class="pr-0"
-            color="primary"
-            [routerLink]="['/auth/login']"
-            queryParamsHandling="merge"
-          >
-            Login
-          </button>
-        </li>
-      </ul>
+                            <a
+                                *ngIf="
+                                    notification.problem &&
+                                    notification.is_update &&
+                                    !notification.solution_id &&
+                                    !notification.enrichment_id &&
+                                    !notification.collaborator &&
+                                    !notification.discussion_id &&
+                                    notification.user_id &&
+                                    !notification.tag_id &&
+                                    !notification.validated_by
+                                "
+                                class="dropdown-item"
+                                name="{{ notification.id }}"
+                                [routerLink]="
+                                    '/problems/' + notification.problem_id
+                                "
+                                queryParamsHandling="merge"
+                                (click)="onRead($event)"
+                            >
+                                Problem "{{ notification.problem.title }}" is
+                                updated
+                            </a>
+
+                            <a
+                                *ngIf="
+                                    notification.problem &&
+                                    notification.enrichment_id
+                                "
+                                class="dropdown-item"
+                                name="{{ notification.id }}"
+                                (click)="onRead($event)"
+                                [routerLink]="
+                                    '/problems/' + notification.problem_id
+                                "
+                                queryParamsHandling="merge"
+                            >
+                                Enrichment added for problem "{{
+                                    notification.problem.title
+                                }}"
+                            </a>
+
+                            <a
+                                *ngIf="
+                                    notification.problem &&
+                                    notification.collaborator &&
+                                    !notification.solution_id
+                                "
+                                class="dropdown-item"
+                                name="{{ notification.id }}"
+                                (click)="onRead($event)"
+                                [routerLink]="
+                                    '/problems/' + notification.problem_id
+                                "
+                                queryParamsHandling="merge"
+                            >
+                                New collaboration on problem "{{
+                                    notification.problem.title
+                                }}"
+                            </a>
+
+                            <a
+                                *ngIf="
+                                    notification.problem &&
+                                    notification.user_id &&
+                                    notification.validated_by &&
+                                    !notification.solution_id
+                                "
+                                class="dropdown-item"
+                                name="{{ notification.id }}"
+                                (click)="onRead($event)"
+                                [routerLink]="
+                                    '/problems/' + notification.problem_id
+                                "
+                                queryParamsHandling="merge"
+                            >
+                                Problem "{{ notification.problem.title }}" is
+                                validated by an expert
+                            </a>
+
+                            <a
+                                *ngIf="
+                                    notification.problem &&
+                                    notification.discussion_id
+                                "
+                                class="dropdown-item"
+                                name="{{ notification.id }}"
+                                (click)="onRead($event)"
+                                [routerLink]="
+                                    '/problems/' + notification.problem_id
+                                "
+                                queryParamsHandling="merge"
+                            >
+                                You were mentioned on discussion "{{
+                                    notification.discussion.text
+                                }}" on problem "{{
+                                    notification.problem.title
+                                }}"
+                            </a>
+
+                            <a
+                                *ngIf="
+                                    notification.solution_id &&
+                                    !notification.is_update &&
+                                    notification.problem_id &&
+                                    !notification.collaborator &&
+                                    !notification.validated_by
+                                "
+                                class="dropdown-item"
+                                name="{{ notification.id }}"
+                                (click)="onRead($event)"
+                                [routerLink]="
+                                    '/solutions/' + notification.solution_id
+                                "
+                                queryParamsHandling="merge"
+                            >
+                                Solution added for problem "{{
+                                    notification.problem.title
+                                }}"
+                            </a>
+
+                            <a
+                                *ngIf="
+                                    notification.solution_id &&
+                                    notification.is_update &&
+                                    !notification.problem_id &&
+                                    !notification.collaborator &&
+                                    !notification.validated_by
+                                "
+                                class="dropdown-item"
+                                name="{{ notification.id }}"
+                                (click)="onRead($event)"
+                                [routerLink]="
+                                    '/solutions/' + notification.solution_id
+                                "
+                                queryParamsHandling="merge"
+                            >
+                                Solution "{{ notification.solution.title }}"
+                                updated
+                            </a>
+
+                            <a
+                                *ngIf="
+                                    notification.solution_id &&
+                                    !notification.is_update &&
+                                    !notification.problem_id &&
+                                    notification.collaborator &&
+                                    !notification.validated_by
+                                "
+                                class="dropdown-item"
+                                name="{{ notification.id }}"
+                                (click)="onRead($event)"
+                                [routerLink]="
+                                    '/solutions/' + notification.solution_id
+                                "
+                                queryParamsHandling="merge"
+                            >
+                                New collaboration on solution "{{
+                                    notification.solution.title
+                                }}"
+                            </a>
+
+                            <a
+                                *ngIf="
+                                    notification.solution_id &&
+                                    !notification.is_update &&
+                                    !notification.problem_id &&
+                                    !notification.collaborator &&
+                                    notification.validated_by
+                                "
+                                class="dropdown-item"
+                                name="{{ notification.id }}"
+                                (click)="onRead($event)"
+                                [routerLink]="
+                                    '/solutions/' + notification.solution_id
+                                "
+                                queryParamsHandling="merge"
+                            >
+                                Expert validation on solution "{{
+                                    notification.solution.title
+                                }}"
+                            </a>
+                        </div>
+
+                        <div
+                            class="text-center"
+                            *ngIf="
+                                objectValues(notifications).length > 0;
+                                else noNotification
+                            "
+                        >
+                            <button
+                                mat-raised-button
+                                class="btn btn-success my-2"
+                                style="font-size: 1.1rem;"
+                                (click)="allRead()"
+                                *ngIf="objectValues(notifications).length > 1"
+                            >
+                                Mark all as Read
+                            </button>
+                        </div>
+
+                        <ng-template #noNotification>
+                            <a
+                                class="dropdown-item disabled"
+                                aria-disabled="true"
+                                href="javascript:void(0);"
+                                >No New Notifications</a
+                            >
+                        </ng-template>
+                    </div>
+                </li>
+
+                <li
+                    class="nav-item dropdown profile-btn-li"
+                    *ngIf="auth.currentUserValue.id"
+                >
+                    <a
+                        class="nav-link profile-icon dropdown-toggle"
+                        href="#"
+                        id="profileDropdown"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+                        <img
+                            src="{{
+                                usersService.currentUser.photo_url &&
+                                usersService.currentUser.photo_url.fileEndpoint
+                                    ? filesService.fileAccessUrl +
+                                      usersService.currentUser.photo_url
+                                          .fileEndpoint
+                                    : './assets/img/default-avatar.png'
+                            }}"
+                            alt="profile photo"
+                            height="30"
+                            width="30"
+                            style="border-radius: .4rem; object-fit:cover;"
+                        />
+
+                        <span
+                            class="display-sm-md  icon-btn-text text-capitalize ml-3"
+                            >Profile</span
+                        >
+                    </a>
+                    <div
+                        class="dropdown-menu mt-3 dropdown-menu-right dropdown-section"
+                    >
+                        <a
+                            class="dropdown-item"
+                            [routerLink]="'/users/' + auth.currentUserValue.id"
+                            queryParamsHandling="merge"
+                        >
+                            <img
+                                src="../../../assets/svg/profile.svg"
+                                alt=""
+                                width="16"
+                                height="16"
+                            />
+                            <span> Profile</span>
+                        </a>
+                        <a
+                            href="javascript:void(0);"
+                            class="dropdown-item d-none d-lg-block"
+                            (click)="logout()"
+                        >
+                            <img
+                                src="../../../assets/svg/logout.svg"
+                                alt=""
+                                width="16"
+                                height="16"
+                            />
+                            <span>Log Out</span>
+                        </a>
+                    </div>
+                </li>
+
+                <li
+                    class="nav-item d-block d-lg-none"
+                    *ngIf="auth.currentUserValue.id"
+                >
+                    <button (click)="logout()" class="">
+                        <img
+                            src="../../../assets/svg/logout.svg"
+                            alt=""
+                            width="20"
+                            height="20"
+                        />
+                    </button>
+
+                    <span class="display-sm-md ">Log Out</span>
+                </li>
+
+                <li
+                    class="nav-item dropdown ml-lg-5 d-none d-md-block add-problem-li"
+                    *ngIf="auth.currentUserValue.id"
+                >
+                    <a
+                        class="nav-link dropdown-toggle add-problem-btn"
+                        href="javascript:void(0);"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+                        Add a Problem / Solution
+                    </a>
+                    <div
+                        class="dropdown-menu mt-3 dropdown-menu-right dropdown-section"
+                    >
+                        <a
+                            class="dropdown-item"
+                            href="javascript:void(0);"
+                            [routerLink]="['/problems/add']"
+                            queryParamsHandling="merge"
+                        >
+                            <img
+                                src="../../../assets/svg/problem.svg"
+                                alt=""
+                                height="22"
+                                width="30"
+                            />
+                            <span> Add a Problem</span>
+                        </a>
+                        <a
+                            class="dropdown-item"
+                            href="javascript:void(0);"
+                            [routerLink]="['/solutions/add']"
+                            queryParamsHandling="merge"
+                        >
+                            <img
+                                src="../../../assets/svg/solution_dark_icon.svg"
+                                alt=""
+                                height="22"
+                                width="30"
+                            />
+                            <span> Add a Solution </span>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="nav-item" *ngIf="!auth.currentUserValue.id">
+                    <button
+                        [routerLink]="['/auth/register']"
+                        queryParamsHandling="merge"
+                    >
+                        Register
+                    </button>
+                </li>
+                <li class="nav-item" *ngIf="!auth.currentUserValue.id">
+                    <button
+                        class="pr-0"
+                        [routerLink]="['/auth/login']"
+                        queryParamsHandling="merge"
+                    >
+                        Login
+                    </button>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>

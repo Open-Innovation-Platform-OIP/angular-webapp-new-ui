@@ -40,7 +40,7 @@ declare var $: any;
 @Component({
     selector: 'app-navbar-cmp',
     templateUrl: 'navbar.component.html',
-    styleUrls: ['./navbar.component.css'],
+    styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
     @Input() userData: any;

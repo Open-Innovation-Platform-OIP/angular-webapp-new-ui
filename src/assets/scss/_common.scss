@@ -1,0 +1,31 @@
+$font20: 2rem;
+$font18: 1.8rem;
+$font16: 1.6rem;
+$font14: 1.4rem;
+$font12: 1.2rem;
+$font10: 1rem;
+
+$spacing: -0.01rem;
+$weight500: 500;
+
+$round4: 0.4rem;
+
+@mixin pattern1 {
+    letter-spacing: $spacing;
+    font-size: $font14;
+    line-height: 2.2rem;
+}
+
+@mixin dropdown-common {
+    font-weight: $weight500 !important;
+    color: $secondary1;
+    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05),
+        0 1px 10px 0 rgba(63, 63, 68, 0.15);
+    border-radius: 0.6rem;
+    border: 0.1rem solid $secondary5;
+
+    & :hover {
+        background-color: $secondary5;
+        cursor: pointer;
+    }
+}
