@@ -1,5 +1,5 @@
-<div class="wrapper">
-    <!-- <div
+<!-- <div class="wrapper"> -->
+<!-- <div
     class="sidebar"
     data-color="white"
     *ngIf="isMobileMenu()"
@@ -13,14 +13,16 @@
     ></div>
   </div> -->
 
-    <app-navbar-cmp></app-navbar-cmp>
+<app-navbar-cmp></app-navbar-cmp>
 
-    <!-- <app-header></app-header> -->
+<!-- <app-header></app-header> -->
 
-    <div class="main-panel">
-        <router-outlet></router-outlet>
-        <app-footer-cmp></app-footer-cmp>
-    </div>
-
-    <!-- <app-fixedplugin *ngIf="showButton()"></app-fixedplugin> -->
+<!-- <div class="main-panel"> -->
+<div style="min-height: 80vh;">
+    <router-outlet></router-outlet>
 </div>
+<app-footer-cmp></app-footer-cmp>
+<!-- </div> -->
+
+<!-- <app-fixedplugin *ngIf="showButton()"></app-fixedplugin> -->
+<!-- </div> -->
