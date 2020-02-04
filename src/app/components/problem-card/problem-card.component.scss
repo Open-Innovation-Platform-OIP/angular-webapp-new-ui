@@ -37,7 +37,7 @@
   border-radius: $round4;
   width: 7.8rem;
   padding: 0.2rem 0;
-  border-radius: 4px;
+
 }
 
 .red-bullet {
@@ -74,6 +74,8 @@
   font-size: $font14;
   line-height: 2.2rem;
   font-weight: 800;
+  overflow: hidden;
+
   letter-spacing: -0.01rem;
 }
 
@@ -148,16 +150,18 @@
 }
 
 .total-count {
-  height: 2.5rem;
+  height: 2rem;
   width: 3rem;
+  padding-top: 0.3rem;
   text-align: center;
   border: 0.1rem solid #979797;
-  border-radius: $round4;
-  background-color: $secondary5;
+  border-radius: 0.4rem;
+  background-color: #f7f7f7;
   color: #0c1114;
-  line-height: 2.3rem;
-  font-size: $font10;
-  font-weight: 500;
+  line-height: 1.2rem;
+  margin-top: 5rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .image-and-count-container {
@@ -170,33 +174,12 @@
   bottom: 0.1rem;
 }
 
-@media only screen and (max-width: 1024px) {
-  .followers {
-    width: 23.8rem;
-  }
-
-  .left-side {
-    width: unset;
-  }
-
-  .image {
-    width: unset;
-    height: 20rem;
-  }
-}
 
 @media only screen and (max-width: 766px) {
   .image-ipad {
-    width: 95%;
-  }
-
-  .left-side {
-    width: 28rem;
-  }
-
-  .right-side {
     width: 20rem;
   }
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -206,17 +189,6 @@
     height: auto;
   }
 
-  .left-side {
-    width: unset;
-  }
-
-  .right-side {
-    width: unset;
-  }
-
-  .right-side {
-    margin-bottom: 1rem;
-  }
 
   .image-and-count-container img {
     width: 100%;
