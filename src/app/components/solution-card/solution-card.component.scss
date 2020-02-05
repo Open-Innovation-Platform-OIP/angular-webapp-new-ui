@@ -1,10 +1,21 @@
-/* NEW-UI */
+@import "../../../styles.scss";
+@import "../../../assets/scss/common";
+
 .image {
   width: 21.1rem;
   height: 14.6rem;
-  border-radius: var(--border-radius-4);
+  border-radius: $round4;
   object-fit: cover;
 }
+
+.image-ipad {
+  height: 19.9rem;
+  width: 28rem;
+  border-radius: $round4;
+  object-fit: cover;
+}
+
+
 
 .problem-container {
   display: grid;
@@ -20,10 +31,10 @@
 .problem {
   display: flex;
   align-items: center;
-  background-color: #fdecec;
-  font-size: var(--font-12);
-  font-weight: 500;
-  border-radius: var(--border-radius-4);
+  background-color: $tertiary2;
+  font-size: $font12;
+  font-weight: $weight500;
+  border-radius: $round4;
   width: 7.5rem;
   padding: 0.5rem 0;
 }
@@ -32,46 +43,50 @@
   display: inline-block;
   width: 1rem;
   height: 1rem;
-  background-color: #f2342f;
+  background-color: $tertiary1;
   border-radius: 50%;
   margin: 0 0.5rem 0 0.8rem;
 }
 
+
 .solution {
   display: flex;
   align-items: center;
-  background-color: #e8faeb;
-  font-size: var(--font-12);
-  font-weight: 500;
-  border-radius: var(--border-radius-4);
-  width: 7.5rem;
+  background-color: $tertiary4;
+  font-size: $font12;
+  font-weight: $weight500;
+  border-radius: $round4;
+  width: 7.8rem;
+  padding: 0.2rem 0;
 }
 
 .green-bullet {
   display: inline-block;
   width: 1rem;
   height: 1rem;
-  background-color: #00945a;
+  background-color: $tertiary3;
   border-radius: 50%;
   margin: 0 0.5rem 0 0.8rem;
 }
 
 .heading-container .heading {
+  height: 4.5rem;
   max-width: 90%;
-  min-height: 4.5rem;
-  font-size: var(--font-14);
-  font-weight: 800;
-  letter-spacing: -0.01rem;
+  font-size: $font14;
+  line-height: 2.2rem;
+  font-weight: $weight800;
+  overflow: hidden;
+  letter-spacing: $spacing;
 }
 
 .created-by {
   display: flex;
-  height: 3.2rem;
+  height: 4rem;
 }
 
 .created-by-right-side {
-  font-size: var(--font-12);
-  color: #717171;
+  font-size: $font12;
+  color: $secondary2;
   display: grid;
   margin-left: 1rem;
   max-width: 80%;
@@ -85,7 +100,8 @@
 .small-profile {
   width: 3.2rem;
   height: 3.2rem;
-  border-radius: var(--border-radius-4);
+  border-radius: $round4;
+  margin-top: 0.4rem;
   object-fit: cover;
 }
 
@@ -96,21 +112,21 @@
 }
 
 .tag {
-  color: #2d2d2d;
-  font-size: var(--font-12);
-  letter-spacing: -0.01rem;
+  color: $secondary1;
+  font-size: $font12;
+  letter-spacing: $spacing;
   line-height: 1.5rem;
-  border: 0.1rem solid #e1e1e1;
+  border: 0.1rem solid $secondary4;
   padding: 0.3rem 0.5rem;
   margin: 0.2rem 0.2rem 0.2rem 0;
-  border-radius: var(--border-radius-4);
+  border-radius: $round4;
 }
 
 .interaction-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  font-size: var(--font-12);
-  font-weight: 600;
+  font-size: $font12;
+  font-weight: $weight600;
 }
 
 .likes,
@@ -134,32 +150,37 @@
 }
 
 .total-count {
-  height: 2.5rem;
+  height: 2rem;
   width: 3rem;
+  padding-top: 0.3rem;
   text-align: center;
-  border: 0.1rem solid #979797;
-  border-radius: var(--border-radius-4);
-  background-color: #f7f7f7;
-  color: #0c1114;
-  line-height: 2.3rem;
-  font-size: var(--font-10);
-  font-weight: 500;
+  border: 0.1rem solid $secondary2;
+  border-radius: $round4;
+  background-color: $secondary5;
+  color: $secondary1;
+  line-height: 1.2rem;
+  margin-top: 5rem;
+  font-size: $font10;
+  font-weight: $weight600;
 }
 
 .image-and-count-container {
   position: relative;
 }
 
-.image-and-count-container > div {
+.image-and-count-container>div {
   position: absolute;
   right: 0.1rem;
   bottom: 0.1rem;
 }
 
-@media only screen and (max-width: 1024px) {
-  .followers {
-    width: 23.8rem;
+
+
+@media only screen and (max-width: 766px) {
+  .image-ipad {
+    width: 20rem;
   }
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -169,9 +190,6 @@
     height: auto;
   }
 
-  .right-side {
-    margin-bottom: 1rem;
-  }
 
   .image-and-count-container img {
     width: 100%;
