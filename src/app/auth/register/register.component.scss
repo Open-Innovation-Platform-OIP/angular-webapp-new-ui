@@ -5,6 +5,10 @@
   line-height: initial;
 }
 
+.container-fluid {
+  background-image: linear-gradient(to right, $secondary6, $secondary5) !important;
+}
+
 .left-section {
   height: 91.5vh;
   padding-top: 17rem;
