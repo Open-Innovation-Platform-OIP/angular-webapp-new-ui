@@ -10,10 +10,7 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'app-landing-page',
     templateUrl: './landing-page.component.html',
-    styleUrls: [
-        './landing-page.component.css',
-        './landing-page.component.scss',
-    ],
+    styleUrls: ['./landing-page.component.scss'],
 })
 export class LandingPageComponent implements OnInit, OnDestroy {
     landingPageSearchResults = [];
