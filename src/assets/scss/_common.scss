@@ -7,25 +7,27 @@ $font10: 1rem;
 
 $spacing: -0.01rem;
 $weight500: 500;
+$weight600: 600;
+$weight800: 800;
 
 $round4: 0.4rem;
 
 @mixin pattern1 {
-    letter-spacing: $spacing;
-    font-size: $font14;
-    line-height: 2.2rem;
+  letter-spacing: $spacing;
+  font-size: $font14;
+  line-height: 2.2rem;
 }
 
 @mixin dropdown-common {
-    font-weight: $weight500 !important;
-    color: $secondary1;
-    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05),
-        0 1px 10px 0 rgba(63, 63, 68, 0.15);
-    border-radius: 0.6rem;
-    border: 0.1rem solid $secondary5;
+  font-weight: $weight500 !important;
+  color: $secondary1;
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05),
+    0 1px 10px 0 rgba(63, 63, 68, 0.15);
+  border-radius: 0.6rem;
+  border: 0.1rem solid $secondary5;
 
-    & :hover {
-        background-color: $secondary5;
-        cursor: pointer;
-    }
+  & :hover {
+    background-color: $secondary5;
+    cursor: pointer;
+  }
 }

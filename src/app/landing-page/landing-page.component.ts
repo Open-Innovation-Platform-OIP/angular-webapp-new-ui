@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
     selector: 'app-landing-page',
     templateUrl: './landing-page.component.html',
     styleUrls: [
-        './landing-page.component.css',
+        // './landing-page.component.css',
         './landing-page.component.scss',
     ],
 })
