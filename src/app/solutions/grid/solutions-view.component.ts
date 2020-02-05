@@ -19,7 +19,7 @@ import { FilterService } from '../../services/filter.service';
 @Component({
     selector: 'app-solutions-view',
     templateUrl: './solutions-view.component.html',
-    styleUrls: ['./solutions-view.component.css'],
+    styleUrls: ['./solutions-view.component.scss'],
 })
 export class SolutionsViewComponent
     implements OnInit, OnDestroy, AfterViewInit {
@@ -40,9 +40,8 @@ export class SolutionsViewComponent
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private tagsService: TagsService,
-        private filterService: FilterService
-    ) // private focusMonitor: FocusMonitor
-    {}
+        private filterService: FilterService // private focusMonitor: FocusMonitor
+    ) {}
 
     ngOnInit() {
         this.tagsService.getTagsFromDB(this.filterService.domain_tags_query);
