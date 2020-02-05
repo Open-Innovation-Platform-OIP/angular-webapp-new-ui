@@ -1,3 +1,6 @@
+@import "../../../styles.scss";
+@import "../../../assets/scss/common";
+
 .register-main {
   line-height: initial;
 }
@@ -5,6 +8,7 @@
 .left-section {
   height: 91.5vh;
   padding-top: 17rem;
+
 }
 
 .register-section {
@@ -14,20 +18,21 @@
   flex-flow: column;
   padding-top: 17rem;
   width: 60%;
+  background-color: $secondary5;
 }
 
 .register-section a {
-  color: #000;
+  color: $secondary1;
 }
 
 .register-section p {
   letter-spacing: 0.5px;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.95rem;
 }
 
 .left-heading {
-  color: var(--primary);
+  color: $primary3;
   font-weight: 700;
   font-size: 3rem;
   margin-bottom: 10%;
@@ -51,24 +56,25 @@
   margin-top: 0px;
   padding-top: 0px;
   font-weight: 500;
-  font-size: 2rem;
+  font-size: $font20;
 }
 
 .first-description .body p,
 .second-description .body p {
   font-size: 1.5rem;
   margin-top: -5px;
+  color: $secondary2;
 }
 
 .register-section h2 {
   font-weight: 600;
   font-size: 3rem;
-  color: #2d2d2d;
+  color: $secondary1;
 }
 
 .register-section p {
-  font-size: 1.4rem;
-  color: #2d2d2d;
+  font-size: $font14;
+  color: $secondary1;
 }
 
 .full-name,
@@ -82,25 +88,37 @@
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  border: 1px solid #afafaf;
+  border: 1px solid $secondary3;
   border-radius: 4px;
   padding: 8px;
   padding-left: 10px;
-  background-color: #eee;
+  background-color: $secondary4;
   margin-top: -3px;
   width: 100%;
-  font-size: 1.4rem;
+  font-size: $font14;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-  border-color: #000;
+  border-color: $secondary1;
 }
 
 .register-main label {
-  color: #000;
+  color: $secondary1;
   font-weight: 500;
   margin-bottom: 1rem;
+  font-size: $font14;
+}
+
+.password-hide {
+  color: $primary3;
+  font-size: $font12;
+  font-weight: $weight500;
+
+  i.fa.fa-eye-slash {
+    font-size: $font14;
+    font-weight: $weight600;
+  }
 }
 
 .password-input-labels {
@@ -110,20 +128,22 @@ input[type="password"]:focus {
 }
 
 .register-section .instructions {
-  font-size: 1rem;
+  font-size: $font12;
   margin-top: 2%;
-  color: #aaa9a9;
+  color: $secondary3;
+  letter-spacing: $spacing;
   margin-bottom: 0;
 }
 
 .register-button {
   cursor: pointer;
   padding: 1rem;
-  border: 2px solid var(--primary);
+  border: 2px solid $primary1;
   border-radius: 4px;
-  font-size: 1.4rem;
+  font-size: $font14;
   font-weight: 600;
-  background-color: var(--primary);
+  color: $secondary6;
+  background-color: $primary1;
 }
 
 @media only screen and (max-width: 768px) {
@@ -142,6 +162,6 @@ input[type="password"]:focus {
     padding-top: 3rem;
     padding-right: 2rem;
     width: 100%;
-    border-top: 1px solid #b8b8b8;
+    border-top: 1px solid $secondary3;
   }
 }
