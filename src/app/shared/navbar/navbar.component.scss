@@ -42,10 +42,17 @@
 }
 
 .nav-right-list {
-    & > li > a {
+    & > li > a,
+    & > li > button {
         font-size: $font14;
         line-height: 3rem;
         height: 4.2rem;
+    }
+
+    & > li > button {
+        background-color: transparent;
+        border: none;
+        outline: none;
     }
 }
 
@@ -81,7 +88,20 @@
     }
 
     & > div > a {
+        @include ellipsis();
         height: 3.2rem !important;
+    }
+
+    & > section {
+        background-color: $secondary6;
+
+        &:hover {
+            background-color: transparent;
+
+            & > button:hover {
+                background-color: #1e7e34;
+            }
+        }
     }
 
     & > a > span {
@@ -127,7 +147,7 @@
 .search-icon-li {
     & > button {
         background-color: transparent;
-        border: transparent;
+        border: none;
         min-width: fit-content;
         line-height: 3.7rem;
         box-sizing: border-box;
@@ -141,7 +161,7 @@
 .message-icon-li {
     & > button {
         background-color: transparent;
-        border: transparent;
+        border: none;
         min-width: fit-content;
         line-height: 3.7rem;
         box-sizing: border-box;

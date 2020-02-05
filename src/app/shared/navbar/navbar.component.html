@@ -351,14 +351,11 @@
                             class="notification-icon"
                         ></span>
                     </button>
-                    <span class="d-block d-lg-none   "
-                        >Messages</span
-                    >
+                    <span class="d-block d-lg-none   ">Messages</span>
 
                     <div
                         class="dropdown-menu dropdown-menu-right mt-3 dropdown-section"
                         aria-labelledby="navbarDropdownMenuLink"
-                        style="max-height: 50rem; overflow-y: auto;"
                     >
                         <div
                             *ngFor="
@@ -377,7 +374,7 @@
                                     !notification.is_update &&
                                     !notification.validated_by
                                 "
-                                class="dropdown-item"
+                                class="dropdown-item  "
                                 name="{{ notification.id }}"
                                 [routerLink]="
                                     '/problems/' + notification.problem_id
@@ -405,7 +402,7 @@
                                     !notification.tag_id &&
                                     !notification.validated_by
                                 "
-                                class="dropdown-item"
+                                class="dropdown-item  "
                                 name="{{ notification.id }}"
                                 [routerLink]="
                                     '/problems/' + notification.problem_id
@@ -422,7 +419,7 @@
                                     notification.problem &&
                                     notification.enrichment_id
                                 "
-                                class="dropdown-item"
+                                class="dropdown-item  "
                                 name="{{ notification.id }}"
                                 (click)="onRead($event)"
                                 [routerLink]="
@@ -441,7 +438,7 @@
                                     notification.collaborator &&
                                     !notification.solution_id
                                 "
-                                class="dropdown-item"
+                                class="dropdown-item text-truncate"
                                 name="{{ notification.id }}"
                                 (click)="onRead($event)"
                                 [routerLink]="
@@ -577,7 +574,7 @@
                             </a>
                         </div>
 
-                        <div
+                        <section
                             class="text-center"
                             *ngIf="
                                 objectValues(notifications).length > 0;
@@ -585,15 +582,13 @@
                             "
                         >
                             <button
-                                mat-raised-button
                                 class="btn btn-success my-2"
-                                style="font-size: 1.1rem;"
                                 (click)="allRead()"
                                 *ngIf="objectValues(notifications).length > 1"
                             >
                                 Mark all as Read
                             </button>
-                        </div>
+                        </section>
 
                         <ng-template #noNotification>
                             <a
@@ -634,8 +629,7 @@
                             style="border-radius: .4rem; object-fit:cover;"
                         />
 
-                        <span
-                            class="display-sm-md    text-capitalize ml-3"
+                        <span class="display-sm-md text-capitalize ml-3"
                             >Profile</span
                         >
                     </a>
