@@ -22,10 +22,33 @@
         }
 
         & > input {
+            width: 100%;
             padding-left: 1rem;
+
             &:focus {
                 outline: none;
             }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .filter-container {
+        justify-content: flex-start;
+
+        .filter-section {
+            margin-left: 0;
+            margin-right: 2.1rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .filter-container {
+        justify-content: space-between;
+
+        .filter-section {
+            margin-left: 0;
         }
     }
 }
