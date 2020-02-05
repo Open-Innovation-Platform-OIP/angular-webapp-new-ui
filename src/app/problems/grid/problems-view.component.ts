@@ -23,7 +23,7 @@ declare var H: any;
 @Component({
     selector: 'app-problems-view',
     templateUrl: './problems-view.component.html',
-    styleUrls: ['./problems-view.component.css'],
+    styleUrls: ['./problems-view.component.scss'],
 })
 export class ProblemsViewComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChild('problemWorthSolving', { static: false })
