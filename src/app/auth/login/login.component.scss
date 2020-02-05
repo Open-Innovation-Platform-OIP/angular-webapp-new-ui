@@ -1,3 +1,6 @@
+@import "../../../styles.scss";
+@import "../../../assets/scss/common";
+
 .full-screen {
   height: 91.5vh;
 }
@@ -8,13 +11,13 @@
 }
 
 .login h2 {
-  font-weight: 600;
+  font-weight: $weight600;
   font-size: 3.5rem;
 }
 
 .login-description {
-  font-weight: 600;
-  font-size: var(--font-14);
+  font-weight: $weight600;
+  font-size: $font14;
 }
 
 .social-login {
@@ -26,11 +29,11 @@
   text-align: center;
   cursor: pointer;
   padding: 6px;
-  border: 2px solid var(--primary);
-  border-radius: 4px;
-  font-size: 2rem;
-  color: var(--primary);
-  background-color: #eeeeee;
+  border: 2px solid $primary2;
+  border-radius: $round4;
+  font-size: $font20;
+  color: $primary2;
+  background-color: $secondary4;
   flex-grow: 1;
 }
 
@@ -49,31 +52,31 @@
 
 .email-input label,
 .password-input label {
-  color: #000;
-  font-weight: 500;
-  font-size: var(--font-16);
+  color: $secondary1;
+  font-weight: $weight500;
+  font-size: $font16;
   margin-bottom: 1rem;
 }
 
 .email-input input,
 .password-input input {
-  border: 1px solid #afafaf;
-  border-radius: var(--border-radius-4);
-  background-color: #eee;
+  border: 1px solid $secondary3;
+  border-radius: $round4;
+  background-color: $secondary4;
   width: 100%;
-  font-size: var(--font-14);
+  font-size: $font14;
   padding: 1rem;
 }
 
-.password-show > div > span {
+.password-show>div>span {
   font-weight: 500;
-  color: var(--primary);
-  font-size: var(--font-12);
+  color: $primary2;
+  font-size: $font12;
 }
 
-.password-show > div > i {
-  color: var(--primary);
-  font-size: var(--font-12);
+.password-show>div>i {
+  color: $primary2;
+  font-size: $font12;
 }
 
 .password-input-labels {
@@ -92,7 +95,7 @@ input[type="password"]:focus {
 }
 
 .keep-me-logged-in label {
-  color: #000;
+  color: $secondary1;
   letter-spacing: 0.35px;
 }
 
@@ -103,20 +106,20 @@ input[type="password"]:focus {
 
 .login-button {
   padding: 6px;
-  border: 2px solid var(--primary);
-  border-radius: 4px;
-  font-size: var(--font-16);
+  border: 2px solid $primary2;
+  border-radius: $round4;
+  font-size: $font16;
   font-weight: 700;
-  color: #eee;
-  background-color: var(--primary);
+  color: $secondary6;
+  background-color: $primary2;
   cursor: pointer;
   margin-top: 3rem;
 }
 
-.forgot-password > a {
+.forgot-password>a {
   text-decoration: underline;
-  font-size: var(--font-14);
+  font-size: $font14;
   font-weight: 400;
-  color: #000;
+  color: $secondary1;
   margin-top: 3rem;
 }
