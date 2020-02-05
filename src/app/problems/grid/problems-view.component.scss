@@ -1,58 +1,56 @@
-.test {
-  margin-left: 100px;
+@import '../../../styles.scss';
+@import '../../../assets/scss/common';
+
+.problems-worth-solving-container {
+    margin-top: 2.7rem;
+    margin-bottom: 3.9rem;
+    height: 4.2rem;
+
+    & > div > * {
+        height: 4.2rem;
+    }
+
+    .problems-worth-solving {
+        color: $secondary1;
+        font-size: 3rem;
+        font-weight: $weight600;
+        line-height: 2.2rem;
+        margin-left: 1rem;
+    }
 }
 
-.btn-fab {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 4;
+.problem-listed-container {
+    height: 5rem;
+    border-radius: $round4;
+    background-color: $secondary2;
+
+    & > div {
+        height: inherit;
+        color: $secondary6;
+    }
+
+    h3 {
+        margin-left: 1rem;
+        margin-bottom: 0;
+    }
 }
 
-.test {
-  margin-left: 3s00px;
-}
+.grid-container {
+    margin-top: 2rem;
 
-.dropDown {
-  width: 20%;
-}
-
-.problems-worth-solving {
-  color: #2d2d2d;
-  font-size: 30px;
-  font-weight: 600;
-  height: 22px;
-  line-height: 22px;
-  margin-left: 10px;
-}
-
-.problem-listed-title {
-  height: 50px;
-  border-radius: 4px;
-  background-color: #717171;
-}
-.problem-listed-title > div {
-  height: 50px;
-}
-.problem-listed-title > div > h2 {
-  color: #ffffff;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: -0.1px;
-  margin-left: 10px;
-  height: 20px;
-}
-
-.card-grid {
-  background-color: #ffffff;
-  border-radius: 0.4rem;
-  margin-top: 1.4rem;
+    .card-grid {
+        background-color: $secondary6;
+        border-radius: $round4;
+        margin-bottom: 1.4rem;
+    }
 }
 
 @media only screen and (max-width: 600px) {
-  .problems-worth-solving {
-    font-size: 18px;
-    height: 26px;
-    line-height: 26px;
-  }
+    .problems-worth-solving-container {
+        .problems-worth-solving {
+            font-size: $font18;
+            height: 2.6rem;
+            line-height: 2.6rem;
+        }
+    }
 }

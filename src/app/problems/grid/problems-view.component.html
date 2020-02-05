@@ -11,7 +11,7 @@
 </button> -->
 
 <div class="container">
-    <div class="row align-items-center my-4">
+    <div class="row problems-worth-solving-container">
         <div class="col-sm-12 col-md-7 col-lg-6">
             <div class="d-flex align-items-center">
                 <img
@@ -30,28 +30,28 @@
             </div>
         </div>
         <div class="col-md-5 col-lg-6">
-            <!-- <app-filter-dropdown [type]="'problems'"> </app-filter-dropdown> -->
+            <app-filter-dropdown [type]="'problems'"> </app-filter-dropdown>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <div class="col-sm-12 problem-listed-title">
+            <div class="col-sm-12 problem-listed-container">
                 <div class="d-flex align-items-center">
                     <img
-                        src="../../../assets/svg/Problem Icon.svg"
+                        src="../../../assets/svg/problem_icon.svg"
                         alt=""
-                        height="30px"
-                        width="32px"
+                        height="24"
+                        width="20"
                     />
-                    <h2>Problems Listed ({{ problems.length }})</h2>
+                    <h3>Problems Listed ({{ problems.length }})</h3>
                 </div>
             </div>
         </div>
     </div>
+
     <div
-        class="row"
-        style="margin-top: 2rem;"
+        class="row grid-container"
         *ngIf="problems.length"
         role="region"
         aria-label="problem cards"

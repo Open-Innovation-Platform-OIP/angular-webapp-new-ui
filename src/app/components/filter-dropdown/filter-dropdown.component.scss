@@ -1,0 +1,31 @@
+@import '../../../styles.scss';
+@import '../../../assets/scss/common';
+
+.filter-container {
+    @include pattern1();
+    height: inherit;
+    display: flex;
+    justify-content: flex-end;
+
+    .filter-section {
+        width: 15rem;
+        margin-left: 2.1rem;
+
+        & > select,
+        input {
+            @include pattern1();
+            font-weight: $weight500;
+            height: -webkit-fill-available;
+            border: 0.2rem solid $secondary1;
+            border-radius: $round4;
+            background-color: transparent;
+        }
+
+        & > input {
+            padding-left: 1rem;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
