@@ -25,14 +25,18 @@
   background-color: $secondary5;
 }
 
-.register-section a {
-  color: $secondary1;
+.register-section {
+  a {
+    color: $secondary1;
+  }
 }
 
-.register-section p {
-  letter-spacing: 0.5px;
-  font-weight: 500;
-  font-size: 0.95rem;
+.register-section {
+  p {
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
 }
 
 .left-heading {
@@ -47,39 +51,55 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   margin-top: 2rem;
+
+  .heading {
+    font-size: 3rem;
+    opacity: 0.75;
+  }
+
+  .body {
+    h3 {
+      margin-top: 0px;
+      padding-top: 0px;
+      font-weight: 500;
+      font-size: $font20;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-top: -5px;
+      color: $secondary2;
+    }
+  }
 }
 
-.first-description .heading,
-.second-description .heading {
-  font-size: 3rem;
-  opacity: 0.75;
+
+
+
+
+
+.register-section {
+  h2 {
+    font-weight: 600;
+    font-size: 3rem;
+    color: $secondary1;
+  }
+
+  p {
+    font-size: $font14;
+    color: $secondary1;
+  }
+
+  .instructions {
+    font-size: $font12;
+    margin-top: 2%;
+    color: $secondary3;
+    letter-spacing: $spacing;
+    margin-bottom: 0;
+  }
 }
 
-.first-description .body h3,
-.second-description .body h3 {
-  margin-top: 0px;
-  padding-top: 0px;
-  font-weight: 500;
-  font-size: $font20;
-}
 
-.first-description .body p,
-.second-description .body p {
-  font-size: 1.5rem;
-  margin-top: -5px;
-  color: $secondary2;
-}
-
-.register-section h2 {
-  font-weight: 600;
-  font-size: 3rem;
-  color: $secondary1;
-}
-
-.register-section p {
-  font-size: $font14;
-  color: $secondary1;
-}
 
 .full-name,
 .email,
@@ -96,22 +116,26 @@ input[type="password"] {
   border-radius: 4px;
   padding: 8px;
   padding-left: 10px;
-  background-color: $secondary4;
+  background-color: $secondary5;
   margin-top: -3px;
   width: 100%;
   font-size: $font14;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-  border-color: $secondary1;
+input[type="text"],
+input[type="password"] {
+  &:focus {
+    border-color: $secondary1;
+  }
 }
 
-.register-main label {
-  color: $secondary1;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  font-size: $font14;
+.register-main {
+  label {
+    color: $secondary1;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: $font14;
+  }
 }
 
 .password-hide {
@@ -131,13 +155,7 @@ input[type="password"]:focus {
   align-items: baseline;
 }
 
-.register-section .instructions {
-  font-size: $font12;
-  margin-top: 2%;
-  color: $secondary3;
-  letter-spacing: $spacing;
-  margin-bottom: 0;
-}
+
 
 .register-button {
   cursor: pointer;
