@@ -1,4 +1,4 @@
-<div class="modal fade" id="viewAttachmentsModal" tabindex="-1" role="dialog" aria-labelledby="viewAttachmentsLabel" aria-hidden="true">
+<div class="modal fade" id="viewAttachmentsModal-{{id}}" tabindex="-1" role="dialog" aria-labelledby="viewAttachmentsLabel" aria-hidden="true">
     <div class="modal-dialog modal-full modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -8,7 +8,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="container-fluid">
+          <div class="container-fluid" *ngIf="attachments && attachments.length > 0">
             <div class="row">
               <!-- The image in focus -->
               <!-- TODO: Center the image and fix size -->

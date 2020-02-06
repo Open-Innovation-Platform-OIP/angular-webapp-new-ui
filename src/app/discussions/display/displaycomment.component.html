@@ -460,6 +460,7 @@
 </div> -->
 
 <ng-template #comments let-comment="comment" let-default>
+  <app-attachment-modal [id]="comment.id" [attachments]="comment.attachments"></app-attachment-modal>
     <div class="d-flex justify-content-start  p-2 comment-section">
         <div class="">
             <img
@@ -510,11 +511,21 @@
                         : 'Read Less'
                 }}
             </a>
+            <button
+              *ngIf="comment.attachments.length > 0"
+              class="align-icon"
+              data-toggle="modal"
+              #showModalBtn
+              (click)="openModal('#viewAttachmentsModal-'+comment.id)"
+            >
+              See {{comment.attachments.length}} Attachments
+          </button>
         </div>
     </div>
 </ng-template>
 
 <ng-template #replyTemp let-comment="comment">
+  <app-attachment-modal [id]="comment.id" [attachments]="comment.attachments"></app-attachment-modal>
     <div class="d-flex justify-content-start  p-2 reply-section">
         <div class="">
             <img
@@ -568,14 +579,25 @@
                 }}
             </a>
 
-            <button
-                i-button
-                *ngIf="auth.currentUserValue.id"
-                class="delete-btn"
-                (click)="idToDelete(comment)"
+            <a
+              *ngIf="comment.attachments.length > 0"
+              class="align-icon"
+              data-toggle="modal"
+              #showModalBtn
+              (click)="openModal('#viewAttachmentsModal-prb')"
             >
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </button>
+              Open Attachments
+          </a>
+
+          <button
+              *ngIf="comment.attachments.length > 0"
+              class="align-icon"
+              data-toggle="modal"
+              #showModalBtn
+              (click)="openModal('#viewAttachmentsModal-'+comment.id)"
+            >
+              See {{comment.attachments.length}} Attachments
+          </button>
         </div>
     </div>
 </ng-template>

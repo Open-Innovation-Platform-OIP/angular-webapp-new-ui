@@ -14,7 +14,7 @@ interface Attachment {
 })
 
 export class AttachmentModalComponent implements OnInit {
-
+  @Input() id = '';
   @Input() attachments: Attachment[]; // array of attachments - see interface Attachment
   indexInFocus = 0; // index within attachments of the image in focus
 
@@ -23,6 +23,7 @@ export class AttachmentModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // console.log(this.id);
   }
 
 }

@@ -324,7 +324,7 @@
     </div>
   </div>
 </div> -->
-<app-attachment-modal [attachments]="problem_attachments"></app-attachment-modal>
+<app-attachment-modal [id]="'prb'" [attachments]="problem_attachments"></app-attachment-modal>
 <!-- ----------------------------- problem attachments modal ends----------------------------- -->
 <div class="container mt-20">
   <div class="row bg-white main-card">
@@ -347,7 +347,7 @@
           class="align-icon"
           data-toggle="modal"
           #showModalBtn
-          (click)="openModal('#viewAttachmentsModal')"
+          (click)="openModal('#viewAttachmentsModal-prb')"
         >
           +{{ problem_attachments.length }}
         </button>
