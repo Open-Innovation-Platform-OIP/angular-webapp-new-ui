@@ -1,1 +1,234 @@
-// @import '../../styles.scss';
+@import '../../styles.scss';
+@import '../../assets/scss/common';
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 175px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $secondary6;
+    z-index: 1;
+    font-size: 3em;
+}
+
+.poster {
+    background-image: url('../../assets/img/background.jpg');
+    background-size: cover;
+}
+
+.jumbo {
+    height: 70vh;
+}
+
+.card-section {
+    margin-top: 10rem;
+}
+
+.banner-text {
+    height: 23.1rem;
+    max-width: 50.6rem;
+
+    & > h1 {
+        font-size: 4.6rem;
+        font-weight: bold;
+        letter-spacing: $spacing;
+        color: $primary3;
+    }
+
+    & > p {
+        color: $secondary1;
+        font-size: $font18;
+        font-weight: $weight500;
+        letter-spacing: $spacing;
+        line-height: 2.6rem;
+        position: relative;
+    }
+}
+
+.left-bar {
+    margin-left: 2rem;
+}
+
+.left-bar::before {
+    content: '';
+    border-left: 0.3rem solid $primary2;
+    display: block;
+    height: 100%;
+    position: absolute;
+    left: -2rem;
+}
+
+.make-relative {
+    position: relative;
+}
+
+.quick-stats {
+    width: 100%;
+    background: $primary2;
+    position: absolute;
+    border-radius: $round4;
+    top: -9rem;
+
+    .row {
+        .col-md-4 {
+            padding: 24px 0px;
+        }
+    }
+}
+
+.stats {
+    & > h3 {
+        font-size: $font18;
+        font-weight: bold;
+        line-height: 2.6rem;
+    }
+
+    & > p {
+        font-size: 4.6rem;
+        font-weight: bold;
+        line-height: 5.4rem;
+    }
+
+    &:nth-child(even) {
+        border-right: 0.1rem solid rgb(246, 246, 246, 0.29);
+        border-left: 0.1rem solid rgb(246, 246, 246, 0.29);
+    }
+}
+
+.header {
+    height: 5rem;
+    border-radius: $round4;
+    background-color: $secondary2;
+    font-weight: $weight500;
+
+    & > img {
+        margin: 0 0.5rem;
+    }
+
+    .view-all {
+        margin-left: auto;
+        padding-right: 1rem;
+
+        a {
+            color: $secondary6 !important;
+            font-weight: bold !important;
+            font-size: $font14 !important;
+        }
+    }
+
+    h2 {
+        font-size: $font20;
+        color: $secondary6;
+        font-weight: $weight500;
+        margin: 0;
+    }
+}
+
+.partner-image {
+    width: 100%;
+}
+
+.landing-page-subscribe {
+    background-color: $secondary4;
+    min-height: 19rem;
+    border-radius: $round4;
+
+    .heading {
+        font-weight: $weight600;
+        font-size: 3rem;
+        line-height: 9.5rem;
+    }
+
+    .subscribe-body {
+        font-size: $font18;
+        font-weight: $weight500;
+        line-height: 2.6rem;
+    }
+
+    .subscribe-form {
+        font-size: $font16;
+    }
+
+    .form {
+        border: 0.2rem solid $primary2;
+        padding: 0.7rem;
+        border-radius: $round4;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        background-color: $secondary4;
+        width: 75%;
+    }
+
+    .subscribe-button {
+        border: 0.1rem solid $primary3;
+        background-color: $primary3;
+        padding: 1rem 1.5rem;
+        border-radius: $round4;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        line-height: initial;
+        min-width: 25%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .landing-page-subscribe {
+        padding-bottom: 2rem;
+    }
+
+    .jumbo {
+        height: 54vh;
+    }
+
+    .subscribe-body {
+        margin-bottom: 2rem !important;
+    }
+
+    .margin-sm-md-30 {
+        margin-top: 3rem;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .landing-page-subscribe {
+        .form {
+            width: 65%;
+        }
+        .subscribe-button {
+            padding-left: auto;
+            width: 35%;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .jumbo {
+        height: 70vh;
+    }
+
+    .landing-page-subscribe {
+        .form {
+            max-width: 70%;
+        }
+        .subscribe-button {
+            min-width: 30%;
+            text-align: center;
+        }
+    }
+
+    .stats:nth-child(even) {
+        border-top: 0.1rem solid rgb(246, 246, 246, 0.29);
+        border-bottom: 0.1rem solid rgb(246, 246, 246, 0.29);
+        border-right: initial;
+        border-left: initial;
+    }
+
+    .card-section {
+        margin-top: 35rem;
+    }
+
+    .margin-sm-md-30 {
+        margin-top: 3rem;
+    }
+}
