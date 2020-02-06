@@ -19,8 +19,8 @@ declare const $: any;
     styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-    objectValues = Object['values'];
-    objectKeys = Object['keys'];
+    objectValues = Object.values;
+    objectKeys = Object.keys;
     drafts = [];
     userProblems = [];
     userSolutions = [];
@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     recommendedProblems = {};
     recommendedUsers = {};
     showLoader = true;
+    currentTab = 0;
 
     problemShowMoreBtnText = 'Show More';
     problemsToShow = 6;
@@ -177,6 +178,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     ) {
         console.log('inside dashboard component');
     }
+
+    switchTab(tab: number) {
+        this.currentTab = tab;
+    }
+
     ngOnInit() {
         // start loader
         // this.ngxService.start();

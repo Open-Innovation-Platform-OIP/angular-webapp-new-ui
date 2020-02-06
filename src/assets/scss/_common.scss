@@ -58,12 +58,12 @@ $round4: 0.4rem;
 
     .nav-link {
         @include pattern1();
+        font-weight: $weight600;
         line-height: 3rem;
     }
 
     .nav-item .nav-link.active {
         border-bottom: 0.4rem solid $primary3 !important;
         border-radius: 0.4rem 0.4rem 0 0 !important;
-        font-weight: bold;
     }
 }

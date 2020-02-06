@@ -6,6 +6,22 @@
     @include navbar();
 }
 
+.watchlist-container,
+.your-contribution-container,
+.profile-container {
+    background-color: $secondary6;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:nth-child(n + 2) {
+        margin-top: 2rem;
+    }
+}
+
+.left-tab-body {
+    background-color: $secondary6;
+}
+
 .main-panel,
 .main-content {
     margin-top: 0 !important;
