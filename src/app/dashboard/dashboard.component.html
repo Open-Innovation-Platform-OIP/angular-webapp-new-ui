@@ -377,7 +377,7 @@
                 </ul>
                 <!-- </div> -->
 
-                <div class="col left-tab-body">
+                <div class="col left-tab-body p-0">
                     <ng-container [ngSwitch]="currentTab">
                         <ng-container *ngSwitchCase="0">
                             <ng-container
@@ -414,8 +414,9 @@
                     </ng-container>
                 </div>
 
-                <div class="col">
+                <div class="col footer-button-container">
                     <button
+                        class="btn"
                         (click)="
                             problemShowMoreBtn(
                                 objectValues(recommendedProblems).length
@@ -425,30 +426,8 @@
                         {{ problemShowMoreBtnText }}
                     </button>
                 </div>
-                <!-- <div class="col-md-12 bg-white p-0">
-                    <div>
-                        <div>
-                            <div
-                                class="d-flex justify-content-center show-more-footer"
-                            ></div>
-                        </div>
-
-                        <div>
-                            <div
-                                class="d-flex justify-content-center show-more-footer"
-                            >
-                                <button
-                                    (click)="
-                                        problemShowMoreBtn(userProblems.length)
-                                    "
-                                >
-                                    {{ problemShowMoreBtnText }}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
+
             <div class="col-md-12 col-lg-6">
                 <div class="col watchlist-container">
                     <ul class="nav nav-tabs nav-section " id="" role="tablist">
@@ -463,37 +442,35 @@
                             >
                         </li>
                     </ul>
-                    <div>
-                        <div>
-                            <ng-container
-                                *ngFor="
-                                    let problem of problemWatchList;
-                                    let i = index
-                                "
-                            >
-                                <app-problem-card
-                                    *ngIf="i < noOfWatchlistToShow"
-                                    [index]="i"
-                                    [problemData]="problem['problem']"
-                                ></app-problem-card>
-                                <hr *ngIf="i < problemsToShow" class="m-0" />
-                            </ng-container>
 
-                            <div
-                                class="d-flex justify-content-center show-more-footer"
-                                *ngIf="problemWatchList.length > 2"
-                            >
-                                <button
-                                    (click)="
-                                        showOrHideWatchlist(
-                                            problemWatchList.length
-                                        )
-                                    "
-                                >
-                                    {{ watchlistBtnText }}
-                                </button>
-                            </div>
-                        </div>
+                    <div>
+                        <ng-container
+                            *ngFor="
+                                let problem of problemWatchList;
+                                let i = index
+                            "
+                        >
+                            <app-problem-card
+                                *ngIf="i < noOfWatchlistToShow"
+                                [index]="i"
+                                [problemData]="problem['problem']"
+                            ></app-problem-card>
+                            <hr *ngIf="i < problemsToShow" class="m-0" />
+                        </ng-container>
+                    </div>
+
+                    <div
+                        class="col footer-button-container"
+                        *ngIf="problemWatchList.length > 2"
+                    >
+                        <button
+                            class="btn"
+                            (click)="
+                                showOrHideWatchlist(problemWatchList.length)
+                            "
+                        >
+                            {{ watchlistBtnText }}
+                        </button>
                     </div>
                 </div>
                 <div class="col your-contribution-container">
@@ -539,10 +516,11 @@
                             </div>
 
                             <div
-                                class="d-flex justify-content-center show-more-footer"
+                                class="col footer-button-container"
                                 *ngIf="userSolutions.length"
                             >
                                 <button
+                                    class="btn"
                                     (click)="
                                         showOrHideYourContribution(
                                             userSolutions.length
@@ -571,47 +549,37 @@
                             </a>
                         </li>
                     </ul>
-                    <div>
-                        <div>
-                            <ng-template div-label>
-                                <span> </span>
-                            </ng-template>
-                            <div class="row m-0 p-0">
-                                <div
-                                    class="col-md-6 col-sm-12 border-odd-child border-bottom m-0 p-0"
-                                    *ngFor="
-                                        let user of objectValues(
-                                            recommendedUsers
-                                        );
-                                        let i = index
-                                    "
-                                >
-                                    <app-profile-card
-                                        *ngIf="i < profileCardToShow"
-                                        [index]="i"
-                                        [userData]="user"
-                                    ></app-profile-card>
-                                </div>
-                            </div>
 
-                            <div
-                                class="d-flex justify-content-center show-more-footer"
-                                *ngIf="
-                                    objectValues(recommendedUsers).length > 2
-                                "
-                            >
-                                <button
-                                    (click)="
-                                        showOrHideProfileSection(
-                                            objectValues(recommendedUsers)
-                                                .length
-                                        )
-                                    "
-                                >
-                                    {{ profileSectionBtnText }}
-                                </button>
-                            </div>
+                    <div class="row m-0 p-0">
+                        <div
+                            class="col-md-6 col-sm-12 border-odd-child border-bottom m-0 p-0"
+                            *ngFor="
+                                let user of objectValues(recommendedUsers);
+                                let i = index
+                            "
+                        >
+                            <app-profile-card
+                                *ngIf="i < profileCardToShow"
+                                [index]="i"
+                                [userData]="user"
+                            ></app-profile-card>
                         </div>
+                    </div>
+
+                    <div
+                        class="col footer-button-container"
+                        *ngIf="objectValues(recommendedUsers).length > 2"
+                    >
+                        <button
+                            class="btn"
+                            (click)="
+                                showOrHideProfileSection(
+                                    objectValues(recommendedUsers).length
+                                )
+                            "
+                        >
+                            {{ profileSectionBtnText }}
+                        </button>
                     </div>
                 </div>
             </div>

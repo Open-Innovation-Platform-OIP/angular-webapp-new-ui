@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     showLoader = true;
     currentTab = 0;
 
-    problemShowMoreBtnText = 'Show More';
+    problemShowMoreBtnText = 'View All';
     problemsToShow = 6;
     yourContributionToShow = 2;
     noOfWatchlistToShow = 2;
@@ -290,17 +290,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     problemShowMoreBtn(len: number) {
         if (this.problemsToShow === 6) {
-            this.problemShowMoreBtnText = 'Show Less';
+            this.problemShowMoreBtnText = 'View Less';
             this.problemsToShow = len;
         } else {
-            this.problemShowMoreBtnText = 'Show More';
+            this.problemShowMoreBtnText = 'View All';
             this.problemsToShow = 6;
         }
     }
 
     resetProblemToShow() {
         this.problemsToShow = 6;
-        this.problemShowMoreBtnText = 'Show More';
+        this.problemShowMoreBtnText = 'View All';
     }
 
     checkUrlIsImg(url) {

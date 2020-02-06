@@ -22,6 +22,20 @@
     background-color: $secondary6;
 }
 
+.footer-button-container {
+    background-color: $secondary6;
+    text-align: center;
+    height: 5rem;
+    line-height: 5rem;
+
+    & > button {
+        color: $primary5;
+        font-size: $font12;
+        font-weight: bold;
+        line-height: 1.6rem;
+    }
+}
+
 .main-panel,
 .main-content {
     margin-top: 0 !important;
