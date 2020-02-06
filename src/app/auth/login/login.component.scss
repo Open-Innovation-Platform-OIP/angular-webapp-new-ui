@@ -21,27 +21,27 @@
 
   .social-login {
     display: flex;
+  }
 
-    .google-button {
-      margin-left: 1%;
-    }
+  .linkedin-button,
+  .google-button {
+    text-align: center;
+    cursor: pointer;
+    padding: 6px;
+    border: 2px solid $primary2;
+    border-radius: $round4;
+    font-size: $font20;
+    color: $primary2;
+    background-color: $secondary5;
+    flex-grow: 1;
+  }
 
-    .linkedin-button {
-      margin-right: 1%;
-    }
+  .google-button {
+    margin-left: 1%;
+  }
 
-    .linkedin-button,
-    .google-button {
-      text-align: center;
-      cursor: pointer;
-      padding: 6px;
-      border: 2px solid $primary2;
-      border-radius: $round4;
-      font-size: $font20;
-      color: $primary2;
-      background-color: $secondary5;
-      flex-grow: 1;
-    }
+  .linkedin-button {
+    margin-right: 1%;
   }
 
   .email-input {
@@ -49,54 +49,61 @@
     flex-direction: column;
   }
 
+  .email-input,
   .password-input {
+    margin-top: 2rem;
+
     label {
       color: $secondary1;
       font-weight: $weight500;
       font-size: $font16;
       margin-bottom: 1rem;
     }
+  }
+}
 
-    .password-input-labels {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
 
-      .password-show {
-        cursor: pointer;
 
-        .password-show {
-          div {
-            span {
-              font-weight: 500;
-              color: $primary2;
-              font-size: $font12;
-            }
+.email-input input,
+.password-input input {
+  border: 1px solid $secondary3;
+  border-radius: $round4;
+  background-color: $secondary4;
+  width: 100%;
+  font-size: $font14;
+  padding: 1rem;
+}
 
-            i {
-              color: $primary2;
-              font-size: $font12;
-            }
-          }
-        }
-      }
+.password-show {
+  div {
+    span {
+      font-weight: 500;
+      color: $primary2;
+      font-size: $font12;
+    }
+
+    i {
+      color: $primary2;
+      font-size: $font12;
     }
   }
+}
 
-  .email-input input,
-  .password-input input {
-    border: 1px solid $secondary3;
-    border-radius: $round4;
-    background-color: $secondary4;
-    width: 100%;
-    font-size: $font14;
-    padding: 1rem;
-  }
 
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    border-color: black;
-  }
+
+.password-input-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.password-show {
+  cursor: pointer;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: black;
 }
 
 .keep-me-logged-in {
