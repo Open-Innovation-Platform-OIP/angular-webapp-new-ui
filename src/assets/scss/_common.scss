@@ -37,3 +37,33 @@ $round4: 0.4rem;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+@mixin navbar {
+    min-height: 4.6rem;
+    background-color: $secondary6;
+    border-bottom: 1px solid $secondary4;
+    border-radius: 0.4rem 0.4rem 0 0;
+    box-sizing: border-box;
+
+    .nav-item,
+    .nav-link {
+        min-height: inherit;
+        border: none;
+        color: $secondary1;
+    }
+
+    .nav-item {
+        border-bottom: 1px solid $secondary4;
+    }
+
+    .nav-link {
+        @include pattern1();
+        line-height: 3rem;
+    }
+
+    .nav-item .nav-link.active {
+        border-bottom: 0.4rem solid $primary3 !important;
+        border-radius: 0.4rem 0.4rem 0 0 !important;
+        font-weight: bold;
+    }
+}
