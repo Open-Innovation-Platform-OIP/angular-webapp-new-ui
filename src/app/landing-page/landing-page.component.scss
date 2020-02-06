@@ -18,7 +18,12 @@
 }
 
 .jumbo {
-    height: 70vh;
+    min-height: 69.1rem !important;
+    position: relative;
+
+    & > div {
+        padding-top: 6.8rem;
+    }
 }
 
 .card-section {
@@ -47,6 +52,7 @@
 }
 
 .left-bar {
+    margin-top: 2rem;
     margin-left: 2rem;
 }
 
