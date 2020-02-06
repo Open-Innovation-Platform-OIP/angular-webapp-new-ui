@@ -3,7 +3,7 @@
 
 .filter-container {
     @include pattern1();
-    height: inherit;
+    height: 4.2rem;
     display: flex;
     justify-content: flex-end;
 
@@ -15,7 +15,7 @@
         input {
             @include pattern1();
             font-weight: $weight500;
-            height: -webkit-fill-available;
+            height: 4.2rem;
             border: 0.2rem solid $secondary1;
             border-radius: $round4;
             background-color: transparent;
