@@ -53,6 +53,15 @@
   .password-input {
     margin-top: 2rem;
 
+    input {
+      border: 1px solid $secondary3;
+      border-radius: $round4;
+      background-color: $secondary4;
+      width: 100%;
+      font-size: $font14;
+      padding: 1rem;
+    }
+
     label {
       color: $secondary1;
       font-weight: $weight500;
@@ -64,15 +73,6 @@
 
 
 
-.email-input input,
-.password-input input {
-  border: 1px solid $secondary3;
-  border-radius: $round4;
-  background-color: $secondary4;
-  width: 100%;
-  font-size: $font14;
-  padding: 1rem;
-}
 
 .password-show {
   div {
@@ -101,9 +101,11 @@
   cursor: pointer;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-  border-color: black;
+input[type="text"],
+input[type="password"] {
+  &:focus {
+    border-color: black;
+  }
 }
 
 .keep-me-logged-in {
