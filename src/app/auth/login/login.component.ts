@@ -20,7 +20,7 @@ const isEmail = email => {
 @Component({
     selector: 'app-login-cmp',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
+    styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
     @ViewChild('password', { static: false }) passwordInput: ElementRef<
