@@ -579,16 +579,6 @@
                 }}
             </a>
 
-            <a
-              *ngIf="comment.attachments.length > 0"
-              class="align-icon"
-              data-toggle="modal"
-              #showModalBtn
-              (click)="openModal('#viewAttachmentsModal-prb')"
-            >
-              Open Attachments
-          </a>
-
           <button
               *ngIf="comment.attachments.length > 0"
               class="align-icon"
