@@ -107,82 +107,127 @@
   </div>
 </div> -->
 <div class="container-fluid">
-  <div class="container register-main">
-    <div class="row">
-      <!-- What can you do section -->
-      <section class="col-lg-4 col-md-5 left-section">
-        <h2 class="left-heading">What can you do?</h2>
-        <div class="first-description">
-          <div class="heading">
-            <i class="fa fa-question-circle-o" aria-hidden="true"></i>
-          </div>
-          <div class="body">
-            <h3>Add Problem</h3>
-            <p>Add problems you want others to understand and solve.</p>
-          </div>
+    <div class="container register-main">
+        <div class="row">
+            <!-- What can you do section -->
+            <section class="col-lg-4 col-md-5 left-section d-none d-md-block">
+                <h2 class="left-heading">What can you do?</h2>
+                <div class="first-description">
+                    <div class="heading">
+                        <i
+                            class="fa fa-question-circle-o"
+                            aria-hidden="true"
+                        ></i>
+                    </div>
+                    <div class="body">
+                        <h3>Add Problem</h3>
+                        <p>
+                            Add problems you want others to understand and
+                            solve.
+                        </p>
+                    </div>
+                </div>
+                <div class="second-description">
+                    <div class="heading">
+                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="body">
+                        <h3>Provide Solution</h3>
+                        <p>Solve problems that others have identified.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Register section -->
+            <section class="col-lg-8 col-md-7 bg-grey register-section">
+                <form
+                    class="form"
+                    novalidate
+                    [formGroup]="registerForm"
+                    (ngSubmit)="onSubmit()"
+                >
+                    <h2>Register</h2>
+                    <p>
+                        Already have a Social Alpha account?
+                        <a href="/auth/login">Log in</a>
+                    </p>
+
+                    <div class="full-name mt-5">
+                        <label for="full_name">Full Name</label>
+                        <input type="text" formControlName="name" required />
+                    </div>
+
+                    <div class="email mt-5">
+                        <label for="email">Email</label>
+                        <input type="email" formControlName="email" required />
+                    </div>
+
+                    <div class="password-input mt-5">
+                        <div class="password-input-labels">
+                            <label for="password">Password</label>
+                            <div class="password-hide">
+                                <i
+                                    class="fa fa-eye-slash"
+                                    aria-hidden="true"
+                                ></i>
+                                <span> &nbsp;Hide</span>
+                            </div>
+                        </div>
+
+                        <input
+                            type="password"
+                            formControlName="password"
+                            required
+                        />
+                        <p class="instructions">
+                            Must be 6 or more characters with 1 special, 1
+                            uppercase character
+                        </p>
+                    </div>
+
+                    <div class="confirm-password mt-5">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input
+                            type="password"
+                            formControlName="confirmPassword"
+                            required
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-lg btn-block mt-5  text-capitalize font-weight-bold register-button"
+                    >
+                        Register
+                    </button>
+                </form>
+            </section>
+            <section class="col-lg-4 col-md-5 left-section d-md-none pb-0 mt-5">
+                <h2 class="left-heading">What can you do?</h2>
+                <div class="first-description">
+                    <div class="heading">
+                        <i
+                            class="fa fa-question-circle-o"
+                            aria-hidden="true"
+                        ></i>
+                    </div>
+                    <div class="body">
+                        <h3>Add Problem</h3>
+                        <p>
+                            Add problems you want others to understand and
+                            solve.
+                        </p>
+                    </div>
+                </div>
+                <div class="second-description">
+                    <div class="heading">
+                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="body">
+                        <h3>Provide Solution</h3>
+                        <p>Solve problems that others have identified.</p>
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="second-description">
-          <div class="heading">
-            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-          </div>
-          <div class="body">
-            <h3>Provide Solution</h3>
-            <p>Solve problems that others have identified.</p>
-          </div>
-        </div>
-      </section>
-      <!-- Register section -->
-      <section class="col-lg-8 col-md-7 bg-grey register-section">
-        <form
-          class="form"
-          novalidate
-          [formGroup]="registerForm"
-          (ngSubmit)="onSubmit()"
-        >
-          <h2>Register</h2>
-          <p>
-            Already have a Social Alpha account?
-            <a href="/auth/login">Log in</a>
-          </p>
-
-          <div class="full-name mt-5">
-            <label for="full_name">Full Name</label>
-            <input type="text" formControlName="name" required />
-          </div>
-
-          <div class="email mt-5">
-            <label for="email">Email</label>
-            <input type="email" formControlName="email" required />
-          </div>
-
-          <div class="password-input mt-5">
-            <div class="password-input-labels">
-              <label for="password">Password</label>
-              <div class="password-hide">
-                <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                <span> &nbsp;Hide</span>
-              </div>
-            </div>
-
-            <input type="password" formControlName="password" required />
-            <p class="instructions">
-              Must be 6 or more characters with 1 special, 1 uppercase character
-            </p>
-          </div>
-
-          <div class="confirm-password mt-5">
-            <label for="confirm_password">Confirm Password</label>
-            <input type="password" formControlName="confirmPassword" required />
-          </div>
-
-          <button
-            type="submit"
-            class="btn btn-lg btn-block mt-5 bg-primary text-capitalize font-weight-bold register-button"
-          >
-            Register
-          </button>
-        </form>
-      </section>
     </div>
-  </div>
 </div>
