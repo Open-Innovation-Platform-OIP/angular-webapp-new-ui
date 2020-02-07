@@ -12,6 +12,7 @@ const isEmail = email => {
 @Component({
     selector: 'app-verifyemail-cmp',
     templateUrl: './verifyemail.component.html',
+    styleUrls: ['./verifyemail.component.scss'],
 })
 export class VerifyEmailComponent implements OnInit, OnDestroy {
     verifyDetails = {

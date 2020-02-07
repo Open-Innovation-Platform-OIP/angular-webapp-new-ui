@@ -11,7 +11,7 @@ const isEmail = email => {
 @Component({
     selector: 'app-forgotpassword-cmp',
     templateUrl: './forgotpassword.component.html',
-    styleUrls: ['./forgotpassword.component.css'],
+    styleUrls: ['./forgotpassword.component.scss'],
 })
 export class ForgotPasswordComponent implements OnInit, OnDestroy {
     step = 0;

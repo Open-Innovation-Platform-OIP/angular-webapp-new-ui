@@ -1,0 +1,196 @@
+@import '../../../styles.scss';
+@import '../../../assets/scss/common';
+
+.register-main {
+    line-height: initial;
+}
+
+.container-fluid {
+    background-image: linear-gradient(
+        to right,
+        $secondary6,
+        $secondary5
+    ) !important;
+}
+
+.left-section {
+    height: calc(100vh - 9.6rem);
+    padding-top: 10rem;
+}
+
+.register-section {
+    padding-left: 4%;
+    padding-right: 15%;
+    display: flex;
+    flex-flow: column;
+    padding-top: 10rem;
+    width: 60%;
+    background-color: $secondary5;
+}
+
+.register-section {
+    height: calc(100vh - 9.6rem);
+    a {
+        color: $secondary1;
+    }
+}
+
+.register-section {
+    p {
+        letter-spacing: 0.05rem;
+        font-weight: $weight500;
+        font-size: 0.95rem;
+    }
+}
+
+.left-heading {
+    color: $primary3;
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 10%;
+}
+
+.first-description,
+.second-description {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin-top: 2rem;
+
+    .heading {
+        font-size: 3rem;
+        opacity: 0.75;
+    }
+
+    .body {
+        h3 {
+            margin-top: 0rem;
+            padding-top: 0rem;
+            font-weight: $weight500;
+            font-size: $font20;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: -0.5rem;
+            color: $secondary2;
+        }
+    }
+}
+
+.register-section {
+    h2 {
+        font-weight: $weight600;
+        font-size: 3rem;
+        color: $secondary1;
+    }
+
+    p {
+        font-size: $font14;
+        color: $secondary1;
+    }
+
+    .instructions {
+        font-size: $font12;
+        margin-top: 2%;
+        color: $secondary3;
+        letter-spacing: $spacing;
+        margin-bottom: 0;
+    }
+}
+
+.full-name,
+.email,
+.password-input,
+.confirm-password {
+    display: flex;
+    flex-flow: column;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+    border: 0.1rem solid $secondary3;
+    border-radius: $round4;
+    padding: 0.8rem;
+    padding-left: 1rem;
+    background-color: $secondary5;
+    margin-top: -0.3rem;
+    width: 100%;
+    font-size: $font14;
+}
+
+input[type='text'],
+input[type='password'] {
+    &:focus {
+        border-color: $secondary1;
+    }
+}
+
+.register-main {
+    label {
+        color: $secondary1;
+        font-weight: $weight500;
+        margin-bottom: 1rem;
+        font-size: $font14;
+    }
+}
+
+.password-hide {
+    color: $primary3;
+    font-size: $font12;
+    font-weight: $weight500;
+
+    i.fa.fa-eye-slash {
+        font-size: $font14;
+        font-weight: $weight600;
+    }
+}
+
+.password-input-labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.register-button {
+    cursor: pointer;
+    padding: 1rem;
+    border: 0.2rem solid $primary1;
+    border-radius: $round4;
+    font-size: $font14;
+    font-weight: $weight600;
+    color: $secondary6;
+    background-color: $primary2;
+}
+
+@media only screen and (max-width: 768px) {
+    .register-section {
+        padding-right: 7%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container-fluid {
+        background-image: linear-gradient(
+            to right,
+            $secondary5,
+            $secondary5
+        ) !important;
+    }
+    .left-section {
+        height: inherit;
+        padding: 2rem;
+        background-image: linear-gradient(
+            to right,
+            $secondary6,
+            $secondary6
+        ) !important;
+    }
+
+    .register-section {
+        padding-top: 3rem;
+        padding-right: 2rem;
+        width: 100%;
+        border-top: 0.1rem solid $secondary3;
+    }
+}
