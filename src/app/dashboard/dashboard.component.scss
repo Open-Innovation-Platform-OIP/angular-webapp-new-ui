@@ -18,7 +18,9 @@
 }
 
 .main-content {
+    min-height: calc(100vh - 9.6rem);
     margin-top: 2rem;
+    margin-bottom: 3rem;
 }
 
 .left-tab-body {
