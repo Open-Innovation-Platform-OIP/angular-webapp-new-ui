@@ -1,6 +1,11 @@
 @import '../../../styles.scss';
 @import '../../../assets/scss/common';
 
+.problem-grid-main-container {
+    min-height: calc(100vh - 9.6rem);
+    margin-bottom: 2rem;
+}
+
 .problems-worth-solving-container {
     margin-top: 2.7rem;
     height: 4.2rem;

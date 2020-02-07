@@ -1,6 +1,11 @@
 @import '../../../styles.scss';
 @import '../../../assets/scss/common';
 
+.solution-grid-main-container {
+    min-height: calc(100vh - 9.6rem);
+    margin-bottom: 2rem;
+}
+
 .solution-worth-sharing-container {
     margin-top: 2.7rem;
     height: 4.2rem;
