@@ -170,9 +170,21 @@ input[type='password'] {
 }
 
 @media only screen and (max-width: 600px) {
+    .container-fluid {
+        background-image: linear-gradient(
+            to right,
+            $secondary5,
+            $secondary5
+        ) !important;
+    }
     .left-section {
         height: inherit;
         padding: 2rem;
+        background-image: linear-gradient(
+            to right,
+            $secondary6,
+            $secondary6
+        ) !important;
     }
 
     .register-section {
