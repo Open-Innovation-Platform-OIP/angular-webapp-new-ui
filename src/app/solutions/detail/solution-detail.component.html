@@ -1758,7 +1758,7 @@
     </div>
 </div>
 
-<div class="container my-3">
+<!-- <div class="container my-3">
     <div class="row">
         <div class="col-lg-7">
             <div class="col-md-12 bg-white pl-0 pr-0">
@@ -1771,9 +1771,7 @@
                         <ng-template>
                             Overview
                         </ng-template>
-                        <!-- <ng-container
-              *ngIf="!auth.currentUserValue.id; then preLogin"
-            ></ng-container> -->
+                       
                         <ng-container
                             *ngIf="
                                 auth.currentUserValue.id &&
@@ -1875,8 +1873,168 @@
                                 "
                             ></ng-container>
                         </div>
-                        <!-- <button mat-raised-button>Basic</button> -->
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="container mt-20 detail-container">
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="bg-white">
+                <ul
+                    class="nav nav-tabs nav-section nav-mob-section"
+                    id="leftTab"
+                    role="tablist"
+                >
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            id="overview-tab"
+                            data-toggle="tab"
+                            href="javascript:void(0);"
+                            (click)="switchTab(0)"
+                            role="tab"
+                            aria-controls="overview"
+                            aria-selected="true"
+                            >Overview</a
+                        >
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            id="validate-tab"
+                            data-toggle="tab"
+                            href="javascript:void(0);"
+                            (click)="switchTab(1)"
+                            role="tab"
+                            aria-controls="validate"
+                            aria-selected="false"
+                            >Validated ({{ validation.length }})</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            id="collaborate-tab"
+                            data-toggle="tab"
+                            href="javascript:void(0);"
+                            (click)="switchTab(2)"
+                            role="tab"
+                            aria-controls="collaborate"
+                            aria-selected="false"
+                            >Collaborated ({{ collaborators.length }})</a
+                        >
+                    </li>
+                </ul>
+                <div id="leftTabGroup" class="pb-2">
+                    <ng-container [ngSwitch]="currentTab">
+                        <ng-container *ngSwitchCase="0">
+                            <ng-container
+                                *ngIf="
+                                    auth.currentUserValue.id &&
+                                        !objectValues(problemData).length;
+                                    then notYetStart;
+                                    else overview
+                                "
+                            ></ng-container>
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="1">
+                            <ng-container
+                                *ngIf="!auth.currentUserValue.id; then preLogin"
+                            ></ng-container>
+                            <ng-container
+                                *ngIf="
+                                    auth.currentUserValue.id &&
+                                        !objectValues(validation).length;
+                                    then notYetStart;
+                                    else validated
+                                "
+                            ></ng-container>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="2">
+                            <ng-container
+                                *ngIf="!auth.currentUserValue.id; then preLogin"
+                            ></ng-container>
+                            <ng-container
+                                *ngIf="
+                                    auth.currentUserValue.id &&
+                                        !objectValues(collaborators).length;
+                                    then notYetStart;
+                                    else collaborated
+                                "
+                            ></ng-container>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5 margin-top-20">
+            <div class="bg-white">
+                <ul
+                    class="nav nav-tabs nav-section"
+                    id="discussionTab"
+                    role="tablist"
+                >
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            id="discussion-tab"
+                            data-toggle="tab"
+                            href="javascript:void(0);"
+                            role="tab"
+                            aria-controls="discussion"
+                            aria-selected="true"
+                            >Discussion</a
+                        >
+                    </li>
+                </ul>
+
+                <div class="btn-group sort-btn">
+                    <button
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        class="close dropdown-toggle text-capitalize"
+                    >
+                        sort: {{ currentSort }}
+                    </button>
+                    <div class="dropdown-menu mt-2 dropdown-menu-right">
+                        <a
+                            class="dropdown-item"
+                            href="javascript:void(0);"
+                            (click)="showPopularDiscussions('latest')"
+                            >Latest</a
+                        >
+                        <a
+                            class="dropdown-item"
+                            href="javascript:void(0);"
+                            (click)="showPopularDiscussions('popular')"
+                            >Popular</a
+                        >
+                    </div>
+                </div>
+
+                <div id="discussionTabGroup" class="pb-2">
+                    <ng-container
+                        *ngIf="
+                            !auth.currentUserValue.id;
+                            then discussionNotLogin
+                        "
+                    ></ng-container>
+                    <ng-container
+                        *ngIf="
+                            auth.currentUserValue.id &&
+                                !objectValues(comments).length;
+                            then noDiscussion;
+                            else discussion
+                        "
+                    ></ng-container>
                 </div>
             </div>
         </div>
@@ -1979,7 +2137,7 @@
 </ng-template>
 
 <ng-template #overview>
-    <div class="col">
+    <div class="col pt-20">
         <div
             *ngIf="solutionData.description"
             #descriptionText
@@ -1987,14 +2145,13 @@
         >
             <h3 class="heading">Description</h3>
 
-            <p class="description" id="problemDescription">
+            <p class="description-format" id="problemDescription">
                 {{ solutionData.description }}
             </p>
             <button
-                mat-flat-button
-                class="showMore"
-                *ngIf="descriptionShowMoreBtn"
+                class="btn btn-text"
                 (click)="clickShowMore()"
+                *ngIf="descriptionShowMoreBtn"
             >
                 {{ descriptionShowMoreBtnText }}
             </button>
@@ -2007,7 +2164,7 @@
             <div class="col-sm-6">
                 <div>
                     <h3 class="heading">Organization</h3>
-                    <p class="description">
+                    <p class="description-format">
                         {{ solutionData.organization || 'None' }}
                     </p>
                 </div>
@@ -2015,7 +2172,7 @@
 
             <div class="col-sm-6">
                 <h3 class="heading">Budget</h3>
-                <p class="description">
+                <p class="description-format">
                     {{ solutionData.budget_title }} ({{
                         solutionData.min_budget | currency: 'INR'
                     }}
@@ -2027,13 +2184,13 @@
         <div class="row">
             <div class="col-sm-6">
                 <h3 class="heading">Impact</h3>
-                <p class="description">
+                <p class="description-format">
                     {{ solutionData.impact || 'None' }}
                 </p>
             </div>
             <div class="col-sm-6">
                 <h3 class="heading">Deployments</h3>
-                <p class="description">
+                <p class="description-format">
                     {{ solutionData.deployment || 'None' }}
                 </p>
             </div>
@@ -2041,13 +2198,13 @@
         <div class="row">
             <div class="col-sm-6">
                 <h3 class="heading">Innovation</h3>
-                <p class="description">
+                <p class="description-format">
                     {{ solutionData.technology || 'None' }}
                 </p>
             </div>
             <div class="col-sm-6">
                 <h3 class="heading">Resources Needed</h3>
-                <p class="description">
+                <p class="description-format">
                     {{ solutionData.resources || 'None' }}
                 </p>
             </div>
@@ -2055,13 +2212,13 @@
         <div class="row">
             <div class="col-sm-6">
                 <h3 class="heading">Timeline</h3>
-                <p class="description">
+                <p class="description-format">
                     {{ solutionData.timeline || 'None' }}
                 </p>
             </div>
             <div class="col-sm-6">
                 <h3 class="heading">Pilots</h3>
-                <p class="description">
+                <p class="description-format">
                     {{ solutionData.pilots || 'None' }}
                 </p>
             </div>
@@ -2074,21 +2231,24 @@
                     <ng-container *ngFor="let location of solutionLocations">
                         <a
                             href="javascript:void(0);"
-                            class="description"
+                            class="description-format"
                             (click)="locationSelected(location)"
                         >
                             {{ location.location_name }}
                         </a>
                         <br />
                     </ng-container>
-                    <p class="description" *ngIf="!solutionLocations.length">
+                    <p
+                        class="description-format"
+                        *ngIf="!solutionLocations.length"
+                    >
                         None
                     </p>
                 </div>
             </div>
             <div class="col-sm-6">
                 <h3 class="heading">Website</h3>
-                <p class="description">
+                <p class="description-format">
                     {{ solutionData.website_url || 'None' }}
                 </p>
             </div>
@@ -2179,7 +2339,7 @@
         <div class="row">
             <ng-container *ngFor="let owner of ownerData">
                 <div class="col-sm-6 ">
-                    <div class="d-flex align-items-center">
+                    <div class="solver-container">
                         <img
                             src="{{
                                 owner.photo_url &&
@@ -2193,22 +2353,22 @@
                                     : './assets/img/default-avatar.png'
                             }}"
                             [attr.alt]="[imageAlt]"
-                            class="solverTeamImg"
+                            class=""
                             style="object-fit: cover;"
                         />
                         <a
                             [routerLink]="'/profiles/' + owner.id"
                             href="javascript:void(0);"
                             queryParamsHandling="merge"
-                            class="owner-name"
+                            class=""
                         >
-                            <p>
+                            <span>
                                 {{
                                     auth.currentUserValue.id == owner.id
                                         ? 'You'
                                         : owner.name
                                 }}
-                            </p>
+                            </span>
                         </a>
                     </div>
                 </div>

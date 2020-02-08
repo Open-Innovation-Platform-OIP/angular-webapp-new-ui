@@ -117,8 +117,9 @@ export class ProblemDetailComponent
     >;
     @ViewChild('prolemDetailAttachmentBtn', { static: false })
     prolemDetailAttachmentBtn: ElementRef<HTMLElement>;
-    @ViewChild('descriptionText', { static: false })
+    @ViewChild('descriptionText', { static: true })
     descriptionText: ElementRef<HTMLElement>;
+
     @ViewChild('commentElement', { static: false }) commentElement: ElementRef<
         HTMLElement
     >;

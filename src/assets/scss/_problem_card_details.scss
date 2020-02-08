@@ -199,10 +199,10 @@
     }
 }
 
-.created-by {
-    display: flex;
-    height: 32px;
-}
+// .created-by {
+//     display: flex;
+//     height: 3.2rem;
+// }
 
 .created-by-right-side {
     font-size: $font12;
@@ -547,9 +547,18 @@
     }
 }
 
-.showMore {
+.btn-text {
+    border-color: transparent;
     color: $primary2;
-    padding-left: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: $spacing;
+    line-height: 2rem;
+
+    &:hover {
+        border-color: none;
+        color: $primary2;
+    }
 }
 
 .card-btn {
@@ -646,7 +655,7 @@
         vertical-align: middle;
         font-size: $font12;
         color: $secondary2;
-        /* padding: 1rem; */
+        margin-left: 1rem;
     }
 
     img {

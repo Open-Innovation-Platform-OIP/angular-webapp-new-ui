@@ -1258,8 +1258,8 @@
                                         selected: voters.has(userId)
                                     }"
                                 >
-                                <i class="far fa-thumbs-up"></i>
-                              </a>
+                                    <i class="far fa-thumbs-up"></i>
+                                </a>
                                 <span class="social-stats">
                                     {{ voters.size }}
                                 </span>
@@ -2502,10 +2502,9 @@
             </p>
 
             <button
-                mat-flat-button
-                class="showMore"
-                *ngIf="descriptionShowMoreBtn"
+                class="btn btn-text"
                 (click)="clickShowMore()"
+                *ngIf="descriptionShowMoreBtn"
             >
                 {{ descriptionShowMoreBtnText }}
             </button>
