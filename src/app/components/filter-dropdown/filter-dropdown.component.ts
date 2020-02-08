@@ -56,7 +56,7 @@ export class FilterDropdownComponent implements OnInit {
             if (this.selectedSectors.length > 0) {
                 this.selectedSector = this.selectedSectors[0];
             }
-            console.log(this.selectedSectors);
+            // console.log(this.selectedSectors);
 
             this.selectedLocation = this.filterService.filterLocation(params);
             if (Object.values(this.selectedLocation).length) {
@@ -84,7 +84,7 @@ export class FilterDropdownComponent implements OnInit {
     }
 
     selectDropdown(event) {
-        console.log(event);
+        // console.log(event);
         if (event && event.option && event.option.value) {
             const locationData = event.option.value.Location;
 
@@ -133,13 +133,13 @@ export class FilterDropdownComponent implements OnInit {
             queries[sector] = 'sectorFilter';
         });
 
-        console.log("Queries", queries);
+        // console.log("Queries", queries);
 
         if (!Object.values(this.selectedLocation).length) {
             if (queries['locationRange']) {
                 delete queries['locationRange'];
             }
-            console.log('About to navigate with', queries);
+            // console.log('About to navigate with', queries);
             this.router.navigate(['/' + this.type], {
                 queryParams: queries,
             });
@@ -150,7 +150,7 @@ export class FilterDropdownComponent implements OnInit {
             queries['filterLocation'] = JSON.stringify(this.selectedLocation);
         }
 
-        console.log('About to navigate with', queries);
+        // console.log('About to navigate with', queries);
 
         this.router.navigate(['/' + this.type], {
             queryParams: queries,
