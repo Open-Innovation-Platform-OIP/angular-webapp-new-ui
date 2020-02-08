@@ -18,10 +18,13 @@ import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { FilesService } from '../../services/files.service';
+import {AttachmentModalComponent} from '../../components/attachment-modal/attachment-modal.component';
 
 import gql from 'graphql-tag';
 // import { Renderer3 } from '@angular/core/src/render3/interfaces/renderer';
 // import { FocusMonitor } from '@angular/cdk/a11y';
+
+declare var $: any;
 @Component({
     selector: 'app-display-comment',
     templateUrl: './displaycomment.component.html',
@@ -249,5 +252,17 @@ export class CommentDisplayComponent implements OnInit, OnDestroy, OnChanges {
             return false;
         }
     }
+
+    openModal(id, index?) {
+
+        /* opening modal */
+        $(id).modal({
+            backdrop: 'static',
+            keyboard: false,
+        });
+
+        $(id).modal('show');
+    }
+
     ngOnDestroy() {}
 }

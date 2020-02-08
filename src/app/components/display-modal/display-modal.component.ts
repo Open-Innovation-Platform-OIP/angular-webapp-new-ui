@@ -16,7 +16,7 @@ import { FilesService } from '../../services/files.service';
 })
 export class DisplayModalComponent implements OnInit {
     @Input() source;
-    iframe_html: any;
+    iframeHTML: any;
 
     constructor(
         // private embedService: EmbedVideoService,
@@ -52,7 +52,7 @@ export class DisplayModalComponent implements OnInit {
         });
 
         if (filtered.length) {
-            // this.iframe_html = this.iframe_html = this.embedService.embed(url, {
+            // this.iframeHTML = this.iframeHTML = this.embedService.embed(url, {
             //   attr: { width: '100%', height: 500 }
             // });
             return true;
