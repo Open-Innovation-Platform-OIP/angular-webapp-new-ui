@@ -2382,16 +2382,28 @@
         <div class="row px-3 pt-3">
             <ng-container *ngFor="let validate of validation; let i = index">
                 <div class="col-sm-12 validateCard" *ngIf="i < validationLimit">
-                    <button
+                    <!-- <button
                         mat-mini-fab
                         class="float-right shadow-none edit-validate"
                         (click)="openValidateModal(validate)"
                         *ngIf="validate.user_id == auth.currentUserValue.id"
                     >
                         <i class="far fa-pen"></i>
-                    </button>
+                    </button> -->
                     <div class="agreedDisagreeDiv">
-                        <i
+                        <img
+                            src="../../../assets/svg/agree_icon.svg"
+                            alt=""
+                            *ngIf="validate.agree"
+                            style="margin-right: .5rem;"
+                        />
+                        <img
+                            src="../../../assets/svg/disagree_icon.svg"
+                            *ngIf="!validate.agree"
+                            alt=""
+                            style="margin-right: .5rem;"
+                        />
+                        <!-- <i
                             class="far fa-check agree"
                             aria-hidden="true"
                             *ngIf="validate.agree"
@@ -2401,7 +2413,7 @@
                             class="far fa-times disagree"
                             aria-hidden="true"
                             *ngIf="!validate.agree"
-                        ></i>
+                        ></i> -->
 
                         <strong>{{
                             validate.agree ? 'Agreed' : 'Disagreed'
@@ -2426,7 +2438,7 @@
                                     )
                                         ? filesService.fileAccessUrl +
                                           validate.user.photo_url.fileEndpoint
-                                        : './assets/img/default-avatar.png'
+                                        : '../../../assets/img/profile_holder.jpg'
                                 }}"
                                 [attr.alt]="[imageAlt]"
                                 class="solverTeamImg "
@@ -2443,12 +2455,11 @@
                         </div>
 
                         <div class="d-flex align-items-center">
-                            <i
-                                class="material-icons actions"
-                                aria-hidden="true"
-                            >
-                                attach_file
-                            </i>
+                            <img
+                                src="../../../assets/svg/paper_clip.svg"
+                                alt=""
+                                style="margin-right: .5rem;"
+                            />
                             {{ validate.files.length }}
                             {{
                                 validate.length > 1
@@ -2484,14 +2495,14 @@
                     style="word-wrap: break-word;"
                     *ngIf="i < collaboratorLimit"
                 >
-                    <button
+                    <!-- <button
                         mat-mini-fab
                         class="float-right edit-validate"
                         (click)="openCollaborateModal(collaborator)"
                         *ngIf="collaborator.user_id == auth.currentUserValue.id"
                     >
                         <i class="far fa-pen"></i>
-                    </button>
+                    </button> -->
                     <div>
                         <strong class="text-capitalize roles">
                             Role: {{ getTagStrings(collaborator) }}
