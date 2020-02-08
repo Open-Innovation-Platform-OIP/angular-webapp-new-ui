@@ -28,6 +28,7 @@ import { ProblemCardComponent } from './problem-card/problem-card.component';
 // import { ShareAutofocusModule } from '../share-autofocus/share-autofocus.module';
 import { SolutionCardComponent } from './solution-card/solution-card.component';
 import { FilterDropdownComponent } from './filter-dropdown/filter-dropdown.component';
+import { EnrichmentDetailModalComponent } from './enrichment-detail-modal/enrichment-detail-modal.component';
 // import { ModalComponent } from './modal/modal.component';
 // import { DomainAddModalComponent } from './domain-add-modal/domain-add-modal.component';
 
@@ -64,6 +65,7 @@ import { FilterDropdownComponent } from './filter-dropdown/filter-dropdown.compo
         // WizardContainerComponent,
         SolutionCardComponent,
         FilterDropdownComponent,
+        EnrichmentDetailModalComponent,
         // ModalComponent,
         // DomainAddModalComponent,
         // GlobalSearchCardsComponent
@@ -87,6 +89,7 @@ import { FilterDropdownComponent } from './filter-dropdown/filter-dropdown.compo
         // DisplayModalComponent,
         // WizardContainerComponent,
         FilterDropdownComponent,
+        EnrichmentDetailModalComponent,
         // ModalComponent,
         // DomainAddModalComponent,
         // GlobalSearchCardsComponent

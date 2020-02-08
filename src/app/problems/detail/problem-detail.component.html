@@ -2842,12 +2842,13 @@
 <ng-template #enrichmentTemplate>
   <div class="col pb-4">
     <ng-container *ngFor="let enrich of enrichment">
+      <app-enrichment-detail-modal [id]="enrich.id" [enrichment]="enrich"></app-enrichment-detail-modal>
       <div
         class="problem-container border mt-4 actions"
         (click)="openEnrichModal(enrich)"
       >
         <div class="left-side">
-          <div class="heading-container text-capitalize ">
+          <div class="heading-container text-capitalize">
             <a
               href="javascript:void(0);"
               (click)="openEnrichModal(enrich)"
