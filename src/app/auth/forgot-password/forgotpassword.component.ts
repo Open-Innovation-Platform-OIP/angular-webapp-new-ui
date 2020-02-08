@@ -46,17 +46,17 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
         // body.classList.add("login-page");
         // body.classList.add("off-canvas-sidebar");
         // const card = document.getElementsByClassName("card")[0];
-        // this.route.queryParams.subscribe(params => {
-        //   this.returnUrl = params["returnUrl"] || "/";
-        //   this.resetDetails.email = params["email"] || "";
-        //   this.step = Number(params["step"]);
-        //   if (this.step === 1) {
-        //     $("#otpfield").focus();
-        //   } else {
-        //     this.step = 0;
-        //   }
-        //   // console.log(this.step);
-        // });
+        this.route.queryParams.subscribe(params => {
+          this.returnUrl = params["returnUrl"] || "/";
+          this.resetDetails.email = params["email"] || "";
+          this.step = Number(params["step"]);
+          if (this.step === 1) {
+            $("#otpfield").focus();
+          } else {
+            this.step = 0;
+          }
+          // console.log(this.step);
+        });
     }
     sidebarToggle() {
         let toggleButton = this.toggleButton;
@@ -86,8 +86,10 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
             this.resetDetails.password.length >= 4 &&
             this.resetDetails.password === this.resetDetails.confirmPassword
         ) {
+            console.log('All ok');
             return true;
         }
+        console.log('Not ok');
         return false;
     }
     done(err, res) {
@@ -99,6 +101,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
         }
     }
     requestOTP() {
+        console.log('Requesting new OTP');
         this.loading = true;
         this.auth
             .requestResetCode(this.resetDetails.email)
@@ -107,6 +110,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
                 data => {
                     this.loading = false;
                     this.step = 1;
+                    console.log(data);
                 },
                 error => {
                     console.error('OTP Error: ', error);
