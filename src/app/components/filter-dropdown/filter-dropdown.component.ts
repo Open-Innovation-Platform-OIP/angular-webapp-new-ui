@@ -13,6 +13,7 @@ import { FilterService } from '../../services/filter.service';
 export class FilterDropdownComponent implements OnInit {
     @Input() type: string;
     selectedSectors: any = [];
+    selectedSector = '';
     selectedLocation: any = {};
     range: any;
     selectedLocationName = '';
@@ -40,15 +41,22 @@ export class FilterDropdownComponent implements OnInit {
         private filterService: FilterService
     ) {}
 
-    ngOnInit() {
+    async ngOnInit() {
         this.myControl.valueChanges.subscribe(val => {
             this.getLocation(val);
         });
 
-        this.sectors = this.tagsService.allTags;
+        // await this.tagsService.getTagsFromDB('');
 
-        this.activatedRoute.queryParams.subscribe(params => {
-            this.selectedSectors = this.filterService.filterSector(params);
+        this.sectors = this.tagsService.allTags;
+        // console.log("Sectors", this.sectors);
+
+        this.activatedRoute.queryParams.subscribe(async params => {
+            this.selectedSectors = this.filterService.filterSector(params) || [];
+            if (this.selectedSectors.length > 0) {
+                this.selectedSector = this.selectedSectors[0];
+            }
+            console.log(this.selectedSectors);
 
             this.selectedLocation = this.filterService.filterLocation(params);
             if (Object.values(this.selectedLocation).length) {
@@ -60,6 +68,7 @@ export class FilterDropdownComponent implements OnInit {
             } else {
                 this.range = '0';
             }
+            this.selectDropdown(null);
         });
     }
 
@@ -75,6 +84,7 @@ export class FilterDropdownComponent implements OnInit {
     }
 
     selectDropdown(event) {
+        console.log(event);
         if (event && event.option && event.option.value) {
             const locationData = event.option.value.Location;
 
@@ -96,6 +106,15 @@ export class FilterDropdownComponent implements OnInit {
                 this.selectedLocation['country'] = locationData.Address.Country;
             }
         }
+        if (event && event.target) {
+            this.selectedSectors = [];
+            for (let o of event.target.selectedOptions) {
+                // console.log(o);
+                if (o.value !== 'all') {
+                    this.selectedSectors.push(o.value);
+                }
+            }
+        }
 
         if (!this.selectedLocationName) {
             this.selectedLocation = {};
@@ -109,15 +128,18 @@ export class FilterDropdownComponent implements OnInit {
         } else {
             this.filterService.range = 0.2;
         }
-
+        
         this.selectedSectors.map(sector => {
             queries[sector] = 'sectorFilter';
         });
+
+        console.log("Queries", queries);
 
         if (!Object.values(this.selectedLocation).length) {
             if (queries['locationRange']) {
                 delete queries['locationRange'];
             }
+            console.log('About to navigate with', queries);
             this.router.navigate(['/' + this.type], {
                 queryParams: queries,
             });
@@ -127,6 +149,8 @@ export class FilterDropdownComponent implements OnInit {
         if (Object.values(this.selectedLocation).length) {
             queries['filterLocation'] = JSON.stringify(this.selectedLocation);
         }
+
+        console.log('About to navigate with', queries);
 
         this.router.navigate(['/' + this.type], {
             queryParams: queries,

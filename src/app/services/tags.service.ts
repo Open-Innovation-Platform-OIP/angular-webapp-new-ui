@@ -18,6 +18,7 @@ export class TagsService {
 
     constructor(private apollo: Apollo) {
         this.getTagsFromDBForAdmin();
+        this.getTagsFromDB('');
     }
 
     getTagsFromDB(filter) {

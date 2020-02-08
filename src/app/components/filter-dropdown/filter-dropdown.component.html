@@ -1,9 +1,9 @@
 <div class="filter-container">
     <div class="filter-section">
-        <select class="custom-select" (change)="selectDropdown($event)">
+        <select class="custom-select" [(ngModel)]="selectedSector" (change)="selectDropdown($event)">
             <option selected value="all">All Sectors</option>
             <ng-container *ngFor="let sector of objectValues(sectors)">
-                <option value="sector.name">{{ sector.name }}</option>
+                <option value="{{sector.name}}">{{ sector.name }}</option>
             </ng-container>
         </select>
         <!-- <mat-form-field>
