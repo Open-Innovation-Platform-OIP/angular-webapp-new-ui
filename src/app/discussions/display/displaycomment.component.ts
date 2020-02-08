@@ -18,7 +18,7 @@ import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { FilesService } from '../../services/files.service';
-import {AttachmentModalComponent} from '../../components/attachment-modal/attachment-modal.component';
+import { AttachmentModalComponent } from '../../components/attachment-modal/attachment-modal.component';
 
 import gql from 'graphql-tag';
 // import { Renderer3 } from '@angular/core/src/render3/interfaces/renderer';
@@ -28,7 +28,7 @@ declare var $: any;
 @Component({
     selector: 'app-display-comment',
     templateUrl: './displaycomment.component.html',
-    styleUrls: ['./displaycomment.component.css'],
+    styleUrls: ['./displaycomment.component.scss'],
 })
 export class CommentDisplayComponent implements OnInit, OnDestroy, OnChanges {
     objectValues = Object['values'];
@@ -60,9 +60,8 @@ export class CommentDisplayComponent implements OnInit, OnDestroy, OnChanges {
         private apollo: Apollo,
         public auth: AuthService,
         private filesService: FilesService,
-        private ele: ElementRef
-    ) // private focusMonitor: FocusMonitor
-    {}
+        private ele: ElementRef // private focusMonitor: FocusMonitor
+    ) {}
     ngOnInit() {
         this.comment.discussion_voters.map(voter => {
             this.voters.add(voter.user_id);
@@ -254,7 +253,6 @@ export class CommentDisplayComponent implements OnInit, OnDestroy, OnChanges {
     }
 
     openModal(id, index?) {
-
         /* opening modal */
         $(id).modal({
             backdrop: 'static',

@@ -460,8 +460,11 @@
 </div> -->
 
 <ng-template #comments let-comment="comment" let-default>
-  <app-attachment-modal [id]="comment.id" [attachments]="comment.attachments"></app-attachment-modal>
-    <div class="d-flex justify-content-start  p-2 comment-section">
+    <app-attachment-modal
+        [id]="comment.id"
+        [attachments]="comment.attachments"
+    ></app-attachment-modal>
+    <div class="d-flex justify-content-start  p-4 comment-section">
         <div class="">
             <img
                 src="{{
@@ -473,7 +476,7 @@
                         : './assets/img/default-avatar.png'
                 }}"
                 alt="profile photo"
-                class="rounded-circle"
+                class="rounded-circle mr-3"
                 style="object-fit: cover;overflow: hidden;"
                 width="40"
                 height="40"
@@ -490,7 +493,7 @@
                 </span>
             </div>
             <div
-                style="color: #2d2d2d"
+                style="color: #2d2d2d ;"
                 innerHTML="{{
                     comment.text.length > 135
                         ? comment.text.slice(0, charLenToShow)
@@ -512,21 +515,30 @@
                 }}
             </a>
             <button
-              *ngIf="comment.attachments.length > 0"
-              class="align-icon"
-              data-toggle="modal"
-              #showModalBtn
-              (click)="openModal('#viewAttachmentsModal-'+comment.id)"
+                *ngIf="comment.attachments.length > 0"
+                class="align-icon attach-btn"
+                data-toggle="modal"
+                #showModalBtn
+                (click)="openModal('#viewAttachmentsModal-' + comment.id)"
             >
-              See {{comment.attachments.length}} Attachments
-          </button>
+                <img
+                    class="mr-1"
+                    src="../../../assets/svg/paper_clip.svg"
+                    alt=""
+                />
+
+                See {{ comment.attachments.length }} Attachments
+            </button>
         </div>
     </div>
 </ng-template>
 
 <ng-template #replyTemp let-comment="comment">
-  <app-attachment-modal [id]="comment.id" [attachments]="comment.attachments"></app-attachment-modal>
-    <div class="d-flex justify-content-start  p-2 reply-section">
+    <app-attachment-modal
+        [id]="comment.id"
+        [attachments]="comment.attachments"
+    ></app-attachment-modal>
+    <div class="d-flex justify-content-start  p-4 reply-section">
         <div class="">
             <img
                 src="{{
@@ -538,7 +550,7 @@
                         : './assets/img/default-avatar.png'
                 }}"
                 alt="profile photo"
-                class="rounded-circle"
+                class="rounded-circle mr-3"
                 style="object-fit: cover;overflow: hidden;"
                 width="40"
                 height="40"
@@ -579,15 +591,20 @@
                 }}
             </a>
 
-          <button
-              *ngIf="comment.attachments.length > 0"
-              class="align-icon"
-              data-toggle="modal"
-              #showModalBtn
-              (click)="openModal('#viewAttachmentsModal-'+comment.id)"
+            <button
+                *ngIf="comment.attachments.length > 0"
+                class="align-icon attach-btn"
+                data-toggle="modal"
+                #showModalBtn
+                (click)="openModal('#viewAttachmentsModal-' + comment.id)"
             >
-              See {{comment.attachments.length}} Attachments
-          </button>
+                <img
+                    class="mr-1"
+                    src="../../../assets/svg/paper_clip.svg"
+                    alt=""
+                />
+                See {{ comment.attachments.length }} Attachments
+            </button>
         </div>
     </div>
 </ng-template>

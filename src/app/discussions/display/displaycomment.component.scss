@@ -1,3 +1,6 @@
+@import '../../../styles.scss';
+@import '../../../assets/scss/common';
+
 quill-editor {
   display: block;
 }
@@ -85,11 +88,11 @@ pre {
   padding: 3px 0;
 }
 
-.mention > span {
+.mention>span {
   margin: 0 3px;
 }
 
-.discussion_thumbnail > a > img {
+.discussion_thumbnail>a>img {
   padding: 0 2px;
   height: 40px;
   width: 40px;
@@ -108,12 +111,12 @@ pre {
 
 .dropdown-menu a:hover,
 .dropdown-menu a:focus {
-  background-color: var(--orange);
-  color: var(--light);
+  background-color: $primary2;
+  color: $secondary6;
   cursor: pointer;
 }
 
-.dropdown-menu > li > a {
+.dropdown-menu>li>a {
   font-size: 1.2rem;
   line-height: 2rem;
 }
@@ -122,9 +125,14 @@ pre {
   margin: 2rem 0;
 }
 
+.border {
+  border-radius: $round4;
+}
+
 .icon-button {
   box-sizing: border-box;
   height: 3.2rem;
+  border-radius: 50%;
   width: 3.2rem;
   border: 0.1rem solid #e1e1e1;
   background-color: #f7f7f7;
@@ -152,6 +160,7 @@ pre {
   font-weight: bolder;
   padding-right: 2px;
 }
+
 .dot::before {
   content: none !important;
   font-weight: bolder;
@@ -160,6 +169,14 @@ pre {
 
 .reply-body {
   position: relative;
+}
+
+.attach-btn {
+  background-color: $secondary6;
+  border: none;
+  color: $secondary1;
+  font-weight: 600;
+  font-size: $font12 !important;
 }
 
 .reply-btn {
@@ -171,12 +188,13 @@ pre {
   width: 7.3rem;
   border: 0.1rem solid #e1e1e1;
   border-radius: 0.4rem;
+  background-color: $secondary6;
   line-height: 2.2rem;
   font-size: 1.2rem;
   margin-left: 1.5rem;
 }
 
-.reply-btn > i {
+.reply-btn>i {
   transform: rotateY(180deg);
   scale: (1.2);
   margin-right: 0.2rem;
@@ -222,6 +240,7 @@ pre {
   font-weight: 500;
   color: #2d2d2d;
 }
+
 .reply-date {
   line-height: 2rem !important;
   font-size: 1.2rem !important;
