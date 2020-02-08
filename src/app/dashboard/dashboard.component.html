@@ -1,681 +1,823 @@
 <!-- <ngx-ui-loader fgsColor="#ff9800" fgsType="rectangle-bounce"> </ngx-ui-loader> -->
 
-
 <div class="main-content">
-  <div *ngIf="isNewUser(); then new_user; else my_page"></div>
+    <div *ngIf="isNewUser(); then new_user; else my_page"></div>
 </div>
 
 <ng-template #existing>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-10">
-        <h1 *ngIf="drafts.length" class="card-title" style="font-size: 1.6rem;">
-          You are working on these drafts
-        </h1>
-      </div>
-      <hr />
-      <div *ngIf="drafts.length > 4" class="col-md-2" style="padding-top: 1em;">
-        <button
-          mat-raised-button
-          class="btn btn-warning btn-sm"
-          [routerLink]="['/dashboard/drafts', { type: 'drafts' }]"
-          queryParamsHandling="merge"
-        >
-          View All ({{
-            this.userService.dashboardDrafts.length +
-              this.userService.solutionDrafts.length
-          }})
-          <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i>
-        </button>
-      </div>
-    </div>
-    <br />
-    <div class="row">
-      <div class="col-md-6" *ngFor="let draft of drafts; let i = index">
-        <ng-container *ngIf="draft.problem_locations">
-          <app-problem-card
-            *ngIf="i < 4"
-            [problemData]="draft"
-          ></app-problem-card>
-        </ng-container>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <h1
+                    *ngIf="drafts.length"
+                    class="card-title"
+                    style="font-size: 1.6rem;"
+                >
+                    You are working on these drafts
+                </h1>
+            </div>
+            <hr />
+            <div
+                *ngIf="drafts.length > 4"
+                class="col-md-2"
+                style="padding-top: 1em;"
+            >
+                <button
+                    mat-raised-button
+                    class="btn btn-warning btn-sm"
+                    [routerLink]="['/dashboard/drafts', { type: 'drafts' }]"
+                    queryParamsHandling="merge"
+                >
+                    View All ({{
+                        this.userService.dashboardDrafts.length +
+                            this.userService.solutionDrafts.length
+                    }})
+                    <i class="material-icons" aria-hidden="true"
+                        >keyboard_arrow_right</i
+                    >
+                </button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6" *ngFor="let draft of drafts; let i = index">
+                <ng-container *ngIf="draft.problem_locations">
+                    <app-problem-card
+                        *ngIf="i < 4"
+                        [problemData]="draft"
+                    ></app-problem-card>
+                </ng-container>
 
-        <ng-container *ngIf="!draft.problem_locations">
-          <app-solution-card
-            *ngIf="i < 4"
-            [solutionData]="draft"
-          ></app-solution-card>
-        </ng-container>
-      </div>
-    </div>
+                <ng-container *ngIf="!draft.problem_locations">
+                    <app-solution-card
+                        *ngIf="i < 4"
+                        [solutionData]="draft"
+                    ></app-solution-card>
+                </ng-container>
+            </div>
+        </div>
 
-    <div class="row">
-      <div class="col-md-10">
-        <h1
-          *ngIf="userProblems.length"
-          style="font-size: 1.6rem;"
-          class="card-title"
-        >
-          Problems added by you
-        </h1>
-      </div>
-      <div
-        *ngIf="userProblems.length > 4"
-        class="col-md-2"
-        style="padding-top: 1em;"
-      >
-        <button
-          mat-raised-button
-          class="btn btn-warning btn-sm"
-          [routerLink]="['/dashboard/problems', { type: 'problems' }]"
-          queryParamsHandling="merge"
-        >
-          View All ({{ userProblems.length }})
-          <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i>
-        </button>
-      </div>
-    </div>
-    <br />
-    <div class="row">
-      <div class="col-md-6" *ngFor="let problem of userProblems; let i = index">
-        <app-problem-card
-          *ngIf="i < 4"
-          [problemData]="problem"
-          [index]="i"
-        ></app-problem-card>
-      </div>
-    </div>
+        <div class="row">
+            <div class="col-md-10">
+                <h1
+                    *ngIf="userProblems.length"
+                    style="font-size: 1.6rem;"
+                    class="card-title"
+                >
+                    Problems added by you
+                </h1>
+            </div>
+            <div
+                *ngIf="userProblems.length > 4"
+                class="col-md-2"
+                style="padding-top: 1em;"
+            >
+                <button
+                    mat-raised-button
+                    class="btn btn-warning btn-sm"
+                    [routerLink]="['/dashboard/problems', { type: 'problems' }]"
+                    queryParamsHandling="merge"
+                >
+                    View All ({{ userProblems.length }})
+                    <i class="material-icons" aria-hidden="true"
+                        >keyboard_arrow_right</i
+                    >
+                </button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div
+                class="col-md-6"
+                *ngFor="let problem of userProblems; let i = index"
+            >
+                <app-problem-card
+                    *ngIf="i < 4"
+                    [problemData]="problem"
+                    [index]="i"
+                ></app-problem-card>
+            </div>
+        </div>
 
-    <div class="row">
-      <div class="col-md-10">
-        <h1
-          *ngIf="userSolutions.length"
-          class="card-title"
-          style="font-size: 1.6rem;"
-        >
-          Solutions added by you
-        </h1>
-      </div>
-      <div
-        *ngIf="userSolutions.length > 4"
-        class="col-md-2"
-        style="padding-top: 1em;"
-      >
-        <button
-          mat-raised-button
-          class="btn btn-warning btn-sm"
-          [routerLink]="['/dashboard/solutions', { type: 'solutions' }]"
-          queryParamsHandling="merge"
-        >
-          View All ({{ userSolutions.length }})
-          <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i>
-        </button>
-      </div>
-    </div>
-    <br />
-    <div class="row">
-      <div
-        class="col-md-6"
-        *ngFor="let solution of userSolutions; let i = index"
-      >
-        <app-solution-card
-          *ngIf="i < 4"
-          [solutionData]="solution"
-          [index]="i"
-        ></app-solution-card>
-      </div>
-    </div>
+        <div class="row">
+            <div class="col-md-10">
+                <h1
+                    *ngIf="userSolutions.length"
+                    class="card-title"
+                    style="font-size: 1.6rem;"
+                >
+                    Solutions added by you
+                </h1>
+            </div>
+            <div
+                *ngIf="userSolutions.length > 4"
+                class="col-md-2"
+                style="padding-top: 1em;"
+            >
+                <button
+                    mat-raised-button
+                    class="btn btn-warning btn-sm"
+                    [routerLink]="[
+                        '/dashboard/solutions',
+                        { type: 'solutions' }
+                    ]"
+                    queryParamsHandling="merge"
+                >
+                    View All ({{ userSolutions.length }})
+                    <i class="material-icons" aria-hidden="true"
+                        >keyboard_arrow_right</i
+                    >
+                </button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div
+                class="col-md-6"
+                *ngFor="let solution of userSolutions; let i = index"
+            >
+                <app-solution-card
+                    *ngIf="i < 4"
+                    [solutionData]="solution"
+                    [index]="i"
+                ></app-solution-card>
+            </div>
+        </div>
 
-    <div class="row">
-      <div class="col-md-10">
-        <h1
-          *ngIf="objectKeys(contributions).length > 0"
-          class="card-title"
-          style="font-size: 1.6rem;"
-        >
-          Your contributions
-        </h1>
-      </div>
-      <div
-        *ngIf="objectKeys(contributions).length > 4"
-        class="col-md-2"
-        style="padding-top: 1em;"
-      >
-        <button
-          mat-raised-button
-          class="btn btn-warning btn-sm"
-          [routerLink]="['/dashboard/contributions', { type: 'contributions' }]"
-          queryParamsHandling="merge"
-        >
-          View All ({{ objectKeys(contributions).length }})
-          <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i>
-        </button>
-      </div>
-    </div>
-    <br />
-    <div class="row">
-      <div
-        class="col-md-6"
-        *ngFor="let contribution of objectValues(contributions); let i = index"
-      >
-        <ng-container *ngIf="contribution.problem_locations">
-          <app-problem-card
-            *ngIf="i < 4"
-            [index]="i"
-            [problemData]="contribution"
-          ></app-problem-card>
-        </ng-container>
+        <div class="row">
+            <div class="col-md-10">
+                <h1
+                    *ngIf="objectKeys(contributions).length > 0"
+                    class="card-title"
+                    style="font-size: 1.6rem;"
+                >
+                    Your contributions
+                </h1>
+            </div>
+            <div
+                *ngIf="objectKeys(contributions).length > 4"
+                class="col-md-2"
+                style="padding-top: 1em;"
+            >
+                <button
+                    mat-raised-button
+                    class="btn btn-warning btn-sm"
+                    [routerLink]="[
+                        '/dashboard/contributions',
+                        { type: 'contributions' }
+                    ]"
+                    queryParamsHandling="merge"
+                >
+                    View All ({{ objectKeys(contributions).length }})
+                    <i class="material-icons" aria-hidden="true"
+                        >keyboard_arrow_right</i
+                    >
+                </button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div
+                class="col-md-6"
+                *ngFor="
+                    let contribution of objectValues(contributions);
+                    let i = index
+                "
+            >
+                <ng-container *ngIf="contribution.problem_locations">
+                    <app-problem-card
+                        *ngIf="i < 4"
+                        [index]="i"
+                        [problemData]="contribution"
+                    ></app-problem-card>
+                </ng-container>
 
-        <ng-container *ngIf="!contribution.problem_locations">
-          <app-solution-card
-            *ngIf="i < 4"
-            [index]="i"
-            [solutionData]="contribution"
-          ></app-solution-card>
-        </ng-container>
-      </div>
-    </div>
+                <ng-container *ngIf="!contribution.problem_locations">
+                    <app-solution-card
+                        *ngIf="i < 4"
+                        [index]="i"
+                        [solutionData]="contribution"
+                    ></app-solution-card>
+                </ng-container>
+            </div>
+        </div>
 
-    <div class="row">
-      <div class="col-md-10">
-        <h1
-          style="font-size: 1.6rem;"
-          *ngIf="objectKeys(recommendedProblems).length > 0"
-          class="card-title"
-        >
-          Problems you may be interested in
-        </h1>
-      </div>
-      <div
-        *ngIf="objectKeys(recommendedProblems).length > 4"
-        class="col-md-2"
-        style="padding-top: 1em;"
-      >
-        <button
-          mat-raised-button
-          class="btn btn-warning btn-sm"
-          [routerLink]="['/dashboard/interests', { type: 'interests' }]"
-          queryParamsHandling="merge"
-        >
-          View All ({{ objectKeys(recommendedProblems).length }})
-          <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i>
-        </button>
-      </div>
-    </div>
-    <br />
-    <div class="row">
-      <div
-        class="col-md-6"
-        *ngFor="let problem of objectValues(recommendedProblems); let i = index"
-      >
-        <app-problem-card
-          *ngIf="i < 4"
-          [index]="i"
-          [problemData]="problem"
-        ></app-problem-card>
-      </div>
-    </div>
+        <div class="row">
+            <div class="col-md-10">
+                <h1
+                    style="font-size: 1.6rem;"
+                    *ngIf="objectKeys(recommendedProblems).length > 0"
+                    class="card-title"
+                >
+                    Problems you may be interested in
+                </h1>
+            </div>
+            <div
+                *ngIf="objectKeys(recommendedProblems).length > 4"
+                class="col-md-2"
+                style="padding-top: 1em;"
+            >
+                <button
+                    mat-raised-button
+                    class="btn btn-warning btn-sm"
+                    [routerLink]="[
+                        '/dashboard/interests',
+                        { type: 'interests' }
+                    ]"
+                    queryParamsHandling="merge"
+                >
+                    View All ({{ objectKeys(recommendedProblems).length }})
+                    <i class="material-icons" aria-hidden="true"
+                        >keyboard_arrow_right</i
+                    >
+                </button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div
+                class="col-md-6"
+                *ngFor="
+                    let problem of objectValues(recommendedProblems);
+                    let i = index
+                "
+            >
+                <app-problem-card
+                    *ngIf="i < 4"
+                    [index]="i"
+                    [problemData]="problem"
+                ></app-problem-card>
+            </div>
+        </div>
 
-    <div class="row">
-      <div class="col-md-10">
-        <h1
-          *ngIf="objectKeys(recommendedUsers).length > 0"
-          class="card-title"
-          style="font-size: 1.6rem;"
-        >
-          People with similar interests
-        </h1>
-      </div>
-      <div
-        *ngIf="objectKeys(recommendedUsers).length > 4"
-        class="col-md-2"
-        style="padding-top: 1em;"
-      >
-        <button
-          mat-raised-button
-          class="btn btn-warning btn-sm"
-          [routerLink]="['/dashboard/recommended-users', { type: 'users' }]"
-          queryParamsHandling="merge"
-        >
-          View All ({{ objectKeys(recommendedUsers).length }})
-          <i class="material-icons" aria-hidden="true">keyboard_arrow_right</i>
-        </button>
-      </div>
+        <div class="row">
+            <div class="col-md-10">
+                <h1
+                    *ngIf="objectKeys(recommendedUsers).length > 0"
+                    class="card-title"
+                    style="font-size: 1.6rem;"
+                >
+                    People with similar interests
+                </h1>
+            </div>
+            <div
+                *ngIf="objectKeys(recommendedUsers).length > 4"
+                class="col-md-2"
+                style="padding-top: 1em;"
+            >
+                <button
+                    mat-raised-button
+                    class="btn btn-warning btn-sm"
+                    [routerLink]="[
+                        '/dashboard/recommended-users',
+                        { type: 'users' }
+                    ]"
+                    queryParamsHandling="merge"
+                >
+                    View All ({{ objectKeys(recommendedUsers).length }})
+                    <i class="material-icons" aria-hidden="true"
+                        >keyboard_arrow_right</i
+                    >
+                </button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div
+                class="col-md-6"
+                *ngFor="
+                    let user of objectValues(recommendedUsers);
+                    let i = index
+                "
+            >
+                <app-profile-card
+                    *ngIf="i < 4"
+                    [index]="i"
+                    [userData]="user"
+                ></app-profile-card>
+            </div>
+        </div>
     </div>
-    <br />
-    <div class="row">
-      <div
-        class="col-md-6"
-        *ngFor="let user of objectValues(recommendedUsers); let i = index"
-      >
-        <app-profile-card
-          *ngIf="i < 4"
-          [index]="i"
-          [userData]="user"
-        ></app-profile-card>
-      </div>
-    </div>
-  </div>
 </ng-template>
 
 <ng-template #new_user>
-  <div *ngIf="showLoader">
-    <div class="loader">
-      <svg class="circular" viewBox="25 25 50 50">
-        <circle
-          class="path"
-          cx="50"
-          cy="50"
-          r="20"
-          fill="none"
-          stroke-width="2"
-          stroke-miterlimit="10"
-        />
-      </svg>
+    <div *ngIf="showLoader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle
+                    class="path"
+                    cx="50"
+                    cy="50"
+                    r="20"
+                    fill="none"
+                    stroke-width="2"
+                    stroke-miterlimit="10"
+                />
+            </svg>
+        </div>
     </div>
-  </div>
 
-  <div *ngIf="!showLoader" class="main-content">
-    <div class="container new-user-content">
-      <h1>New here?</h1>
-      <p>
-        Why not help enrich some of
-        <a [routerLink]="'/problems'" queryParamsHandling="merge"
-          >the problems</a
-        >
-        on the platform? Or perhaps add a new one?
-      </p>
-      <p>
-        Don't forget to
-        <a
-          [routerLink]="'/users/' + auth.currentUserValue.id"
-          queryParamsHandling="merge"
-          >update your profile</a
-        >
-        so that other users can find you!
-      </p>
+    <div *ngIf="!showLoader" class="main-content">
+        <div class="container new-user-content">
+            <h1>New here?</h1>
+            <p>
+                Why not help enrich some of
+                <a [routerLink]="'/problems'" queryParamsHandling="merge"
+                    >the problems</a
+                >
+                on the platform? Or perhaps add a new one?
+            </p>
+            <p>
+                Don't forget to
+                <a
+                    [routerLink]="'/users/' + auth.currentUserValue.id"
+                    queryParamsHandling="merge"
+                    >update your profile</a
+                >
+                so that other users can find you!
+            </p>
+        </div>
     </div>
-  </div>
 </ng-template>
 
 <ng-template #my_page>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-lg-6">
-        <div class="col-md-12 bg-white p-0">
-          <div >
-            <div
-              
-            >
-              <ng-container
-                *ngFor="
-                  let problem of objectValues(recommendedProblems);
-                  let i = index
-                "
-              >
-                <app-problem-card
-                  *ngIf="i < problemsToShow"
-                  [index]="i"
-                  [problemData]="problem"
-                ></app-problem-card>
-                <hr *ngIf="i < problemsToShow" class="m-0" />
-              </ng-container>
-
-              <div class="d-flex justify-content-center show-more-footer">
-                <button
-                   
-                  (click)="
-                    problemShowMoreBtn(objectValues(recommendedProblems).length)
-                  "
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <ul
+                    class="nav nav-tabs nav-section nav-justified "
+                    id="leftTab"
+                    role="tablist"
                 >
-                  {{ problemShowMoreBtnText }}
-                </button>
-              </div>
-            </div>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            data-toggle="tab"
+                            href="javascript:void(0);"
+                            role="tab"
+                            (click)="switchTab(0)"
+                            aria-selected="true"
+                            >Area that may interest you ({{
+                                objectValues(recommendedProblems).length
+                            }})</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            data-toggle="tab"
+                            href="javascript:void(0);"
+                            role="tab"
+                            (click)="switchTab(1)"
+                            aria-selected="true"
+                            >Area added by you ({{ userProblems.length }})</a
+                        >
+                    </li>
+                </ul>
 
-            <div >
-              <ng-container *ngFor="let problem of userProblems; let i = index">
-                <app-problem-card
-                  *ngIf="i < problemsToShow"
-                  [problemData]="problem"
-                  [index]="i"
-                ></app-problem-card>
-              </ng-container>
+                <div class="col left-tab-body p-0">
+                    <ng-container [ngSwitch]="currentTab">
+                        <ng-container *ngSwitchCase="0">
+                            <ng-container
+                                *ngFor="
+                                    let problem of objectValues(
+                                        recommendedProblems
+                                    );
+                                    let i = index
+                                "
+                            >
+                                <app-problem-card
+                                    *ngIf="i < problemsToShow"
+                                    [index]="i"
+                                    [problemData]="problem"
+                                ></app-problem-card>
+                                <hr *ngIf="i < problemsToShow" class="m-0" />
+                            </ng-container>
+                        </ng-container>
 
-              <div class="d-flex justify-content-center show-more-footer">
-                <button
-                   
-                  (click)="problemShowMoreBtn(userProblems.length)"
-                >
-                  {{ problemShowMoreBtnText }}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12 col-lg-6">
-        <div class="col bg-white mb-4">
-          <div>
-            <div>
-              <ng-template div-label>
-                <span>Watchlist ({{ problemWatchList.length }})</span>
-              </ng-template>
-              <ng-container
-                *ngFor="let problem of problemWatchList; let i = index"
-              >
-                <app-problem-card
-                  *ngIf="i < noOfWatchlistToShow"
-                  [index]="i"
-                  [problemData]="problem['problem']"
-                ></app-problem-card>
-                <hr *ngIf="i < problemsToShow" class="m-0" />
-              </ng-container>
-
-              <div
-                class="d-flex justify-content-center show-more-footer"
-                *ngIf="problemWatchList.length > 2"
-              >
-                <button
-                   
-                  (click)="showOrHideWatchlist(problemWatchList.length)"
-                >
-                  {{ watchlistBtnText }}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col bg-white mb-4">
-          <div>
-            <div>
-              <ng-template div-label>
-                <span>Your Contributions ({{ userSolutions.length }})</span>
-              </ng-template>
-              <div *ngFor="let solution of userSolutions; let i = index">
-                <ng-container *ngIf="i < yourContributionToShow">
-                  <ng-container
-                    *ngTemplateOutlet="
-                      yourContribution;
-                      context: { solutionData: solution }
-                    "
-                  ></ng-container>
-                  <hr class="m-0" />
-                </ng-container>
-              </div>
-
-              <div
-                class="d-flex justify-content-center show-more-footer"
-                *ngIf="userSolutions.length"
-              >
-                <button
-                   
-                  (click)="showOrHideYourContribution(userSolutions.length)"
-                >
-                  {{ yourContributionBtnText }}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col bg-white">
-          <div>
-            <div>
-              <ng-template div-label>
-                <span>
-                  People with similar interests ({{
-                    objectValues(recommendedUsers).length
-                  }})
-                </span>
-              </ng-template>
-              <div class="row m-0 p-0">
-                <div
-                  class="col-md-6 col-sm-12 border-odd-child border-bottom m-0 p-0"
-                  *ngFor="
-                    let user of objectValues(recommendedUsers);
-                    let i = index
-                  "
-                >
-                  <app-profile-card
-                    *ngIf="i < profileCardToShow"
-                    [index]="i"
-                    [userData]="user"
-                  ></app-profile-card>
+                        <ng-container *ngSwitchCase="1">
+                            <ng-container
+                                *ngFor="
+                                    let problem of userProblems;
+                                    let i = index
+                                "
+                            >
+                                <app-problem-card
+                                    *ngIf="i < problemsToShow"
+                                    [problemData]="problem"
+                                    [index]="i"
+                                ></app-problem-card>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
                 </div>
-              </div>
 
-              <div
-                class="d-flex justify-content-center show-more-footer"
-                *ngIf="objectValues(recommendedUsers).length > 2"
-              >
-                <button
-                   
-                  (click)="
-                    showOrHideProfileSection(
-                      objectValues(recommendedUsers).length
-                    )
-                  "
-                >
-                  {{ profileSectionBtnText }}
-                </button>
-              </div>
+                <div class="col footer-button-container">
+                    <button
+                        class="btn"
+                        (click)="
+                            problemShowMoreBtn(
+                                objectValues(recommendedProblems).length
+                            )
+                        "
+                    >
+                        {{ problemShowMoreBtnText }}
+                    </button>
+                </div>
             </div>
-          </div>
+
+            <div class="col-md-12 col-lg-6 right-container">
+                <div class="col watchlist-container">
+                    <ul class="nav nav-tabs nav-section " id="" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                data-toggle="tab"
+                                href="javascript:void(0);"
+                                role="tab"
+                                aria-selected="true"
+                                >Watchlist ({{ problemWatchList.length }})</a
+                            >
+                        </li>
+                    </ul>
+
+                    <div>
+                        <ng-container
+                            *ngFor="
+                                let problem of problemWatchList;
+                                let i = index
+                            "
+                        >
+                            <app-problem-card
+                                *ngIf="i < noOfWatchlistToShow"
+                                [index]="i"
+                                [problemData]="problem['problem']"
+                            ></app-problem-card>
+                            <hr *ngIf="i < problemsToShow" class="m-0" />
+                        </ng-container>
+                    </div>
+
+                    <div
+                        class="col footer-button-container"
+                        *ngIf="problemWatchList.length > 2"
+                    >
+                        <button
+                            class="btn"
+                            (click)="
+                                showOrHideWatchlist(problemWatchList.length)
+                            "
+                        >
+                            {{ watchlistBtnText }}
+                        </button>
+                    </div>
+                </div>
+                <div class="col your-contribution-container">
+                    <ul class="nav nav-tabs nav-section " id="" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                data-toggle="tab"
+                                href="javascript:void(0);"
+                                role="tab"
+                                aria-selected="true"
+                            >
+                                Your Contributions ({{ userSolutions.length }})
+                            </a>
+                        </li>
+                    </ul>
+                    <div>
+                        <div>
+                            <ng-template div-label>
+                                <span
+                                    >Your Contributions ({{
+                                        userSolutions.length
+                                    }})</span
+                                >
+                            </ng-template>
+                            <div
+                                *ngFor="
+                                    let solution of userSolutions;
+                                    let i = index
+                                "
+                            >
+                                <ng-container
+                                    *ngIf="i < yourContributionToShow"
+                                >
+                                    <ng-container
+                                        *ngTemplateOutlet="
+                                            yourContribution;
+                                            context: { solutionData: solution }
+                                        "
+                                    ></ng-container>
+                                    <hr class="m-0" />
+                                </ng-container>
+                            </div>
+
+                            <div
+                                class="col footer-button-container"
+                                *ngIf="userSolutions.length"
+                            >
+                                <button
+                                    class="btn"
+                                    (click)="
+                                        showOrHideYourContribution(
+                                            userSolutions.length
+                                        )
+                                    "
+                                >
+                                    {{ yourContributionBtnText }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col profile-container">
+                    <ul class="nav nav-tabs nav-section " id="" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                data-toggle="tab"
+                                href="javascript:void(0);"
+                                role="tab"
+                                aria-selected="true"
+                            >
+                                People with similar interests ({{
+                                    objectValues(recommendedUsers).length
+                                }})
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="row m-0 p-0">
+                        <div
+                            class="col-md-6 col-sm-12 border-odd-child border-bottom m-0 p-0"
+                            *ngFor="
+                                let user of objectValues(recommendedUsers);
+                                let i = index
+                            "
+                        >
+                            <app-profile-card
+                                *ngIf="i < profileCardToShow"
+                                [index]="i"
+                                [userData]="user"
+                            ></app-profile-card>
+                        </div>
+                    </div>
+
+                    <div
+                        class="col footer-button-container"
+                        *ngIf="objectValues(recommendedUsers).length > 2"
+                    >
+                        <button
+                            class="btn"
+                            (click)="
+                                showOrHideProfileSection(
+                                    objectValues(recommendedUsers).length
+                                )
+                            "
+                        >
+                            {{ profileSectionBtnText }}
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </ng-template>
 
 <ng-template #yourContribution let-solutionData="solutionData">
-  <div class="contribution-container p-3">
-    <div
-      class="problem-container"
-      style="cursor: pointer;"
-      [routerLink]="link"
-      queryParamsHandling="merge"
-    >
-      <div class="left-side">
-        <div class="solution">
-          <span class="green-bullet"></span>
-          <span>Solution</span>
+    <div class="contribution-container p-3">
+        <div
+            class="problem-container"
+            style="cursor: pointer;"
+            [routerLink]="link"
+            queryParamsHandling="merge"
+        >
+            <div class="left-side">
+                <div class="solution">
+                    <span class="green-bullet"></span>
+                    <span>Solution</span>
+                </div>
+
+                <div class="heading-container mt-3 text-capitalize ">
+                    <a
+                        href="javascript:void(0);"
+                        (click)="navigation()"
+                        [attr.title]="solutionData.title"
+                        class="text-dark"
+                    >
+                        <h2 class="heading">
+                            {{
+                                solutionData.title.length > 50
+                                    ? solutionData.title.slice(0, 50) + '...'
+                                    : solutionData.title
+                            }}
+                        </h2>
+                    </a>
+                </div>
+
+                <div class="created-by mt-3">
+                    <div class="created-by-left-side">
+                        <img
+                            src="{{
+                                solutionData.user.photo_url &&
+                                solutionData.user.photo_url.fileEndpoint &&
+                                checkUrlIsImg(
+                                    filesService.fileAccessUrl +
+                                        solutionData.user.photo_url.fileEndpoint
+                                )
+                                    ? filesService.fileAccessUrl +
+                                      solutionData.user.photo_url.fileEndpoint
+                                    : './assets/img/default-avatar.png'
+                            }}"
+                            alt="profile"
+                            class="small-profile"
+                        />
+                    </div>
+                    <div class="created-by-right-side">
+                        <p>
+                            Created by
+                            {{
+                                auth.currentUserValue?.id ==
+                                solutionData?.user.id
+                                    ? 'You'
+                                    : solutionData.user.name
+                            }}
+                        </p>
+                        <p class="text-truncate">
+                            {{ solutionData.updated_at | date: short }}
+                            <!-- <span class="dot"></span> -->
+                            <!-- {{ solutionData.problem_locations[0].location.location_name }} -->
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tags mt-3">
+                    <ng-container *ngFor="let tag of sol_tags; let i = index">
+                        <div class="tag" *ngIf="i < 2">
+                            {{ tag | titlecase }}
+                        </div>
+                    </ng-container>
+
+                    <div class="tag" *ngIf="sol_tags.length > 2">
+                        +{{ sol_tags.length - 2 }}
+                    </div>
+                </div>
+
+                <div class="interaction-container mt-3">
+                    <div class="likes">
+                        <div class="like-icon">
+                            <img
+                                src="../../../assets/svg/like_icon.svg"
+                                alt="Like Icon"
+                            />
+                        </div>
+                        <div class="number-of-likes">
+                            {{ solutionData.solution_voters.length }}
+                        </div>
+                    </div>
+
+                    <div class="views">
+                        <div class="views-icon">
+                            <img
+                                src="../../../assets/svg/watch_list_icon.svg"
+                                alt="Watchlist icon"
+                            />
+                        </div>
+                        <div class="number-of-views">
+                            {{ solutionData.solution_watchers.length }}
+                        </div>
+                    </div>
+
+                    <div class="followers">
+                        <div class="followers-icon">
+                            <img
+                                src="../../../assets/svg/expert_icon.svg"
+                                alt="Experts Icon"
+                            />
+                        </div>
+                        <div class="number-of-followers">
+                            {{ solutionData.solution_validations.length }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-side">
+                <div class="image-and-count-container">
+                    <img
+                        src="{{
+                            solutionData.featured_url
+                                ? filesService.fileAccessUrl +
+                                  solutionData.featured_url
+                                : './assets/img/image_placeholder.jpg'
+                        }}"
+                        alt="image"
+                        class="image"
+                    />
+
+                    <div
+                        class="total-count"
+                        *ngIf="solutionData.image_urls?.length > 1"
+                    >
+                        +{{ solutionData.image_urls?.length - 1 }}
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="heading-container mt-3 text-capitalize ">
-          <a
-            href="javascript:void(0);"
-            (click)="navigation()"
-            [attr.title]="solutionData.title"
-            class="text-dark"
-          >
-            <h2 class="heading">
-              {{
-                solutionData.title.length > 50
-                  ? solutionData.title.slice(0, 50) + '...'
-                  : solutionData.title
-              }}
-            </h2>
-          </a>
+        <div class="enrich-section mt-3 d-none">
+            <div class="enriched">
+                <div class="enriched-icon">
+                    <img
+                        src="../../assets/svg/enrich-icon.svg"
+                        alt="Enriched Icon"
+                    />
+                </div>
+                <h4 class="enriched-text">Enriched</h4>
+            </div>
+            <div class="validated">
+                <div class="validated-icon">
+                    <img
+                        src="../../assets/svg/validated-icon.svg"
+                        alt="Validated Icon"
+                    />
+                </div>
+                <h4 class="validated-text">Validated</h4>
+            </div>
+            <div class="collaborated">
+                <div class="collaborated-icon">
+                    <img
+                        src="../../assets/svg/collaborated-icon.svg"
+                        alt="Collaborated Icon"
+                    />
+                </div>
+                <h4 class="collaboarted-text">Collaborated</h4>
+            </div>
+            <div class="commented">
+                <div class="commented-icon">
+                    <img
+                        src="../../assets/svg/comments-icon.svg"
+                        alt="Commented Icon"
+                    />
+                </div>
+                <h4 class="commented-text">Commented</h4>
+            </div>
         </div>
 
-        <div class="created-by mt-3">
-          <div class="created-by-left-side">
-            <img
-              src="{{
-                solutionData.user.photo_url &&
-                solutionData.user.photo_url.fileEndpoint &&
-                checkUrlIsImg(
-                  filesService.fileAccessUrl +
-                    solutionData.user.photo_url.fileEndpoint
-                )
-                  ? filesService.fileAccessUrl +
-                    solutionData.user.photo_url.fileEndpoint
-                  : './assets/img/default-avatar.png'
-              }}"
-              alt="profile"
-              class="small-profile"
-            />
-          </div>
-          <div class="created-by-right-side">
-            <p>
-              Created by
-              {{
-                auth.currentUserValue?.id == solutionData?.user.id
-                  ? 'You'
-                  : solutionData.user.name
-              }}
-            </p>
-            <p class="text-truncate">
-              {{ solutionData.updated_at | date: short }}
-              <!-- <span class="dot"></span> -->
-              <!-- {{ solutionData.problem_locations[0].location.location_name }} -->
-            </p>
-          </div>
+        <div class="update-section mt-3 d-none">
+            <div class="update mt-1 w-100">
+                <div class="left-section">
+                    9 hours ago
+                </div>
+                <div class="right-section">
+                    <img
+                        src="../../assets/svg/enrich-light-icon.svg"
+                        alt="enriched icon"
+                    />
+                    <p class="update-text">You have enriched this problem</p>
+                </div>
+            </div>
+            <div class="update mt-1">
+                <div class="left-section">
+                    9 hours ago
+                </div>
+                <div class="right-section">
+                    <img
+                        src="../../assets/svg/collaborated-light-icon.svg"
+                        alt="collaborated icon"
+                    />
+                    <p class="update-text">
+                        You have collaborated on this problem
+                    </p>
+                </div>
+            </div>
+            <div class="update mt-1">
+                <div class="left-section">
+                    9 hours ago
+                </div>
+                <div class="right-section">
+                    <img
+                        src="../../assets/svg/validated-light-icon.svg"
+                        alt="validated icon"
+                    />
+                    <p class="update-text">You have validated this problem</p>
+                </div>
+            </div>
+            <div class="update mt-1">
+                <div class="left-section">
+                    9 hours ago
+                </div>
+                <div class="right-section">
+                    <img
+                        src="../../assets/svg/comments-light-icon.svg"
+                        alt="commented icon"
+                    />
+                    <p class="update-text">
+                        You have commented on this problem
+                    </p>
+                </div>
+            </div>
         </div>
-
-        <div class="tags mt-3">
-          <ng-container *ngFor="let tag of sol_tags; let i = index">
-            <div class="tag" *ngIf="i < 2">{{ tag | titlecase }}</div>
-          </ng-container>
-
-          <div class="tag" *ngIf="sol_tags.length > 2">
-            +{{ sol_tags.length - 2 }}
-          </div>
-        </div>
-
-        <div class="interaction-container mt-3">
-          <div class="likes">
-            <div class="like-icon">
-              <img src="../../../assets/svg/like_icon.svg" alt="Like Icon" />
-            </div>
-            <div class="number-of-likes">
-              {{ solutionData.solution_voters.length }}
-            </div>
-          </div>
-
-          <div class="views">
-            <div class="views-icon">
-              <img
-                src="../../../assets/svg/watch_list_icon.svg"
-                alt="Watchlist icon"
-              />
-            </div>
-            <div class="number-of-views">
-              {{ solutionData.solution_watchers.length }}
-            </div>
-          </div>
-
-          <div class="followers">
-            <div class="followers-icon">
-              <img
-                src="../../../assets/svg/expert_icon.svg"
-                alt="Experts Icon"
-              />
-            </div>
-            <div class="number-of-followers">
-              {{ solutionData.solution_validations.length }}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="right-side">
-        <div class="image-and-count-container">
-          <img
-            src="{{
-              solutionData.featured_url
-                ? filesService.fileAccessUrl + solutionData.featured_url
-                : './assets/img/image_placeholder.jpg'
-            }}"
-            alt="image"
-            class="image"
-          />
-
-          <div class="total-count" *ngIf="solutionData.image_urls?.length > 1">
-            +{{ solutionData.image_urls?.length - 1 }}
-          </div>
-        </div>
-      </div>
     </div>
-
-    <div class="enrich-section mt-3 d-none">
-      <div class="enriched">
-        <div class="enriched-icon">
-          <img src="../../assets/svg/enrich-icon.svg" alt="Enriched Icon" />
-        </div>
-        <h4 class="enriched-text">Enriched</h4>
-      </div>
-      <div class="validated">
-        <div class="validated-icon">
-          <img src="../../assets/svg/validated-icon.svg" alt="Validated Icon" />
-        </div>
-        <h4 class="validated-text">Validated</h4>
-      </div>
-      <div class="collaborated">
-        <div class="collaborated-icon">
-          <img
-            src="../../assets/svg/collaborated-icon.svg"
-            alt="Collaborated Icon"
-          />
-        </div>
-        <h4 class="collaboarted-text">Collaborated</h4>
-      </div>
-      <div class="commented">
-        <div class="commented-icon">
-          <img src="../../assets/svg/comments-icon.svg" alt="Commented Icon" />
-        </div>
-        <h4 class="commented-text">Commented</h4>
-      </div>
-    </div>
-
-    <div class="update-section mt-3 d-none">
-      <div class="update mt-1 w-100">
-        <div class="left-section">
-          9 hours ago
-        </div>
-        <div class="right-section">
-          <img
-            src="../../assets/svg/enrich-light-icon.svg"
-            alt="enriched icon"
-          />
-          <p class="update-text">You have enriched this problem</p>
-        </div>
-      </div>
-      <div class="update mt-1">
-        <div class="left-section">
-          9 hours ago
-        </div>
-        <div class="right-section">
-          <img
-            src="../../assets/svg/collaborated-light-icon.svg"
-            alt="collaborated icon"
-          />
-          <p class="update-text">You have collaborated on this problem</p>
-        </div>
-      </div>
-      <div class="update mt-1">
-        <div class="left-section">
-          9 hours ago
-        </div>
-        <div class="right-section">
-          <img
-            src="../../assets/svg/validated-light-icon.svg"
-            alt="validated icon"
-          />
-          <p class="update-text">You have validated this problem</p>
-        </div>
-      </div>
-      <div class="update mt-1">
-        <div class="left-section">
-          9 hours ago
-        </div>
-        <div class="right-section">
-          <img
-            src="../../assets/svg/comments-light-icon.svg"
-            alt="commented icon"
-          />
-          <p class="update-text">You have commented on this problem</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </ng-template>

@@ -1,0 +1,160 @@
+@import '../../styles.scss';
+@import '../../assets/scss/common';
+
+.nav-section {
+    @include navbar();
+}
+
+.watchlist-container,
+.your-contribution-container,
+.profile-container {
+    background-color: $secondary6;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:nth-child(n + 2) {
+        margin-top: 2rem;
+    }
+}
+
+.main-content {
+    min-height: calc(100vh - 9.6rem);
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.left-tab-body {
+    background-color: $secondary6;
+}
+
+.footer-button-container {
+    background-color: $secondary6;
+    text-align: center;
+    height: 5rem;
+    line-height: 5rem;
+
+    & > button {
+        color: $primary5;
+        font-size: $font12;
+        font-weight: bold;
+        line-height: 1.6rem;
+    }
+}
+
+.problem-container {
+    min-height: 19rem;
+    padding: 1rem;
+}
+
+// .left-side {
+//     width: 65%;
+// }
+
+// .right-side {
+//     width: max-content;
+// }
+
+.border-odd-child:nth-child(odd) {
+    border-right: 1px solid #e1e1e1;
+}
+
+.enrich-section {
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-around;
+    padding: 3px 0;
+}
+
+.enrich-section h4 {
+    color: #2d2d2d;
+    font-size: var(--font-12);
+    font-weight: 600;
+    margin-left: 7px;
+}
+
+.enrich-section .enriched,
+.enrich-section .validated,
+.enrich-section .collaborated,
+.enrich-section .commented {
+    display: flex;
+    align-items: baseline;
+}
+
+.update-section .update {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    font-size: var(--font-12);
+}
+
+.update .left-section {
+    margin-right: 7px;
+}
+
+.update .right-section {
+    display: flex;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    height: 25px;
+}
+
+.update .right-section img {
+    border-right: 1px solid #e1e1e1;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .followers {
+        // width: 23.8rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .right-container {
+        margin-top: 2rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .right-container {
+        margin-top: 2rem;
+    }
+
+    .border-odd-child:nth-child(odd) {
+        border-right: none;
+    }
+
+    .image-and-count-container img {
+        width: 100%;
+        height: 17.3rem;
+    }
+
+    .followers {
+        width: 100%;
+    }
+
+    .enrich-section {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-left: 20px;
+    }
+
+    .enrich-section .enriched,
+    .enrich-section .validated,
+    .enrich-section .collaborated,
+    .enrich-section .commented {
+        width: 50%;
+    }
+
+    .update .right-section {
+        display: inline-flex;
+        height: auto;
+        vertical-align: middle;
+    }
+
+    .update .right-section p {
+        margin: 0;
+        padding: 0;
+    }
+}

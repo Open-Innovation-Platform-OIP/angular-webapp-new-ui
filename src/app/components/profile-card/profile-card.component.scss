@@ -1,0 +1,73 @@
+@import '../../../styles.scss';
+@import '../../../assets/scss/common';
+
+/* NEW UI */
+
+.actions {
+    cursor: pointer;
+}
+
+.profile-container {
+    min-height: 35rem;
+    box-sizing: border-box;
+    padding: 2rem;
+}
+
+.profile-image {
+    .image {
+        min-height: 16rem;
+    }
+
+    & > img {
+        height: 16rem;
+        width: 15.9rem;
+        border-radius: $round4;
+    }
+}
+
+.profile-name {
+    margin-top: 1rem;
+
+    & > h3 {
+        @include pattern1();
+        font-weight: bold;
+        text-transform: capitalize;
+
+        & > a {
+            color: $secondary1;
+        }
+    }
+}
+
+.profile-persona-and-company {
+    margin-top: 1rem;
+    min-height: 4.2rem;
+
+    p {
+        font-size: $font12;
+        color: $secondary2;
+        padding: 0;
+        margin: 0;
+        line-height: 2rem;
+        letter-spacing: -0.01rem;
+    }
+}
+
+.profile-tags {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+}
+
+.tag {
+    color: $secondary1;
+    font-size: $font12;
+    letter-spacing: -0.01rem;
+    margin: 0;
+    margin-right: 0.8rem;
+    min-height: 2.4rem;
+    line-height: 1.3rem;
+    border: 0.1rem solid $secondary4;
+    border-radius: 0.5rem;
+}

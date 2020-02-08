@@ -16,11 +16,11 @@ declare const $: any;
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.css'],
+    styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-    objectValues = Object['values'];
-    objectKeys = Object['keys'];
+    objectValues = Object.values;
+    objectKeys = Object.keys;
     drafts = [];
     userProblems = [];
     userSolutions = [];
@@ -29,8 +29,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     recommendedProblems = {};
     recommendedUsers = {};
     showLoader = true;
+    currentTab = 0;
 
-    problemShowMoreBtnText = 'Show More';
+    problemShowMoreBtnText = 'View All';
     problemsToShow = 6;
     yourContributionToShow = 2;
     noOfWatchlistToShow = 2;
@@ -177,6 +178,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     ) {
         console.log('inside dashboard component');
     }
+
+    switchTab(tab: number) {
+        this.currentTab = tab;
+    }
+
     ngOnInit() {
         // start loader
         // this.ngxService.start();
@@ -284,17 +290,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     problemShowMoreBtn(len: number) {
         if (this.problemsToShow === 6) {
-            this.problemShowMoreBtnText = 'Show Less';
+            this.problemShowMoreBtnText = 'View Less';
             this.problemsToShow = len;
         } else {
-            this.problemShowMoreBtnText = 'Show More';
+            this.problemShowMoreBtnText = 'View All';
             this.problemsToShow = 6;
         }
     }
 
     resetProblemToShow() {
         this.problemsToShow = 6;
-        this.problemShowMoreBtnText = 'Show More';
+        this.problemShowMoreBtnText = 'View All';
     }
 
     checkUrlIsImg(url) {
