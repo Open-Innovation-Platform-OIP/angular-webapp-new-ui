@@ -63,6 +63,7 @@ $round4: 0.4rem;
     }
 
     .nav-item .nav-link.active {
+        font-weight: $weight600;
         border-bottom: 0.4rem solid $primary3 !important;
         border-radius: 0.4rem 0.4rem 0 0 !important;
     }
