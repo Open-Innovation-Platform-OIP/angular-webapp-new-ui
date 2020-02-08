@@ -1,8 +1,45 @@
+@import '../../../assets/scss/common';
+
 .modal-full {
     min-width: 90vw;
     // margin-left: 5vw;
 }
-  
+
 .modal-full .modal-content {
     min-height: 90vh;
+}
+
+.modal-body {
+    & > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.status {
+    @include pattern1();
+    margin: 1rem 0;
+}
+
+.attachment-container {
+    min-height: 60vh;
+    justify-content: center !important;
+    align-items: center;
+}
+
+.thumbnail-container {
+    // max-height: 20vh;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    .image {
+        max-width: 100%;
+        height: 15vh;
+    }
+}
+
+.active {
+    outline: 0.5rem auto rgba(108, 108, 245, 0.918);
 }
