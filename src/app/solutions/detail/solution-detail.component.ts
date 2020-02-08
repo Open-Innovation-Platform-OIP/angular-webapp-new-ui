@@ -83,7 +83,7 @@ interface queryString {
         { provide: LocationStrategy, useClass: PathLocationStrategy },
     ],
     templateUrl: './solution-detail.component.html',
-    styleUrls: ['./solution-detail.component.css'],
+    styleUrls: ['./solution-detail.component.scss'],
     animations: [slider],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

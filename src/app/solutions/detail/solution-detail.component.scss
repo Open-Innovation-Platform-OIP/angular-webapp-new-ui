@@ -4,11 +4,13 @@
     right: 1rem;
     z-index: 4;
 } */
+@import '../../../styles.scss';
+@import '../../../assets/scss/common';
 
 .fab-container {
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: 100;
   display: flex;
   flex-direction: column-reverse;
@@ -16,18 +18,24 @@
 }
 
 .p20 {
-  padding: 20px;
+  padding: 2rem;
 }
 
-.fab-container > div {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  margin-bottom: 5px;
+.fab-container {
+  div {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
 }
 
-.fab-container > div > button {
-  margin-bottom: 17px;
+.fab-container {
+  div {
+    button {
+      margin-bottom: 1.7rem;
+    }
+  }
 }
 
 .fab-toggler {
@@ -40,13 +48,13 @@
 }
 
 .example-viewport {
-  height: 500px;
-  width: 470px;
-  border: 1px solid black;
+  height: 50rem;
+  width: 47rem;
+  border: 0.1rem solid black;
 }
 
 .example-item {
-  height: 50px;
+  height: 5rem;
 }
 
 label {
@@ -87,17 +95,17 @@ label {
 }
 
 .viewMoreComments {
-  color: grey;
+  color: $secondary4;
 }
 
 .viewMoreComments:hover {
   text-decoration: underline;
-  color: orange;
+  color: $primary2;
 }
 
 .dropdown-menu a:hover {
   background-color: #e82c6c;
-  color: var(--light);
+  color: $secondary5;
   cursor: pointer;
 }
 
@@ -106,7 +114,7 @@ label {
 }
 
 .h1-font {
-  font-size: 1.8rem;
+  font-size: $font18;
 }
 
 .btn-xs {
@@ -114,7 +122,7 @@ label {
   font-size: 0.975rem;
   font-weight: bold;
   line-height: 0.5;
-  border-radius: 0.4rem;
+  border-radius: $round4;
   cursor: pointer;
 }
 
@@ -123,17 +131,17 @@ label {
   right: 0.1rem;
   bottom: 0.1rem;
   box-sizing: border-box;
-  height: 20px;
-  width: 30px;
-  border: 1px solid #979797;
-  border-radius: 4px;
-  background-color: #f7f7f7;
-  color: #0c1114;
+  height: 2rem;
+  width: 3rem;
+  border: 0.1rem solid $secondary2;
+  border-radius: $round4;
+  background-color: $secondary5;
+  color: $secondary1;
   /* font-family: "Inter UI"; */
-  font-weight: 600;
+  font-weight: $weight600;
   font-size: 1rem;
   letter-spacing: -0.08px;
-  line-height: 12px;
+  line-height: 1.2rem;
 }
 
 .fa-share-alt:before {
@@ -145,33 +153,33 @@ label {
 }
 
 .heading {
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: $font12;
+  font-weight: $weight500;
   line-height: 2rem;
-  color: #717171;
+  color: $secondary2;
 }
 
 .description {
   line-height: 2.2rem;
-  color: #2d2d2d;
-  letter-spacing: -0.01rem;
-  font-size: 1.4rem;
+  color: $secondary1;
+  letter-spacing: $spacing;
+  font-size: $font14;
 }
 
 .float-btn {
   position: absolute;
   bottom: 0.1rem;
   right: 0.1rem;
-  background-color: #f7f7f7;
-  border: 1px solid #979797;
+  background-color: $secondary5;
+  border: 0.1rem solid $secondary2;
   color: black;
-  border-radius: 0.4rem;
+  border-radius: $round4;
 }
 
 .enrich-floatBtn {
   position: absolute;
-  background-color: #f7f7f7;
-  border: 1px solid #979797;
+  background-color: $secondary5;
+  border: 0.1rem solid $secondary2;
   color: black;
   border-radius: 0.2rem;
   bottom: 0.1rem;
@@ -183,31 +191,31 @@ label {
 }
 
 .fixed-image-height {
-  max-height: 265px;
-  min-height: 265px;
+  max-height: 26.5rem;
+  min-height: 26.5rem;
   width: 100%;
 }
 
 .oval {
-  height: 10px;
-  width: 10px;
-  background-color: #00945a;
+  height: 1rem;
+  width: 1rem;
+  background-color: $tertiary3;
   border-radius: 50%;
   display: inline-block;
-  margin-right: 3px;
+  margin-right: 0.3rem;
 }
 
 .badge-color {
-  background-color: #ebfaeb;
-  color: #333333;
+  background-color: $tertiary4;
+  color: $secondary1;
 }
 
 .profile-image {
   /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
-  border: 1px solid black;
+  border: 0.1rem solid black;
   background-size: cover;
-  height: 50px;
-  width: 50px;
+  height: 5rem;
+  width: 5rem;
 }
 
 .dot::before {
@@ -215,35 +223,35 @@ label {
   font-weight: bolder;
 }
 
-.icon-style > * {
+.icon-style>* {
   padding: 0.6rem;
   font-size: 1.9rem;
   vertical-align: middle;
   border-radius: 50%;
-  background-color: #e1e1e1;
-  color: #717171;
-  border: 1px solid #e1e1e1;
+  background-color: $secondary4;
+  color: $secondary2;
+  border: 1px solid $secondary4;
 }
 
 .margin-buttons {
-  margin-right: 120px;
+  margin-right: 12rem;
 }
 
 .mat-flat-button.mat-accent,
 .mat-raised-button.mat-accent,
 .mat-fab.mat-accent,
 .mat-mini-fab.mat-accent {
-  background-color: #e1e1e1;
+  background-color: $secondary4;
 }
 
 .row-margin {
-  margin-top: 62px;
+  margin-top: 6.2rem;
 }
 
 .icon-size {
-  font-size: 1.6rem;
+  font-size: $font16;
   vertical-align: middle;
-  margin-left: 8px;
+  margin-left: 0.8rem;
 }
 
 .tags {
@@ -253,34 +261,34 @@ label {
 }
 
 .tag {
-  color: #2d2d2d;
-  font-size: var(--font-12);
-  letter-spacing: -0.01rem;
+  color: $secondary1;
+  font-size: $font12;
+  letter-spacing: $spacing;
   line-height: 2rem;
-  border: 0.1rem solid #e1e1e1;
+  border: 0.1rem solid$secondary4;
   padding: 0.3rem 0.5rem;
   margin: 0.2rem 0.2rem 0.2rem 0;
-  border-radius: 0.4rem;
+  border-radius: $round4;
 }
 
 .text-height {
-  height: 60px;
-  line-height: 20px;
+  height: 6rem;
+  line-height: 2rem;
   overflow: hidden;
 }
 
-.agreedDisagreeDiv > * {
+.agreedDisagreeDiv>* {
   vertical-align: middle;
-  color: #2d2d2d;
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: -0.01rem;
+  color: $secondary1;
+  font-size: $font14;
+  font-weight: $weight600;
+  letter-spacing: $spacing;
   line-height: 2.2rem;
 }
 
 .agree {
-  background-color: #00945a;
-  color: #ffffff !important;
+  background-color: $tertiary3;
+  color: $secondary6 !important;
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -290,13 +298,13 @@ label {
 
 .agree::before,
 .disagree::before {
-  font-size: 1.2rem;
+  font-size: $font12;
   line-height: 2rem;
 }
 
 .disagree {
-  background-color: #f2342f;
-  color: #ffffff !important;
+  background-color: $tertiary1;
+  color: $secondary6 !important;
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -307,38 +315,39 @@ label {
 .validate-comment {
   margin-top: 0.9rem;
   line-height: 2.2rem;
-  color: #2d2d2d;
-  font-size: 1.4rem;
-  letter-spacing: -0.01rem;
+  color: $secondary1;
+  font-size: $font14;
+  letter-spacing: $spacing;
 }
+
 .validate-profile {
   margin-top: 0.8rem;
 }
 
 .validate-created-by {
   margin-left: 1rem;
-  color: #717171 !important;
-  font-size: 1.2rem;
-  letter-spacing: -0.01rem;
+  color: $secondary2 !important;
+  font-size: $font12;
+  letter-spacing: $spacing;
   line-height: 2rem;
 }
 
 .collaborateCard {
   min-height: 20.1rem;
-  font-size: 1.4rem;
+  font-size: $font14;
   line-height: 2.2rem;
-  color: #2d2d2d;
+  color: $secondary1;
   padding: 2rem;
-  border: 1px solid #e1e1e1;
+  border: 0.1rem solid $secondary4;
   box-sizing: border-box;
   border-radius: 0.6rem;
 }
 
 .roles {
-  color: #2d2d2d;
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: -0.01rem;
+  color: $secondary1;
+  font-size: $font14;
+  font-weight: $weight600;
+  letter-spacing: $spacing;
   line-height: 2.2rem;
 }
 
@@ -353,9 +362,9 @@ label {
 }
 
 .collaborate-created-by {
-  color: #717171;
-  font-size: 1.2rem;
-  letter-spacing: -0.01rem;
+  color: $secondary2;
+  font-size: $font12;
+  letter-spacing: $spacing;
   line-height: 2.2rem;
   margin-left: 1rem;
 }
@@ -363,12 +372,12 @@ label {
 .textareaElement {
   flex-grow: 1;
   margin-top: 0.4rem;
-  min-width: 50px;
-  min-height: 17px;
-  max-height: 100px;
+  min-width: 5rem;
+  min-height: 1.7rem;
+  max-height: 10rem;
   overflow-x: hidden;
   overflow-y: auto;
-  margin-left: 5px;
+  margin-left: 0.5rem;
 }
 
 /* .commentList > ul > li {
@@ -389,15 +398,15 @@ label {
 
 .selected {
   color: white !important;
-  background-color: #00945a !important;
-  border: 1px solid #00945a !important;
+  background-color: $tertiary3 !important;
+  border: 0.1rem solid $tertiary3 !important;
 }
 
 .pre-login {
   box-sizing: border-box;
   height: 20rem;
-  border: 0.1rem solid #e1e1e1;
-  border-radius: 0.4rem;
+  border: 0.1rem solid $secondary4;
+  border-radius: $round4;
 }
 
 .pre-login-icon {
@@ -405,87 +414,92 @@ label {
   width: 4rem;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 3px solid #717171;
+  border: 3px solid $secondary2;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.pre-login-icon > i {
-  font-size: 2rem;
-  line-height: 2rem;
-  margin-top: 0.4rem;
-  font-weight: 800;
-  color: #717171;
+
+.pre-login-icon {
+  i {
+    font-size: $font20;
+    line-height: 2rem;
+    margin-top: 0.4rem;
+    font-weight: $weight800;
+    color: $secondary2;
+  }
 }
 
 .pre-login-text {
-  color: #2d2d2d;
-  font-size: 1.6rem;
-  font-weight: 500;
-  letter-spacing: -0.01rem;
+  color: $secondary1;
+  font-size: $font16;
+  font-weight: $weight500;
+  letter-spacing: $spacing;
   line-height: 2.4rem;
   text-align: center;
 }
 
-.pre-login-text > a {
-  color: var(--primary);
+.pre-login-text>a {
+  color: $primary2;
 }
 
-.description-rules > p {
-  max-height: 18vh;
-  overflow: hidden;
-  color: #2d2d2d;
-  line-height: 2.2rem;
-  font-size: 1.4rem;
+.description-rules {
+  p {
+    max-height: 18vh;
+    overflow: hidden;
+    color: $secondary1;
+    line-height: 2.2rem;
+    font-size: $font14;
+  }
 }
 
 .owner-name {
   text-decoration: none;
-  color: #2d2d2d;
+  color: $secondary1;
   line-height: 2.2rem;
-  font-size: 1.4rem;
-  font-weight: 500;
-  letter-spacing: -0.01rem;
+  font-size: $font14;
+  font-weight: $weight500;
+  letter-spacing: $spacing;
   margin-left: 1rem;
 }
 
 .validateCard {
   min-height: 13.1rem;
-  font-size: 1.4rem;
+  font-size: $font14;
   padding: 2rem;
   border-radius: 0.6rem;
-  border: 1px solid #e1e1e1;
+  border: 0.1rem solid $secondary4;
 }
 
 .edit-validate {
-  background-color: #e1e1e1 !important;
+  background-color: $secondary4 !important;
 }
 
 .fa-pen:before {
   width: 2rem;
   height: 2rem;
-  color: #2d2d2d;
+  color: $secondary1;
   line-height: 2rem;
-  font-size: 2rem;
+  font-size: $font20;
 }
 
 .validate-created-by {
   margin-left: 1rem;
-  color: #717171 !important;
-  font-size: 1.2rem;
-  letter-spacing: -0.01rem;
+  color: $secondary2 !important;
+  font-size: $font12;
+  letter-spacing: $spacing;
   line-height: 2rem;
 }
 
 .showMore {
-  color: var(--primary);
+  color: $primary2;
   padding-left: 0;
 }
 
 .solverTeamImg {
   height: 3rem;
   width: 3rem;
-  border-radius: 0.4rem;
+  border-radius: $round4;
 }
 
 .enrich-description {
@@ -502,23 +516,23 @@ label {
 
 .createdByWidth {
   width: 22.3rem;
-  height: 42px;
-  line-height: 20px;
+  height: 4.2rem;
+  line-height: 2rem;
   font-size: 1.3rem;
   font-weight: 400;
-  color: #717171;
+  color: $secondary2;
 }
 
 .image-border {
-  border-radius: 4px;
-  height: 32px;
-  width: 32px;
-  margin-top: 5px;
+  border-radius: $round4;
+  height: 3.2rem;
+  width: 3.2rem;
+  margin-top: 0.5rem;
 }
 
 .mat-stroked-button:not([disabled]) {
-  border: 2px solid #cf7c10;
-  border-radius: 4px;
+  border: 0.2rem solid $primary1;
+  border-radius: $round4;
 }
 
 /* solution card */
@@ -531,10 +545,10 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ebfaeb;
-  font-size: var(--font-12);
-  font-weight: 500;
-  border-radius: var(--border-radius-4);
+  background-color: $tertiary4;
+  font-size: $font12;
+  font-weight: $weight500;
+  border-radius: $round4;
   width: 7.7rem;
   height: 2.2rem;
   line-height: 2.2rem;
@@ -544,15 +558,15 @@ label {
   display: inline-block;
   width: 1rem;
   height: 1rem;
-  background-color: #00945a;
+  background-color: $tertiary3;
   border-radius: 50%;
   margin-right: 0.5rem;
 }
 
 .solutions-container .solution-heading h2 {
-  font-size: var(--font-14);
+  font-size: $font14;
   line-height: 2.2rem;
-  color: #2d2d2d;
+  color: $secondary1;
   font-weight: bold;
   min-height: 4.4rem;
   overflow: hidden;
@@ -561,22 +575,22 @@ label {
 .created-by {
   display: flex;
   align-items: center;
-  color: #717171;
-  font-size: 1.2rem;
-  letter-spacing: -0.01rem;
+  color: $secondary2;
+  font-size: $font12;
+  letter-spacing: $spacing;
   line-height: 2rem;
 }
 
 .created-by img {
   height: 3rem;
   width: 3rem;
-  border-radius: var(--border-radius-4);
+  border-radius: $round4;
 }
 
 .created-by span {
   vertical-align: middle;
-  font-size: var(--font-12);
-  color: #717171;
+  font-size: $font12;
+  color: $secondary2;
   padding: 1rem;
 }
 
@@ -584,11 +598,11 @@ label {
 
 @media only screen and (max-width: 767px) {
   .text-height {
-    height: 40px;
+    height: 0.4rem;
   }
 
   .row-margin {
-    margin-top: 20px;
+    margin-top: 2rem;
   }
 }
 
@@ -625,13 +639,13 @@ label {
     justify-content: center;
   }
 
-  .btnCenter > button {
-    padding-left: 16px;
+  .btnCenter>button {
+    padding-left: 1.6rem;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   .margin-buttons {
-    margin-right: 70px;
+    margin-right: 7rem;
   }
 }
