@@ -638,127 +638,144 @@
 <!-- discuss image and video modal starts -->
 
 <div
-  class="modal fade"
-  id="enlargeView"
-  style="display: none;"
-  aria-label="Discussion"
-  role="dialog"
-  aria-hidden="true"
-  cdkTrapFocus
+    class="modal fade"
+    id="enlargeView"
+    style="display: none;"
+    aria-label="Discussion"
+    role="dialog"
+    aria-hidden="true"
+    cdkTrapFocus
 >
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="close"
-          (click)="closeModal($event, 'discussion')"
-          #discussionModalCloseBtn
-        >
-          <i class="material-icons" aria-hidden="true">close</i>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- <app-display-modal *ngIf="modalSrc" [source]="modalSrc">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="close"
+                    (click)="closeModal($event, 'discussion')"
+                    #discussionModalCloseBtn
+                >
+                    <i class="material-icons" aria-hidden="true">close</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <app-display-modal *ngIf="modalSrc" [source]="modalSrc">
         </app-display-modal> -->
-      </div>
-      <div
-        class="modal-footer justify-content-center"
-        *ngIf="sources && sources['attachmentObj'].length > 1"
-      >
-        <button
-          mat-raised-button
-          type="button"
-          [disabled]="sources['index'] < 1"
-          (click)="toggleFileSrc(false)"
-          class="btn btn-info btn-round"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <div class="col-3"></div>
-        <button
-          mat-raised-button
-          type="button"
-          [disabled]="sources['index'] == sources['attachmentObj'].length - 1"
-          class="btn btn-info btn-round"
-          (click)="toggleFileSrc(true)"
-          id="discussionModalNextBtn"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-      </div>
+            </div>
+            <div
+                class="modal-footer justify-content-center"
+                *ngIf="sources && sources['attachmentObj'].length > 1"
+            >
+                <button
+                    mat-raised-button
+                    type="button"
+                    [disabled]="sources['index'] < 1"
+                    (click)="toggleFileSrc(false)"
+                    class="btn btn-info btn-round"
+                >
+                    <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                    ></span>
+                </button>
+                <div class="col-3"></div>
+                <button
+                    mat-raised-button
+                    type="button"
+                    [disabled]="
+                        sources['index'] == sources['attachmentObj'].length - 1
+                    "
+                    class="btn btn-info btn-round"
+                    (click)="toggleFileSrc(true)"
+                    id="discussionModalNextBtn"
+                >
+                    <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                    ></span>
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- ----------------------------- solution attachments modal start----------------------------- -->
 <div
-  class="modal fade"
-  id="viewMoreImgModal"
-  aria-label="Solution Attachments"
-  role="dialog"
-  aria-hidden="true"
-  cdkTrapFocus
+    class="modal fade"
+    id="viewMoreImgModal"
+    aria-label="Solution Attachments"
+    role="dialog"
+    aria-hidden="true"
+    cdkTrapFocus
 >
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="close"
-          #attachmentsModalCloseBtn
-          (click)="closeModal($event, 'view-more')"
-        >
-          <i class="material-icons" aria-hidden="true">close</i>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- <app-display-modal
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="close"
+                    #attachmentsModalCloseBtn
+                    (click)="closeModal($event, 'view-more')"
+                >
+                    <i class="material-icons" aria-hidden="true">close</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <app-display-modal
           *ngIf="solution_attachments_src"
           [source]="solution_attachments[solution_attachments_index]"
         >
         </app-display-modal> -->
-      </div>
-      <div
-        class="modal-footer justify-content-center"
-        *ngIf="this.solution_attachments.length > 1"
-      >
-        <button
-          mat-raised-button
-          type="button"
-          [disabled]="solution_attachments_index < 1"
-          (click)="toggleSolutionAttachmentsIndex(false)"
-          class="btn btn-link btn-round btn-twitter"
-          aria-label="previous"
-        >
-          <i class="material-icons" style="zoom:2;" aria-hidden="true">
-            keyboard_arrow_left
-          </i>
-        </button>
-        <div class="col-3 text-center">
-          <strong>{{ solution_attachments_index + 1 }}</strong>
+            </div>
+            <div
+                class="modal-footer justify-content-center"
+                *ngIf="this.solution_attachments.length > 1"
+            >
+                <button
+                    mat-raised-button
+                    type="button"
+                    [disabled]="solution_attachments_index < 1"
+                    (click)="toggleSolutionAttachmentsIndex(false)"
+                    class="btn btn-link btn-round btn-twitter"
+                    aria-label="previous"
+                >
+                    <i
+                        class="material-icons"
+                        style="zoom:2;"
+                        aria-hidden="true"
+                    >
+                        keyboard_arrow_left
+                    </i>
+                </button>
+                <div class="col-3 text-center">
+                    <strong>{{ solution_attachments_index + 1 }}</strong>
+                </div>
+                <button
+                    mat-raised-button
+                    type="button"
+                    [disabled]="
+                        solution_attachments_index ===
+                        solution_attachments.length - 1
+                    "
+                    class="btn btn-link btn-round btn-twitter"
+                    (click)="toggleSolutionAttachmentsIndex(true)"
+                    aria-label="next"
+                >
+                    <i
+                        class="material-icons"
+                        style="zoom:2;"
+                        aria-hidden="true"
+                    >
+                        keyboard_arrow_right
+                    </i>
+                </button>
+            </div>
         </div>
-        <button
-          mat-raised-button
-          type="button"
-          [disabled]="
-            solution_attachments_index === solution_attachments.length - 1
-          "
-          class="btn btn-link btn-round btn-twitter"
-          (click)="toggleSolutionAttachmentsIndex(true)"
-          aria-label="next"
-        >
-          <i class="material-icons" style="zoom:2;" aria-hidden="true">
-            keyboard_arrow_right
-          </i>
-        </button>
-      </div>
     </div>
-  </div>
 </div>
 <!-- ----------------------------- solution attachments modal ends----------------------------- -->
 
@@ -878,7 +895,7 @@
 <!--Validate Modal-->
 
 <!-- ------------------------------------  New UI (Ammar) ----------------------------------------- -->
-<div class="container  my-5">
+<!-- <div class="container  my-5">
   <div class="row m-0 p20 rounded" style="background-color: white;">
     <div class="col p-0">
       <div class="img-wrapper">
@@ -915,10 +932,6 @@
             <span class="green-bullet"></span>
             <span>Solution</span>
           </div>
-          <!-- <span class="badge  badge-color rounded mb-2">
-            <span class="oval" aria-hidden="true"></span>
-            Solution
-          </span> -->
         </div>
         <div class="col">
           <div class="row">
@@ -930,7 +943,7 @@
               <button
                 mat-mini-fab
                 class="shadow-none edit-validate"
-                *ngIf="userId === problemData.user_id || owners.has(userId)"
+                *ngIf="userId === solutionData.user_id || owners.has(userId)"
                 [routerLink]="'/solutions/' + solutionData.id + '/edit'"
                 queryParamsHandling="merge"
                 [disabled]="
@@ -1041,14 +1054,7 @@
             <span>
               {{ solutionData.updated_at | date: short }}
             </span>
-            <!-- <span class="dot" aria-hidden="true"></span>
-            <span>
-              {{
-                problemLocations.length
-                  ? problemLocations[0].location_name
-                  : ''
-              }}
-            </span> -->
+            
           </div>
         </div>
 
@@ -1141,13 +1147,7 @@
             class="mx-lg-2"
             (click)="openValidateModal()"
           >
-            <!-- [disabled]="
-              disableValidateButton ||
-              userId == solutionData.user_id ||
-              !auth.currentUserValue.id ||
-              !sectorMatched ||
-              !userPersonas.is_expert
-            " -->
+            
             Validate
           </button>
           <button
@@ -1156,11 +1156,7 @@
             class="ml-2"
             (click)="openCollaborateModal()"
           >
-            <!-- [disabled]="
-          disableCollaborateButton ||
-          userId == solutionData.user_id ||
-          !auth.currentUserValue.id
-        " -->
+            
             Collaborate
           </button>
         </div>
@@ -1179,10 +1175,7 @@
             <span class="green-bullet"></span>
             <span>Solution</span>
           </div>
-          <!-- <span class="badge  badge-color rounded mb-2 text-capitalize">
-            <span class="oval" aria-hidden="true"></span>
-            Solution
-          </span> -->
+          
         </div>
         <div class="col">
           <div class="row">
@@ -1243,14 +1236,7 @@
             <span>
               {{ solutionData.updated_at | date: short }}
             </span>
-            <!-- <span class="dot" aria-hidden="true"></span>
-            <span>
-              {{
-                problemLocations.length
-                  ? problemLocations[0].location_name
-                  : ''
-              }}
-            </span> -->
+            
           </div>
         </div>
 
@@ -1489,13 +1475,7 @@
             class="mx-lg-2"
             (click)="openValidateModal()"
           >
-            <!-- [disabled]="
-              disableValidateButton ||
-              userId == solutionData.user_id ||
-              !auth.currentUserValue.id ||
-              !sectorMatched ||
-              !userPersonas.is_expert
-            " -->
+            
             Validate
           </button>
           <button
@@ -1504,653 +1484,942 @@
             class="ml-2"
             (click)="openCollaborateModal()"
           >
-            <!-- [disabled]="
-          disableCollaborateButton ||
-          userId == solutionData.user_id ||
-          !auth.currentUserValue.id
-        " -->
+            
             Collaborate
           </button>
         </div>
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="container mt-20">
+    <div class="row bg-white main-card">
+        <div class=" col-md-4 img-section">
+            <div class="img-wrapper">
+                <img
+                    src="{{
+                        solutionData.featured_url &&
+                        checkUrlIsImg(
+                            filesService.fileAccessUrl +
+                                solutionData.featured_url
+                        )
+                            ? filesService.fileAccessUrl +
+                              solutionData.featured_url
+                            : './assets/img/image_placeholder.jpg'
+                    }}"
+                    [attr.alt]="[imageAlt]"
+                    class="rounded img-responsive"
+                    style="object-fit: cover;"
+                />
+
+                <button
+                    *ngIf="solution_attachments.length > 0"
+                    class="align-icon"
+                    data-toggle="modal"
+                    #showModalBtn
+                    (click)="openModal('#viewMoreImgModal')"
+                >
+                    +{{ solution_attachments.length }}
+                </button>
+            </div>
+        </div>
+        <div class="col-md-8 card-detail-section">
+            <div>
+                <div class="row ">
+                    <div
+                        class="col d-flex justify-content-between pr-0 problem-on-mobile left-section"
+                    >
+                        <div class="solution">
+                            <span class="green-bullet"></span>
+                            <span>Solution</span>
+                        </div>
+
+                        <div>
+                            <a href="javascript:void(0);" class="see-solutions">
+                                See Problems(s)
+                            </a>
+                            <button
+                                class="btn btn-circle margin-20"
+                                [routerLink]="
+                                    '/solutions/' + solutionData.id + '/edit'
+                                "
+                                queryParamsHandling="merge"
+                                [disabled]="
+                                    this.enrichment.length > 0 ||
+                                    this.validation.length > 0 ||
+                                    this.collaborators.length > 0
+                                "
+                                aria-label="Edit Problem"
+                                *ngIf="
+                                    userId === solutionData.user_id ||
+                                    owners.has(userId)
+                                "
+                            >
+                                <i class="far fa-pen"></i>
+                            </button>
+
+                            <button
+                                class="btn btn-circle margin-20"
+                                id="shareBtnDropdown"
+                                data-toggle="dropdown"
+                                aria-expanded="false"
+                                aria-label="share"
+                            >
+                                <i
+                                    class="far fa-share-alt"
+                                    aria-hidden="true"
+                                ></i>
+                            </button>
+                            <div
+                                class="dropdown-menu"
+                                aria-labelledby="shareBtnDropdown"
+                            >
+                                <ng-container *ngIf="channels.linkedin">
+                                    <a
+                                        class="dropdown-item"
+                                        href="javscript:void(0);"
+                                        (click)="linkedInShare()"
+                                        >LinkedIn</a
+                                    >
+                                </ng-container>
+                                <ng-container *ngIf="channels.facebook">
+                                    <a
+                                        class="dropdown-item"
+                                        href="javscript:void(0);"
+                                        (click)="fbShare()"
+                                        >Facebook</a
+                                    >
+                                </ng-container>
+                                <ng-container *ngIf="channels.twitter">
+                                    <a
+                                        class="dropdown-item"
+                                        href="javscript:void(0);"
+                                        (click)="twitterShare()"
+                                        >Twitter</a
+                                    >
+                                </ng-container>
+                                <ng-container *ngIf="channels.email">
+                                    <a
+                                        class="dropdown-item"
+                                        href="javscript:void(0);"
+                                        (click)="mailShare()"
+                                        >Email</a
+                                    >
+                                </ng-container>
+                                <ng-container *ngIf="channels.sms">
+                                    <a
+                                        class="dropdown-item"
+                                        href="javscript:void(0);"
+                                        (click)="smsShare()"
+                                        >SMS</a
+                                    >
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row title-container">
+                    <div class="col pr-0 problem-on-mobile">
+                        <h1 class="problem-title">
+                            {{ solutionData.title }}
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="row mt-md-5  mt-sm-4">
+                    <div
+                        class="col d-flex align-items-center problem-on-mobile"
+                    >
+                        <div>
+                            <img
+                                src="{{
+                                    solutionData.user.photo_url &&
+                                    solutionData.user.photo_url.fileEndpoint &&
+                                    checkUrlIsImg(
+                                        filesService.fileAccessUrl +
+                                            solutionData.user.photo_url
+                                                .fileEndpoint
+                                    )
+                                        ? filesService.fileAccessUrl +
+                                          solutionData.user.photo_url
+                                              .fileEndpoint
+                                        : './assets/img/default-avatar.png'
+                                }}"
+                                alt="profile photo"
+                                class="img-profile"
+                                style="object-fit: cover;overflow: hidden !important;"
+                                width="50"
+                                height="50"
+                            />
+                        </div>
+                        <div class="created-by-section text-truncate">
+                            Created by
+                            {{
+                                auth.currentUserValue.id == solutionData.user_id
+                                    ? 'You'
+                                    : solutionOwner
+                            }}
+                            <br />
+                            {{ solutionData.updated_at | date: short }}
+                            <span class="dot" aria-hidden="true"></span>
+                            {{
+                                solutionLocations.length
+                                    ? solutionLocations[0].location_name
+                                    : ''
+                            }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col-xl-4 align-self-center mt-3">
+                        <div class="row  stats-section">
+                            <div class="col pr-0">
+                                <a
+                                    href="javascript:void(0);"
+                                    (click)="toggleVoteProblem()"
+                                    role="button"
+                                    [attr.aria-pressed]="voters.has(userId)"
+                                    [attr.aria-label]="['likes', voters.size]"
+                                    class="btn btn-social"
+                                    [ngClass]="{
+                                        selected: voters.has(userId)
+                                    }"
+                                >
+                                    <i class="far fa-thumbs-up"></i>
+                                </a>
+                                <span class="social-stats">
+                                    {{ voters.size }}
+                                </span>
+                            </div>
+
+                            <div class="col px-0 ">
+                                <a
+                                    href="javascript:void(0);"
+                                    (click)="toggleWatchProblem()"
+                                    role="button"
+                                    [attr.aria-pressed]="watchers.has(userId)"
+                                    [attr.aria-label]="[
+                                        'Watch problem',
+                                        watchers.size
+                                    ]"
+                                    class="btn btn-social"
+                                    [ngClass]="{
+                                        selected: watchers.has(userId)
+                                    }"
+                                >
+                                    <i class="far fa-eye"></i>
+                                </a>
+                                <span class="social-stats">
+                                    {{ watchers.size }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-8 pr-0 action-btn-section mt-3">
+                        <div
+                            class="d-flex justify-content-sm-start justify-content-lg-end flex-wrap"
+                        >
+                            <button
+                                class=" card-btn"
+                                style="margin-right: 2rem;"
+                                (click)="openValidateModal()"
+                                [disabled]="
+                                    disableValidateButton ||
+                                    !userPersonas.is_expert ||
+                                    userId == solutionData.user_id ||
+                                    !sectorMatched ||
+                                    !auth.currentUserValue.id
+                                "
+                            >
+                                Validate
+                            </button>
+                            <button
+                                class=" card-btn"
+                                (click)="openCollaborateModal()"
+                                [disabled]="
+                                    disableCollaborateButton ||
+                                    userId == solutionData.user_id ||
+                                    !auth.currentUserValue.id
+                                "
+                            >
+                                Collaborate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container my-3">
-  <div class="row">
-    <div class="col-lg-7">
-      <div class="col-md-12 bg-white pl-0 pr-0">
-        <div
-          mat-align-tabs="left"
-          (selectedIndexChange)="selectedTab($event)"
-          selectedIndex="0"
-        >
-          <div>
-            <ng-template  >
-              Overview
-            </ng-template>
-            <!-- <ng-container
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="col-md-12 bg-white pl-0 pr-0">
+                <div
+                    mat-align-tabs="left"
+                    (selectedIndexChange)="selectedTab($event)"
+                    selectedIndex="0"
+                >
+                    <div>
+                        <ng-template>
+                            Overview
+                        </ng-template>
+                        <!-- <ng-container
               *ngIf="!auth.currentUserValue.id; then preLogin"
             ></ng-container> -->
-            <ng-container
-              *ngIf="
-                auth.currentUserValue.id && !objectValues(solutionData).length;
-                then notYetStart;
-                else overview
-              "
-            ></ng-container>
-          </div>
+                        <ng-container
+                            *ngIf="
+                                auth.currentUserValue.id &&
+                                    !objectValues(solutionData).length;
+                                then notYetStart;
+                                else overview
+                            "
+                        ></ng-container>
+                    </div>
 
-          <div>
-            <ng-template  >
-              Validated ({{ validation.length }})
-            </ng-template>
-            <ng-container
-              *ngIf="!auth.currentUserValue.id; then preLogin"
-            ></ng-container>
-            <ng-container
-              *ngIf="
-                auth.currentUserValue.id && !objectValues(validation).length;
-                then notYetStart;
-                else validated
-              "
-            ></ng-container>
-          </div>
-          <div>
-            <ng-template  >
-              Collaborated ({{ collaborators.length }})
-            </ng-template>
-            <ng-container
-              *ngIf="!auth.currentUserValue.id; then preLogin"
-            ></ng-container>
-            <ng-container
-              *ngIf="
-                auth.currentUserValue.id && !objectValues(collaborators).length;
-                then notYetStart;
-                else collaborated
-              "
-            ></ng-container>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-5 margin-sm-t margin-md-t">
-      <div class="col-md-12 pl-0 pr-0 bg-white">
-        <div class="img-wrapper">
-          <div class="btn-group sort-btn">
-            <button
-              mat-button
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              class="dropdown-toggle text-capitalize"
-            >
-              sort: {{ currentSort }}
-            </button>
-            <div class="dropdown-menu">
-              <a
-                class="dropdown-item"
-                href="javascript:void(0);"
-                (click)="showPopularDiscussions('latest')"
-              >
-                Latest
-              </a>
-              <a
-                class="dropdown-item"
-                href="javascript:void(0);"
-                (click)="showPopularDiscussions('popular')"
-              >
-                Popular
-              </a>
+                    <div>
+                        <ng-template>
+                            Validated ({{ validation.length }})
+                        </ng-template>
+                        <ng-container
+                            *ngIf="!auth.currentUserValue.id; then preLogin"
+                        ></ng-container>
+                        <ng-container
+                            *ngIf="
+                                auth.currentUserValue.id &&
+                                    !objectValues(validation).length;
+                                then notYetStart;
+                                else validated
+                            "
+                        ></ng-container>
+                    </div>
+                    <div>
+                        <ng-template>
+                            Collaborated ({{ collaborators.length }})
+                        </ng-template>
+                        <ng-container
+                            *ngIf="!auth.currentUserValue.id; then preLogin"
+                        ></ng-container>
+                        <ng-container
+                            *ngIf="
+                                auth.currentUserValue.id &&
+                                    !objectValues(collaborators).length;
+                                then notYetStart;
+                                else collaborated
+                            "
+                        ></ng-container>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div
-            style="width: 100%;"
-            disableRipple="true"
-            selectedIndex="0"
-          >
-            <div>
-              <ng-template  >
-                Discussion
-              </ng-template>
-              <ng-container
-                *ngIf="!auth.currentUserValue.id; then discussionNotLogin"
-              ></ng-container>
-              <ng-container
-                *ngIf="
-                  auth.currentUserValue.id && !objectValues(comments).length;
-                  then noDiscussion;
-                  else discussion
-                "
-              ></ng-container>
-            </div>
-            <!-- <button mat-raised-button>Basic</button> -->
-          </div>
         </div>
-      </div>
+
+        <div class="col-lg-5 margin-sm-t margin-md-t">
+            <div class="col-md-12 pl-0 pr-0 bg-white">
+                <div class="img-wrapper">
+                    <div class="btn-group sort-btn">
+                        <button
+                            mat-button
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            class="dropdown-toggle text-capitalize"
+                        >
+                            sort: {{ currentSort }}
+                        </button>
+                        <div class="dropdown-menu">
+                            <a
+                                class="dropdown-item"
+                                href="javascript:void(0);"
+                                (click)="showPopularDiscussions('latest')"
+                            >
+                                Latest
+                            </a>
+                            <a
+                                class="dropdown-item"
+                                href="javascript:void(0);"
+                                (click)="showPopularDiscussions('popular')"
+                            >
+                                Popular
+                            </a>
+                        </div>
+                    </div>
+
+                    <div
+                        style="width: 100%;"
+                        disableRipple="true"
+                        selectedIndex="0"
+                    >
+                        <div>
+                            <ng-template>
+                                Discussion
+                            </ng-template>
+                            <ng-container
+                                *ngIf="
+                                    !auth.currentUserValue.id;
+                                    then discussionNotLogin
+                                "
+                            ></ng-container>
+                            <ng-container
+                                *ngIf="
+                                    auth.currentUserValue.id &&
+                                        !objectValues(comments).length;
+                                    then noDiscussion;
+                                    else discussion
+                                "
+                            ></ng-container>
+                        </div>
+                        <!-- <button mat-raised-button>Basic</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <ng-template #preLogin>
-  <div
-    class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
-  >
-    <ng-container [ngSwitch]="currentTab">
-      <ng-container *ngSwitchCase="1">
-        <div class="pre-login-icon">
-          <i class="fas fa-check"></i>
-        </div>
-        <br />
-        <div class="pre-login-text" *ngIf="!validation.length">
-          No validation yet.
-        </div>
-        <div class="pre-login-text">
-          <a href="javascript:void(0);">Login</a> to validate this solution.
-        </div>
-      </ng-container>
-      <ng-container *ngSwitchCase="2">
-        <div class="pre-login-icon">
-          <i class="fas fa-arrow-to-top"></i>
-        </div>
-        <br />
-        <div class="pre-login-text" *ngIf="!collaborators.length">
-          No collaborators yet.
-        </div>
-        <div class="pre-login-text">
-          <a href="javascript:void(0);">Login</a> to collaborate on this
-          solution. problem.
-        </div>
-      </ng-container>
-    </ng-container>
-  </div>
+    <div
+        class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
+    >
+        <ng-container [ngSwitch]="currentTab">
+            <ng-container *ngSwitchCase="1">
+                <div class="pre-login-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <br />
+                <div class="pre-login-text" *ngIf="!validation.length">
+                    No validation yet.
+                </div>
+                <div class="pre-login-text">
+                    <a href="javascript:void(0);">Login</a> to validate this
+                    solution.
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="2">
+                <div class="pre-login-icon">
+                    <i class="fas fa-arrow-to-top"></i>
+                </div>
+                <br />
+                <div class="pre-login-text" *ngIf="!collaborators.length">
+                    No collaborators yet.
+                </div>
+                <div class="pre-login-text">
+                    <a href="javascript:void(0);">Login</a> to collaborate on
+                    this solution. problem.
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
 </ng-template>
 
 <ng-template #notYetStart>
-  <div
-    class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
-  >
-    <ng-container [ngSwitch]="currentTab">
-      <ng-container *ngSwitchCase="1">
-        <div class="pre-login-icon">
-          <i class="fas fa-check"></i>
-        </div>
-        <div class="pre-login-text">No validation yet.</div>
-      </ng-container>
-      <ng-container *ngSwitchCase="2">
-        <div class="pre-login-icon">
-          <i class="fas fa-arrow-to-top"></i>
-        </div>
-        <div class="pre-login-text">No collaborators yet.</div>
-      </ng-container>
-    </ng-container>
-  </div>
+    <div
+        class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
+    >
+        <ng-container [ngSwitch]="currentTab">
+            <ng-container *ngSwitchCase="1">
+                <div class="pre-login-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="pre-login-text">No validation yet.</div>
+            </ng-container>
+            <ng-container *ngSwitchCase="2">
+                <div class="pre-login-icon">
+                    <i class="fas fa-arrow-to-top"></i>
+                </div>
+                <div class="pre-login-text">No collaborators yet.</div>
+            </ng-container>
+        </ng-container>
+    </div>
 </ng-template>
 
 <ng-template #discussionNotLogin>
-  <div
-    class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
-  >
-    <div class="pre-login-icon">
-      <i class="far fa-arrow-from-bottom"></i>
+    <div
+        class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
+    >
+        <div class="pre-login-icon">
+            <i class="far fa-arrow-from-bottom"></i>
+        </div>
+        <br />
+        <div class="pre-login-text">
+            <a href="javascript:void(0);">Login</a> to join discussion for this
+            solution.
+        </div>
     </div>
-    <br />
-    <div class="pre-login-text">
-      <a href="javascript:void(0);">Login</a> to join discussion for this
-      solution.
-    </div>
-  </div>
 </ng-template>
 
 <ng-template #noDiscussion>
-  
-  <div class="my-4 px-4" >
-    <app-editor
-      [user]="solutionData?.user"
-      [actionText]="'comment'"
-      (submit)="onCommentSubmit($event)"
-    ></app-editor>
-  </div>
-
-  <div
-    class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
-  >
-    <div>
-      <div class="pre-login-icon">
-        <i class="far fa-comment-alt"></i>
-      </div>
-      <br />
-      <div class="pre-login-text">
-        No discussion so far for this solution.
-      </div>
+    <div class="my-4 px-4">
+        <app-editor
+            [user]="solutionData?.user"
+            [actionText]="'comment'"
+            (submit)="onCommentSubmit($event)"
+        ></app-editor>
     </div>
-  </div>
+
+    <div
+        class=" pre-login m-3 d-flex justify-content-center align-items-center flex-column"
+    >
+        <div>
+            <div class="pre-login-icon">
+                <i class="far fa-comment-alt"></i>
+            </div>
+            <br />
+            <div class="pre-login-text">
+                No discussion so far for this solution.
+            </div>
+        </div>
+    </div>
 </ng-template>
 
 <ng-template #overview>
-  <div class="col">
-    <div
-      *ngIf="solutionData.description"
-      #descriptionText
-      class="description-rules"
-    >
-      <h3 class="heading">Description</h3>
+    <div class="col">
+        <div
+            *ngIf="solutionData.description"
+            #descriptionText
+            class="description-rules"
+        >
+            <h3 class="heading">Description</h3>
 
-      <p class="description" id="problemDescription">
-        {{ solutionData.description }}
-      </p>
-      <button
-        mat-flat-button
-        class="showMore"
-        *ngIf="descriptionShowMoreBtn"
-        (click)="clickShowMore()"
-      >
-        {{ descriptionShowMoreBtnText }}
-      </button>
-    </div>
-  </div>
-
-  <hr />
-  <div class="col">
-    <div class="row">
-      <div class="col-sm-6">
-        <div>
-          <h3 class="heading">Organization</h3>
-          <p class="description">{{ solutionData.organization || 'None' }}</p>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <h3 class="heading">Budget</h3>
-        <p class="description">
-          {{ solutionData.budget_title }} ({{
-            solutionData.min_budget | currency: 'INR'
-          }}
-          - {{ solutionData.max_budget | currency: 'INR' }})
-        </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <h3 class="heading">Impact</h3>
-        <p class="description">
-          {{ solutionData.impact || 'None' }}
-        </p>
-      </div>
-      <div class="col-sm-6">
-        <h3 class="heading">Deployments</h3>
-        <p class="description">
-          {{ solutionData.deployment || 'None' }}
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
-        <h3 class="heading">Innovation</h3>
-        <p class="description">
-          {{ solutionData.technology || 'None' }}
-        </p>
-      </div>
-      <div class="col-sm-6">
-        <h3 class="heading">Resources Needed</h3>
-        <p class="description">
-          {{ solutionData.resources || 'None' }}
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
-        <h3 class="heading">Timeline</h3>
-        <p class="description">
-          {{ solutionData.timeline || 'None' }}
-        </p>
-      </div>
-      <div class="col-sm-6">
-        <h3 class="heading">Pilots</h3>
-        <p class="description">
-          {{ solutionData.pilots || 'None' }}
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
-        <div>
-          <h3 class="heading">Location(s)</h3>
-
-          <ng-container *ngFor="let location of solutionLocations">
-            <a
-              href="javascript:void(0);"
-              class="description"
-              (click)="locationSelected(location)"
-            >
-              {{ location.location_name }}
-            </a>
-            <br />
-          </ng-container>
-          <p class="description" *ngIf="!solutionLocations.length">
-            None
-          </p>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <h3 class="heading">Website</h3>
-        <p class="description">
-          {{ solutionData.website_url || 'None' }}
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <h3 class="heading">Sectors</h3>
-
-        <div class="tags">
-          <ng-container *ngFor="let tag of tags">
+            <p class="description" id="problemDescription">
+                {{ solutionData.description }}
+            </p>
             <button
-              class="tag actions text-capitalize"
-              [disabled]="
-                filterService.is_domain_filter_mode &&
-                !tagsService.allTags[tag.name]
-              "
-              (click)="sectorSelected(tag)"
+                mat-flat-button
+                class="showMore"
+                *ngIf="descriptionShowMoreBtn"
+                (click)="clickShowMore()"
             >
-              {{ tag.name.toLowerCase() }}
+                {{ descriptionShowMoreBtnText }}
             </button>
-          </ng-container>
         </div>
-      </div>
     </div>
-  </div>
 
-  <hr />
+    <hr />
+    <div class="col">
+        <div class="row">
+            <div class="col-sm-6">
+                <div>
+                    <h3 class="heading">Organization</h3>
+                    <p class="description">
+                        {{ solutionData.organization || 'None' }}
+                    </p>
+                </div>
+            </div>
 
-  <div class="col pb-3">
-    <h3 class="heading" id="solutionCards" *ngIf="problems.length">
-      This Solution is for the following problems
-    </h3>
-
-    <div class="row">
-      <ng-container *ngFor="let problem of problems; let i = index">
-        <div class="col-md-6 solutions-container mt-2">
-          <div class="solution">
-            <span class="green-bullet"></span>
-            <span>Solution</span>
-          </div>
-
-          <div class="solution-heading">
-            <h2>
-              {{
-                problem.title.length > 50
-                  ? problem.title.slice(0, 50) + '...'
-                  : problem.title
-              }}
-            </h2>
-          </div>
-
-          <div class="created-by">
-            <img
-              src="{{
-                problem.user.photo_url &&
-                problem.user.photo_url.fileEndpoint &&
-                checkUrlIsImg(
-                  filesService.fileAccessUrl +
-                    problem.user.photo_url.fileEndpoint
-                )
-                  ? filesService.fileAccessUrl +
-                    problem.user.photo_url.fileEndpoint
-                  : './assets/img/default-avatar.png'
-              }}"
-              alt="profile"
-              style="object-fit: cover;"
-            />
-            <span
-              >Created by
-              {{
-                auth.currentUserValue.id == problem.user_id
-                  ? 'You'
-                  : problem.user.name
-              }}</span
-            >
-          </div>
-          <hr />
+            <div class="col-sm-6">
+                <h3 class="heading">Budget</h3>
+                <p class="description">
+                    {{ solutionData.budget_title }} ({{
+                        solutionData.min_budget | currency: 'INR'
+                    }}
+                    - {{ solutionData.max_budget | currency: 'INR' }})
+                </p>
+            </div>
         </div>
-      </ng-container>
-    </div>
-  </div>
 
-  <hr />
-
-  <div class="col pb-3">
-    <h3 class="heading">Solver Team</h3>
-
-    <div class="row">
-      <ng-container *ngFor="let owner of ownerData">
-        <div class="col-sm-6 ">
-          <div class="d-flex align-items-center">
-            <img
-              src="{{
-                owner.photo_url &&
-                owner.photo_url.fileEndpoint &&
-                checkUrlIsImg(
-                  filesService.fileAccessUrl + owner.photo_url.fileEndpoint
-                )
-                  ? filesService.fileAccessUrl + owner.photo_url.fileEndpoint
-                  : './assets/img/default-avatar.png'
-              }}"
-              [attr.alt]="[imageAlt]"
-              class="solverTeamImg"
-              style="object-fit: cover;"
-            />
-            <a
-              [routerLink]="'/profiles/' + owner.id"
-              href="javascript:void(0);"
-              queryParamsHandling="merge"
-              class="owner-name"
-            >
-              <p>
-                {{ auth.currentUserValue.id == owner.id ? 'You' : owner.name }}
-              </p>
-            </a>
-          </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="heading">Impact</h3>
+                <p class="description">
+                    {{ solutionData.impact || 'None' }}
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h3 class="heading">Deployments</h3>
+                <p class="description">
+                    {{ solutionData.deployment || 'None' }}
+                </p>
+            </div>
         </div>
-      </ng-container>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="heading">Innovation</h3>
+                <p class="description">
+                    {{ solutionData.technology || 'None' }}
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h3 class="heading">Resources Needed</h3>
+                <p class="description">
+                    {{ solutionData.resources || 'None' }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="heading">Timeline</h3>
+                <p class="description">
+                    {{ solutionData.timeline || 'None' }}
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h3 class="heading">Pilots</h3>
+                <p class="description">
+                    {{ solutionData.pilots || 'None' }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div>
+                    <h3 class="heading">Location(s)</h3>
+
+                    <ng-container *ngFor="let location of solutionLocations">
+                        <a
+                            href="javascript:void(0);"
+                            class="description"
+                            (click)="locationSelected(location)"
+                        >
+                            {{ location.location_name }}
+                        </a>
+                        <br />
+                    </ng-container>
+                    <p class="description" *ngIf="!solutionLocations.length">
+                        None
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h3 class="heading">Website</h3>
+                <p class="description">
+                    {{ solutionData.website_url || 'None' }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3 class="heading">Sectors</h3>
+
+                <div class="tags">
+                    <ng-container *ngFor="let tag of tags">
+                        <button
+                            class="tag actions text-capitalize"
+                            [disabled]="
+                                filterService.is_domain_filter_mode &&
+                                !tagsService.allTags[tag.name]
+                            "
+                            (click)="sectorSelected(tag)"
+                        >
+                            {{ tag.name.toLowerCase() }}
+                        </button>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <hr />
+
+    <div class="col pb-3">
+        <h3 class="heading" id="solutionCards" *ngIf="problems.length">
+            This Solution is for the following problems
+        </h3>
+
+        <div class="row">
+            <ng-container *ngFor="let problem of problems; let i = index">
+                <div class="col-md-6 solutions-container mt-2">
+                    <div class="solution">
+                        <span class="green-bullet"></span>
+                        <span>Solution</span>
+                    </div>
+
+                    <div class="solution-heading">
+                        <h2>
+                            {{
+                                problem.title.length > 50
+                                    ? problem.title.slice(0, 50) + '...'
+                                    : problem.title
+                            }}
+                        </h2>
+                    </div>
+
+                    <div class="created-by">
+                        <img
+                            src="{{
+                                problem.user.photo_url &&
+                                problem.user.photo_url.fileEndpoint &&
+                                checkUrlIsImg(
+                                    filesService.fileAccessUrl +
+                                        problem.user.photo_url.fileEndpoint
+                                )
+                                    ? filesService.fileAccessUrl +
+                                      problem.user.photo_url.fileEndpoint
+                                    : './assets/img/default-avatar.png'
+                            }}"
+                            alt="profile"
+                            style="object-fit: cover;"
+                        />
+                        <span
+                            >Created by
+                            {{
+                                auth.currentUserValue.id == problem.user_id
+                                    ? 'You'
+                                    : problem.user.name
+                            }}</span
+                        >
+                    </div>
+                    <hr />
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="col pb-3">
+        <h3 class="heading">Solver Team</h3>
+
+        <div class="row">
+            <ng-container *ngFor="let owner of ownerData">
+                <div class="col-sm-6 ">
+                    <div class="d-flex align-items-center">
+                        <img
+                            src="{{
+                                owner.photo_url &&
+                                owner.photo_url.fileEndpoint &&
+                                checkUrlIsImg(
+                                    filesService.fileAccessUrl +
+                                        owner.photo_url.fileEndpoint
+                                )
+                                    ? filesService.fileAccessUrl +
+                                      owner.photo_url.fileEndpoint
+                                    : './assets/img/default-avatar.png'
+                            }}"
+                            [attr.alt]="[imageAlt]"
+                            class="solverTeamImg"
+                            style="object-fit: cover;"
+                        />
+                        <a
+                            [routerLink]="'/profiles/' + owner.id"
+                            href="javascript:void(0);"
+                            queryParamsHandling="merge"
+                            class="owner-name"
+                        >
+                            <p>
+                                {{
+                                    auth.currentUserValue.id == owner.id
+                                        ? 'You'
+                                        : owner.name
+                                }}
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
 </ng-template>
 
 <ng-template #validated>
-  <div class="col pb-4">
-    <div class="row px-3 pt-3">
-      <ng-container *ngFor="let validate of validation; let i = index">
-        <div class="col-sm-12 validateCard" *ngIf="i < validationLimit">
-          <button
-            mat-mini-fab
-            class="float-right shadow-none edit-validate"
-            (click)="openValidateModal(validate)"
-            *ngIf="validate.user_id == auth.currentUserValue.id"
-          >
-            <i class="far fa-pen"></i>
-          </button>
-          <div class="agreedDisagreeDiv">
-            <i
-              class="far fa-check agree"
-              aria-hidden="true"
-              *ngIf="validate.agree"
-            ></i>
+    <div class="col pb-4">
+        <div class="row px-3 pt-3">
+            <ng-container *ngFor="let validate of validation; let i = index">
+                <div class="col-sm-12 validateCard" *ngIf="i < validationLimit">
+                    <button
+                        mat-mini-fab
+                        class="float-right shadow-none edit-validate"
+                        (click)="openValidateModal(validate)"
+                        *ngIf="validate.user_id == auth.currentUserValue.id"
+                    >
+                        <i class="far fa-pen"></i>
+                    </button>
+                    <div class="agreedDisagreeDiv">
+                        <i
+                            class="far fa-check agree"
+                            aria-hidden="true"
+                            *ngIf="validate.agree"
+                        ></i>
 
-            <i
-              class="far fa-times disagree"
-              aria-hidden="true"
-              *ngIf="!validate.agree"
-            ></i>
+                        <i
+                            class="far fa-times disagree"
+                            aria-hidden="true"
+                            *ngIf="!validate.agree"
+                        ></i>
 
-            <strong>{{ validate.agree ? 'Agreed' : 'Disagreed' }}</strong>
-          </div>
+                        <strong>{{
+                            validate.agree ? 'Agreed' : 'Disagreed'
+                        }}</strong>
+                    </div>
 
-          <div class="validate-comment">
-            {{ validate.comment }}
-          </div>
+                    <div class="validate-comment">
+                        {{ validate.comment }}
+                    </div>
 
-          <div class="d-flex justify-content-between validate-profile">
-            <div class="d-flex align-items-center">
-              <img
-                src="{{
-                  validate.user.photo_url &&
-                  validate.user.photo_url.fileEndpoint &&
-                  checkUrlIsImg(
-                    filesService.fileAccessUrl +
-                      validate.user.photo_url.fileEndpoint
-                  )
-                    ? filesService.fileAccessUrl +
-                      validate.user.photo_url.fileEndpoint
-                    : './assets/img/default-avatar.png'
-                }}"
-                [attr.alt]="[imageAlt]"
-                class="solverTeamImg "
-                style="object-fit: cover;"
-              />
-              <span class="validate-created-by">
-                Created by
-                {{
-                  auth.currentUserValue.id == validate.user_id
-                    ? 'You'
-                    : validate.user.name
-                }}
-              </span>
-            </div>
+                    <div
+                        class="d-flex justify-content-between validate-profile"
+                    >
+                        <div class="d-flex align-items-center">
+                            <img
+                                src="{{
+                                    validate.user.photo_url &&
+                                    validate.user.photo_url.fileEndpoint &&
+                                    checkUrlIsImg(
+                                        filesService.fileAccessUrl +
+                                            validate.user.photo_url.fileEndpoint
+                                    )
+                                        ? filesService.fileAccessUrl +
+                                          validate.user.photo_url.fileEndpoint
+                                        : './assets/img/default-avatar.png'
+                                }}"
+                                [attr.alt]="[imageAlt]"
+                                class="solverTeamImg "
+                                style="object-fit: cover;"
+                            />
+                            <span class="validate-created-by">
+                                Created by
+                                {{
+                                    auth.currentUserValue.id == validate.user_id
+                                        ? 'You'
+                                        : validate.user.name
+                                }}
+                            </span>
+                        </div>
 
-            <div class="d-flex align-items-center">
-              <i class="material-icons actions" aria-hidden="true">
-                attach_file
-              </i>
-              {{ validate.files.length }}
-              {{ validate.length > 1 ? 'Attachments' : 'Attachment' }}
-            </div>
-          </div>
+                        <div class="d-flex align-items-center">
+                            <i
+                                class="material-icons actions"
+                                aria-hidden="true"
+                            >
+                                attach_file
+                            </i>
+                            {{ validate.files.length }}
+                            {{
+                                validate.length > 1
+                                    ? 'Attachments'
+                                    : 'Attachment'
+                            }}
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-    </div>
 
-    <div class="row btnCenter" *ngIf="validation.length > 5">
-      <button
-        mat-flat-button
-        class="showMore mt-2"
-        (click)="validationShowMore()"
-      >
-        {{ validationShowMoreText }}
-      </button>
+        <div class="row btnCenter" *ngIf="validation.length > 5">
+            <button
+                mat-flat-button
+                class="showMore mt-2"
+                (click)="validationShowMore()"
+            >
+                {{ validationShowMoreText }}
+            </button>
+        </div>
     </div>
-  </div>
 </ng-template>
 
 <ng-template #collaborated>
-  <div class="col pb-4">
-    <div class="row px-3 pt-3">
-      <ng-container *ngFor="let collaborator of collaborators; let i = index">
-        <div
-          class="col-sm-12 collaborateCard"
-          style="word-wrap: break-word;"
-          *ngIf="i < collaboratorLimit"
-        >
-          <button
-            mat-mini-fab
-            class="float-right edit-validate"
-            (click)="openCollaborateModal(collaborator)"
-            *ngIf="collaborator.user_id == auth.currentUserValue.id"
-          >
-            <i class="far fa-pen"></i>
-          </button>
-          <div>
-            <strong class="text-capitalize roles">
-              Role: {{ getTagStrings(collaborator) }}
-            </strong>
-          </div>
+    <div class="col pb-4">
+        <div class="row px-3 pt-3">
+            <ng-container
+                *ngFor="let collaborator of collaborators; let i = index"
+            >
+                <div
+                    class="col-sm-12 collaborateCard"
+                    style="word-wrap: break-word;"
+                    *ngIf="i < collaboratorLimit"
+                >
+                    <button
+                        mat-mini-fab
+                        class="float-right edit-validate"
+                        (click)="openCollaborateModal(collaborator)"
+                        *ngIf="collaborator.user_id == auth.currentUserValue.id"
+                    >
+                        <i class="far fa-pen"></i>
+                    </button>
+                    <div>
+                        <strong class="text-capitalize roles">
+                            Role: {{ getTagStrings(collaborator) }}
+                        </strong>
+                    </div>
 
-          <div class="collaborate-comment">
-            {{ collaborator.intent || 'None' }}
-          </div>
+                    <div class="collaborate-comment">
+                        {{ collaborator.intent || 'None' }}
+                    </div>
 
-          <div class="d-flex align-items-center comment-footer">
-            <img
-              src="{{
-                collaborator.user.photo_url &&
-                collaborator.user.photo_url.fileEndpoint &&
-                checkUrlIsImg(
-                  filesService.fileAccessUrl +
-                    collaborator.user.photo_url.fileEndpoint
-                )
-                  ? filesService.fileAccessUrl +
-                    collaborator.user.photo_url.fileEndpoint
-                  : './assets/img/default-avatar.png'
-              }}"
-              [attr.alt]="[imageAlt]"
-              class="solverTeamImg"
-              style="object-fit: cover;"
-            />
-            <span class="collaborate-created-by">
-              Created by
-              {{
-                auth.currentUserValue.id == collaborator.user_id
-                  ? 'You'
-                  : collaborator.user.name
-              }}
-            </span>
-          </div>
+                    <div class="d-flex align-items-center comment-footer">
+                        <img
+                            src="{{
+                                collaborator.user.photo_url &&
+                                collaborator.user.photo_url.fileEndpoint &&
+                                checkUrlIsImg(
+                                    filesService.fileAccessUrl +
+                                        collaborator.user.photo_url.fileEndpoint
+                                )
+                                    ? filesService.fileAccessUrl +
+                                      collaborator.user.photo_url.fileEndpoint
+                                    : './assets/img/default-avatar.png'
+                            }}"
+                            [attr.alt]="[imageAlt]"
+                            class="solverTeamImg"
+                            style="object-fit: cover;"
+                        />
+                        <span class="collaborate-created-by">
+                            Created by
+                            {{
+                                auth.currentUserValue.id == collaborator.user_id
+                                    ? 'You'
+                                    : collaborator.user.name
+                            }}
+                        </span>
+                    </div>
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-    </div>
 
-    <div class="row btnCenter">
-      <button
-        mat-flat-button
-        class="showMore mt-2"
-        *ngIf="collaborators.length > 5"
-        (click)="clickCollaboratorShowMoreBtn()"
-      >
-        {{ collaboratorShowMoreText }}
-      </button>
+        <div class="row btnCenter">
+            <button
+                mat-flat-button
+                class="showMore mt-2"
+                *ngIf="collaborators.length > 5"
+                (click)="clickCollaboratorShowMoreBtn()"
+            >
+                {{ collaboratorShowMoreText }}
+            </button>
+        </div>
     </div>
-  </div>
 </ng-template>
 
 <ng-template #discussion>
-  <div class="my-4 px-4" *ngIf="auth.currentUserValue.id">
-    <app-editor
-      [user]="solutionData?.user"
-      [actionText]="'comment'"
-      (submit)="onCommentSubmit($event)"
-    ></app-editor>
-  </div>
+    <div class="my-4 px-4" *ngIf="auth.currentUserValue.id">
+        <app-editor
+            [user]="solutionData?.user"
+            [actionText]="'comment'"
+            (submit)="onCommentSubmit($event)"
+        ></app-editor>
+    </div>
 
-  <div *ngIf="!popular" class="px-4 my-2">
-    <app-display-comment
-      [users]="objectValues(usersService.allUsers)"
-      [comment]="comment"
-      [focusContext]="lastContext"
-      [pageType]="'solution'"
-      [replies]="replies[comment?.id]"
-      (reply)="onCommentSubmit($event, comment.id)"
-      (fileClicked)="displayModal($event)"
-      *ngFor="let comment of sortComments(objectValues(comments))"
-    >
-    </app-display-comment>
-  </div>
+    <div *ngIf="!popular" class="px-4 my-2">
+        <app-display-comment
+            [users]="objectValues(usersService.allUsers)"
+            [comment]="comment"
+            [focusContext]="lastContext"
+            [pageType]="'solution'"
+            [replies]="replies[comment?.id]"
+            (reply)="onCommentSubmit($event, comment.id)"
+            (fileClicked)="displayModal($event)"
+            *ngFor="let comment of sortComments(objectValues(comments))"
+        >
+        </app-display-comment>
+    </div>
 
-  <div *ngIf="popular" class="px-4 my-2">
-    <app-display-comment
-      [users]="objectValues(usersService.allUsers)"
-      [comment]="popularDiscussion"
-      [focusContext]="lastContext"
-      [pageType]="'solution'"
-      [replies]="replies[popularDiscussion?.id]"
-      (reply)="onCommentSubmit($event, popularDiscussion.id)"
-      (fileClicked)="displayModal($event)"
-      *ngFor="let popularDiscussion of popularDiscussions"
-    >
-    </app-display-comment>
-  </div>
+    <div *ngIf="popular" class="px-4 my-2">
+        <app-display-comment
+            [users]="objectValues(usersService.allUsers)"
+            [comment]="popularDiscussion"
+            [focusContext]="lastContext"
+            [pageType]="'solution'"
+            [replies]="replies[popularDiscussion?.id]"
+            (reply)="onCommentSubmit($event, popularDiscussion.id)"
+            (fileClicked)="displayModal($event)"
+            *ngFor="let popularDiscussion of popularDiscussions"
+        >
+        </app-display-comment>
+    </div>
 </ng-template>
 <!-- ------------------------------------  New UI ----------------------------------------- -->
