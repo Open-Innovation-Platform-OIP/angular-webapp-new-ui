@@ -5,6 +5,9 @@ import { FormControl } from '@angular/forms';
 import { GeocoderService } from '../../services/geocoder.service';
 import { FilterService } from '../../services/filter.service';
 
+declare var $: any;
+declare var google: any;
+
 @Component({
     selector: 'app-filter-dropdown',
     templateUrl: './filter-dropdown.component.html',
@@ -32,6 +35,7 @@ export class FilterDropdownComponent implements OnInit {
     locations: any = [];
     objectValues = Object.values;
     objectKeys = Object.keys;
+    autocomplete;
 
     constructor(
         private tagsService: TagsService,
@@ -42,10 +46,20 @@ export class FilterDropdownComponent implements OnInit {
     ) {}
 
     async ngOnInit() {
-        this.myControl.valueChanges.subscribe(val => {
-            this.getLocation(val);
-        });
-
+        // this.myControl.valueChanges.subscribe(val => {
+        //     this.getLocation(val);
+        // });
+        // $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAxSPvgric8Zn54pYneG9NondiINqdvb-w&libraries=places");
+        this.autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('autocomplete'), {types: ['establishment']});
+        
+        // Avoid paying for data that you don't need by restricting the set of
+        // place fields that are returned to just the address components.
+        this.autocomplete.setFields(['address_component', 'geometry', 'name']);
+        
+        // When the user selects an address from the drop-down, populate the
+        // address fields in the form.
+        this.autocomplete.addListener('place_changed', () => this.setLocation());
         // await this.tagsService.getTagsFromDB('');
 
         this.sectors = this.tagsService.allTags;
@@ -72,6 +86,65 @@ export class FilterDropdownComponent implements OnInit {
         });
     }
 
+    setLocation() {
+        const place = this.autocomplete.getPlace();
+
+        console.log(place);
+
+        // this.selectedLocationName = place.name;
+
+        const address_mapping = {
+            street_number: {
+                short_name: 'location_name'
+            },
+            // route: {
+            //     long_name: 'street_2'
+            // },
+            locality: {
+                long_name: 'city'
+            },
+            administrative_area_level_1: {
+                // short_name: 'state_code',
+                long_name: 'state'
+            },
+            country: {
+                // short_name: 'country_code',
+                long_name: 'country'
+            },
+            // postal_code: {
+            //     short_name: 'postal_code'
+            // }
+        };
+
+        // this.selectedLocation = {
+        //     location_name: place.,
+        //     latitude: locationData.DisplayPosition.Latitude,
+        //     longitude: locationData.DisplayPosition.Longitude,
+        //     type: event.option.value.MatchLevel,
+        // };
+
+        // Get each component of the address from the place details,
+        // and then fill-in the corresponding field on the form.
+        for (let i = 0; i < place.address_components.length; i++) {
+            const address_type = place.address_components[i].types[0];
+            if (address_mapping[address_type]) {
+                if (address_mapping[address_type]['short_name']){
+                    this.selectedLocation[address_mapping[address_type]['short_name']] = place.address_components[i]['short_name'];
+                    // frm.set_value(address_mapping[address_type]['short_name'], place.address_components[i]['short_name'])
+                }
+                if (address_mapping[address_type]['long_name']){
+                    this.selectedLocation[address_mapping[address_type]['long_name']] = place.address_components[i]['long_name'];
+                    // frm.set_value(address_mapping[address_type]['long_name'], place.address_components[i]['long_name'])
+                }
+            }
+        }
+        this.selectedLocation['latitude'] = place.geometry.location.lat();
+        this.selectedLocation['longitude'] = place.geometry.location.lng();
+        this.selectedLocation['location_name'] = place.name;
+        // console.log(this.selectedLocation);
+        // frm.set_value('utc_offset', place.utc_offset_minutes);
+    }
+
     getLocation(input) {
         this.geoService.getAddress(this.selectedLocationName).then(
             result => {
@@ -85,40 +158,47 @@ export class FilterDropdownComponent implements OnInit {
 
     selectDropdown(event) {
         // console.log(event);
-        if (event && event.option && event.option.value) {
-            const locationData = event.option.value.Location;
+        // if (event && event.option && event.option.value) {
+        //     const locationData = event.option.value.Location;
 
-            this.selectedLocationName = locationData.Address.Label;
-            this.selectedLocation = {
-                location_name: locationData.Address.Label,
-                latitude: locationData.DisplayPosition.Latitude,
-                longitude: locationData.DisplayPosition.Longitude,
-                type: event.option.value.MatchLevel,
-            };
+        //     this.selectedLocationName = locationData.Address.Label;
+        //     this.selectedLocation = {
+        //         location_name: locationData.Address.Label,
+        //         latitude: locationData.DisplayPosition.Latitude,
+        //         longitude: locationData.DisplayPosition.Longitude,
+        //         type: event.option.value.MatchLevel,
+        //     };
 
-            if (locationData.Address.City) {
-                this.selectedLocation['city'] = locationData.Address.City;
-            }
-            if (locationData.Address.State) {
-                this.selectedLocation['state'] = locationData.Address.State;
-            }
-            if (locationData.Address.Country) {
-                this.selectedLocation['country'] = locationData.Address.Country;
-            }
+        //     if (locationData.Address.City) {
+        //         this.selectedLocation['city'] = locationData.Address.City;
+        //     }
+        //     if (locationData.Address.State) {
+        //         this.selectedLocation['state'] = locationData.Address.State;
+        //     }
+        //     if (locationData.Address.Country) {
+        //         this.selectedLocation['country'] = locationData.Address.Country;
+        //     }
+        // }
+        // if (event && event.target && event.target.selectedOptions) {
+        //     this.selectedSectors = [];
+        //     for (let o of event.target.selectedOptions) {
+        //         // console.log(o);
+        //         if (o.value !== 'all') {
+        //             this.selectedSectors.push(o.value);
+        //         }
+        //     }
+        // }
+        // hack because filters needs array and we are currently using a single select
+        if (this.selectedSector) {
+            this.selectedSectors = [this.selectedSector];
         }
-        if (event && event.target) {
+        if (this.selectedSector === 'all') {
             this.selectedSectors = [];
-            for (let o of event.target.selectedOptions) {
-                // console.log(o);
-                if (o.value !== 'all') {
-                    this.selectedSectors.push(o.value);
-                }
-            }
         }
 
-        if (!this.selectedLocationName) {
-            this.selectedLocation = {};
-        }
+        // if (!this.selectedLocationName) {
+        //     this.selectedLocation = {};
+        // }
 
         const queries = {};
 
