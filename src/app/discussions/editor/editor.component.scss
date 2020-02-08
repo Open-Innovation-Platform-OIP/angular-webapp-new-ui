@@ -1,32 +1,50 @@
-.removeBtn {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-}
-.removeBtn * {
-  font-size: medium;
-}
+@import '../../../styles.scss';
+@import '../../../assets/scss/common';
 
-.textareaElement {
-  flex-grow: 1;
-  margin-top: 0.9rem;
-  min-width: 5rem;
-  min-height: 1.7rem;
-  max-height: 10rem;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin-left: 0.5rem;
-}
-
-[contentEditable][placeholder]:empty:before {
-  content: attr(placeholder);
-  color: gray;
+.editor-container {
+    border: 1px solid $secondary1;
+    border-radius: $round4;
+    min-height: 6.6rem;
+    padding: 1.3rem 2.1rem;
 }
 
 .commentSection {
-  border-radius: 0.4rem;
-  /* min-height: 6.4rem; */
-  font-size: 1.4rem;
-  line-height: 2.2rem;
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    & > button {
+        height: 4rem;
+        background-color: transparent;
+        border: none;
+    }
+}
+
+.removeBtn {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+}
+.removeBtn * {
+    font-size: medium;
+}
+
+.textareaElement {
+    flex-grow: 1;
+    margin-top: 0.9rem;
+    min-width: 5rem;
+    min-height: 1.7rem;
+    max-height: 10rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-left: 0.5rem;
+}
+
+[contentEditable][placeholder]:empty:before {
+    content: attr(placeholder);
+    color: gray;
 }
