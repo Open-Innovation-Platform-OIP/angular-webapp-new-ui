@@ -6,17 +6,17 @@ const environment = {
     production: true,
 };
 
-const domain = 'https://oip-dev.dev.jaagalabs.com';
+const domain = 'https://oip-dev-new-ui.dev.jaagalabs.com';
 
 const inviteEndpoint = 'https://invite-flow-microservice-test.dev.jaagalabs.com/invite_user';
 
 const smsEndpoint = 'https://sa-sms-microservice.dev.jaagalabs.com/send';
 
-const authEndpoint = 'https://sa-auth-dev.dev.jaagalabs.com/auth/';
+const authEndpoint = 'https://sa-auth-deploy.dev.jaagalabs.com/auth/';
 
-const hasuraEndpoint = 'https://sa-dev.dev.jaagalabs.com/v1/graphql';
+const hasuraEndpoint = 'https://sa-staging.dev.jaagalabs.com/v1/graphql';
 
-const searchEndpoint = 'https://elasticsearch-microservice.dev.jaagalabs.com/global_search';
+const searchEndpoint = 'https://elasticsearch-microservice-deploy.dev.jaagalabs.com/global_search';
 
 const fileUploadVariables = {
     UploadUrlEndpoint:
