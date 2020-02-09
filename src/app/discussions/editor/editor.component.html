@@ -50,16 +50,13 @@
 
     <button
         *ngIf="content.length"
-        mat-stroked-button
-        color="primary"
-        class="text-capitalize mt-3"
+        class="btn btn-text text-capitalize mt-3"
         (click)="submitComment()"
     >
         {{ actionText }}
     </button>
     <button
-        mat-flat-button
-        class="text-capitalize mt-3"
+        class="btn btn-text text-capitalize mt-3"
         *ngIf="auth.currentUserValue.id && cancelShown"
         (click)="cancel.emit()"
     >
