@@ -56,6 +56,7 @@ import { CollaborationService } from 'src/app/services/collaboration.service';
 import { ValidationService } from 'src/app/services/validation.service';
 import { EnrichmentService } from 'src/app/services/enrichment.service';
 import { fileUploadVariables } from '../../../environments/environment';
+import {AttachmentModalComponent} from '../../components/attachment-modal/attachment-modal.component';
 import { sharing } from '../../globalconfig';
 import { reject } from 'q';
 // import { ModalComponent } from 'src/app/components/modal/modal.component';
@@ -1900,13 +1901,6 @@ export class ProblemDetailComponent
                 this.moveFocusToElement(this.enrichmentDetail);
                 this.enrichmentModalContext['index'] = index;
             }, 500);
-        } else if (id === '#viewMoreImgModal') {
-            // setTimeout(() => {
-            //     this.focusMonitor.focusVia(
-            //         this.prolemDetailAttachmentBtn,
-            //         'program'
-            //     );
-            // }, 1000);
         }
     }
 

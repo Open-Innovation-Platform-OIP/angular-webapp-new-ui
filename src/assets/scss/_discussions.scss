@@ -1,5 +1,11 @@
 @import './common';
 
+.discussion-section {
+    margin: 2rem 0;
+    border-radius: $round4;
+    border: 0.1rem solid $secondary4;
+}
+
 .comment-section {
     @include pattern1();
     display: flex;
@@ -35,7 +41,6 @@
 }
 
 .reply-section {
-    // pb-2 pl-3 pr-2 pt-2 mt-1 w-100
     @include pattern1();
     display: flex;
     justify-content: flex-start;
@@ -86,6 +91,14 @@
         font-weight: bolder;
         padding-right: 2px;
     }
+}
+
+.attach-btn {
+    background-color: $secondary6;
+    border: none;
+    color: $secondary1;
+    font-weight: 600;
+    font-size: $font12 !important;
 }
 
 .footer-container {

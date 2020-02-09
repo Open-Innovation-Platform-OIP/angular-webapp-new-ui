@@ -1,7 +1,5 @@
-<div class="border border-dark shadow p-3 radius-4">
-    <div
-        class="d-flex align-items-start justify-content-between commentSection"
-    >
+<div class="shadow editor-container">
+    <div class="commentSection">
         <img
             *ngIf="user.photo_url && user.photo_url?.fileEndpoint"
             src="{{
@@ -12,7 +10,7 @@
                     : './assets/img/default-avatar.png'
             }}"
             alt="profile photo"
-            class="rounded-circle"
+            class="rounded-circle mr-3"
             style="object-fit: cover;overflow: hidden;"
             width="40"
             height="40"
@@ -24,12 +22,7 @@
             #commentElement
             placeholder="Add a comment..."
         ></div>
-        <button
-            i-button
-            color="primary"
-            aria-label="Example icon-button with a heart icon"
-            (click)="clickInputFile()"
-        >
+        <button aria-label="" (click)="clickInputFile()">
             <img src="../../../assets/svg/paper_clip.svg" alt="" />
         </button>
         <input
