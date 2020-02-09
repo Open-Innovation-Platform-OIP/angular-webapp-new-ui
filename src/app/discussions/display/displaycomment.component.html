@@ -80,7 +80,7 @@
             </a>
             <button
                 *ngIf="comment.attachments.length > 0"
-                class="align-icon attach-btn"
+                class="attach-btn"
                 data-toggle="modal"
                 #showModalBtn
                 (click)="openModal('#viewAttachmentsModal-' + comment.id)"
@@ -156,7 +156,7 @@
             </a>
 
             <button
-                class="align-icon attach-btn"
+                class="attach-btn"
                 data-toggle="modal"
                 #showModalBtn
                 *ngIf="comment.attachments.length > 0"

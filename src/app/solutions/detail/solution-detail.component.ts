@@ -83,7 +83,7 @@ interface queryString {
         { provide: LocationStrategy, useClass: PathLocationStrategy },
     ],
     templateUrl: './solution-detail.component.html',
-    styleUrls: ['./solution-detail.component.css'],
+    styleUrls: ['./solution-detail.component.scss'],
     animations: [slider],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -277,7 +277,7 @@ export class SolutionDetailComponent implements OnInit, AfterViewInit {
     validationShowMoreText = 'Show More';
     collaboratorLimit = 6;
     collaboratorShowMoreText = 'Show More';
-    currentTab: number = 0;
+    currentTab = 0;
 
     constructor(
         private router: Router,
@@ -461,7 +461,7 @@ export class SolutionDetailComponent implements OnInit, AfterViewInit {
         }
     }
 
-    selectedTab(e) {
+    switchTab(e) {
         this.noContent(e);
         this.preLoggedInContent(e);
         this.currentTab = e;

@@ -84,12 +84,11 @@
             border: 1px solid #e1e1e1;
             background-color: #f7f7f7;
         }
-    }
-
-    .dot::after {
-        content: '•';
-        font-weight: bolder;
-        padding-right: 2px;
+        .dot {
+            content: '•';
+            font-weight: bolder;
+            padding-right: 0.5rem;
+        }
     }
 }
 
