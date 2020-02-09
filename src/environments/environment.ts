@@ -8,6 +8,16 @@ const environment = {
 
 const domain = 'https://oip-dev.dev.jaagalabs.com';
 
+const inviteEndpoint = 'https://invite-flow-microservice-test.dev.jaagalabs.com/invite_user';
+
+const smsEndpoint = 'https://sa-sms-microservice.dev.jaagalabs.com/send';
+
+const authEndpoint = 'https://sa-auth-dev.dev.jaagalabs.com/auth/';
+
+const hasuraEndpoint = 'https://sa-dev.dev.jaagalabs.com/v1/graphql';
+
+const searchEndpoint = 'https://elasticsearch-microservice.dev.jaagalabs.com/global_search';
+
 const fileUploadVariables = {
     UploadUrlEndpoint:
         'https://minio-microservice.dev.jaagalabs.com/create_presigned_url',
@@ -16,7 +26,7 @@ const fileUploadVariables = {
     deleteEndpoint: 'https://minio-microservice.dev.jaagalabs.com/delete_file',
 };
 
-export { environment, domain, fileUploadVariables };
+export { environment, domain, inviteEndpoint, smsEndpoint, authEndpoint, hasuraEndpoint, searchEndpoint, fileUploadVariables };
 
 /*
  * For easier debugging in development mode, you can import the following file

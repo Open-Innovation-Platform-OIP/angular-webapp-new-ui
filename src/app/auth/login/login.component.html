@@ -21,14 +21,14 @@
                 </h1>
                 <div class="social-line">
                   <a
-                    href="https://sa-auth-dev.dev.jaagalabs.com/auth/linkedin"
+                    href="{{authEndpoint}}linkedin"
                     class="btn btn-just-icon btn-link btn-white"
                     aria-label="social login linkedin"
                   >
                     <i class="fa fa-linkedin" aria-hidden="true"></i>
                   </a>
                   <a
-                    href="https://sa-auth-dev.dev.jaagalabs.com/auth/google"
+                    href="{{authEndpoint}}google"
                     aria-label="social login google"
                     class="btn btn-just-icon btn-link btn-white"
                   >
@@ -122,24 +122,24 @@
                     Login
                 </h2>
                 <p class="login-description mt-2">
-                    Need a Social Alpha account? Create an account
+                    Need a Social Alpha account? <a routerLink="/auth/register">Create an account</a>
                 </p>
 
-                <div class="social-login mt-4">
+                <!-- <div class="social-login mt-4">
                     <a
                         class="linkedin-button"
-                        href="https://sa-auth-dev.dev.jaagalabs.com/auth/linkedin"
+                        href="{{authEndpoint}}linkedin"
                     >
                         <i class="fa fa-linkedin" aria-hidden="true"></i>
                     </a>
 
                     <a
                         class="google-button"
-                        href="https://sa-auth-dev.dev.jaagalabs.com/auth/google"
+                        href="{{authEndpoint}}google"
                     >
                         <i class="fa fa-google" aria-hidden="true"></i>
                     </a>
-                </div>
+                </div> -->
 
                 <div class="email-input ">
                     <label for="email">Email</label>

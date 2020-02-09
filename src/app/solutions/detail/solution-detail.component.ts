@@ -19,7 +19,7 @@ import {
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable, Subscription, interval, Subject } from 'rxjs';
 // import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { domain } from '../../../environments/environment';
+import { domain, smsEndpoint } from '../../../environments/environment';
 // import { ModalComponent } from 'src/app/components/modal/modal.component';
 import { FilterService } from '../../services/filter.service';
 import { TagsService } from '../../services/tags.service';
@@ -756,7 +756,7 @@ export class SolutionDetailComponent implements OnInit, AfterViewInit {
     }
 
     smsShare() {
-        const url = 'https://sa-sms-microservice.dev.jaagalabs.com/send';
+        const url = smsEndpoint;
         const data = {
             text: `Check out this solution? ${this.pageUrl}`,
             numbers: prompt('Enter phone numbers separated by commas.').split(

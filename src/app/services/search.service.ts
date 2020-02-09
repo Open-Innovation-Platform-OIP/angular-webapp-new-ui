@@ -3,6 +3,7 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { HttpClient } from '@angular/common/http';
 import { FilterService } from '../services/filter.service';
+import { searchEndpoint } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class SearchService {
 
   globalSearch(keyword) {
     return this.http.post(
-      'https://elasticsearch-microservice.dev.jaagalabs.com/global_search',
+      searchEndpoint,
       { keyword: keyword, filter: this.filterService.sector_filter_query }
     );
   }

@@ -13,7 +13,7 @@ import {
     LocationStrategy,
     PathLocationStrategy,
 } from '@angular/common';
-import { domain } from '../../../environments/environment';
+import { domain, inviteEndpoint } from '../../../environments/environment';
 
 @Component({
     selector: 'app-modal',
@@ -45,7 +45,7 @@ export class ModalComponent {
 
         this.http
             .post(
-                'https://invite-flow-microservice-test.dev.jaagalabs.com/invite_user',
+                inviteEndpoint,
                 {
                     email: email,
                     sender_id: this.authService.currentUserValue['id'],
