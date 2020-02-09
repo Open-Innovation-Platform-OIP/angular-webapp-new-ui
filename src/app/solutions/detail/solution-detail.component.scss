@@ -1,29 +1,8 @@
-@import '../../../assets/scss/common';
-@import '../../../styles.scss';
+// @import '../../../assets/scss/common';
+// @import '../../../styles.scss';
 
 .btn-text {
     padding-left: 0px;
-}
-
-.solver-container {
-    @include pattern1();
-    display: flex;
-    align-items: center;
-    color: $secondary1;
-
-    a {
-        vertical-align: middle;
-        text-decoration: none;
-        color: $secondary1;
-        text-transform: capitalize;
-        margin-left: 1rem;
-    }
-
-    img {
-        height: 3rem;
-        width: 3rem;
-        border-radius: $round4;
-    }
 }
 
 .card-btn {

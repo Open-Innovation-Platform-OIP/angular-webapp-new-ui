@@ -571,6 +571,27 @@
     border-radius: $round4;
 }
 
+.solver-container {
+    @include pattern1();
+    display: flex;
+    align-items: center;
+    color: $secondary1;
+
+    a {
+        vertical-align: middle;
+        text-decoration: none;
+        color: $secondary1;
+        text-transform: capitalize;
+        margin-left: 1rem;
+    }
+
+    img {
+        height: 3rem;
+        width: 3rem;
+        border-radius: $round4;
+    }
+}
+
 .enrich-description {
     max-height: 6vh;
     min-height: 4vh;
