@@ -6,7 +6,7 @@ const environment = {
     production: true,
 };
 
-const domain = 'https://oip-dev-new-ui.dev.jaagalabs.com';
+const domain = 'https://oip-prod-new-ui.dev.jaagalabs.com';
 
 const inviteEndpoint = 'https://invite-flow-microservice-test.dev.jaagalabs.com/invite_user';
 
