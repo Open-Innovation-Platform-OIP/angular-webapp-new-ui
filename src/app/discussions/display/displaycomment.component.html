@@ -460,7 +460,7 @@
 </div> -->
 
 <ng-template #comments let-comment="comment" let-default>
-    <div class="d-flex justify-content-start  p-2 comment-section">
+    <div class="comment-section">
         <div class="">
             <img
                 src="{{
@@ -469,18 +469,18 @@
                     comment.user.photo_url.fileEndpoint
                         ? filesService.fileAccessUrl +
                           comment.user.photo_url.fileEndpoint
-                        : './assets/img/default-avatar.png'
+                        : '../../../assets/img/dummy-holder.jpg'
                 }}"
                 alt="profile photo"
-                class="rounded-circle"
+                class=""
                 style="object-fit: cover;overflow: hidden;"
                 width="40"
                 height="40"
             />
         </div>
-        <div class="ml-3 w-100">
-            <div style="line-height: 1.5rem;">
-                <span class="text-capitalize user-name">
+        <div class="details-container">
+            <div>
+                <span>
                     {{ comment.user.name || 'Anonymous' }}
                 </span>
                 <br />
@@ -489,7 +489,6 @@
                 </span>
             </div>
             <div
-                style="color: #2d2d2d"
                 innerHTML="{{
                     comment.text.length > 135
                         ? comment.text.slice(0, charLenToShow)
