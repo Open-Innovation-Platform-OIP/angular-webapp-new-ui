@@ -581,13 +581,10 @@
 </ng-template>
 
 <ng-template #footer>
-    <div
-        class="border-top d-flex justify-content-between align-items-center py-2 pl-2"
-    >
-        <!-- <app-editor [user]="users" [actionText]="'reply'"></app-editor> -->
-        <div class="">
+    <div class="footer-container">
+        <div class="rely-container">
             <button
-                class="reply-btn"
+                class="btn"
                 *ngIf="
                     !(showReplyBox && replyingTo === comment.id) &&
                     auth.currentUserValue.id
@@ -598,9 +595,9 @@
                 Reply
             </button>
         </div>
-        <div class="">
+        <div class="action-btns">
             <button
-                class="icon-button"
+                class="btn"
                 *ngIf="auth.currentUserValue.id"
                 (click)="toggleVoteDiscussions()"
                 [attr.aria-pressed]="voters.has(userId)"
@@ -614,7 +611,7 @@
 
             <span class="dropdown">
                 <button
-                    class="icon-button"
+                    class="btn"
                     *ngIf="auth.currentUserValue.id"
                     id="discussion_share_btn"
                     data-toggle="dropdown"
@@ -656,7 +653,7 @@
                 </ul>
             </span>
 
-            <button>
+            <button class="show-more">
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </button>
         </div>
