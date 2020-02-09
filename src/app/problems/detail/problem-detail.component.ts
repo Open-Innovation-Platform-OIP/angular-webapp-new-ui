@@ -35,7 +35,7 @@ import {
     switchMap,
 } from 'rxjs/operators';
 
-import { domain } from '../../../environments/environment';
+import { domain, smsEndpoint } from '../../../environments/environment';
 
 import { ProblemService } from '../../services/problem.service';
 import { AuthService } from '../../services/auth.service';
@@ -833,7 +833,7 @@ export class ProblemDetailComponent
     }
 
     smsShare() {
-        const url = 'https://sa-sms-microservice.dev.jaagalabs.com/send';
+        const url = smsEndpoint;
         const data = {
             text: `Can you help solve this problem? ${this.pageUrl}`,
             numbers: prompt('Enter phone numbers separated by commas.').split(

@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { UsersService } from '../../services/users.service';
+import {authEndpoint} from 'src/environments/environment';
 
 declare var $: any;
 const isEmail = email => {
@@ -26,6 +27,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     @ViewChild('password', { static: false }) passwordInput: ElementRef<
         HTMLElement
     >;
+
+    authEndpoint = authEndpoint;
 
     loginDetails = {
         email: '',

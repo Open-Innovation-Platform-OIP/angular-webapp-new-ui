@@ -6,6 +6,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Apollo } from 'apollo-angular';
 import { Router } from '@angular/router';
+import { authEndpoint } from 'src/environments/environment';
 
 interface User {
     email: string;
@@ -30,7 +31,7 @@ interface VerificationDetails {
     providedIn: 'root',
 })
 export class AuthService {
-    authEndpoint = 'https://sa-auth-dev.dev.jaagalabs.com/auth/';
+    authEndpoint = authEndpoint;
 
     private jwtHelper;
     public user: Observable<any>;
