@@ -357,7 +357,7 @@
                             role="tab"
                             (click)="switchTab(0)"
                             aria-selected="true"
-                            >Area that may interest you ({{
+                            >Areas that may interest you ({{
                                 objectValues(recommendedProblems).length
                             }})</a
                         >
@@ -370,7 +370,7 @@
                             role="tab"
                             (click)="switchTab(1)"
                             aria-selected="true"
-                            >Area added by you ({{ userProblems.length }})</a
+                            >Areas added by you ({{ userProblems.length }})</a
                         >
                     </li>
                 </ul>
@@ -422,6 +422,7 @@
                         "
                     >
                         {{ problemShowMoreBtnText }}
+                        ({{ objectValues(recommendedProblems).length }})
                     </button>
                 </div>
             </div>

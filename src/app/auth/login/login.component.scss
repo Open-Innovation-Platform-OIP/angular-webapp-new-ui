@@ -18,6 +18,10 @@
 .login-description {
     font-weight: $weight600;
     font-size: $font14;
+
+    a {
+        color: $secondary1;
+    }
 }
 
 .social-login {

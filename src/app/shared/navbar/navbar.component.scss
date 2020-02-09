@@ -79,6 +79,10 @@
     }
 }
 
+.color-primary {
+    color: $primary3;
+}
+
 .dropdown-section {
     @include pattern1();
     @include dropdown-common();
