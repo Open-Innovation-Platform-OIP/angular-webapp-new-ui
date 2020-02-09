@@ -56,7 +56,7 @@ import { CollaborationService } from 'src/app/services/collaboration.service';
 import { ValidationService } from 'src/app/services/validation.service';
 import { EnrichmentService } from 'src/app/services/enrichment.service';
 import { fileUploadVariables } from '../../../environments/environment';
-import {AttachmentModalComponent} from '../../components/attachment-modal/attachment-modal.component';
+import { AttachmentModalComponent } from '../../components/attachment-modal/attachment-modal.component';
 import { sharing } from '../../globalconfig';
 import { reject } from 'q';
 // import { ModalComponent } from 'src/app/components/modal/modal.component';
@@ -246,7 +246,7 @@ export class ProblemDetailComponent
     disableEnrichButton = false;
     disableValidateButton = false;
     disableCollaborateButton = false;
-    profilePhoto = './assets/img/default-avatar.png';
+    profilePhoto = './assets/img/default-avatar.jpg';
 
     private listTitles: any[];
     location: Location;

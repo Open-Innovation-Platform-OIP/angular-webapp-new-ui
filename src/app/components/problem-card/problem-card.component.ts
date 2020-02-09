@@ -29,7 +29,7 @@ export class ProblemCardComponent implements OnInit {
     validated = false;
     link = '';
     imageAlt = 'default image';
-    profilePhoto = './assets/img/default-avatar.png';
+    profilePhoto = './assets/img/default-avatar.jpg';
 
     constructor(
         public router: Router,
