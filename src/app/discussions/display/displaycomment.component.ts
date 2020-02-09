@@ -25,7 +25,7 @@ import gql from 'graphql-tag';
 @Component({
     selector: 'app-display-comment',
     templateUrl: './displaycomment.component.html',
-    styleUrls: ['./displaycomment.component.css'],
+    styleUrls: ['./displaycomment.component.scss'],
 })
 export class CommentDisplayComponent implements OnInit, OnDestroy, OnChanges {
     objectValues = Object['values'];
@@ -57,9 +57,8 @@ export class CommentDisplayComponent implements OnInit, OnDestroy, OnChanges {
         private apollo: Apollo,
         public auth: AuthService,
         private filesService: FilesService,
-        private ele: ElementRef
-    ) // private focusMonitor: FocusMonitor
-    {}
+        private ele: ElementRef // private focusMonitor: FocusMonitor
+    ) {}
     ngOnInit() {
         this.comment.discussion_voters.map(voter => {
             this.voters.add(voter.user_id);
