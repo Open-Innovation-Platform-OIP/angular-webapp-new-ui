@@ -96,7 +96,7 @@ interface queryString {
     ],
 
     templateUrl: './problem-detail.component.html',
-    styleUrls: ['./problem-detail.component.css'],
+    styleUrls: ['./problem-detail.component.scss'],
     animations: [slider],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -476,7 +476,6 @@ export class ProblemDetailComponent
         // const dialogRef = this.dialog.open(ValidateModalComponent, {
         //     data: validationData || null,
         // });
-
         // dialogRef.afterClosed().subscribe(result => {
         //     if (result) {
         //         this.onValidationSubmit(result);
@@ -488,7 +487,6 @@ export class ProblemDetailComponent
         // const dialogRef = this.dialog.open(CollaborateModalComponent, {
         //     data: collaboratorData || null,
         // });
-
         // dialogRef.afterClosed().subscribe(result => {
         //     if (result) {
         //         this.onCollaborationSubmit(result);
@@ -1100,7 +1098,6 @@ export class ProblemDetailComponent
         // const dialogRef = this.dialog.open(EnrichmentModalComponent, {
         //     data: enrichment,
         // });
-
         // dialogRef.afterClosed().subscribe(result => {
         //     if (result) {
         //         if (result.hasOwnProperty('idToDelete')) {
@@ -1706,7 +1703,6 @@ export class ProblemDetailComponent
             return new Promise((resolve, reject) => {
                 // if (typeof FileReader !== 'undefined') {
                 //     const reader = new FileReader();
-
                 //     reader.onload = (e: any) => {
                 //         const buffer = Buffer.from(e.target.result);
                 //         resolve(this.filesService.fileUpload(file, file.type));
@@ -1763,7 +1759,6 @@ export class ProblemDetailComponent
         if (this.collaboratorIntent) {
             // swal({
             //     title: 'Are you sure you want to leave?',
-
             //     type: 'warning',
             //     showCancelButton: true,
             //     confirmButtonClass: 'btn btn-success',
@@ -1959,7 +1954,6 @@ export class ProblemDetailComponent
         //     width: '500px',
         //     data: {},
         // });
-
         // inviteModalRef.afterClosed().subscribe(result => {});
     }
 
