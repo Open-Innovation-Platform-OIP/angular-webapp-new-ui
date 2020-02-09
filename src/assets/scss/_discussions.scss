@@ -20,9 +20,71 @@
             font-weight: normal;
         }
 
+        .read-more {
+            font-size: 1.2rem !important;
+            font-weight: 600 !important;
+            line-height: 2.2rem !important;
+            color: $secondary1;
+        }
+
         & div:nth-child(2) {
+            margin-top: 1rem;
             font-weight: normal;
         }
+    }
+}
+
+.reply-section {
+    // pb-2 pl-3 pr-2 pt-2 mt-1 w-100
+    @include pattern1();
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5rem;
+
+    .reply-text-section {
+        margin-left: 0.5rem;
+        border: 0.1rem solid $secondary4;
+        border-radius: $round4;
+        width: 100%;
+        padding: 0.5rem 0.5rem 0.5rem 1rem;
+        position: relative;
+
+        & div:nth-child(1) {
+            line-height: 2rem !important;
+            font-size: 1.2rem !important;
+            font-weight: 500;
+            text-transform: capitalize;
+
+            span:nth-child(3) {
+                font-weight: normal;
+                color: $secondary2;
+            }
+        }
+
+        .read-more {
+            font-size: 1.2rem !important;
+            font-weight: 600 !important;
+            line-height: 2.2rem !important;
+            color: $secondary1;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: -1.5rem;
+            right: 0.5rem;
+            border-radius: 50%;
+            box-sizing: border-box;
+            height: 3.1rem;
+            width: 3.1rem;
+            border: 1px solid #e1e1e1;
+            background-color: #f7f7f7;
+        }
+    }
+
+    .dot::after {
+        content: '•';
+        font-weight: bolder;
+        padding-right: 2px;
     }
 }
 

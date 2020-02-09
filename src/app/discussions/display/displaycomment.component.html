@@ -494,7 +494,7 @@
                         ? comment.text.slice(0, charLenToShow)
                         : comment.text
                 }}"
-                class="mt-2"
+                class=""
             ></div>
 
             <a
@@ -514,7 +514,7 @@
 </ng-template>
 
 <ng-template #replyTemp let-comment="comment">
-    <div class="d-flex justify-content-start  p-2 reply-section">
+    <div class="reply-section">
         <div class="">
             <img
                 src="{{
@@ -526,13 +526,13 @@
                         : './assets/img/default-avatar.png'
                 }}"
                 alt="profile photo"
-                class="rounded-circle"
+                class=""
                 style="object-fit: cover;overflow: hidden;"
                 width="40"
                 height="40"
             />
         </div>
-        <div class="ml-2 border pb-2 pl-3 pr-2 pt-2 mt-1 w-100 reply-body">
+        <div class="reply-text-section">
             <div class="user-info">
                 <span class="text-capitalize replier-name">
                     {{ comment.user.name || 'Anonymous' }}
@@ -543,7 +543,6 @@
                 }}</span>
             </div>
             <div
-                style="color: #2d2d2d"
                 innerHTML="{{
                     comment.text.length > 135
                         ? comment.text.slice(0, replyLenToShow)
@@ -568,7 +567,6 @@
             </a>
 
             <button
-                i-button
                 *ngIf="auth.currentUserValue.id"
                 class="delete-btn"
                 (click)="idToDelete(comment)"
