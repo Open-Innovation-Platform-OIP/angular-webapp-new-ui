@@ -16,7 +16,7 @@ declare var google: any;
 export class FilterDropdownComponent implements OnInit {
     @Input() type: string;
     selectedSectors: any = [];
-    selectedSector = '';
+    selectedSector = 'all';
     selectedLocation: any = {};
     range: any;
     selectedLocationName = '';
@@ -51,22 +51,27 @@ export class FilterDropdownComponent implements OnInit {
         // });
         // $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAxSPvgric8Zn54pYneG9NondiINqdvb-w&libraries=places");
         this.autocomplete = new google.maps.places.Autocomplete(
-            document.getElementById('autocomplete'), {types: ['establishment']});
-        
+            document.getElementById('autocomplete'),
+            { types: ['establishment'] }
+        );
+
         // Avoid paying for data that you don't need by restricting the set of
         // place fields that are returned to just the address components.
         this.autocomplete.setFields(['address_component', 'geometry', 'name']);
-        
+
         // When the user selects an address from the drop-down, populate the
         // address fields in the form.
-        this.autocomplete.addListener('place_changed', () => this.setLocation());
+        this.autocomplete.addListener('place_changed', () =>
+            this.setLocation()
+        );
         // await this.tagsService.getTagsFromDB('');
 
         this.sectors = this.tagsService.allTags;
         // console.log("Sectors", this.sectors);
 
         this.activatedRoute.queryParams.subscribe(async params => {
-            this.selectedSectors = this.filterService.filterSector(params) || [];
+            this.selectedSectors =
+                this.filterService.filterSector(params) || [];
             if (this.selectedSectors.length > 0) {
                 this.selectedSector = this.selectedSectors[0];
             }
@@ -95,21 +100,21 @@ export class FilterDropdownComponent implements OnInit {
 
         const address_mapping = {
             street_number: {
-                short_name: 'location_name'
+                short_name: 'location_name',
             },
             // route: {
             //     long_name: 'street_2'
             // },
             locality: {
-                long_name: 'city'
+                long_name: 'city',
             },
             administrative_area_level_1: {
                 // short_name: 'state_code',
-                long_name: 'state'
+                long_name: 'state',
             },
             country: {
                 // short_name: 'country_code',
-                long_name: 'country'
+                long_name: 'country',
             },
             // postal_code: {
             //     short_name: 'postal_code'
@@ -128,12 +133,16 @@ export class FilterDropdownComponent implements OnInit {
         for (let i = 0; i < place.address_components.length; i++) {
             const address_type = place.address_components[i].types[0];
             if (address_mapping[address_type]) {
-                if (address_mapping[address_type]['short_name']){
-                    this.selectedLocation[address_mapping[address_type]['short_name']] = place.address_components[i]['short_name'];
+                if (address_mapping[address_type]['short_name']) {
+                    this.selectedLocation[
+                        address_mapping[address_type]['short_name']
+                    ] = place.address_components[i]['short_name'];
                     // frm.set_value(address_mapping[address_type]['short_name'], place.address_components[i]['short_name'])
                 }
-                if (address_mapping[address_type]['long_name']){
-                    this.selectedLocation[address_mapping[address_type]['long_name']] = place.address_components[i]['long_name'];
+                if (address_mapping[address_type]['long_name']) {
+                    this.selectedLocation[
+                        address_mapping[address_type]['long_name']
+                    ] = place.address_components[i]['long_name'];
                     // frm.set_value(address_mapping[address_type]['long_name'], place.address_components[i]['long_name'])
                 }
             }
@@ -208,7 +217,7 @@ export class FilterDropdownComponent implements OnInit {
         } else {
             this.filterService.range = 0.2;
         }
-        
+
         this.selectedSectors.map(sector => {
             queries[sector] = 'sectorFilter';
         });
