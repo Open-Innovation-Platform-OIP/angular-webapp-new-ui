@@ -10,7 +10,8 @@
         color: $secondary1;
     }
 
-    input[type='email'] {
+    input[type='email'],
+    input[type='text'] {
         border: 0.1rem solid $secondary3;
         border-radius: $round4;
         padding: 0.8rem;
@@ -56,6 +57,14 @@
         font-weight: $weight500;
         letter-spacing: $spacing;
         line-height: 2.2rem;
+    }
+
+    .back_to_login {
+        margin-top: 1rem;
+        a {
+            color: $secondary1;
+            @include pattern1();
+        }
     }
 }
 

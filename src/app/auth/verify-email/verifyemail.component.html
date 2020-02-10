@@ -165,50 +165,101 @@
     >
         <div class="col-lg-4 col-md-3"></div>
         <div class="col-lg-4 col-md-6">
-            <div class="login">
-                <h2
-                    class="login-heading"
-                    role="heading"
-                    aria-level="1"
-                    #mainHeading
-                >
-                    Request OTP
-                </h2>
-                <p class="login-description mt-4">
-                    Please enter your email so we can send you a email
-                    verification OTP.
-                </p>
-
-                <p class="mt-5 description">
-                    Already have a verification OTP?
-                    <a
-                        (click)="step = 1"
-                        class="link text-center"
-                        style="cursor: pointer; "
-                        >Click here</a
-                    >
-                </p>
-
-                <div class="email-input mt-4">
-                    <input
-                        type="email"
-                        class="form-control"
-                        name="email"
-                        [(ngModel)]="verifyDetails.email"
-                        placeholder="Email"
-                    />
-                </div>
-
-                <button
-                    (click)="requestOTP()"
-                    [disabled]="!verifyDetails.email"
-                    mat-raised-button
-                    class=" verify-button mt-4"
-                >
-                    Request OTP
-                </button>
-            </div>
+            <ng-container
+                *ngIf="step === 0; then requestOtp; else verifyEmail"
+            ></ng-container>
         </div>
         <div class="col-lg-4 col-md-3"></div>
     </div>
 </div>
+
+<ng-template #verifyEmail>
+    <div class="emai-verify-container">
+        <h2 class="login-heading" role="heading" aria-level="1" #mainHeading>
+            Verify Your Email
+        </h2>
+    </div>
+    <p class="login-description">
+        Please use the OTP sent to your email to continue.
+    </p>
+    <p class="login-description">
+        Need a verification OTP?
+        <a (click)="step = 0" class="" style="cursor: pointer; color: red"
+            >Click here</a
+        >
+    </p>
+
+    <div class="email-input mt-4">
+        <input
+            type="email"
+            name="email"
+            [(ngModel)]="verifyDetails.email"
+            placeholder="Email"
+        />
+    </div>
+    <div class="email-input mt-4">
+        <input
+            type="text"
+            name="otp"
+            [(ngModel)]="verifyDetails.otp"
+            placeholder="Enter the OTP sent to your email"
+            id="otpfield"
+            autofocus
+        />
+    </div>
+    <button
+        (click)="submit()"
+        [disabled]="!verifyDetails.email || !verifyDetails.otp"
+        class=" verify-button mt-4"
+    >
+        Verify Email
+    </button>
+
+    <div class="back_to_login">
+        <a
+            style="cursor:pointer"
+            [routerLink]="['/auth/login']"
+            queryParamsHandling="merge"
+            >Back to Login</a
+        >
+    </div>
+</ng-template>
+
+<ng-template #requestOtp>
+    <div class="login">
+        <h2 class="login-heading" role="heading" aria-level="1" #mainHeading>
+            Request OTP
+        </h2>
+        <p class="login-description mt-4">
+            Please enter your email so we can send you a email verification OTP.
+        </p>
+
+        <p class="mt-5 description">
+            Already have a verification OTP?
+            <a
+                (click)="step = 1"
+                class="link text-center"
+                style="cursor: pointer; "
+                >Click here</a
+            >
+        </p>
+
+        <div class="email-input mt-4">
+            <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="verifyDetails.email"
+                placeholder="Email"
+            />
+        </div>
+
+        <button
+            (click)="requestOTP()"
+            [disabled]="!verifyDetails.email"
+            class=" verify-button mt-4"
+        >
+            Request OTP
+        </button>
+    </div>
+</ng-template>
