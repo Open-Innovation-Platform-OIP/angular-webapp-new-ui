@@ -1,8 +1,23 @@
+@import '../../../styles.scss';
+@import '../../../assets/scss/common';
+
 .modal-full {
     min-width: 90vw;
     // margin-left: 5vw;
 }
-  
+
 .modal-full .modal-content {
     min-height: 90vh;
+}
+
+.modal-header {
+    align-items: center;
+    padding: 0;
+
+    & > .close {
+        margin-right: 1rem;
+    }
+}
+.nav-section {
+    @include navbar();
 }
