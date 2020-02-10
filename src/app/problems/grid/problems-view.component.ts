@@ -68,7 +68,8 @@ export class ProblemsViewComponent implements OnInit, OnDestroy, AfterViewInit {
         //     .catch(err => console.error(err, 'error'));
     }
 
-    ngOnInit() {
+    async ngOnInit() {
+        await this.tagsService.getTagsFromDB('');
         this.getProblems();
     }
 
@@ -80,12 +81,15 @@ export class ProblemsViewComponent implements OnInit, OnDestroy, AfterViewInit {
 
     getProblems() {
         this.activatedRoute.queryParams.subscribe(params => {
+            console.log("Params", params);
             this.filterService.selectedSectors = this.filterService.filterSector(
                 params
             );
             this.filterService.selectedLocation = this.filterService.filterLocation(
                 params
             );
+
+            console.log("Selected sectors", this.filterService.selectedSectors, this.filterService.sector_filter_query);
 
             this.problemViewQuery = this.apollo.watchQuery<any>({
                 query: gql`

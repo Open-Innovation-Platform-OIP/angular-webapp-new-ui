@@ -50,6 +50,7 @@ export class FilterService {
   ) {}
 
   filterSector(queryParams) {
+    // this.tagsService.getTagsFromDB('');
     if (!this.is_domain_filter_mode) {
       if (
         !Object.keys(queryParams).filter(
@@ -62,15 +63,20 @@ export class FilterService {
         this.sectorsArray = Object.keys(queryParams).filter(
           param => param !== 'filterLocation' && param !== 'locationRange'
         );
+        // console.log("Sectors array", this.sectorsArray);
+        // console.log("Tags", this.tagsService.allTags);
         this.sectorFilterArray = this.sectorsArray.map(sector => {
+          // console.log("Sector", sector, this.tagsService.allTags[sector]);
           if (sector && this.tagsService.allTags[sector]) {
             return this.tagsService.allTags[sector].id;
           }
         });
-
+        // console.log("Sector filter array", this.sectorFilterArray);
         if (this.sectorFilterArray.length) {
           this.sector_filter_query = `_in:[${this.sectorFilterArray}]`;
         }
+
+        // console.log(this.sector_filter_query);
 
         return this.sectorsArray;
       }
@@ -93,8 +99,11 @@ export class FilterService {
           this.sector_filter_query = `_in:[${this.sectorFilterArray}]`;
         }
 
+        // console.log(this.sector_filter_query);
+
         return this.sectorsArray;
       } else {
+        // console.log(this.sector_filter_query);
         return [];
       }
     }
