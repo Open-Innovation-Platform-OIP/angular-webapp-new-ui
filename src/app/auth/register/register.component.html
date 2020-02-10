@@ -219,6 +219,16 @@
                             formControlName="confirmPassword"
                             required
                         />
+                        <small
+                            class="error-msg"
+                            *ngIf="
+                                registerForm
+                                    .get('confirmPassword')
+                                    .hasError('mismatch')
+                            "
+                        >
+                            Password mismatch
+                        </small>
                     </div>
 
                     <button
