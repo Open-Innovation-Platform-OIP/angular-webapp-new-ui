@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FilesService } from '../../services/files.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { FilesService } from '../../services/files.service';
     styleUrls: ['./enrichment-detail-modal.component.scss'],
 })
 export class EnrichmentDetailModalComponent implements OnInit {
+    @ViewChild('media', { static: false }) mediaTab: ElementRef<HTMLElement>;
+
     @Input() id = '';
     @Input() enrichment = {};
     keysToShow = {
@@ -21,6 +23,10 @@ export class EnrichmentDetailModalComponent implements OnInit {
     constructor(public filesService: FilesService) {}
 
     ngOnInit() {
-        console.log(this.enrichment);
+        // console.log(this.enrichment);
+    }
+
+    changeTab() {
+        this.mediaTab.nativeElement.click();
     }
 }
