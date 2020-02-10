@@ -35,8 +35,10 @@
     align-items: center;
 
     .thumb-img {
-        max-width: 100%;
-        height: 15vh;
+        max-width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+        padding: 1rem;
     }
 }
 

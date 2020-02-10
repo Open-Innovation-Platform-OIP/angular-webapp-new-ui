@@ -2,12 +2,12 @@
 @import '../../../assets/scss/common';
 
 .modal-full {
-    min-width: 90vw;
+    min-width: 80%;
     // margin-left: 5vw;
 }
 
 .modal-full .modal-content {
-    min-height: 90vh;
+    min-height: 65vh;
 }
 
 .modal-header {
@@ -16,10 +16,44 @@
 
     & > .close {
         margin-right: 1rem;
+        font-size: 2rem;
     }
 
     .nav-section {
         @include navbar();
+    }
+}
+
+.modal-body {
+    .img-container {
+        position: relative;
+
+        img {
+            float: right;
+            border-radius: $round4;
+        }
+
+        button {
+            top: 21.4rem;
+            right: 1.6rem;
+        }
+    }
+}
+
+.thumbnail-container {
+    // max-height: 20vh;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    .thumb-img {
+        max-width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+        padding: 1rem;
+    }
+    .active {
+        outline: 0.5rem auto rgba(108, 108, 245, 0.918);
     }
 }
 
@@ -47,5 +81,22 @@
         font-weight: 600;
         letter-spacing: $spacing;
         line-height: 2rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .modal-header {
+        & > .close {
+            margin-right: 0.5rem;
+        }
+    }
+
+    .modal-body {
+        .img-container {
+            img {
+                float: unset;
+                width: 100%;
+            }
+        }
     }
 }
