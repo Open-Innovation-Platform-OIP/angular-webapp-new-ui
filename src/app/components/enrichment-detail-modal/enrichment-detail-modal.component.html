@@ -1,0 +1,59 @@
+<div class="modal fade" id="viewEnrichmentModal-{{id}}" tabindex="-1" role="dialog" aria-labelledby="viewEnrichmentLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <h5 class="modal-title" id="viewEnrichmentLabel" hidden>Modal title</h5> -->
+          <nav class="navbar navbar-expand-lg navbar-light bg-light" role="tabpanel">
+            <ul class="navbar-nav" role="tablist">
+                <li role="presentation" class="nav-item active">
+                    <a class="nav-link" href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a>
+                </li>
+                <li role="presentation" class="nav-item">
+                    <a class="nav-link" href="#media" aria-controls="media" role="tab" data-toggle="tab">Media</a>
+                </li>
+                </ul>
+            </nav>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="details">
+                  <div class="row row-cols-2">
+                    <div class="col" *ngFor="let key of objectKeys(keysToShow)">
+                      <h3>{{keysToShow[key]}}</h3>
+                      <p>{{enrichment[key]}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="media">
+                    <div class="container-fluid" *ngIf="enrichment.image_urls && enrichment.image_urls.length > 0">
+                        <div class="row">
+                          <!-- The image in focus -->
+                          <!-- TODO: Center the image and fix size -->
+                          <div class="col-md-12">
+                            <img src="{{filesService.fileAccessUrl + enrichment.image_urls[indexInFocus].fileEndpoint}}" class="img-fluid" alt="{{enrichment.image_urls[indexInFocus].key}}">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <!-- Grid of thumbnails -->
+                          <!-- TODO: Highlight currently selected thumbnail -->
+                          <!-- TODO: Fix row to bottom -->
+                          <div class="col-md-1" *ngFor="let img of enrichment.image_urls; let i = index">
+                            <a (click)="indexInFocus=i">
+                              <img src="{{filesService.fileAccessUrl + img.fileEndpoint}}" class="img-fluid" alt="{{img.key}}">
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Delete</button>
+            <button type="button" class="btn btn-primary save">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>

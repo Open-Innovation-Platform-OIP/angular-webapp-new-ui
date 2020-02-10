@@ -592,9 +592,30 @@
     }
 }
 
+.enrich-card-container {
+    @extend .problem-container;
+
+    border: 0.1rem solid $secondary4;
+    margin-top: 2rem;
+    cursor: pointer;
+    min-height: 21rem;
+
+    .created-by {
+        img {
+            height: 32px;
+            width: 32px;
+            margin: 0;
+        }
+    }
+
+    .total-count {
+        line-height: unset;
+    }
+}
+
 .enrich-description {
-    max-height: 6vh;
-    min-height: 4vh;
+    // max-height: 5rem;
+    min-height: 3rem;
     font-size: $font12;
     width: 90%;
     overflow: hidden;

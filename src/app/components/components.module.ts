@@ -29,6 +29,7 @@ import { ProblemCardComponent } from './problem-card/problem-card.component';
 import { SolutionCardComponent } from './solution-card/solution-card.component';
 import { FilterDropdownComponent } from './filter-dropdown/filter-dropdown.component';
 import { AttachmentModalComponent } from './attachment-modal/attachment-modal.component';
+import { EnrichmentDetailModalComponent } from './enrichment-detail-modal/enrichment-detail-modal.component';
 // import { ModalComponent } from './modal/modal.component';
 // import { DomainAddModalComponent } from './domain-add-modal/domain-add-modal.component';
 
@@ -66,6 +67,7 @@ import { AttachmentModalComponent } from './attachment-modal/attachment-modal.co
         SolutionCardComponent,
         FilterDropdownComponent,
         AttachmentModalComponent,
+        EnrichmentDetailModalComponent,
         // ModalComponent,
         // DomainAddModalComponent,
         // GlobalSearchCardsComponent
@@ -90,6 +92,7 @@ import { AttachmentModalComponent } from './attachment-modal/attachment-modal.co
         // WizardContainerComponent,
         FilterDropdownComponent,
         AttachmentModalComponent,
+        EnrichmentDetailModalComponent,
         // ModalComponent,
         // DomainAddModalComponent,
         // GlobalSearchCardsComponent

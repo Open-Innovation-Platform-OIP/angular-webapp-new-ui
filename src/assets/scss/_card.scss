@@ -19,7 +19,7 @@
 .problem-container {
     display: grid;
     grid-template-columns: 4fr 1fr;
-    height: 23.6rem;
+    min-height: 23.6rem;
     padding: 2rem;
 }
 

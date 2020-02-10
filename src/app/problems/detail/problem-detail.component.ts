@@ -69,7 +69,7 @@ import { filter } from 'rxjs/operators';
 import { split } from 'apollo-link';
 // import { ValidateModalComponent } from 'src/app/modals/validate-modal/validate-modal.component';
 // import { CollaborateModalComponent } from 'src/app/modals/collaborate-modal/collaborate-modal.component';
-// import { EnrichmentModalComponent } from 'src/app/modals/enrichment-modal/enrichment-modal.component';
+import { EnrichmentDetailModalComponent } from '../../components/enrichment-detail-modal/enrichment-detail-modal.component';
 // const Buffer = require('buffer/').Buffer;
 
 const misc: any = {
@@ -921,6 +921,7 @@ export class ProblemDetailComponent
             }
         });
         this.enrichment = problem.enrichments;
+        // console.log('Enrichments', this.enrichment);
 
         problem.problem_validations.map(validation => {
             if (validation.user_id === Number(this.auth.currentUserValue.id)) {
@@ -1096,6 +1097,13 @@ export class ProblemDetailComponent
     }
 
     openEnrichModal(enrichment) {
+        const id = `#viewEnrichmentModal-${enrichment.id}`;
+        $(id).modal({
+            backdrop: 'static',
+            keyboard: false,
+        });
+
+        $(id).modal('show');
         // const dialogRef = this.dialog.open(EnrichmentModalComponent, {
         //     data: enrichment,
         // });
