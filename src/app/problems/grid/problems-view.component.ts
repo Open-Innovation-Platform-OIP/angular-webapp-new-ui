@@ -81,7 +81,7 @@ export class ProblemsViewComponent implements OnInit, OnDestroy, AfterViewInit {
 
     getProblems() {
         this.activatedRoute.queryParams.subscribe(params => {
-            console.log("Params", params);
+            // console.log("Params", params);
             this.filterService.selectedSectors = this.filterService.filterSector(
                 params
             );
@@ -89,7 +89,7 @@ export class ProblemsViewComponent implements OnInit, OnDestroy, AfterViewInit {
                 params
             );
 
-            console.log("Selected sectors", this.filterService.selectedSectors, this.filterService.sector_filter_query);
+            // console.log("Selected sectors", this.filterService.selectedSectors, this.filterService.sector_filter_query);
 
             this.problemViewQuery = this.apollo.watchQuery<any>({
                 query: gql`
