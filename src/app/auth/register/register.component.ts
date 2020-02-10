@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    OnDestroy,
+    ElementRef,
+    ViewChild,
+} from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { first } from 'rxjs/operators';
@@ -17,6 +23,9 @@ const isEmail = email => {
     styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit, OnDestroy {
+    @ViewChild('password', { static: false }) passwordInput: ElementRef<
+        HTMLElement
+    >;
     user = {
         name: '',
         email: '',
@@ -28,6 +37,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     loading = false;
     registerForm: FormGroup;
     sampleForm: FormGroup;
+    showPassword = true;
 
     constructor(
         private auth: AuthService,
@@ -41,6 +51,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
             name: new FormControl(null, [Validators.required]),
             password: new FormControl(null, [
                 Validators.required,
+                Validators.minLength(6),
                 Validators.pattern(this.passwordRegex),
             ]),
             confirmPassword: new FormControl(
@@ -59,6 +70,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
         // setTimeout(() => {
         //   this.focusMonitor.focusVia(pageHeading, "program");
         // }, 1000);
+    }
+
+    clickHideUnhide() {
+        const attr = this.passwordInput.nativeElement.getAttribute('type');
+        if (attr === 'password') {
+            this.passwordInput.nativeElement.setAttribute('type', 'text');
+            this.showPassword = true;
+        } else {
+            this.passwordInput.nativeElement.setAttribute('type', 'password');
+            this.showPassword = false;
+        }
     }
 
     passwordMismatch(control: FormControl): Promise<any> | Observable<any> {

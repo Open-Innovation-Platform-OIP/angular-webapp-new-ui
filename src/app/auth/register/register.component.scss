@@ -13,6 +13,24 @@
     ) !important;
 }
 
+.password-show > div > span {
+    cursor: pointer;
+    font-weight: 500;
+    color: $primary2;
+    font-size: $font12;
+}
+
+.password-show > div > i {
+    color: $primary2;
+    font-size: $font12;
+}
+
+.error-msg {
+    color: $tertiary1 !important;
+    margin-top: 0.5rem;
+    font-size: $font12 !important;
+}
+
 .left-section {
     height: calc(100vh - 9.6rem);
     padding-top: 10rem;

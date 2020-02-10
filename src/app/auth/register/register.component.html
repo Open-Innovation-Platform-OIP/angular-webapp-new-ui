@@ -164,12 +164,21 @@
                     <div class="password-input mt-5">
                         <div class="password-input-labels">
                             <label for="password">Password</label>
-                            <div class="password-hide">
-                                <i
-                                    class="fa fa-eye-slash"
-                                    aria-hidden="true"
-                                ></i>
-                                <span> &nbsp;Hide</span>
+                            <div
+                                class="password-show"
+                                (click)="clickHideUnhide()"
+                            >
+                                <div *ngIf="!showPassword">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    <span> &nbsp;Show</span>
+                                </div>
+                                <div *ngIf="showPassword">
+                                    <i
+                                        class="fa fa-eye-slash"
+                                        aria-hidden="true"
+                                    ></i>
+                                    <span> &nbsp;Hide</span>
+                                </div>
                             </div>
                         </div>
 
@@ -177,7 +186,26 @@
                             type="password"
                             formControlName="password"
                             required
+                            #password
                         />
+                        <small
+                            *ngIf="
+                                registerForm.controls.password.hasError(
+                                    'pattern'
+                                )
+                            "
+                            class="error-msg"
+                        >
+                            Sorry! wrong pattern!
+                        </small>
+                        <small
+                            *ngIf="
+                                registerForm.controls.password.errors.minlength
+                            "
+                            class="error-msg"
+                        >
+                            Needs atleast 6 characters.
+                        </small>
                         <p class="instructions">
                             Must be 6 or more characters with 1 special, 1
                             uppercase character

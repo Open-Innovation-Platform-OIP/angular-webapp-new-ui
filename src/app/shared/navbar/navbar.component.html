@@ -44,7 +44,7 @@
                         routerLinkActive="active weight-bold tab-focus"
                         href="javascript:void();"
                         [routerLink]="['/problems']"
-                        queryParamsHandling="merge"
+                        queryParamsHandling=""
                         >Problems</a
                     >
                 </li>
@@ -54,7 +54,7 @@
                         routerLinkActive="active weight-bold tab-focus"
                         href="javascript:void();"
                         [routerLink]="['/solutions']"
-                        queryParamsHandling="merge"
+                        queryParamsHandling=""
                         >Solutions</a
                     >
                 </li>
@@ -64,7 +64,7 @@
                         routerLinkActive="active weight-bold tab-focus"
                         href="javascript:void();"
                         [routerLink]="['/admin']"
-                        queryParamsHandling="merge"
+                        queryParamsHandling=""
                         *ngIf="auth.currentUserValue.is_admin"
                         >Admin</a
                     >
