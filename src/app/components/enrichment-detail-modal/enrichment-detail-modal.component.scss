@@ -17,7 +17,35 @@
     & > .close {
         margin-right: 1rem;
     }
+
+    .nav-section {
+        @include navbar();
+    }
 }
-.nav-section {
-    @include navbar();
+
+.modal-footer {
+    .btn-text {
+        border-color: transparent;
+        color: $tertiary1;
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: $spacing;
+        line-height: 2rem;
+
+        &:hover {
+            border-color: none;
+            color: $tertiary1;
+        }
+    }
+
+    .solid-btn {
+        border-color: $primary2;
+        background-color: $primary2;
+        padding: 0.5rem 1rem;
+        color: $secondary6;
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: $spacing;
+        line-height: 2rem;
+    }
 }
