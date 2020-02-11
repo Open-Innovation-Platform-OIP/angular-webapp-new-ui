@@ -43,6 +43,23 @@
         }
     }
 }
+
+.zeroResult-section {
+    justify-content: center;
+    flex-direction: column;
+    min-height: 75vh;
+
+    & > * {
+        text-align: center;
+    }
+
+    h5 {
+        margin-top: 2.7rem;
+        font-weight: 500;
+        color: $secondary1;
+    }
+}
+
 .description {
     max-lines: 2;
     max-height: 5.5em;

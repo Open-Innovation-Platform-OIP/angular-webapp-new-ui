@@ -29,8 +29,20 @@
             </div>
         </div>
     </section>
+    <section>
+        <ng-container *ngTemplateOutlet="zeroResult"></ng-container>
+    </section>
 </div>
 
+<ng-template #zeroResult>
+    <section class="row zeroResult-section">
+        <div>
+            <img src="../../assets/svg/empty_state_search_icon.svg" alt="" />
+        </div>
+
+        <h5>It seems there are no search results as of now.</h5>
+    </section>
+</ng-template>
 <!-- <div class="main-content" role="search">
     <div class="container-fluid">
         <div class="row justify-content-center" style="margin-top: 2%;">
