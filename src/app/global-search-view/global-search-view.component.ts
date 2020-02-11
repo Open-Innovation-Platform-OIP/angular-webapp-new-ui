@@ -13,7 +13,7 @@ declare var $: any;
 @Component({
     selector: 'app-global-search-view',
     templateUrl: './global-search-view.component.html',
-    styleUrls: ['./global-search-view.component.css'],
+    styleUrls: ['./global-search-view.component.scss'],
 })
 export class GlobalSearchViewComponent implements OnInit, OnChanges {
     @Input() problemData: any;
@@ -32,9 +32,8 @@ export class GlobalSearchViewComponent implements OnInit, OnChanges {
         private apollo: Apollo,
         private auth: AuthService,
         private router: Router,
-        private searchService: SearchService
-    ) // private liveAnnouncer: LiveAnnouncer
-    {}
+        private searchService: SearchService // private liveAnnouncer: LiveAnnouncer
+    ) {}
 
     ngOnInit() {}
 
