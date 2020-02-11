@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     problemShowMoreBtnText = 'View All';
     problemsToShow = 6;
+    cardAvailable: number;
     yourContributionToShow = 2;
     noOfWatchlistToShow = 2;
 
@@ -161,10 +162,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }`;
     problemWatchList: any[] = [];
     sol_tags: any[] = [];
-    yourContributionBtnText = 'Show More';
-    watchlistBtnText = 'Show More';
+    yourContributionBtnText = 'View All';
+    watchlistBtnText = 'View All';
     profileCardToShow = 2;
-    profileSectionBtnText = 'Show More';
+    profileSectionBtnText = 'View All';
 
     constructor(
         private apollo: Apollo,
@@ -179,8 +180,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.log('inside dashboard component');
     }
 
-    switchTab(tab: number) {
+    switchTab(tab: number, totalCards: number) {
+        console.log(totalCards);
+
         this.currentTab = tab;
+        this.resetProblemToShow(totalCards);
     }
 
     ngOnInit() {
@@ -288,19 +292,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
         );
     }
 
-    problemShowMoreBtn(len: number) {
+    problemShowMoreBtn() {
         if (this.problemsToShow === 6) {
             this.problemShowMoreBtnText = 'View Less';
-            this.problemsToShow = len;
+            this.problemsToShow = this.cardAvailable || 6;
         } else {
             this.problemShowMoreBtnText = 'View All';
             this.problemsToShow = 6;
         }
     }
 
-    resetProblemToShow() {
+    resetProblemToShow(totalCount: number) {
         this.problemsToShow = 6;
+        this.cardAvailable = totalCount;
         this.problemShowMoreBtnText = 'View All';
+        console.log(this.cardAvailable);
     }
 
     checkUrlIsImg(url) {
@@ -319,32 +325,30 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     showOrHideYourContribution(limit: number) {
         if (this.yourContributionToShow === 2) {
-            this.yourContributionBtnText = 'Show Less';
+            this.yourContributionBtnText = 'View Less';
             this.yourContributionToShow = limit;
         } else {
-            this.yourContributionBtnText = 'Show More';
+            this.yourContributionBtnText = 'View All';
             this.yourContributionToShow = 2;
         }
     }
     showOrHideWatchlist(limit: number) {
         if (this.noOfWatchlistToShow === 2) {
-            this.watchlistBtnText = 'Show Less';
+            this.watchlistBtnText = 'View Less';
             this.noOfWatchlistToShow = limit;
         } else {
-            this.watchlistBtnText = 'Show More';
+            this.watchlistBtnText = 'View All';
             this.noOfWatchlistToShow = 2;
         }
     }
     showOrHideProfileSection(limit: number) {
         if (this.profileCardToShow === 2) {
-            this.profileSectionBtnText = 'Show Less';
+            this.profileSectionBtnText = 'View Less';
             this.profileCardToShow = limit;
         } else {
-            this.profileSectionBtnText = 'Show More';
+            this.profileSectionBtnText = 'View All';
             this.profileCardToShow = 2;
         }
-
-        console.log(this.profileCardToShow);
     }
 
     getUsersSolutions() {
@@ -487,6 +491,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
                                         this.userService.dashboardRecommendations[
                                             problem['id']
                                         ] = problem;
+
+                                        this.cardAvailable = Object.values(
+                                            this.recommendedProblems
+                                        ).length;
                                     }
                                 });
                             }

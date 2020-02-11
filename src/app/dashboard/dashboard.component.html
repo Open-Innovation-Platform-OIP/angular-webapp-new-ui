@@ -355,7 +355,12 @@
                             data-toggle="tab"
                             href="javascript:void(0);"
                             role="tab"
-                            (click)="switchTab(0)"
+                            (click)="
+                                switchTab(
+                                    0,
+                                    objectValues(recommendedProblems).length
+                                )
+                            "
                             aria-selected="true"
                             >Areas that may interest you ({{
                                 objectValues(recommendedProblems).length
@@ -368,7 +373,7 @@
                             data-toggle="tab"
                             href="javascript:void(0);"
                             role="tab"
-                            (click)="switchTab(1)"
+                            (click)="switchTab(1, userProblems.length)"
                             aria-selected="true"
                             >Areas added by you ({{ userProblems.length }})</a
                         >
@@ -412,17 +417,13 @@
                     </ng-container>
                 </div>
 
-                <div class="col footer-button-container">
-                    <button
-                        class="btn"
-                        (click)="
-                            problemShowMoreBtn(
-                                objectValues(recommendedProblems).length
-                            )
-                        "
-                    >
+                <div
+                    class="col footer-button-container"
+                    *ngIf="cardAvailable > 6"
+                >
+                    <button class="btn" (click)="problemShowMoreBtn()">
                         {{ problemShowMoreBtnText }}
-                        ({{ objectValues(recommendedProblems).length }})
+                        ({{ cardAvailable }})
                     </button>
                 </div>
             </div>
@@ -468,7 +469,9 @@
                                 showOrHideWatchlist(problemWatchList.length)
                             "
                         >
-                            {{ watchlistBtnText }}
+                            {{ watchlistBtnText }} ({{
+                                problemWatchList.length
+                            }})
                         </button>
                     </div>
                 </div>
@@ -526,7 +529,9 @@
                                         )
                                     "
                                 >
-                                    {{ yourContributionBtnText }}
+                                    {{ yourContributionBtnText }} ({{
+                                        userSolutions.length
+                                    }})
                                 </button>
                             </div>
                         </div>
@@ -577,7 +582,9 @@
                                 )
                             "
                         >
-                            {{ profileSectionBtnText }}
+                            {{ profileSectionBtnText }} ({{
+                                objectValues(recommendedUsers).length
+                            }})
                         </button>
                     </div>
                 </div>
