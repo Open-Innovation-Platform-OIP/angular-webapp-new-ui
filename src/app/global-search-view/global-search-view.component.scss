@@ -1,16 +1,61 @@
+@import '../../styles.scss';
+@import '../../assets/scss/common';
+
+@mixin style1 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.1px;
+    line-height: 26px;
+}
+
+.search-container {
+    margin-top: 2rem;
+
+    .input-section {
+        justify-content: center;
+        min-height: 5.6rem;
+        border-radius: $round4;
+
+        .input-group-prepend > .input-group-text {
+            @include style1();
+            padding: 2rem 1rem 2rem 2rem;
+            background-color: $secondary6;
+            border-radius: 0.4rem 0 0 0.4rem;
+            border: none;
+        }
+
+        .input-group-append > button {
+            @include style1();
+            padding: 2rem 2rem 2rem 1rem;
+            background-color: $secondary6;
+            border-radius: 0 0.4rem 0.4rem 0;
+            color: $primary2;
+        }
+
+        input[type='search'] {
+            @include style1();
+            height: inherit;
+            border: none;
+
+            &::placeholder {
+                color: $secondary3;
+            }
+        }
+    }
+}
 .description {
-  max-lines: 2;
-  max-height: 5.5em;
-  overflow: hidden;
-  color: #333333;
+    max-lines: 2;
+    max-height: 5.5em;
+    overflow: hidden;
+    color: #333333;
 }
 
 input[type='search']::-webkit-search-cancel-button {
-  -webkit-appearance: searchfield-cancel-button;
-  zoom: 1.5;
-  cursor: pointer;
+    -webkit-appearance: searchfield-cancel-button;
+    zoom: 1.5;
+    cursor: pointer;
 }
 
 .fontSize {
-  font-size: 1.1rem;
+    font-size: 1.1rem;
 }
