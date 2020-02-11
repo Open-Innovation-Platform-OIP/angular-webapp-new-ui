@@ -39,11 +39,11 @@ export const AppRoutes: Routes = [
                 loadChildren:
                     './discussions/discussions.module#DiscussionsModule',
             },
-            // {
-            //     path: 'search',
-            //     loadChildren:
-            //         './global-search-view/global-search-view.module#GlobalSearchViewModule',
-            // },
+            {
+                path: 'search',
+                loadChildren:
+                    './global-search-view/global-search-view.module#GlobalSearchViewModule',
+            },
             // {
             //     path: 'admin',
             //     loadChildren: './admin-view/admin-view.module#AdminViewModule',
