@@ -52,7 +52,7 @@ export class FilterDropdownComponent implements OnInit {
         // $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAxSPvgric8Zn54pYneG9NondiINqdvb-w&libraries=places");
         this.autocomplete = new google.maps.places.Autocomplete(
             document.getElementById('autocomplete'),
-            { types: ['establishment'] }
+            { types: ['(cities)'] }
         );
 
         // Avoid paying for data that you don't need by restricting the set of
