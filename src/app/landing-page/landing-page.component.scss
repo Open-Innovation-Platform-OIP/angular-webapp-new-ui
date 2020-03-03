@@ -97,8 +97,8 @@
     }
 
     &:nth-child(even) {
-        border-right: 0.1rem solid rgb(246, 246, 246, 0.29);
-        border-left: 0.1rem solid rgb(246, 246, 246, 0.29);
+        border-right: 0.1rem solid rgba(246, 246, 246, 0.29);
+        border-left: 0.1rem solid rgba(246, 246, 246, 0.29);
     }
 }
 
@@ -224,8 +224,8 @@
     }
 
     .stats:nth-child(even) {
-        border-top: 0.1rem solid rgb(246, 246, 246, 0.29);
-        border-bottom: 0.1rem solid rgb(246, 246, 246, 0.29);
+        border-top: 0.1rem solid rgba(246, 246, 246, 0.29);
+        border-bottom: 0.1rem solid rgba(246, 246, 246, 0.29);
         border-right: initial;
         border-left: initial;
     }
